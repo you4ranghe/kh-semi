@@ -1,0 +1,7 @@
+git init
+git remote add origin https://github.com/you4ranghe/kh-semi.git
+git pull origin master
+git status
+git add.
+git commit -m"message" : 메세지 남기는용더
+git push origin +master
