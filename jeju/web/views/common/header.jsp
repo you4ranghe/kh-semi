@@ -123,8 +123,8 @@
     </header>
     <!-- header-end -->
 
-    <!-- slider_area_start 대형이미지 슬라이더 -->
-    <div class="slider_area">
+   <!-- slider_area_start 대형이미지 슬라이더 필요하신분만 주석 해제해서 쓰세요 -->
+    <!-- <div class="slider_area">
         <div class="slider_active owl-carousel">
             <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
                 <div class="container">
@@ -167,5 +167,5 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
     <!-- slider_area_end -->
