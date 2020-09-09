@@ -36,8 +36,7 @@
     
     
     <!-- fontawesome에서 아이콘쓸때 -->
-    <script src="https://kit.fontawesome.com/27fabf8f47.js"
-      crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/27fabf8f47.js" crossorigin="anonymous"></script>
       
       
       
@@ -82,7 +81,7 @@
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 d-none d-lg-block">
+                            <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
                                     <div class="number">
                                         <p> <i class="fa fa-phone"></i> email주소</p>
@@ -96,11 +95,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="seach_icon">
-                                <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
-                                    <i class="fa fa-search"></i>
-                                </a>
+                            <div clas="col-xl-1 col-lg-4 d-none d-lg-block">
+                                    <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation2">
+                                            <li><i class="fas fa-user-circle fa-2x"></i>
+												<ul class="submenu">
+                                                        <li><a href="contact.html">회원가입</a></li>
+                                                        <li><a href="elements.html">로그인</a></li>
+                                                </ul>
+											</li>
+                                        </ul>
+                                    </nav>
+                                	</div>
+                            
                             </div>
+                            
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
