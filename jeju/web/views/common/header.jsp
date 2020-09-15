@@ -111,7 +111,7 @@
                                             <li><i class="fas fa-user-circle fa-2x"></i>
 												<ul class="submenu">
 												<%if(logginedMember==null){ %>
-                                                        <li><a href="contact.html">회원가입</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
                                                         <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
 	                                         <%}else{%>
 	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
