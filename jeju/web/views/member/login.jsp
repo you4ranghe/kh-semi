@@ -14,7 +14,7 @@
     <h2 id="h2"><a href="">havebeenJeju</a>&nbsp;에서 지금까지 경험하지 못했던 <br>색다른 제주도여행을 시작해보세요</h2>
     <section class="login-form">
         <h1>LOGIN</h1>
-                <form action="">
+                <form id="loginFrm" action="<%=request.getContextPath()%>/member/loginEnd" method="post">
                     <div class="int-area">
                         <input type="text" name="id" id="id"
                         autocomplete="off" required>
@@ -26,7 +26,7 @@
                         <label for="pw">PASSWORD</label>
                     </div>
                     <div class="btn-area">
-                        <button id="btn" type="submit">LOGIN</button>
+                        <button id="btn" type="submit" onclick="fn_login_validate();">LOGIN</button>
                         <button id="btn2" type="button" onlcick="">JOIN US</button>
                     </div>
                     <div class="caption">
@@ -37,6 +37,9 @@
         </section>
 
         <script>
+        
+        
+        //아이디,비밀번호 미입력시 에니메이션
             let id=$("#id");
             let pw=$("#pw");
             let btn=$("#btn");
@@ -56,6 +59,22 @@
                 }
             });
 
+/* 		function fn_login_validate(){
+			let id=$("#id").val();
+			let password=$("#pw").val()
+			//아이디가 4글자 미만이면 안됨.
+			if(id.trim().length<8){
+				alert("아이디는 8글자 이상입니다.");
+				$("#id").focus();
+				return false;
+			}
+			//패스워드를 입력하지 않으면 안됨.
+			if(password.trim().length==0){
+				alert("비밀번호를 입력해주세요");
+				$("#pw").focus();
+				return false;
+			}
+		} */
 
         </script>
 

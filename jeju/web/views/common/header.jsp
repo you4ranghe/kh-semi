@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.semi.member.model.vo.Member,com.semi.common.listener.LoginCheckListener" %>
+<%
+	Member logginedMember = (Member)session.getAttribute("logginedMember");
+	int connectCount=LoginCheckListener.getConnectCount();
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,6 +87,9 @@
                                     </nav>
                                 </div>
                             </div>
+             
+                       
+             
                             <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
                                     <div class="number">
@@ -101,14 +110,18 @@
                                         <ul id="navigation2">
                                             <li><i class="fas fa-user-circle fa-2x"></i>
 												<ul class="submenu">
+												<%if(logginedMember==null){ %>
                                                         <li><a href="contact.html">회원가입</a></li>
                                                         <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
+	                                         <%}else{%>
+	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
+	                                         			<li><a href="<%=request.getContextPath() %>/member/logout">로그아웃</a></li>
+                                   			<%} %>
                                                 </ul>
 											</li>
                                         </ul>
                                     </nav>
                                 	</div>
-                            
                             </div>
                             
                             <div class="col-12">
@@ -121,6 +134,8 @@
             </div>
         </div>
     </header>
+    
+   
     <!-- header-end -->
 
  
