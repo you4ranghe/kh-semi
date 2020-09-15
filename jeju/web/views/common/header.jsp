@@ -102,7 +102,7 @@
                                             <li><i class="fas fa-user-circle fa-2x"></i>
 												<ul class="submenu">
                                                         <li><a href="contact.html">회원가입</a></li>
-                                                        <li><a href="elements.html">로그인</a></li>
+                                                        <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
                                                 </ul>
 											</li>
                                         </ul>
