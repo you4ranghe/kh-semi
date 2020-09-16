@@ -10,7 +10,7 @@
 	
 	<form action="<%=request.getContextPath() %>/payList" id="payBtn">
 		<input type="hidden" id="pay" value="서귀포시 상품" name="pay">
-		
+	
 	</form>
 	<button  id="paybn">결제하기</button>
 	

@@ -7,24 +7,9 @@
 %>
 
 <section>
-	
-	<form action="">
-		<button onclick="paybtn();">결제하기</button>	
-	</form>
+		<%=loginUser2.getUserId() %>님의 예약이 완료되었습니다.
+		<button>예약조회</button> <button>다른 상품 추가예약</button>
 	
 </section>
 
-
-<script>
-	function paybtn(){
-		if(loginUser==null){
-			alert("로그인이 필요합니다")
-		}
-		else{
-			this.submit();	
-		}
-	}
-
-
-</script>
 <%@ include file="/views/common/footer.jsp" %>
