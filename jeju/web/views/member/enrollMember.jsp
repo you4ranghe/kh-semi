@@ -33,7 +33,9 @@
                         </tr>
                         <tr>
                             <th>패스워드확인</th>
-                            <td class="int-area"><input type="password" id="password_2" placeholder="비밀번호 확인" autocomplete="off" required>
+                            <td class="int-area">
+                            <input type="password" id="password_2" autocomplete="off" required>
+                            <label for="password_2">비밀번호 확인</label>
                                 
                             </td>
                         </tr>
@@ -41,30 +43,35 @@
                             <th>이름</th>
                             <td class="int-area">
                                 <input type="text" name="userName" id="userName" required autocomplete="off">
+                                <label for="userName">한글 2~4글자</label>
                             </td>
                         </tr>
                         <tr>
                             <th>나이</th>
                             <td class="int-area">
                                 <input type="number" name="age" id="age" min="0" autocomplete="off" required>
+                                <label for="age">제주도가기 딱 좋을나이</label>
                             </td>
                         </tr>
                         <tr>
                             <th>이메일</th>
                             <td class="int-area">
-                                <input type="email" name="email" id="email" autocomplete="off" placeholder="ex)letsgo@gotjeju.com" required>
+                                <input type="email" name="email" id="email" autocomplete="off"  required>
+                            	 <label for="email">ex)letsgo@gotjeju.com</label>
                             </td>
                         </tr>
                         <tr>
                             <th>연락처(핸드폰)</th>
                             <td class="int-area">
-                                <input type="tel" name="phone" id="phone" maxlength="11" autocomplete="off" placeholder="(-)을 제외하고 입력해주세요" required>
+                                <input type="tel" name="phone" id="phone" maxlength="11" autocomplete="off"  required>
+                            	<label for="phone">(-)을 제외하고 입력해주세요</label>
                             </td>
                         </tr>
                         <tr>
                             <th>주소</th>
                             <td class="int-area">
                                 <input type="text" name="address" id="address" autocomplete="off" required>
+                                <label for="address">주소를 입력해주세요</label>
                             </td>
                         </tr>
                         <tr>
