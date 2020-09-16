@@ -6,9 +6,12 @@
 <meta charset="UTF-8">
 <title>메세지</title>
 <%
+
 	String msg=(String)request.getAttribute("msg");
 	String loc=(String)request.getAttribute("loc");
 	String script =(String)request.getAttribute("script");
+	
+
 
 %>
 </head>
@@ -26,5 +29,20 @@
 </body>
 </html>
 
+</head>
+<body>
 
+<script>
+alert('<%=msg%>');
 
+if(<%=script!=null%>){
+	<%=script%>
+}
+
+location.replace('<%=request.getContextPath()%><%=loc%>');
+
+</script>
+
+</body>
+</html>
+>>>>>>> branch 'jueun_semi_dev' of https://github.com/you4ranghe/kh-semi.git
