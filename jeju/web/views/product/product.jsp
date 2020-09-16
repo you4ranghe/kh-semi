@@ -17,7 +17,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Travelo</title>
+        <title>GotJeju</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -111,44 +111,65 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="<%=request.getContextPath() %>/product/productGoCart" method="post"" class="check-form">
+                        
+                            <form action="<%=request.getContextPath() %>/product/productGoCart" method="post" class="check-form">
+                            
                                 <h4>Check Option</h4>
                                 <div class="datepicker">
                                     <p>From</p>
-                                    <input type="text" class="datepicker-1" value="${p.pDateStart}">
-                                    <img src="img/calendar.png" alt="">
+                                    <input type="date" name="pDateStart" min="2020-01-01" max="2020-12-31" value="${p.pDateStart}">
+                                    <!-- <img src="img/calendar.png" alt=""> -->
                                 </div>
                                 <div class="datepicker">
                                     <p>To</p>
-                                    <input type="text" class="datepicker-2" value="${p.pDateFinish}">
-                                    <img src="img/calendar.png" alt="">
+                                <input type="date" name="pDateFinish" min="2020-01-01" max="2020-12-31" value="${p.pDateFinish}">
+                                    <!-- <img src="img/calendar.png" alt=""> -->
                                 </div>
+                                
+                                
+                                
                                 <div class="room-quantity">
                                     <div class="single-quantity">
                                         <p>Adults</p>
-                                        <div class="pro-qty"><input type="text" value="${p.pCountA}"></div>
+                                        <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountA}" name="pCountA">
                                     </div>
+                                    
+                                    
                                     <div class="single-quantity">
                                         <p>Children</p>
-                                        <div class="pro-qty"><input type="text" value="${p.pCountC}"></div>
+                                         <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountC}" name="pCountC">
+                                        
                                     </div>
                                     <!-- <div class="single-quantity last">
                                         <p>Rooms</p>
                                         <div class="pro-qty"><input type="text" value="0"></div>
                                     </div> -->
+                                    
+                                    <div>
+                                    	<input type="hidden" value="" name="totalPrice">
+                                    </div>
                                 </div>
+                                
+                                
+                                
+                                
                                 <div class="room-selector">
                                     <p>Time</p>
-                                    <select class="suit-select">
+                                    <select class="suit-select" name="pTime">
                                         <option>Check your Time</option>
-                                        <option value="${pm.pTime}">09:00</option>
-                                        <option value="${pm.pTime}">12:00</option>
-                                        <option value="${pm.pTime}">15:00</option>
+                                        <option value="09:00" label="${p.pTime}">09:00</option>
+                                        <option value="12:00" label="${p.pTime}">12:00</option>
+                                        <option value="15:00" label="${p.pTime}">15:00</option>
+
                                     </select>
                                 </div>
-                                <button type="submit">cart</button>
+                                
+                                
                                 <button type="submit">buy</button>
+                               
+                                
                             </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -594,17 +615,34 @@
                                                 placeholder="Passwrod">
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input
-                                                class="form-control"
-                                                name="website"
-                                                id="website"
-                                                type="text"
-                                                placeholder="Website">
-                                        </div>
-                                    </div>
+                                   <input type="hidden" name="rate" id="rate" value="0"/>
+                                   
+  
+
+                                
+                                <div class="starRev">
+  <span class="starR on">별1</span>
+  <span class="starR">별2</span>
+  <span class="starR">별3</span>
+  <span class="starR">별4</span>
+  <span class="starR">별5</span>
+  <span class="starR">별6</span>
+  <span class="starR">별7</span>
+  <span class="starR">별8</span>
+  <span class="starR">별9</span>
+  <span class="starR">별10</span>
+</div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                                 </div>
+                                
+                                
+                                
                                 <div class="form-group">
                                     <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
                                 </div>
@@ -644,14 +682,20 @@
                                     <li>
                                         <a href="#" class="d-flex">
                                             <p>ADULT &nbsp;</p>
-                                            <p>75,000</p>
+                                            <p>${p.pPriceA}</p>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="d-flex">
                                             <p>CHILDREN &nbsp;</p>
-                                            <p>55,000</p>
+                                            <p>${p.pPriceC}</p>
                                         </a>
+                                    </li>
+                                    <li>
+                                       		
+                                            <p>TOTAL PRICE &nbsp;</p>
+                                            <p></p>
+                                        
                                     </li>
                                 </div>
                                 

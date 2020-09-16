@@ -1,6 +1,7 @@
 package com.semi.payment.model.vo;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 public class Payment {
 
@@ -8,12 +9,12 @@ public class Payment {
 	private int pNum;
 	private String poType;
 	private String poDate;
-	private int pCountA;
-	private int pCountC;
+	private String pCountA;
+	private String pCountC;
 	private String pDateStart;
 	private String pDateFinish;
 	private String pTime;
-	private int totalPrice;
+	private String totalPrice;
 	
 	
 	public Payment() {
@@ -21,8 +22,8 @@ public class Payment {
 	}
 
 
-	public Payment(String poNum, int pNum, String poType, String poDate, int pCountA, int pCountC, String pDateStart,
-			String pDateFinish, String pTime, int totalPrice) {
+	public Payment(String poNum, int pNum, String poType, String poDate, String pCountA, String pCountC,
+			String pDateStart, String pDateFinish, String pTime, String totalPrice) {
 		super();
 		this.poNum = poNum;
 		this.pNum = pNum;
@@ -77,22 +78,22 @@ public class Payment {
 	}
 
 
-	public int getpCountA() {
+	public String getpCountA() {
 		return pCountA;
 	}
 
 
-	public void setpCountA(int pCountA) {
+	public void setpCountA(String pCountA) {
 		this.pCountA = pCountA;
 	}
 
 
-	public int getpCountC() {
+	public String getpCountC() {
 		return pCountC;
 	}
 
 
-	public void setpCountC(int pCountC) {
+	public void setpCountC(String pCountC) {
 		this.pCountC = pCountC;
 	}
 
@@ -127,12 +128,12 @@ public class Payment {
 	}
 
 
-	public int getTotalPrice() {
+	public String getTotalPrice() {
 		return totalPrice;
 	}
 
 
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
@@ -145,7 +146,6 @@ public class Payment {
 	}
 
 
-	
 
 	
 	
