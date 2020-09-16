@@ -46,7 +46,7 @@
         <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
         <!--써치 필터 css-->
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jisun_search-filter.css">
+        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jisun_search-filter.css"> 
         <!-- 디테일 상품 본문 css -->
         <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jisun_detail-product.css">
 
@@ -67,6 +67,8 @@
                 <p> ${p.pBigNameKor}</p>
             </div>
         </div>
+        
+        
 
      	 
         <!-- 데스티네이션 -->
@@ -103,30 +105,38 @@
         
         
         
-   <!-- 써치필터 Section Begin -->
-  
-         <div class="destination_details_info"> 
+ <!-- 써치필터 Section Begin -->
+        
             <section class="search-filter">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            
-                            <form name="form" action="<%=request.getContextPath() %>/product/productGoCart" method="post" class="check-form">
-                                
+                            <form action="<%=request.getContextPath() %>/product/productGoCart" method="post"" class="check-form">
                                 <h4>Check Option</h4>
-                                
                                 <div class="datepicker">
                                     <p>From</p>
-                                    <input type="text" class="datepicker-1" value="${pm.pDateStart}">
+                                    <input type="text" class="datepicker-1" value="${p.pDateStart}">
                                     <img src="img/calendar.png" alt="">
                                 </div>
-                                
                                 <div class="datepicker">
                                     <p>To</p>
-                                    <input type="text" class="datepicker-2" value="${pm.pDateFinish}">
+                                    <input type="text" class="datepicker-2" value="${p.pDateFinish}">
                                     <img src="img/calendar.png" alt="">
                                 </div>
-                                
+                                <div class="room-quantity">
+                                    <div class="single-quantity">
+                                        <p>Adults</p>
+                                        <div class="pro-qty"><input type="text" value="${p.pCountA}"></div>
+                                    </div>
+                                    <div class="single-quantity">
+                                        <p>Children</p>
+                                        <div class="pro-qty"><input type="text" value="${p.pCountC}"></div>
+                                    </div>
+                                    <!-- <div class="single-quantity last">
+                                        <p>Rooms</p>
+                                        <div class="pro-qty"><input type="text" value="0"></div>
+                                    </div> -->
+                                </div>
                                 <div class="room-selector">
                                     <p>Time</p>
                                     <select class="suit-select">
@@ -136,46 +146,14 @@
                                         <option value="${pm.pTime}">15:00</option>
                                     </select>
                                 </div>
-                                
-                                
-                                 <div class="room-quantity"> 
-                                    <div class="single-quantity" >
-                                    			<div class="pro-qty">
-                                    	 		 <input type=hidden name="sell_price" value="${p.pPriceA}">
-														Adult<br><input type="button" value=" - " onclick="del();">
-														<input type="text" name="amount" value="1" size="3" onchange="change();">
-														<input type="button" value=" + " onclick="add();">
-														<br>
-												</div>	
-		                                   	 	<input type=hidden name="sell_price2" value="${p.pPriceC}">
-														Children<br><input type="button" value=" - " onclick="del2();">
-														<input type="text" name="amount2" value="1" size="3" onchange="change2();">
-														<input type="button" value=" + " onclick="add2();">
-														<br>
-												
-												<input type="hidden" name="sum" size="11" readonly> 
-												<input type="hidden" name="sum2" size="11" readonly> 
-			 									<input type="" name="sum3" size="11" value="" readonly> <!-- 총금액 -->
-                                   <!-- </div>  -->
-                                    <!-- <div class="single-quantity last">
-                                        <p>Rooms</p>
-                                        <div class="pro-qty"><input type="text" value="0"></div>
-                                    </div> -->
-                                
-                                </div>
-                                </div>
-                                
-                                
-                                <!-- <button type="submit">cart</button> -->
+                                <button type="submit">cart</button>
                                 <button type="submit">buy</button>
-                                
                             </form>
-                            
                         </div>
                     </div>
                 </div>
             </section>
-	   </div>
+	  
       
 <!-- Search Filter Section End -->
 
@@ -974,7 +952,7 @@
                 <script src="<%=request.getContextPath() %>/js/js_cal/jquery.slicknav.js"></script>
                 <script src="<%=request.getContextPath() %>/js/js_cal/owl.carousel.min.js"></script>
                 <script src="<%=request.getContextPath() %>/js/js_cal/main.js"></script>
-                <script src="<%=request.getContextPath() %>/js/js_cal/count.js"></script>
+
 
 
             </body>
