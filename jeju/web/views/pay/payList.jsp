@@ -27,14 +27,31 @@
 	}
 	#payContent div{
 		border:2px solid gray;
-		width:800px;
-		height:500px;
 		margin-bottom:50px;
 		box-shadow: 30px 30px 70px rgba(0,0,0,0.2);
 		border-radius:10px;
-		
-		
+		padding:30px;
 	}
+	form #productContent{
+		width:800px;
+		height:500px;
+	}
+	form #orderContent{
+		width:800px;
+		height:500px;
+	}
+	
+	form #reservation{
+		width:800px;
+		height:500px;
+	}
+	
+	form #paytype{
+		width:800px;
+		height:200px;
+	}
+	
+	
 	#payContent{
 		margin-left:500px;
 		
@@ -95,7 +112,7 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<textarea rows="7" cols="80">ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ
+					<textarea rows="7" cols="70">ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ
 					ㅁㄴㅇㅁㄴㅇ	여기는 상품 설명을 씁시다요 ~~~~~~~~
 						~~~~~~~~~~~~~~~~~~
 				ㅁㄴㅇㅁㄴㅇ~~~~~~~~~~~~~~~~~~~
@@ -192,7 +209,7 @@
 		
 	</div>
 		<strong>결제 방법</strong>
-	<div>
+	<div id="paytype">
 	</div>
 	<input type="submit" value="결제하기">
 </form>
@@ -337,5 +354,7 @@ alert(msg);
 </script>
 
 
-출처: https://minaminaworld.tistory.com/78 [미나미 블로그]
+
 </section>
+
+<%@ include file="/views/common/footer.jsp" %>
