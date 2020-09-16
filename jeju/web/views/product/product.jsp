@@ -3,9 +3,11 @@
 
     <%@page import = "java.util.List"%>
     <%@page import="com.semi.product.model.vo.Product"%>
+    <%@page import="com.semi.payment.model.vo.Payment"%>
 
 <%
 	Product p = (Product)request.getAttribute("product");
+	Payment pm = (Payment)request.getAttribute("payment");
 %>    
 
 <%@ include file="/views/common/header.jsp" %>
@@ -102,54 +104,79 @@
         
         
    <!-- 써치필터 Section Begin -->
-        <form class="destination_details_info" action="<%=request.getContextPath() %>/product/productGoCart" method="post">
+  
+         <div class="destination_details_info"> 
             <section class="search-filter">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="#" class="check-form">
+                            
+                            <form name="form" action="<%=request.getContextPath() %>/product/productGoCart" method="post" class="check-form">
+                                
                                 <h4>Check Option</h4>
+                                
                                 <div class="datepicker">
                                     <p>From</p>
-                                    <input type="text" class="datepicker-1" value="${p.pDateStart}">
+                                    <input type="text" class="datepicker-1" value="${pm.pDateStart}">
                                     <img src="img/calendar.png" alt="">
                                 </div>
+                                
                                 <div class="datepicker">
                                     <p>To</p>
-                                    <input type="text" class="datepicker-2" value="${p.pDateFinish}">
+                                    <input type="text" class="datepicker-2" value="${pm.pDateFinish}">
                                     <img src="img/calendar.png" alt="">
                                 </div>
-                                <div class="room-quantity">
-                                    <div class="single-quantity">
-                                        <p>Adults</p>
-                                        <div class="pro-qty"><input type="text" value="${p.pCountA}"></div>
-                                    </div>
-                                    <div class="single-quantity">
-                                        <p>Children</p>
-                                        <div class="pro-qty"><input type="text" value="${p.pCountC}"></div>
-                                    </div>
-                                    <!-- <div class="single-quantity last">
-                                        <p>Rooms</p>
-                                        <div class="pro-qty"><input type="text" value="0"></div>
-                                    </div> -->
-                                </div>
+                                
                                 <div class="room-selector">
                                     <p>Time</p>
                                     <select class="suit-select">
                                         <option>Check your Time</option>
-                                        <option value="${p.pTime}">09:00</option>
-                                        <option value="${p.pTime}">12:00</option>
-                                        <option value="${p.pTime}">15:00</option>
+                                        <option value="${pm.pTime}">09:00</option>
+                                        <option value="${pm.pTime}">12:00</option>
+                                        <option value="${pm.pTime}">15:00</option>
                                     </select>
                                 </div>
-                                <button type="submit">cart</button>
+                                
+                                
+                                 <div class="room-quantity"> 
+                                    <div class="single-quantity" >
+                                    			<div class="pro-qty">
+                                    	 		 <input type=hidden name="sell_price" value="${p.pPriceA}">
+														Adult<br><input type="button" value=" - " onclick="del();">
+														<input type="text" name="amount" value="1" size="3" onchange="change();">
+														<input type="button" value=" + " onclick="add();">
+														<br>
+												</div>	
+		                                   	 	<input type=hidden name="sell_price2" value="${p.pPriceC}">
+														Children<br><input type="button" value=" - " onclick="del2();">
+														<input type="text" name="amount2" value="1" size="3" onchange="change2();">
+														<input type="button" value=" + " onclick="add2();">
+														<br>
+												
+												<input type="hidden" name="sum" size="11" readonly> 
+												<input type="hidden" name="sum2" size="11" readonly> 
+			 									<input type="" name="sum3" size="11" value="" readonly> <!-- 총금액 -->
+                                   <!-- </div>  -->
+                                    <!-- <div class="single-quantity last">
+                                        <p>Rooms</p>
+                                        <div class="pro-qty"><input type="text" value="0"></div>
+                                    </div> -->
+                                
+                                </div>
+                                </div>
+                                
+                                
+                                <!-- <button type="submit">cart</button> -->
                                 <button type="submit">buy</button>
+                                
                             </form>
+                            
                         </div>
                     </div>
                 </div>
             </section>
-        </form>
+	   </div>
+      
 <!-- Search Filter Section End -->
 
 
@@ -650,16 +677,11 @@
                                     </li>
                                 </div>
                                 
-                                원래가격 : <span id='total_price'>0</span>원
-                                <form name='price_exec' method='get' onSubmit='submit_value();'>
+                               <!--  원래가격 : <span id='total_price'>0</span>원
+                                <form name='price_exec' method='get' onSubmit='submit_value();'> -->
 
-                                <!--원래 가격을 hidden된 total_price에 넣어주세요-->
-                                <input type=hidden name='total_price' value='150000'>
-                                <!--계산된 총 가격을 보내기 위함-->
-                                <input type=hidden name='exec_price' value='0'>
-
-                                <input type=submit value='구매하자~!'>
-
+                               <!--  금액 : <input type="text" name="sum" size="11" readonly> 원 -->
+                                
                             </aside>
                             <!-- <aside class="single_sidebar_widget post_category_widget">
                                 <h4 class="widget_title">Category</h4>
@@ -952,6 +974,8 @@
                 <script src="<%=request.getContextPath() %>/js/js_cal/jquery.slicknav.js"></script>
                 <script src="<%=request.getContextPath() %>/js/js_cal/owl.carousel.min.js"></script>
                 <script src="<%=request.getContextPath() %>/js/js_cal/main.js"></script>
+                <script src="<%=request.getContextPath() %>/js/js_cal/count.js"></script>
+
 
             </body>
 

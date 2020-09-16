@@ -86,7 +86,7 @@
     /*-------------------
 		Quantity change
 	--------------------- */
-    var proQty = $('.pro-qty');
+/*    var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
     proQty.on('click', '.qtybtn', function () {
@@ -104,7 +104,10 @@
         }
         $button.parent().find('input').val(newVal);
     });
+*/
+    
 
+    
     /*------------------
         Magnific Popup
     --------------------*/
@@ -113,6 +116,14 @@
     });
 
 })(jQuery);
+
+
+
+
+
+
+
+
 
 
 
