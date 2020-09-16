@@ -90,10 +90,38 @@ public class MemberDao {
 		}finally {
 			close(pstmt);
 		}return result;
-		
-		
-		
-		
 	}
 
+	//아이디로 회원 조회
+	public Member checkUserId(Connection conn, String userId) {
+		PreparedStatement pstmt =null;
+		ResultSet rs=null;
+		Member m =null;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("checkUserId"));
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				m=new Member();
+				m.setUserNum(rs.getInt("user_num"));
+				m.setUserId(rs.getString("user_id"));
+				m.setPassword(rs.getString("password"));
+				m.setUserName(rs.getString("user_name"));
+				m.setGender(rs.getString("gender"));
+				m.setAge(rs.getInt("age"));
+				m.setEmail(rs.getString("email"));
+				m.setPhone(rs.getString("phone"));
+				m.setAddress(rs.getString("address"));
+				m.setEnrolldate(rs.getDate("enrolldate"));
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
 }

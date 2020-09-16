@@ -34,6 +34,17 @@ public class MemberService {
 		return result;
 	}
 	
+	//아이디로 회원 조회하기
+	public Member checkUserId(String userId) {
+		Connection conn=getConnection();
+		Member m = dao.checkUserId(conn,userId);
+	 
+		close(conn);
+		return m;
+		
+		
+	}
+	
 	
 
 }

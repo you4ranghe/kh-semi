@@ -56,7 +56,7 @@ th{
 
 
 .int-area input{
-    width: 80%;
+    width: 75%;
     padding : 20px 10px 10px;
     background-color: transparent;
     border:none;
@@ -108,7 +108,7 @@ th{
 #btn1{
     position: absolute;
     top:130px;
-    left:1100px;
+    left:1120px;
     width:80px; height:35px;
     background : yellowgreen;
     color : #fff;

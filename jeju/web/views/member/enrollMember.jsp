@@ -13,9 +13,9 @@
 <body>
     <h1 id="title">회원가입</h1>
     <h2 id="h2"><a href="<%=request.getContextPath() %>">havebeenJeju</a>&nbsp;에서 지금까지 경험하지 못했던 <br>색다른 제주도여행을 시작해보세요</h2>
-    <input id="btn1"type="button" value="중복검사" onclick="fn_id_duplicate();">
+    <input id="btn1" type="button" value="중복검사" onclick="id_duplicate();">
     <section class="login-form">
-                <form id="loginFrm" action="<%=request.getContextPath()%>/member/EnrollEnd" method="post">
+                <form id="memberEnrollFrm" action="<%=request.getContextPath()%>/member/EnrollEnd" method="post">
                     <table>
                         <tr>
                             <th>아이디</th>
@@ -86,6 +86,11 @@
                         </tr>
                     </table>
                 </form>
+                	<!-- 아이디 중복검사 폼 -->
+					<form action="" name="checkIdDuplicate">
+					<!-- 유저가 입력한 아이디를 집어넣고 전송 hidden-->
+					<input type="hidden" name="userId"> 
+	</form>
 
         </section>
 
@@ -160,6 +165,30 @@
             }
             
 	   } //유효성 검사 버튼 
+	   
+	   //아이디 중복검사
+	   function id_duplicate(){
+			let id=$("#userId_").val().trim();
+			if(id.length<4){
+				alert("아이디는 4글자 이상입력하세요!");
+				return;
+			}
+			
+			//중복확인 할 새창을 뛰우기
+			const url="<%=request.getContextPath()%>/checkIdDuplicate"
+			const title="checkIdDuplicate";
+			const status = "left=500px,top=150px,width=500px,height=180px";
+			
+			open("",title,status);
+			
+			checkIdDuplicate.target=title; 
+			checkIdDuplicate.action=url; 
+			checkIdDuplicate.method="post";
+			
+			checkIdDuplicate.userId.value=id;
+			checkIdDuplicate.submit();
+			
+		}
 			
 
         </script>
