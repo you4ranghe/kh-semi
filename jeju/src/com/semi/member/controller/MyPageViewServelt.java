@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.common.AESCrypto;
+import com.semi.member.model.service.MemberService;
 import com.semi.member.model.vo.Member;
-import com.semi.member.service.MemberService;
 
 /**
  * Servlet implementation class MyPageViewServelt
  */
-@WebServlet("/member/mypage")
+@WebServlet(name="mypage",urlPatterns="/member/mypage")
 public class MyPageViewServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

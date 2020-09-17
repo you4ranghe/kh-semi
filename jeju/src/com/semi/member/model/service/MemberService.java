@@ -1,4 +1,4 @@
-package com.semi.member.service;
+package com.semi.member.model.service;
 
 import java.sql.Connection;
 

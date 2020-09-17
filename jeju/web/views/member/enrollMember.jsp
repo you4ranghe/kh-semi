@@ -11,12 +11,12 @@
     <title>Jeju_LoginPage</title>
 </head>
 <body>
-    <h1 id="title">회원가입</h1>
-    <h2 id="h2"><a href="<%=request.getContextPath() %>">gotJeju</a>&nbsp;에서 지금까지 경험하지 못했던 <br>색다른 제주도여행을 시작해보세요</h2>
-    <input id="btn1" type="button" value="중복검사" onclick="id_duplicate();">
     <section class="login-form">
+        <h1 id="title">회원가입</h1>
+        <h2 id="h2"><a href="<%=request.getContextPath() %>">gotJeju</a>&nbsp;에서 지금까지 경험하지 못했던 <br>색다른 제주도여행을 시작해보세요</h2>
+        <input id="btn1" type="button" value="중복검사" onclick="id_duplicate();">
                 <form id="memberEnrollFrm" action="<%=request.getContextPath()%>/member/EnrollEnd" method="post">
-                    <table>
+                    <table id="enroll-tbl">
                         <tr>
                             <th>아이디</th>
                             <td class="int-area">

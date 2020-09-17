@@ -4,7 +4,7 @@
     margin: 0; padding:0; box-sizing:border-box;
 }
 
-body{
+/* body{
     font-family: 'Do Hyeon', sans-serif;
     display:flex;
     justify-content : center;
@@ -15,39 +15,45 @@ body{
 }
 
 body ::before{
-     /* content: ""; */
+     content: "";
     position:  absolute;
     z-index: 1;
     top: 0; right: 0; left: 0; bottom: 0;
     background-color: rgba(0,0,0,.7);
 }
 
-
-
-
-#memberEnrollFrm{
-    position: relative;
-    left:600px;
-    top:50px;
-    /* border :3px solid red;  */
-    width:380px;
-
-}
-
-.login-form{
-    position : relative; 
-    width:100%;
-    height:100%;
-    z-index: 2;
-    left:140px;
-    top:10px;
-}
 .login-form h1{
     font-size:32px;color:#fff;
     text-align: center;
     margin-bottom: 60px;
+} */
+
+#mypage-tbl
+    {
+    /* width:300px;
+    height:500px; */
+   
+
+}
+.mypage-div{
+
+    position: relative;
+    top:100px;
+    left:200px;
+
 }
 
+#member-viewForm{
+    position : relative; 
+    z-index: 2;
+    left:500px;
+    top:10px;
+    margin:50px;
+    width:300px;
+    height:500px;
+    border :3px solid red;
+
+}
 .int-area{width: 400px; position: relative;
 margin-top:20px}
 
@@ -57,31 +63,35 @@ margin-top:20px}
 
 #title{
     font-size: 35px;
-    color:white;
+    color:black;
     position: absolute;
-    top:70px;
-    left:800px;
+    font-weight: bold;
+    top:100px;
+    left:100px;
 }
 
 th{
     color:yellowgreen;
-    font-size:20px;
+    font-size:15px;
+    font-weight: bold;
 }
 
 
 .int-area input{
-    width: 95%;
+    width: 75%;
     padding : 20px 10px 10px;
     background-color: transparent;
     border:none;
     border-bottom:1px solid #999;
-    font-size: 18px; color : #fff;
+    font-weight: bold;
+    font-size: 15px; color : orangered;
     outline: none;
 }
 
 .int-area label{
     position: absolute; left:10px; top:15px;
-    font-size:18px; color:#999;
+    font-size:15px; color:dodgerblue;
+    font-weight: bold;
     transition : all .5s ease;
 }
 
@@ -115,14 +125,15 @@ th{
 }
 
 .gender label{
-    color: white;
+    color: dodgerblue;
+    font-weight: bold;
     font-size: 18px;
     padding : 5px;
 }
 #btn1{
-    position: relative;
-    top:100px;
-    left:990px;
+    position: absolute;
+    top:130px;
+    left:1120px;
     width:80px; height:35px;
     background : yellowgreen;
     color : #fff;
@@ -137,7 +148,7 @@ th{
 #btn2{
     position: relative;
     top:10px;
-    left:90px;
+    left:130px;
     width:100px; height:50px;
     background : dodgerblue;
     color : #fff;
@@ -150,7 +161,7 @@ th{
 }
 #btn3{
     position: relative;
-    left:90px;
+    left:130px;
     top:10px;
     width:100px ;height:50px;
     background : rgba(228, 151, 57, 0.849);
@@ -181,7 +192,7 @@ th{
 
 #h2{
     color : beige;
-    position: relative;
+    position: absolute;
     left: 50px;
     top:100px;
     font-size:30px;

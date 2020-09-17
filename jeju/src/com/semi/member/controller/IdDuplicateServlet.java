@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.member.model.service.MemberService;
 import com.semi.member.model.vo.Member;
-import com.semi.member.service.MemberService;
 
 /**
  * Servlet implementation class IdDuplicateServlet
