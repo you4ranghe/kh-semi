@@ -11,7 +11,7 @@
     <title>Jeju_LoginPage</title>
 </head>
 <body>
-    <h2 id="h2">당신의 <a href="">이번 제주도 여행도</a> 지금 바로 &nbsp; <br><a href="">havebeenJeju</a>에서 함께해보세요</h2>
+    <h2 id="h2">당신의 <a href="">이번 제주도 여행도</a> 지금 바로 &nbsp; <br><a href="">GotJeju</a>에서 함께해보세요</h2>
     <section class="login-form">
         <h1>LOGIN</h1>
                 <form id="loginFrm" action="<%=request.getContextPath()%>/member/loginEnd" method="post">

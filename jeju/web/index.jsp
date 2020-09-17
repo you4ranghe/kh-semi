@@ -2,20 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
-<<<<<<< HEAD
+
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css" type="text/css"/>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-=======
+
 <%
 	Member loggined=(Member)session.getAttribute("logginedMember");
 	
 %>
->>>>>>> branch 'jisun_semi_dev' of https://github.com/you4ranghe/kh-semi.git
 
-<<<<<<< HEAD
 <!-- Include the plugin's CSS and JS: -->
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-multiselect.css" type="text/css"/>
