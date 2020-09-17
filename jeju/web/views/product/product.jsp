@@ -112,7 +112,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                         
-                            <form action="<%=request.getContextPath() %>/product/productGoCart" method="post" class="check-form">
+                            <form action="<%=request.getContextPath() %>/product/productGoCart" method="post" class="check-form" name="price_exec">
                             
                                 <h4>Check Option</h4>
                                 <div class="datepicker">
@@ -129,25 +129,94 @@
                                 
                                 
                                 <div class="room-quantity">
-                                    <div class="single-quantity">
+                                
+										Total <span id='total_price' name>0</span>원
+										
+										<input type=hidden name='total_price' value='${ p.pPriceA}'>
+										<input type=hidden name='total_price2' value='${p.pPriceC }'>
+										
+										<input type=hidden name='totalPrice' value='0'>
+										
+										Adult <select name='pCountA' onChange='change_price();'>
+												    <option value='0'>0</option>
+												    <option value='1'>1</option>
+												    <option value='2'>2</option>
+												    <option value='3'>3</option>
+												    <option value='4'>4</option>
+												    <option value='5'>5</option>
+												    <option value='6'>6</option>
+										    	</select>
+										  
+										Child <select name='pCountC' onChange='change_price();'>
+												    <option value='0'>0</option>
+												    <option value='1'>1</option>
+												    <option value='2'>2</option>
+												    <option value='3'>3</option>
+												    <option value='4'>4</option>
+												    <option value='5'>5</option>
+												    <option value='6'>6</option>
+												</select>
+										      
+										<script>
+										
+										function change_price(value){
+										    
+										    var f=document.price_exec;
+										    original_price=parseInt(f.total_price.value);
+										
+										    ok_price=(original_price * f.pCountA.value) + (original_price * f.pCountC.value);
+										
+										    var checked_price=''+ok_price;
+										
+										    if(checked_price.length-1>=6){
+										   
+										        alength=checked_price.length-1;
+										       
+										        count_r=parseInt(alength%3);
+										        count_r=3-count_r;
+										        count=parseInt(checked_price.length-1)+parseInt(count_r);
+										        count_rd=parseInt((alength+1)%3);
+										        first=((count/3-1)*3)-2;
+										        second=first-3;
+										        third=0;
+										        ook_price_1=checked_price.substr(first,3);
+										        ook_price_2=checked_price.substr(second,3)+',';
+										        if(checked_price.substr(third,count_rd)!=''){
+										            ook_price_3=checked_price.substr(third,count_rd)+',';
+										        }else{
+										            ook_price_3='';
+										        }
+										        print_price=ook_price_3+ook_price_2+ook_price_1;
+										
+										    }else if(checked_price.length-1>4 && checked_price.length-1<6){
+										        ook_price_1=checked_price.substr(3,3);
+										        ook_price_2=checked_price.substr(0,checked_price.length-3);
+										        print_price=ook_price_2+','+ook_price_1;
+										    }else{
+										        print_price=checked_price;
+										    }
+										    total_price.innerHTML=print_price;
+										    f.totalPrice.value=ok_price;
+										}
+										
+										change_price();
+										</script>
+                                    <%-- <div class="single-quantity">
                                         <p>Adults</p>
-                                        <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountA}" name="pCountA">
+                                        <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountA}" name="getsu" onclick='change_price();'>
                                     </div>
                                     
                                     
                                     <div class="single-quantity">
                                         <p>Children</p>
-                                         <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountC}" name="pCountC">
+                                         <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountC}" name="getsu" onclick='change_price();'>
                                         
-                                    </div>
+                                    </div> --%>
                                     <!-- <div class="single-quantity last">
                                         <p>Rooms</p>
                                         <div class="pro-qty"><input type="text" value="0"></div>
                                     </div> -->
-                                    
-                                    <div>
-                                    	<input type="hidden" value="" name="totalPrice">
-                                    </div>
+                                   
                                 </div>
                                 
                                 
@@ -691,12 +760,7 @@
                                             <p>${p.pPriceC}</p>
                                         </a>
                                     </li>
-                                    <li>
-                                       		
-                                            <p>TOTAL PRICE &nbsp;</p>
-                                            <p></p>
-                                        
-                                    </li>
+                                    
                                 </div>
                                 
                                <!--  원래가격 : <span id='total_price'>0</span>원
