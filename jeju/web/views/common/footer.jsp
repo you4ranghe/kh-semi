@@ -36,6 +36,7 @@
 	<script src="<%=request.getContextPath() %>/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/isotope.pkgd.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/ajax-form.js"></script>
@@ -51,8 +52,9 @@
     <script src="<%=request.getContextPath() %>/js/plugins.js"></script>
     <script src="<%=request.getContextPath() %>/js/gijgo.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/slick.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+
     <script src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
+
    
 
     
@@ -63,6 +65,8 @@
     <script src="<%=request.getContextPath() %>/js/jquery.validate.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/mail-script.js"></script>
     <script src="<%=request.getContextPath() %>/js/main.js"></script>
+
+
 
 
     <script>

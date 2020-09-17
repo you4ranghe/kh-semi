@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.semi.member.model.vo.Member,com.semi.common.listener.LoginCheckListener" %>
+<%
+	Member logginedMember = (Member)session.getAttribute("logginedMember");
+	int connectCount=LoginCheckListener.getConnectCount();
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +26,14 @@
 
     <!-- 템플릿링크들 -->
      <!-- <link rel="manifest" href="site.webmanifest"> -->
+
     <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/img/favicon.png">
+
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-multiselect.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/magnific-popup.css">
@@ -44,10 +53,6 @@
     
     <!-- fontawesome에서 아이콘쓸때 -->
     <script src="https://kit.fontawesome.com/27fabf8f47.js" crossorigin="anonymous"></script>
-      
-      
-      
-      
 
 </head>  
 <body>
@@ -88,6 +93,9 @@
                                     </nav>
                                 </div>
                             </div>
+             
+                       
+             
                             <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
                                     <div class="number">
@@ -108,14 +116,19 @@
                                         <ul id="navigation2">
                                             <li><i class="fas fa-user-circle fa-2x"></i>
 												<ul class="submenu">
-                                                        <li><a href="contact.html">회원가입</a></li>
-                                                        <li><a href="elements.html">로그인</a></li>
+												<%if(logginedMember==null){ %>
+                                                        <li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
+                                                        <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
+	                                         <%}else{%>
+	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
+	                                         			<li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
+	                                         			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
+                                   			<%} %>
                                                 </ul>
 											</li>
                                         </ul>
                                     </nav>
                                 	</div>
-                            
                             </div>
                             
                             <div class="col-12">
@@ -128,6 +141,8 @@
             </div>
         </div>
     </header>
+    
+   
     <!-- header-end -->
 
  
