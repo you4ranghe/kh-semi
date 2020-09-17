@@ -35,15 +35,15 @@ public class MemberService {
 	}
 	
 	//아이디로 회원 조회하기
-	public Member checkUserId(String userId) {
+	public Member selectMemberId(String userId) {
 		Connection conn=getConnection();
-		Member m = dao.checkUserId(conn,userId);
+		Member m = dao.selectMemberId(conn,userId);
 	 
 		close(conn);
 		return m;
-		
-		
 	}
+	
+	//아이디로 회원정보 보기 서비스
 	
 	
 

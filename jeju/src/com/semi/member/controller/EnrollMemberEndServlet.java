@@ -39,9 +39,13 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		m.setUserId(request.getParameter("userId"));
 		m.setUserName(request.getParameter("userName"));
 		
+		String email=request.getParameter("email");
+		String phone=request.getParameter("phone");
+		
+		
 		try {
-		m.setEmail(AESCrypto.encrypt("email"));
-		m.setPhone(AESCrypto.encrypt("phone"));
+		m.setEmail(AESCrypto.encrypt(email));
+		m.setPhone(AESCrypto.encrypt(phone));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

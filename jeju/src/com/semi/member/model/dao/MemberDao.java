@@ -93,13 +93,13 @@ public class MemberDao {
 	}
 
 	//아이디로 회원 조회
-	public Member checkUserId(Connection conn, String userId) {
+	public Member selectMemberId(Connection conn, String userId) {
 		PreparedStatement pstmt =null;
 		ResultSet rs=null;
 		Member m =null;
 		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("checkUserId"));
+			pstmt=conn.prepareStatement(prop.getProperty("selectMemberId"));
 			pstmt.setString(1, userId);
 			rs=pstmt.executeQuery();
 			
