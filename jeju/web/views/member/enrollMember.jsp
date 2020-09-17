@@ -102,7 +102,7 @@
         </section>
 
         <script>
-		//비밀번호 확인체크
+		//비밀번호 일치여부 확인체크
 		$(function(){
 			$("#password_2").blur(e=>{
 			let pw=$("#password_").val();
