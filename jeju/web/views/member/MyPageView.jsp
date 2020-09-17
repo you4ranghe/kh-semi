@@ -12,8 +12,8 @@
 <section id="mypage-bar">
 <h1>Mypage</h1>
 <br>
-<h5><a href="#">&nbsp;개인정보 수정</a></h5>
-<h5><a href="<%=request.getContextPath()%>/updatePassword?userId=<%=m.getUserId()%>">&nbsp;비밀번호 수정</a></h5>
+<h5><a href="#">&nbsp;개인정보 수정하기</a></h5>
+<h5><a href="<%=request.getContextPath()%>/updatePassword?userId=<%=m.getUserId()%>">&nbsp;비밀번호 수정하기</a></h5>
 </section>
 <section id="member-viewForm">
 	<form id="MypageFrm" action="<%=request.getContextPath() %>/member/updateMember?userId=<%=m.getUserId() %>" method="post">
