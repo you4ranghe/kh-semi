@@ -33,18 +33,12 @@ public class PaymentDao {
 
 		
 			pstmt.setString(1, pm.getpDateStart());
-			pstmt.setString(2, pm.getpDateFinish());
-			pstmt.setString(3, pm.getpCountA());
-			pstmt.setString(4, pm.getpCountC());
+			pstmt.setInt(3, pm.getpCountA());
+			pstmt.setInt(4, pm.getpCountC());
 			pstmt.setString(5, pm.getpTime());
-			pstmt.setString(6, pm.getTotalPrice());
+			pstmt.setInt(6, pm.getTotalPrice());
 
-			System.out.println(pm.getTotalPrice());
-			System.out.println(pm.getpDateFinish());
-			System.out.println(pm.getpDateStart());
-			System.out.println(pm.getpCountA());
-			System.out.println(pm.getpCountC());
-			System.out.println(pm.getpTime());
+
 			
 			
 			result=pstmt.executeUpdate();

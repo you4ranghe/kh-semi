@@ -7,14 +7,14 @@ public class Payment {
 
 	private String poNum;
 	private int pNum;
-	private String poType;
-	private String poDate;
-	private String pCountA;
-	private String pCountC;
+	private Date poType;
+	private Date poDate;
+	private int pCountA;
+	private int pCountC;
 	private String pDateStart;
-	private String pDateFinish;
 	private String pTime;
-	private String totalPrice;
+	private int totalPrice;
+	private String userId;
 	
 	
 	public Payment() {
@@ -22,8 +22,8 @@ public class Payment {
 	}
 
 
-	public Payment(String poNum, int pNum, String poType, String poDate, String pCountA, String pCountC,
-			String pDateStart, String pDateFinish, String pTime, String totalPrice) {
+	public Payment(String poNum, int pNum, Date poType, Date poDate, int pCountA, int pCountC, String pDateStart,
+			String pTime, int totalPrice, String userId) {
 		super();
 		this.poNum = poNum;
 		this.pNum = pNum;
@@ -32,9 +32,9 @@ public class Payment {
 		this.pCountA = pCountA;
 		this.pCountC = pCountC;
 		this.pDateStart = pDateStart;
-		this.pDateFinish = pDateFinish;
 		this.pTime = pTime;
 		this.totalPrice = totalPrice;
+		this.userId = userId;
 	}
 
 
@@ -58,42 +58,42 @@ public class Payment {
 	}
 
 
-	public String getPoType() {
+	public Date getPoType() {
 		return poType;
 	}
 
 
-	public void setPoType(String poType) {
+	public void setPoType(Date poType) {
 		this.poType = poType;
 	}
 
 
-	public String getPoDate() {
+	public Date getPoDate() {
 		return poDate;
 	}
 
 
-	public void setPoDate(String poDate) {
+	public void setPoDate(Date poDate) {
 		this.poDate = poDate;
 	}
 
 
-	public String getpCountA() {
+	public int getpCountA() {
 		return pCountA;
 	}
 
 
-	public void setpCountA(String pCountA) {
+	public void setpCountA(int pCountA) {
 		this.pCountA = pCountA;
 	}
 
 
-	public String getpCountC() {
+	public int getpCountC() {
 		return pCountC;
 	}
 
 
-	public void setpCountC(String pCountC) {
+	public void setpCountC(int pCountC) {
 		this.pCountC = pCountC;
 	}
 
@@ -108,16 +108,6 @@ public class Payment {
 	}
 
 
-	public String getpDateFinish() {
-		return pDateFinish;
-	}
-
-
-	public void setpDateFinish(String pDateFinish) {
-		this.pDateFinish = pDateFinish;
-	}
-
-
 	public String getpTime() {
 		return pTime;
 	}
@@ -128,25 +118,36 @@ public class Payment {
 	}
 
 
-	public String getTotalPrice() {
+	public int getTotalPrice() {
 		return totalPrice;
 	}
 
 
-	public void setTotalPrice(String totalPrice) {
+	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Payment [poNum=" + poNum + ", pNum=" + pNum + ", poType=" + poType + ", poDate=" + poDate + ", pCountA="
-				+ pCountA + ", pCountC=" + pCountC + ", pDateStart=" + pDateStart + ", pDateFinish=" + pDateFinish
-				+ ", pTime=" + pTime + ", totalPrice=" + totalPrice + "]";
+				+ pCountA + ", pCountC=" + pCountC + ", pDateStart=" + pDateStart + ", pTime=" + pTime + ", totalPrice="
+				+ totalPrice + ", userId=" + userId + "]";
 	}
 
 
-
+	
+	
 	
 	
 	

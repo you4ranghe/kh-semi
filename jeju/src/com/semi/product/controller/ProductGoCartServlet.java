@@ -37,8 +37,10 @@ public class ProductGoCartServlet extends HttpServlet {
 		
 		String datestart = request.getParameter("pDateStart");
 		String datefinish = request.getParameter("pDateFinish");
-		String counta = request.getParameter("pCountA");
-		String countc = request.getParameter("pCountC");
+		/*
+		 * String counta = request.getParameter("pCountA"); String countc =
+		 * request.getParameter("pCountC");
+		 */
 		String pTime = request.getParameter("pTime");
 		String totalprice = request.getParameter("totalPrice");
 		

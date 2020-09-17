@@ -45,30 +45,26 @@ public class ProductDao {
 				p.setpName(rs.getString("p_name"));
 				p.setpPriceA(rs.getInt("p_price_a"));
 				p.setpPriceC(rs.getInt("p_price_c"));
-				p.setpCountA(rs.getInt("p_count_a"));
-				p.setpCountC(rs.getInt("p_count_c"));
-				p.setpPlace(rs.getString("p_place"));
-				p.setpWish(rs.getString("p_wish"));
 				p.setpDateStart(rs.getDate("p_date_start"));
 				p.setpDateFinish(rs.getDate("p_date_finish"));
 				p.setpTime(rs.getString("p_time"));
-				p.setpPeriod(rs.getString("p_period"));
 				
-               p.setgNum(rs.getString("g_num"));
                p.setTitleImgPath(rs.getString("title_img_path"));
+               p.setpImgPath(rs.getString("p_img_path"));
                p.setpInfo(rs.getString("p_info"));
                p.setpPointInfo(rs.getString("p_point_info"));
                p.setpIntd(rs.getString("p_intd"));
                p.setRuntime(rs.getString("runtime"));
-               p.setSchedule(rs.getString("schedule"));
+               p.setScheduleImgPath(rs.getString("schedule_img_path"));
                p.setPrecaution(rs.getString("precaution"));
                p.setpMapName(rs.getString("p_map_name"));
                p.setpMap(rs.getString("p_map"));
+               p.setpScore(rs.getInt("p_score"));
+               p.setPartnerNum(rs.getInt("partner_num"));
 	               
 	               
 				System.out.println(rs.getString("p_name"));
-//				
-				//list.add(p);
+
 			}
 		
 		}catch(SQLException e) {
