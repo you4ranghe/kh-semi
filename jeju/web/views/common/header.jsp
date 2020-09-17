@@ -18,13 +18,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <!-- jQuery -->
 	<script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
+	<script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
+	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-multiselect.css">
+
     <!-- 템플릿링크들 -->
      <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>img/favicon.png">
+
+    <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/img/favicon.png">
+
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-multiselect.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/magnific-popup.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/font-awesome.min.css">
@@ -63,10 +73,10 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.html">Home</a></li>
+                                            <li><a class="active" href="<%=request.getContextPath()%>">Home</a></li>
                                             <li><a href="#">About <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                        <li><a href="contact.html">About Us</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/views/introduce/companyIntroduce.jsp">About Us</a></li>
                                                         <li><a href="elements.html">About Jeju</a></li>
                                                 </ul>
                                             </li>

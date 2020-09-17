@@ -52,6 +52,9 @@
     <script src="<%=request.getContextPath() %>/js/plugins.js"></script>
     <script src="<%=request.getContextPath() %>/js/gijgo.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/slick.min.js"></script>
+
+    <script src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
+
    
 
     
@@ -61,9 +64,11 @@
     <script src="<%=request.getContextPath() %>/js/jquery.form.js"></script>
     <script src="<%=request.getContextPath() %>/js/jquery.validate.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/mail-script.js"></script>
-
-
     <script src="<%=request.getContextPath() %>/js/main.js"></script>
+
+
+
+
     <script>
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',
