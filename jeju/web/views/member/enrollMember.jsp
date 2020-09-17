@@ -97,7 +97,7 @@
 					<form action="" name="checkIdDuplicate">
 					<!-- 유저가 입력한 아이디를 집어넣고 전송 hidden-->
 					<input type="hidden" name="userId"> 
-	</form>
+					</form>
 
         </section>
 

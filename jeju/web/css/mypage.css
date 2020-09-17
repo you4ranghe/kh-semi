@@ -28,33 +28,50 @@ body ::before{
     margin-bottom: 60px;
 } */
 
-#mypage-tbl
-    {
-    /* width:300px;
-    height:500px; */
-   
+.mypage_img{
+    background : url(../img/mypageimg.jpg) no-repeat center;
+    justify-content : center;
+    background-size : cover;
+    height:200px;
+
 
 }
-.mypage-div{
 
+#mypage-bar{
+    /* border :3px solid blue; */
+    position: absolute;
+    top:370px;
+    left:100px;
+    width:200px;
+    height:300px;
+    display:inline-block;
+
+}
+
+#MypageFrm{
+    /* border :3px solid yellow; */
     position: relative;
-    top:100px;
-    left:200px;
+    left:110px;
+    top:10px;
+    width:400px;
+    height:500px;
+    display: inline-block;
+
 
 }
+
 
 #member-viewForm{
     position : relative; 
+    left:460px;
     z-index: 2;
-    left:500px;
-    top:10px;
-    margin:50px;
-    width:300px;
-    height:500px;
-    border :3px solid red;
+    top:50px;
+    width:530px;
+    height:550px;
+    /* border :3px solid red; */
 
 }
-.int-area{width: 400px; position: relative;
+.int-area{width: 300px; position: relative;
 margin-top:20px}
 
 .int-area:first-child{
@@ -78,13 +95,13 @@ th{
 
 
 .int-area input{
-    width: 75%;
+    width: 100%;
     padding : 20px 10px 10px;
     background-color: transparent;
     border:none;
     border-bottom:1px solid #999;
     font-weight: bold;
-    font-size: 15px; color : orangered;
+    font-size: 15px; color:dodgerblue;
     outline: none;
 }
 
@@ -113,7 +130,8 @@ th{
 .int-area input:focus +label,
 .int-area input:valid +label{
     top:-2px;
-    font-size:13px; color:#166cea;
+    font-size:13px; color:gray;
+    font-weight: bold;
 }
 
 .btn-area{
@@ -131,9 +149,9 @@ th{
     padding : 5px;
 }
 #btn1{
-    position: absolute;
-    top:130px;
-    left:1120px;
+    position: relative;
+    top:70px;
+    left:1000px;
     width:80px; height:35px;
     background : yellowgreen;
     color : #fff;
@@ -148,9 +166,9 @@ th{
 #btn2{
     position: relative;
     top:10px;
-    left:130px;
+    left:110px;
     width:100px; height:50px;
-    background : dodgerblue;
+    background : olivedrab;
     color : #fff;
     font-size:20px;
     border:none;
@@ -161,10 +179,10 @@ th{
 }
 #btn3{
     position: relative;
-    left:130px;
+    left:110px;
     top:10px;
     width:100px ;height:50px;
-    background : rgba(228, 151, 57, 0.849);
+    background : darkgray;
     color : #fff;
     font-size:20px;
     border:none;

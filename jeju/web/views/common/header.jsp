@@ -4,7 +4,6 @@
 <%
 	Member logginedMember = (Member)session.getAttribute("logginedMember");
 	int connectCount=LoginCheckListener.getConnectCount();
-
 %>
 <!DOCTYPE html>
 <html lang="en">

@@ -44,12 +44,14 @@ margin-top:20px}
     border-bottom:1px solid #999;
     font-size: 18px; color : #fff;
     outline: none;
+    font-weight: bold;
 }
 
 .int-area label{
     position: absolute; left:10px; top:15px;
     font-size:18px; color:#999;
     transition : all .5s ease;
+    font-weight: bold;
 }
 
 .int-area label.warning{
@@ -71,6 +73,7 @@ margin-top:20px}
 .int-area input:valid +label{
     top:-2px;
     font-size:13px; color:#166cea;
+    font-weight: bold;
 }
 
 .btn-area{
@@ -90,6 +93,7 @@ margin-top:20px}
     font-weight: bold;
     cursor:pointer;
     margin:5px;
+    font-weight: bold;
 }
 #btn2{
     position: relative;

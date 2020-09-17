@@ -41,6 +41,7 @@ body ::before{
     z-index: 2;
     left:140px;
     top:10px;
+    
 }
 .login-form h1{
     font-size:32px;color:#fff;
@@ -83,6 +84,7 @@ th{
     position: absolute; left:10px; top:15px;
     font-size:18px; color:#999;
     transition : all .5s ease;
+    font-weight: bold;
 }
 
 .int-area label.warning{
@@ -104,20 +106,24 @@ th{
 .int-area input:valid +label{
     top:-2px;
     font-size:13px; color:#166cea;
+    font-weight: bold;
 }
 
 .btn-area{
     margin-top :30px;
+    font-weight: bold;
     
 }
 .gender{
     padding-top: 13px;
+    
 }
 
 .gender label{
     color: white;
     font-size: 18px;
     padding : 5px;
+    font-weight: bold;
 }
 #btn1{
     position: relative;
