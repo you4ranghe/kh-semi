@@ -1,0 +1,24 @@
+/* 요약정보 3개 */
+.critical-info {
+    clear: both;
+    /* margin-bottom: 10px;
+    margin-top: 30px; */
+    color: #666;
+    /* padding-left: 25px; */
+    position: relative;
+    top: 0px;
+    font-size: 10;
+
+    
+}
+
+.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.starR.on{background-position:0 0;}
