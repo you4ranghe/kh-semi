@@ -55,10 +55,11 @@
 
     <script src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
 
-   
 
     
     <!--contact js-->
+
+
     <script src="<%=request.getContextPath() %>/js/contact.js"></script>
     <script src="<%=request.getContextPath() %>/js/jquery.ajaxchimp.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/jquery.form.js"></script>

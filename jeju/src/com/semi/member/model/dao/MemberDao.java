@@ -13,7 +13,6 @@ import java.util.Properties;
 import com.semi.member.model.vo.Member;
 
 
-
 public class MemberDao {
 	
 	private Properties prop= new Properties();
@@ -124,4 +123,5 @@ public class MemberDao {
 			close(pstmt);
 		}return m;
 	}
+
 }
