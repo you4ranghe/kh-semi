@@ -27,7 +27,9 @@ public class EncyptorWrapper extends HttpServletRequestWrapper {
 		String returnValue="";
 		
 		
-		if(name.equals("pw")) {
+
+		if(name.equals("password")) {
+
 			//암호화처리후 반환
 			String pw=super.getParameter(name);
 																				System.out.println(pw);

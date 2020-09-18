@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
@@ -8,11 +7,6 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-
-<%
-	Member loggined=(Member)session.getAttribute("logginedMember");
-	
-%>
 
 <!-- Include the plugin's CSS and JS: -->
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
@@ -337,23 +331,11 @@ button+div{
        
        
 	</script>
-<%-- <%-- =======
-	<section id="content">
-	<%if(loggined!=null){%>
-		<button onclick="location.assign('<%=request.getContextPath() %>/product/productList')">버튼1</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼2</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼3</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼4</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼5</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼6</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼7</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼8</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼9</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼10</button>
-		<%} %>
+
+
 	
 	</section>
->>>>>>> branch 'jisun_semi_dev' of https://github.com/you4ranghe/kh-semi.git --%> --%>
-	
+
 	
 <%@ include file="/views/common/footer.jsp" %>
+

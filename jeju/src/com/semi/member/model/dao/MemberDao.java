@@ -64,8 +64,67 @@ public class MemberDao {
 			close(rs);
 			close(conn);
 		}return m;
+
+	}
+	
+	//회원가입 dao
+	public int insertMember(Connection conn, Member m) {
 		
+		PreparedStatement pstmt=null;
+		int result=0;
 		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertMember"));
+			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getPassword());
+			pstmt.setString(3,m.getUserName());
+			pstmt.setString(4, m.getGender());
+			pstmt.setInt(5, m.getAge());
+			pstmt.setString(6, m.getEmail());
+			pstmt.setString(7, m.getPhone());
+			pstmt.setString(8, m.getAddress());
+			
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+
+	//아이디로 회원 조회
+	public Member selectMemberId(Connection conn, String userId) {
+		PreparedStatement pstmt =null;
+		ResultSet rs=null;
+		Member m =null;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectMemberId"));
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				m=new Member();
+				m.setUserNum(rs.getInt("user_num"));
+				m.setUserId(rs.getString("user_id"));
+				m.setPassword(rs.getString("password"));
+				m.setUserName(rs.getString("user_name"));
+				m.setGender(rs.getString("gender"));
+				m.setAge(rs.getInt("age"));
+				m.setEmail(rs.getString("email"));
+				m.setPhone(rs.getString("phone"));
+				m.setAddress(rs.getString("address"));
+				m.setEnrolldate(rs.getDate("enrolldate"));
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+
 	}
 
 }
