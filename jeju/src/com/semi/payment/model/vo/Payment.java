@@ -1,20 +1,19 @@
 package com.semi.payment.model.vo;
 
-import java.sql.Date;
-import java.util.Arrays;
+
+import java.util.Date;
 
 public class Payment {
 
 	private String poNum;
-	private int pNum;
-	private Date poType;
+	private String poType;
 	private Date poDate;
+	private Date pDateStart;
+	private int totalPrice;
+	private int pNum;
+	private String userId;
 	private int pCountA;
 	private int pCountC;
-	private String pDateStart;
-	private String pTime;
-	private int totalPrice;
-	private String userId;
 	
 	
 	public Payment() {
@@ -22,19 +21,18 @@ public class Payment {
 	}
 
 
-	public Payment(String poNum, int pNum, Date poType, Date poDate, int pCountA, int pCountC, String pDateStart,
-			String pTime, int totalPrice, String userId) {
+	public Payment(String poNum, String poType, Date poDate, Date pDateStart, int totalPrice, int pNum, String userId,
+			int pCountA, int pCountC) {
 		super();
 		this.poNum = poNum;
-		this.pNum = pNum;
 		this.poType = poType;
 		this.poDate = poDate;
+		this.pDateStart = pDateStart;
+		this.totalPrice = totalPrice;
+		this.pNum = pNum;
+		this.userId = userId;
 		this.pCountA = pCountA;
 		this.pCountC = pCountC;
-		this.pDateStart = pDateStart;
-		this.pTime = pTime;
-		this.totalPrice = totalPrice;
-		this.userId = userId;
 	}
 
 
@@ -48,22 +46,12 @@ public class Payment {
 	}
 
 
-	public int getpNum() {
-		return pNum;
-	}
-
-
-	public void setpNum(int pNum) {
-		this.pNum = pNum;
-	}
-
-
-	public Date getPoType() {
+	public String getPoType() {
 		return poType;
 	}
 
 
-	public void setPoType(Date poType) {
+	public void setPoType(String poType) {
 		this.poType = poType;
 	}
 
@@ -75,6 +63,46 @@ public class Payment {
 
 	public void setPoDate(Date poDate) {
 		this.poDate = poDate;
+	}
+
+
+	public Date getpDateStart() {
+		return pDateStart;
+	}
+
+
+	public void setpDateStart(Date pDateStart) {
+		this.pDateStart = pDateStart;
+	}
+
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+
+	public int getpNum() {
+		return pNum;
+	}
+
+
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 
@@ -98,57 +126,15 @@ public class Payment {
 	}
 
 
-	public String getpDateStart() {
-		return pDateStart;
-	}
-
-
-	public void setpDateStart(String pDateStart) {
-		this.pDateStart = pDateStart;
-	}
-
-
-	public String getpTime() {
-		return pTime;
-	}
-
-
-	public void setpTime(String pTime) {
-		this.pTime = pTime;
-	}
-
-
-	public int getTotalPrice() {
-		return totalPrice;
-	}
-
-
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-
-	public String getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Payment [poNum=" + poNum + ", pNum=" + pNum + ", poType=" + poType + ", poDate=" + poDate + ", pCountA="
-				+ pCountA + ", pCountC=" + pCountC + ", pDateStart=" + pDateStart + ", pTime=" + pTime + ", totalPrice="
-				+ totalPrice + ", userId=" + userId + "]";
+		return "Payment [poNum=" + poNum + ", poType=" + poType + ", poDate=" + poDate + ", pDateStart=" + pDateStart
+				+ ", totalPrice=" + totalPrice + ", pNum=" + pNum + ", userId=" + userId + ", pCountA=" + pCountA
+				+ ", pCountC=" + pCountC + "]";
 	}
 
 
-	
-	
-	
+
 	
 	
 	

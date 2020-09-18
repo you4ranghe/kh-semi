@@ -1,6 +1,10 @@
 package com.semi.product.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.payment.model.service.PaymentService;
 import com.semi.payment.model.vo.Payment;
-import com.semi.payment.service.PaymentService;
 
 /**
  * Servlet implementation class ProductGoCartServlet
@@ -35,18 +39,44 @@ public class ProductGoCartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		
-		String datestart = request.getParameter("pDateStart");
-		String datefinish = request.getParameter("pDateFinish");
-		/*
-		 * String counta = request.getParameter("pCountA"); String countc =
-		 * request.getParameter("pCountC");
-		 */
-		String pTime = request.getParameter("pTime");
-		String totalprice = request.getParameter("totalPrice");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
 		
-		System.out.println(datestart+datefinish+counta+countc+pTime+totalprice);
+		String poNum = request.getParameter("poNum");
+		String poType = request.getParameter("poNum");
 		
-		Payment pm = new Payment(null,0,null,null,datestart,datefinish,counta,countc,pTime,totalprice);
+		Date paydate = null;
+		try {
+			paydate = df.parse(request.getParameter("poDate"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Date datestart=null;
+		try {
+			 datestart = df.parse(request.getParameter("pDateStart"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int totalprice = Integer.parseInt(request.getParameter("totalPrice"));
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		String userId = request.getParameter("userId");
+		int counta = Integer.parseInt(request.getParameter("pCountA")); 
+		int countc = Integer.parseInt(request.getParameter("pCountC"));
+
+
+
+		
+
+		
+//		System.out.println(paydate+datestart+counta+countc+pTime+totalprice+pNum+userId);
+		
+		//Payment pm = new Payment(null,paydate,null,);
+		
+		System.out.println(poNum+poType+paydate+datestart+totalprice+pNum+userId+counta+countc);
+		
+		Payment pm = new Payment (null,null,null,datestart,totalprice,0,userId,counta,countc);
 		
 		int result = new PaymentService().insertProduct(pm);
 		

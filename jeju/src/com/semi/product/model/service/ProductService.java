@@ -1,4 +1,4 @@
-package com.semi.product.service;
+package com.semi.product.model.service;
 
 import java.sql.Connection;
 import java.util.List;

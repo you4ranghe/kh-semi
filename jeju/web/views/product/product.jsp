@@ -117,14 +117,14 @@
                                 <h4>Check Option</h4>
                                 <div class="datepicker">
                                     <p>From</p>
-                                    <input type="date" name="pDateStart" min="2020-01-01" max="2020-12-31" value="${p.pDateStart}">
+                                    <input type="date" name="pDateStart" min="${p.pDateStart}" max="${p.pDateFinish}" value="${pm.pDateStart}">
                                     <!-- <img src="img/calendar.png" alt=""> -->
                                 </div>
-                                <div class="datepicker">
+<%--                                 <div class="datepicker">
                                     <p>To</p>
-                                <input type="date" name="pDateFinish" min="2020-01-01" max="2020-12-31" value="${p.pDateFinish}">
+                                <input type="date" name="pDateFinish" min="2020-01-01" max="2020-12-31" value="${pm.pDateFinish}">
                                     <!-- <img src="img/calendar.png" alt=""> -->
-                                </div>
+                                </div> --%>
                                 
                                 
                                 
@@ -132,12 +132,12 @@
                                 
 										Total <span id='total_price' name>0</span>원
 										
-										<input type=hidden name='total_price' value='${ p.pPriceA}'>
-										<input type=hidden name='total_price2' value='${p.pPriceC }'>
+										<input type=hidden name='total_price' value='${p.pPriceA}'>
+										<input type=hidden name='total_price2' value='${p.pPriceC}'>
 										
 										<input type=hidden name='totalPrice' value='0'>
 										
-										Adult <select name='pCountA' onChange='change_price();'>
+										Adult <select name='pCountA' onChange='change_price();' >
 												    <option value='0'>0</option>
 												    <option value='1'>1</option>
 												    <option value='2'>2</option>
@@ -145,6 +145,10 @@
 												    <option value='4'>4</option>
 												    <option value='5'>5</option>
 												    <option value='6'>6</option>
+												    <option value='7'>7</option>
+												    <option value='8'>8</option>
+												    <option value='9'>9</option>
+												    <option value='10'>10</option>
 										    	</select>
 										  
 										Child <select name='pCountC' onChange='change_price();'>
@@ -155,6 +159,10 @@
 												    <option value='4'>4</option>
 												    <option value='5'>5</option>
 												    <option value='6'>6</option>
+												    <option value='7'>7</option>
+												    <option value='8'>8</option>
+												    <option value='9'>9</option>
+												    <option value='10'>10</option>
 												</select>
 										      
 										<script>
@@ -386,7 +394,7 @@
                                                     <li class="time-info-spot">
 
                                                         <div class="pd-info-img">
-                                                        	<img src="${p.schedule}">
+                                                        	<img src="${p.scheduleImgPath}">
                                                            <%--  <img src="<%=request.getContextPath() %>/img/destination/jeju1.jpg" alt=""> --%>
                                                         </div>
                                                     </li>
@@ -695,11 +703,11 @@
   <span class="starR">별3</span>
   <span class="starR">별4</span>
   <span class="starR">별5</span>
-  <span class="starR">별6</span>
+<!--   <span class="starR">별6</span>
   <span class="starR">별7</span>
   <span class="starR">별8</span>
   <span class="starR">별9</span>
-  <span class="starR">별10</span>
+  <span class="starR">별10</span> -->
 </div>
                                 
                                 

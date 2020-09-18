@@ -5,6 +5,7 @@ import static com.semi.common.JDBCTemplate.close;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -32,14 +33,25 @@ public class PaymentDao {
 			pstmt=conn.prepareStatement(prop.getProperty("insertProduct"));
 
 		
-			pstmt.setString(1, pm.getpDateStart());
-			pstmt.setInt(3, pm.getpCountA());
-			pstmt.setInt(4, pm.getpCountC());
-			pstmt.setString(5, pm.getpTime());
-			pstmt.setInt(6, pm.getTotalPrice());
+			pstmt.setString(1,pm.getPoNum());
+			pstmt.setString(2, pm.getPoType());
+			pstmt.setDate(3, (Date) pm.getPoDate());
+			pstmt.setDate(4, (Date) pm.getpDateStart());
+			pstmt.setInt(5, pm.getTotalPrice());
+			pstmt.setInt(6, pm.getpNum());
+			pstmt.setString(7, pm.getUserId());
+			pstmt.setInt(8, pm.getpCountA());
+			pstmt.setInt(9, pm.getpCountC());
 
-
-			
+			System.out.println(pm.getPoNum());
+			System.out.println(pm.getPoType());
+			System.out.println(pm.getPoDate());
+			System.out.println(pm.getpDateStart());
+			System.out.println(pm.getTotalPrice());
+			System.out.println(pm.getpNum());
+			System.out.println(pm.getUserId());
+			System.out.println(pm.getpCountA());
+			System.out.println(pm.getpCountC());
 			
 			result=pstmt.executeUpdate();
 			 
