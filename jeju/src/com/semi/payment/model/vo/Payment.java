@@ -1,16 +1,11 @@
 package com.semi.payment.model.vo;
 
-
-import java.util.Date;
+import java.sql.Date;
 
 public class Payment {
 
-	private String poNum;
-	private String poType;
-	private Date poDate;
 	private Date pDateStart;
 	private int totalPrice;
-	private int pNum;
 	private String userId;
 	private int pCountA;
 	private int pCountC;
@@ -21,48 +16,13 @@ public class Payment {
 	}
 
 
-	public Payment(String poNum, String poType, Date poDate, Date pDateStart, int totalPrice, int pNum, String userId,
-			int pCountA, int pCountC) {
+	public Payment(Date pDateStart, int totalPrice, String userId, int pCountA, int pCountC) {
 		super();
-		this.poNum = poNum;
-		this.poType = poType;
-		this.poDate = poDate;
 		this.pDateStart = pDateStart;
 		this.totalPrice = totalPrice;
-		this.pNum = pNum;
 		this.userId = userId;
 		this.pCountA = pCountA;
 		this.pCountC = pCountC;
-	}
-
-
-	public String getPoNum() {
-		return poNum;
-	}
-
-
-	public void setPoNum(String poNum) {
-		this.poNum = poNum;
-	}
-
-
-	public String getPoType() {
-		return poType;
-	}
-
-
-	public void setPoType(String poType) {
-		this.poType = poType;
-	}
-
-
-	public Date getPoDate() {
-		return poDate;
-	}
-
-
-	public void setPoDate(Date poDate) {
-		this.poDate = poDate;
 	}
 
 
@@ -83,16 +43,6 @@ public class Payment {
 
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
-	}
-
-
-	public int getpNum() {
-		return pNum;
-	}
-
-
-	public void setpNum(int pNum) {
-		this.pNum = pNum;
 	}
 
 
@@ -128,15 +78,15 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [poNum=" + poNum + ", poType=" + poType + ", poDate=" + poDate + ", pDateStart=" + pDateStart
-				+ ", totalPrice=" + totalPrice + ", pNum=" + pNum + ", userId=" + userId + ", pCountA=" + pCountA
-				+ ", pCountC=" + pCountC + "]";
+		return "Payment [pDateStart=" + pDateStart + ", totalPrice=" + totalPrice + ", userId=" + userId + ", pCountA="
+				+ pCountA + ", pCountC=" + pCountC + "]";
 	}
 
 
-
-	
 	
 	
 	
 }
+	
+	
+	

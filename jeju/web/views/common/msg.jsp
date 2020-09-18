@@ -11,9 +11,8 @@
 	String loc=(String)request.getAttribute("loc");
 	String script =(String)request.getAttribute("script");
 	
-
-
 %>
+
 </head>
 <body>
 	<script>
@@ -29,20 +28,3 @@
 </body>
 </html>
 
-</head>
-<body>
-
-<script>
-alert('<%=msg%>');
-
-if(<%=script!=null%>){
-	<%=script%>
-}
-
-location.replace('<%=request.getContextPath()%><%=loc%>');
-
-</script>
-
-</body>
-</html>
->>>>>>> branch 'jueun_semi_dev' of https://github.com/you4ranghe/kh-semi.git

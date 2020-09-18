@@ -117,7 +117,8 @@
                                 <h4>Check Option</h4>
                                 <div class="datepicker">
                                     <p>From</p>
-                                    <input type="date" name="pDateStart" min="${p.pDateStart}" max="${p.pDateFinish}" value="${pm.pDateStart}">
+                                    <input type="date" name="pDateStart" min="${p.pDateStart}" max="${p.pDateFinish}" >
+                                    <input type="hidden" name="poDate">
                                     <!-- <img src="img/calendar.png" alt=""> -->
                                 </div>
 <%--                                 <div class="datepicker">
@@ -130,7 +131,7 @@
                                 
                                 <div class="room-quantity">
                                 
-										Total <span id='total_price' name>0</span>원
+										Total <span id='total_price' name='total_price'>0</span>원
 										
 										<input type=hidden name='total_price' value='${p.pPriceA}'>
 										<input type=hidden name='total_price2' value='${p.pPriceC}'>
@@ -234,12 +235,16 @@
                                     <p>Time</p>
                                     <select class="suit-select" name="pTime">
                                         <option>Check your Time</option>
-                                        <option value="09:00" label="${p.pTime}">09:00</option>
-                                        <option value="12:00" label="${p.pTime}">12:00</option>
-                                        <option value="15:00" label="${p.pTime}">15:00</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="15:00">15:00</option>
 
                                     </select>
                                 </div>
+                                
+                                
+                                <input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>">
+                                
                                 
                                 
                                 <button type="submit">buy</button>
@@ -270,6 +275,7 @@
 
                             <div class="blog_details">
                                 <h2>${p.pBigNameKor}
+                                
                                 
                                   <a class="heart-button">
                                         ♥

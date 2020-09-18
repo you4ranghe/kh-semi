@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -20,8 +21,8 @@
 		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼9</button>
 		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼10</button>
 		<%} %>
-	
+
 	</section>
 	
-	
 <%@ include file="/views/common/footer.jsp" %>
+
