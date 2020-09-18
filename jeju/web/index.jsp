@@ -1,21 +1,18 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" %>
 <%@ include file="/views/common/header.jsp" %>
-<<<<<<< HEAD
+
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css" type="text/css"/>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-=======
+
 <%
 	Member loggined=(Member)session.getAttribute("logginedMember");
 	
 %>
->>>>>>> branch 'jisun_semi_dev' of https://github.com/you4ranghe/kh-semi.git
 
-<<<<<<< HEAD
 <!-- Include the plugin's CSS and JS: -->
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-multiselect.css" type="text/css"/>
@@ -129,11 +126,9 @@ button+div{
 }
 </style>
 
+	<section id="content">
+ <!-- slider_area_start 대형이미지 슬라이더 필요하신분만 주석 해제해서 쓰세요 -->
 
-
-
-<section id="content">
-	<!-- slider_area_start 대형이미지 슬라이더 -->
     <div class="slider_area">
         <div class="slider_active owl-carousel">
         <!-- 여기가 사진 하나시작 -->
@@ -190,6 +185,7 @@ button+div{
                 </div>
             </div>
         </div>
+
 
     </div>
     <!-- slider_area_end -->
@@ -305,6 +301,7 @@ button+div{
       
       }
 	</style>
+
 	
 	<script> 
 	
@@ -359,3 +356,4 @@ button+div{
 	
 	
 <%@ include file="/views/common/footer.jsp" %>
+

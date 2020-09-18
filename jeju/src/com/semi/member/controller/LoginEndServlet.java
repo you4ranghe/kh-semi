@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.semi.member.model.service.MemberService;
 import com.semi.member.model.vo.Member;
-import com.semi.member.service.MemberService;
 
 /**
  * Servlet implementation class LoginEndServlet
@@ -35,7 +35,7 @@ public class LoginEndServlet extends HttpServlet {
 	
 
 		String id= request.getParameter("id");
-		String pw =request.getParameter("pw");
+		String pw =request.getParameter("password");
 		System.out.println("id : "+id+": "+"pw : "+pw);
 		
 		Member m = new MemberService().loginMember(id,pw);
