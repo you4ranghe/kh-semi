@@ -118,11 +118,14 @@
 												<%if(logginedMember==null){ %>
                                                         <li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
                                                         <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
-	                                         <%}else{%>
+	                                         	<%}else{%>
 	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
 	                                         			<li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
 	                                         			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
-                                   			<%} %>
+                                   				<%} %>
+                                   				<%if(logginedMember!=null&&logginedMember.getUserId().equals("admin")){ %>
+                                   						<li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
+	                                         	<%} %>
                                                 </ul>
 											</li>
                                         </ul>
