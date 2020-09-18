@@ -1,4 +1,4 @@
-package com.controller;
+package com.semi.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
