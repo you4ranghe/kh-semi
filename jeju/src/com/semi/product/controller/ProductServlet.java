@@ -60,7 +60,7 @@ public class ProductServlet extends HttpServlet{
            p.setpScore(rs.getInt("p_score"));
            p.setPartnerNum(rs.getInt("partner_num"));
                
-               request.setAttribute("p", p);
+           request.setAttribute("p", p);
                
 
          }

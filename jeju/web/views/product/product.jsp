@@ -4,10 +4,12 @@
     <%@page import = "java.util.List"%>
     <%@page import="com.semi.product.model.vo.Product"%>
     <%@page import="com.semi.payment.model.vo.Payment"%>
+    <%@page import="com.semi.wishList.model.vo.WishList"%>
 
 <%
 	Product p = (Product)request.getAttribute("product");
 	Payment pm = (Payment)request.getAttribute("payment");
+	WishList wl = (WishList)request.getAttribute("wishlist");
 %>    
 
 <%@ include file="/views/common/header.jsp" %>
@@ -244,8 +246,8 @@
                                 
                                 
                                 <!-- 아이디넘기기 -->
-                                <input type="text" name="userId" value="<%=logginedMember.getUserId()%>">
-                                <input type="text" name="pNum" value='${p.pNum}'>
+                                <input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>">
+                                <input type="hidden" name="pNum" value='${p.pNum}'>
                                 
                                 
                                 
@@ -279,9 +281,43 @@
                                 <h2>${p.pBigNameKor}
                                 
                                 
-                                  <a class="heart-button" href="<%=request.getContextPath()%>/wishList">
+                                  <a class="heart-button" href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId()%>
+                                  &&pNum=${p.pNum}">
                                         ♥
                                     </a>
+                                          	 
+                       
+<!--                                   <script>
+                                 	
+                                  $.ajaxSettings.traditional = true;
+                                  
+                                    $.ajax({
+                                    	var id = document.getElementsByName("userId");
+                                    	var num = document.getElementsByName("pNum");
+									    url: '/views/wishlist/wishListView.jsp',
+									    type: 'post',
+									    data: {"id":id,
+									       			"num":num,
+
+									    success: function (data) {
+									            alert("데이터 전송 성공");
+									        }
+									});
+                                    </script>   -->
+                                <%--     <script>
+										$("#ajax").click(e => {
+											$.ajax({
+												url:'<%=request.getContextPath()%>/wishList',
+												type:"get",
+												data: {userId: "${pm.userId}",
+									       					pNum: "${pm.pNum}"},
+												success: data => {
+													console.log(data);
+													$("#ajax").html(data);
+												}
+											})
+										})
+								</script> --%>
                                     
                                 </h2>
                                 <!-- <ul class="blog-info-link mt-3 mb-4">
