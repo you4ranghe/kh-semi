@@ -35,32 +35,7 @@ public class ProductGoCartServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		
-//		DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
-		
-//		String poNum = request.getParameter("poNum");
-//		String poType = request.getParameter("poNum");
-		
 
-//		Date paydate = null;
-//		try {
-//			paydate = df.parse(request.getParameter("poDate"));
-//		} catch (java.text.ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	
-//		Date datestart = null;
-//		try {
-//			datestart = df.parse(request.getParameter("pDateStart"));
-//		} catch (java.text.ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-		
-//		String paydate = request.getParameter("poDate");
-//		Date pd = Date.valueOf(paydate);
 		
 		String datestart = request.getParameter("pDateStart");
 		Date pds = Date.valueOf(datestart);
@@ -71,7 +46,8 @@ public class ProductGoCartServlet extends HttpServlet {
 		int counta = Integer.parseInt(request.getParameter("pCountA")); 
 		int countc = Integer.parseInt(request.getParameter("pCountC"));
 
-
+		
+		System.out.println(pds+" "+totalprice+" "+pNum+" "+userId+" "+counta+" "+countc);
 
 		
 
@@ -82,7 +58,7 @@ public class ProductGoCartServlet extends HttpServlet {
 		
 		//System.out.println(pds+totalprice+pNum+userId+counta+countc);
 		
-		Payment pm = new Payment (pds,totalprice,pNum,userId,counta,countc);
+		Payment pm = new Payment (null,null,null,pds,totalprice,pNum,userId,counta,countc);
 		
 		int result = new PaymentService().insertProduct(pm);
 		

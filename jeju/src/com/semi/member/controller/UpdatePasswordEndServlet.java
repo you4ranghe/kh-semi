@@ -8,21 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.common.AESCrypto;
 import com.semi.member.model.service.MemberService;
-import com.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class MyPageViewServelt
+ * Servlet implementation class UpdatePasswordEndServlet
  */
-@WebServlet(name="mypage",urlPatterns="/member/mypage")
-public class MyPageViewServelt extends HttpServlet {
+@WebServlet(name="updatePassword",urlPatterns="/member/updatePasswordEnd")
+public class UpdatePasswordEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageViewServelt() {
+    public UpdatePasswordEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +31,22 @@ public class MyPageViewServelt extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String userId=request.getParameter("userId");
-		Member m = new MemberService().selectMemberId(userId);
+		String password=request.getParameter("password");
 		
-		String email=m.getEmail();
-		String phone=m.getPhone();
+		int result = new MemberService().updatePassword(userId,password);
 		
-		System.out.println(email+" : "+phone);
+		String msg="";
+		String loc="/";
 		
-		try {
-			m.setEmail(AESCrypto.decrypt(email));
-			m.setPhone(AESCrypto.decrypt(phone));
-		}catch(Exception e) {
-			e.printStackTrace();
+		if(result>0) {
+			msg="비밀번호 변경성공!";
+		}else {
+			msg="비밀번호 변경에 실패하였습니다";
 		}
 		
-		System.out.println(m);
-		
-		request.setAttribute("member", m);
-		request.getRequestDispatcher("/views/member/MyPageView.jsp").forward(request, response);
-		//request.getRequestDispatcher("/views/member/updatePassword.jsp").forward(request, response);
-		
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		
 		
 		

@@ -39,7 +39,7 @@ public class ProductDao {
 					
 			while(rs.next()) {
 				p = new Product();
-				p.setpNum(rs.getString("p_num"));
+				p.setpNum(rs.getInt("p_num"));
 				p.setpBigNameEng(rs.getString("p_big_name_eng"));
 				p.setpBigNameKor(rs.getString("p_big_name_kor"));
 				p.setpName(rs.getString("p_name"));

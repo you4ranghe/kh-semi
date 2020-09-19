@@ -244,8 +244,8 @@
                                 
                                 
                                 <!-- 아이디넘기기 -->
-                                <input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>">
-                                <input type="hidden" name="pNum" value='${p.pNum}'>
+                                <input type="text" name="userId" value="<%=logginedMember.getUserId()%>">
+                                <input type="text" name="pNum" value='${p.pNum}'>
                                 
                                 
                                 

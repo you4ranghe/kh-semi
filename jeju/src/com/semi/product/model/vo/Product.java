@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Product {
 
-	private String pNum;
+	private int pNum;
 	private String pBigNameEng;
 	private String pBigNameKor;
 	private String pName;
@@ -31,7 +31,7 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(String pNum, String pBigNameEng, String pBigNameKor, String pName, int pPriceA, int pPriceC,
+	public Product(int pNum, String pBigNameEng, String pBigNameKor, String pName, int pPriceA, int pPriceC,
 			Date pDateStart, Date pDateFinish, String pTime, String titleImgPath, String pImgPath, String pInfo,
 			String pPointInfo, String pIntd, String runtime, String scheduleImgPath, String precaution, String pMapName,
 			String pMap, int pScore, int partnerNum) {
@@ -59,11 +59,11 @@ public class Product {
 		this.partnerNum = partnerNum;
 	}
 
-	public String getpNum() {
+	public int getpNum() {
 		return pNum;
 	}
 
-	public void setpNum(String pNum) {
+	public void setpNum(int pNum) {
 		this.pNum = pNum;
 	}
 
@@ -237,6 +237,10 @@ public class Product {
 				+ pMapName + ", pMap=" + pMap + ", pScore=" + pScore + ", partnerNum=" + partnerNum + "]";
 	}
 
+	
+	
+	
+	
 	
 	
 	

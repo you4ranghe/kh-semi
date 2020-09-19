@@ -97,12 +97,12 @@
 					<form action="" name="checkIdDuplicate">
 					<!-- 유저가 입력한 아이디를 집어넣고 전송 hidden-->
 					<input type="hidden" name="userId"> 
-	</form>
+					</form>
 
         </section>
 
         <script>
-		//비밀번호 확인체크
+		//비밀번호 일치여부 확인체크
 		$(function(){
 			$("#password_2").blur(e=>{
 			let pw=$("#password_").val();

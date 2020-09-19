@@ -8,21 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.common.AESCrypto;
 import com.semi.member.model.service.MemberService;
-import com.semi.member.model.vo.Member;
 
 /**
- * Servlet implementation class MyPageViewServelt
+ * Servlet implementation class DeleteMemberEndServlet
  */
-@WebServlet(name="mypage",urlPatterns="/member/mypage")
-public class MyPageViewServelt extends HttpServlet {
+@WebServlet(name="deleteMember",urlPatterns="/member/deleteMemberEnd")
+public class DeleteMemberEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageViewServelt() {
+    public DeleteMemberEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,33 +29,25 @@ public class MyPageViewServelt extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
 		String userId=request.getParameter("userId");
-		Member m = new MemberService().selectMemberId(userId);
+		String password=request.getParameter("password");
 		
-		String email=m.getEmail();
-		String phone=m.getPhone();
+		int result=new MemberService().deleteMemer(userId,password);
 		
-		System.out.println(email+" : "+phone);
+		String msg="";
+		String loc="/";
 		
-		try {
-			m.setEmail(AESCrypto.decrypt(email));
-			m.setPhone(AESCrypto.decrypt(phone));
-		}catch(Exception e) {
-			e.printStackTrace();
+		if(result>0) {
+			msg="탈퇴하셨습니다. 다음에 또 뵙겠습니다 :-)";
+			loc="/member/logout";
+		}else {
+			msg="탈퇴에 실패하셨습니다. 비밀번호를 확인해주세요";
+			loc="/member/deleteMember?userId="+userId;
 		}
-		
-		System.out.println(m);
-		
-		request.setAttribute("member", m);
-		request.getRequestDispatcher("/views/member/MyPageView.jsp").forward(request, response);
-		//request.getRequestDispatcher("/views/member/updatePassword.jsp").forward(request, response);
-		
-		
-		
-		
-		
-		
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	}
 
 	/**

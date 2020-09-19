@@ -30,14 +30,14 @@ public class ProductServlet extends HttpServlet{
       
       try {
          Class.forName("oracle.jdbc.driver.OracleDriver");
-         Connection con = DriverManager.getConnection(url, "system", "oracle"); //추가하시고
+         Connection con = DriverManager.getConnection(url, "jisunsemi", "0000"); 
          Statement st = con.createStatement();
          ResultSet rs = st.executeQuery(sql);
          
          while(rs.next()) {
             
             Product p = new Product();
-            p.setpNum(rs.getString("p_num"));
+            p.setpNum(rs.getInt("p_num"));
 			p.setpBigNameEng(rs.getString("p_big_name_eng"));
 			p.setpBigNameKor(rs.getString("p_big_name_kor"));
 			p.setpName(rs.getString("p_name"));
@@ -61,6 +61,8 @@ public class ProductServlet extends HttpServlet{
            p.setPartnerNum(rs.getInt("partner_num"));
                
                request.setAttribute("p", p);
+               
+
          }
          
          rs.close();

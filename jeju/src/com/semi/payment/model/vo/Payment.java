@@ -4,6 +4,9 @@ import java.sql.Date;
 
 public class Payment {
 
+	private String poNum;
+	private String poType;
+	private String poDate;
 	private Date pDateStart;
 	private int totalPrice;
 	private int pNum;
@@ -17,14 +20,48 @@ public class Payment {
 	}
 
 
-	public Payment(Date pDateStart, int totalPrice, int pNum, String userId, int pCountA, int pCountC) {
+	public Payment(String poNum, String poType, String poDate, Date pDateStart, int totalPrice, int pNum, String userId,
+			int pCountA, int pCountC) {
 		super();
+		this.poNum = poNum;
+		this.poType = poType;
+		this.poDate = poDate;
 		this.pDateStart = pDateStart;
 		this.totalPrice = totalPrice;
 		this.pNum = pNum;
 		this.userId = userId;
 		this.pCountA = pCountA;
 		this.pCountC = pCountC;
+	}
+
+
+	public String getPoNum() {
+		return poNum;
+	}
+
+
+	public void setPoNum(String poNum) {
+		this.poNum = poNum;
+	}
+
+
+	public String getPoType() {
+		return poType;
+	}
+
+
+	public void setPoType(String poType) {
+		this.poType = poType;
+	}
+
+
+	public String getPoDate() {
+		return poDate;
+	}
+
+
+	public void setPoDate(String poDate) {
+		this.poDate = poDate;
 	}
 
 
@@ -90,11 +127,16 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [pDateStart=" + pDateStart + ", totalPrice=" + totalPrice + ", pNum=" + pNum + ", userId="
-				+ userId + ", pCountA=" + pCountA + ", pCountC=" + pCountC + "]";
+		return "Payment [poNum=" + poNum + ", poType=" + poType + ", poDate=" + poDate + ", pDateStart=" + pDateStart
+				+ ", totalPrice=" + totalPrice + ", pNum=" + pNum + ", userId=" + userId + ", pCountA=" + pCountA
+				+ ", pCountC=" + pCountC + "]";
 	}
 
 
+	
+	
+	
+	
 	
 	
 	

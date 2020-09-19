@@ -10,17 +10,20 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import com.semi.member.model.vo.Member;
 
 /**
- * Servlet Filter implementation class EncyptorFilter
+ * Servlet Filter implementation class AdminFilter
  */
-@WebFilter(servletNames = {"enrollMember","login","updatePassword","mypage","deleteMember"})
-public class EncyptorFilter implements Filter {
+@WebFilter("/admin/*")
+public class AdminFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public EncyptorFilter() {
+    public AdminFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -35,10 +38,19 @@ public class EncyptorFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
-		EncyptorWrapper ew = new EncyptorWrapper((HttpServletRequest)request);
-		//레퍼씌워준거 넣어주기
-		chain.doFilter(ew, response);
+				
+				HttpSession session = ((HttpServletRequest)request).getSession(false);
+				Member login = (Member)(session.getAttribute("logginedMember"));
+				if(login==null || !login.getUserId().equals("admin")) {
+					
+					request.setAttribute("msg", "잘못된 경로로 접근하셨습니다");
+					request.setAttribute("loc", "/");
+					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+					
+					return;
+				}
+				
+		chain.doFilter(request, response);
 	}
 
 	/**
