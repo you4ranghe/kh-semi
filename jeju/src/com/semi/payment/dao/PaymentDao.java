@@ -35,13 +35,15 @@ public class PaymentDao {
 
 			pstmt.setDate(1, pm.getpDateStart());
 			pstmt.setInt(2, pm.getTotalPrice());
-			pstmt.setString(3, pm.getUserId());
-			pstmt.setInt(4, pm.getpCountA());
-			pstmt.setInt(5, pm.getpCountC());
+			pstmt.setInt(3, pm.getpNum());
+			pstmt.setString(4, pm.getUserId());
+			pstmt.setInt(5, pm.getpCountA());
+			pstmt.setInt(6, pm.getpCountC());
 
 
 			System.out.println(pm.getpDateStart());
 			System.out.println(pm.getTotalPrice());
+			System.out.println(pm.getpNum());
 			System.out.println(pm.getUserId());
 			System.out.println(pm.getpCountA());
 			System.out.println(pm.getpCountC());

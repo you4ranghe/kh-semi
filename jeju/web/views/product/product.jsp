@@ -243,7 +243,9 @@
                                 </div>
                                 
                                 
+                                <!-- 아이디넘기기 -->
                                 <input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>">
+                                <input type="hidden" name="pNum" value='${p.pNum}'>
                                 
                                 
                                 
@@ -277,7 +279,7 @@
                                 <h2>${p.pBigNameKor}
                                 
                                 
-                                  <a class="heart-button">
+                                  <a class="heart-button" href="<%=request.getContextPath()%>/wishList">
                                         ♥
                                     </a>
                                     

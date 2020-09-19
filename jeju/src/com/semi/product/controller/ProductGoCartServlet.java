@@ -66,7 +66,7 @@ public class ProductGoCartServlet extends HttpServlet {
 		Date pds = Date.valueOf(datestart);
 		
 		int totalprice = Integer.parseInt(request.getParameter("totalPrice"));
-		//int pNum = Integer.parseInt(request.getParameter("pNum"));
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
 		String userId = request.getParameter("userId");
 		int counta = Integer.parseInt(request.getParameter("pCountA")); 
 		int countc = Integer.parseInt(request.getParameter("pCountC"));
@@ -80,9 +80,9 @@ public class ProductGoCartServlet extends HttpServlet {
 		
 		//Payment pm = new Payment(null,paydate,null,);
 		
-		System.out.println(datestart+totalprice+userId+counta+countc);
+		//System.out.println(pds+totalprice+pNum+userId+counta+countc);
 		
-		Payment pm = new Payment (pds,totalprice,userId,counta,countc);
+		Payment pm = new Payment (pds,totalprice,pNum,userId,counta,countc);
 		
 		int result = new PaymentService().insertProduct(pm);
 		
