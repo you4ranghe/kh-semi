@@ -13,6 +13,7 @@ import java.util.Properties;
 import com.semi.member.model.vo.Member;
 
 
+
 public class MemberDao {
 	
 	private Properties prop= new Properties();
@@ -63,6 +64,7 @@ public class MemberDao {
 			close(rs);
 			close(conn);
 		}return m;
+
 	}
 	
 	//회원가입 dao
@@ -122,6 +124,7 @@ public class MemberDao {
 			close(rs);
 			close(pstmt);
 		}return m;
+
 	}
 
 }

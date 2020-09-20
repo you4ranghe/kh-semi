@@ -35,7 +35,9 @@ public class LoginEndServlet extends HttpServlet {
 	
 
 		String id= request.getParameter("id");
+
 		String pw =request.getParameter("password");
+
 		System.out.println("id : "+id+": "+"pw : "+pw);
 		
 		Member m = new MemberService().loginMember(id,pw);

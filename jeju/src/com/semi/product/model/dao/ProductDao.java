@@ -40,7 +40,7 @@ public class ProductDao {
 					
 			while(rs.next()) {
 				p = new Product();
-				p.setpNum(rs.getString("p_num"));
+				p.setpNum(rs.getInt("p_num"));
 				p.setpBigNameEng(rs.getString("p_big_name_eng"));
 				p.setpBigNameKor(rs.getString("p_big_name_kor"));
 				p.setpName(rs.getString("p_name"));
@@ -97,6 +97,67 @@ public class ProductDao {
 		return list;
 	}
 	
+	public List<Product> selectSearchProductList(Connection conn,String search,int cPage,int numPerPage){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Product> list=new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectSearchProductList"));
+
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setString(2, "%"+search+"%");
+			pstmt.setString(3, "%"+search+"%");
+			pstmt.setString(4, "%"+search+"%");
+			pstmt.setInt(5, (cPage-1)*numPerPage+1);
+			pstmt.setInt(6, cPage*numPerPage);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Product p=new Product();
+				p.setpNum(rs.getInt("p_num"));
+				p.setpName(rs.getString("p_name"));
+				p.setpBigNameEng(rs.getString("p_big_name_eng"));
+				p.setpBigNameKor(rs.getString("p_big_name_kor"));
+				p.setpMap(rs.getString("p_map_address"));
+				p.setTitleImgPath(rs.getString("img_path"));
+				list.add(p);
+				
+			}
+			for(Product p:list) {
+				System.out.println("상품이름"+p.getpName());
+			}
+			System.out.println();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
+	public int selectSearchProductCount(Connection conn,String search) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectSearchProductCount"));
+
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setString(2, "%"+search+"%");
+			pstmt.setString(3, "%"+search+"%");
+			pstmt.setString(4, "%"+search+"%");
+			rs=pstmt.executeQuery();
+		
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+			System.out.println("몇개?"+ result);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	
 }

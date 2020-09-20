@@ -28,12 +28,11 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		//페이지 전환용 서블릿
+
 		RequestDispatcher rd = request.getRequestDispatcher("/views/member/login.jsp");
 		rd.forward(request, response);
-		
-		
-		
 		
 		
 	}

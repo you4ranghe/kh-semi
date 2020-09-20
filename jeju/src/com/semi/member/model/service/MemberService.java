@@ -6,6 +6,7 @@ import java.sql.Connection;
 import com.semi.member.model.dao.MemberDao;
 import com.semi.member.model.vo.Member;
 import static com.semi.common.JDBCTemplate.close;
+
 import static com.semi.common.JDBCTemplate.getConnection;
 import static com.semi.common.JDBCTemplate.commit;
 import static com.semi.common.JDBCTemplate.rollback;
@@ -23,6 +24,7 @@ public class MemberService {
 		
 		close(conn);
 		return m;
+
 
 	}
 	
@@ -49,6 +51,7 @@ public class MemberService {
 	//아이디로 회원정보 보기 서비스
 	
 	
+
 
 
 }

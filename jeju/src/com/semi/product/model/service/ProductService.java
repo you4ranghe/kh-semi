@@ -1,5 +1,6 @@
 package com.semi.product.model.service;
 
+import static com.semi.common.JDBCTemplate.close;
 //import static com.semi.common.JDBCTemplate.getConnection;
 import static com.semi.common.JDBCTemplate.getConnection;
 
@@ -20,7 +21,32 @@ public class ProductService {
 		return list;
 	}
 	
+	public Product selectProductList(){
+		Connection conn = getConnection();
+		Product p = dao.selectProductList(conn);
+		close(conn);
+		System.out.println(p.toString());
+		return p;
 	
+	}
+	public List<Product> selectSearchProductList(String search,int cPage,int numPerPage){
+		
+		Connection conn=getConnection();
+		List<Product> list=dao.selectSearchProductList(conn,search,cPage,numPerPage);
+		
+		close(conn);
+		
+		return list;
+		
+	}
 	
+	public int selectSearchProductCount(String search) {
+		Connection conn=getConnection();
+		int count=dao.selectSearchProductCount(conn,search);
+		
+		close(conn);
+		return count;
+				
+	}
 	
 }

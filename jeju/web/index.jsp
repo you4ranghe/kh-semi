@@ -1,22 +1,17 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" %>
+
 <%@ include file="/views/common/header.jsp" %>
 
 
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css" type="text/css"/>
+<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css" type="text/css"/>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
-<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-
-<%
-	Member loggined=(Member)session.getAttribute("logginedMember");
-	
-%>
+<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script> --%>
 
 <!-- Include the plugin's CSS and JS: -->
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
+<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-multiselect.css" type="text/css"/>
-
+ --%>
 <!-- 이 페이지 적용할 CSS -->
 <style>
 	/* section */
@@ -36,7 +31,7 @@
     padding-left:100px;
 }
 
-#categorybtn{
+/* #categorybtn{
     width:100%;
     height:60px;
 }
@@ -83,7 +78,7 @@
   }
 #categorybtn>div{
    /*  float: left; */
-}
+} */
 hr{
    clear:both;
 }
@@ -126,9 +121,10 @@ button+div{
 }
 </style>
 
-	<section id="content">
- <!-- slider_area_start 대형이미지 슬라이더 필요하신분만 주석 해제해서 쓰세요 -->
 
+<section id="content">
+
+	<!-- slider_area_start 대형이미지 슬라이더 -->
     <div class="slider_area">
         <div class="slider_active owl-carousel">
         <!-- 여기가 사진 하나시작 -->
@@ -231,53 +227,49 @@ button+div{
         </div>
     </div> -->
  
- 
-    <div id=categorybtn>
-    <div>
-    	
-    
+    <%-- <div class="container">
+	  	<div class="row">
+		    <form id="catefrm" action="<%=request.getContextPath()%>/filterProductList">
+			    <div id="areadiv" class="dropdown">
+			        
+			        <button id="areabtn" data-toggle="dropdown" class="dropdown-toggle genric-btn info radius">지역별</button>
+			            <ul class="dropdown-menu">
+			                <li><label><input type="checkbox" name="place" id="place0" value="동제주시" checked> 동제주시</label> </li>
+			                <li><label><input type="checkbox" name="place" id="place1" value="서제주시" checked> 서제주시</label> </li>
+			                <li><label><input type="checkbox" name="place" id="place2" value="서귀포시" checked> 서귀포시</label> </li>
+			                <li><label><input type="checkbox" name="place" id="place3" value="제주시" checked> 제주시</label> </li>
+			            </ul>
+			        
+			    </div>
+		    	<div id="datediv" class="col-xl-2">
+		        
+		        	<input id="datepicker" name="startdate" autocomplete="off" placeholder="날짜" class="genric-btn info radius">
+		    
+		    	</div>
+		  
+		     <div id="tastediv" class="dropdown btn-group col-xl-2">
+		        
+		            <button id="tastebtn" class="btn-block dropdown-toggle genric-btn info radius" data-toggle="dropdown"> 취향별</button>
+		            <ul class="dropdown-menu" role="menu">
+		                
+		                <li><label><input type="checkbox" name="favor" id="favor0" value="산" checked> 산</label></li>
+		                <li><label><input type="checkbox" name="favor" id="favor1" value="바다" checked> 바다</label></li>
+		                <li><label><input type="checkbox" name="favor" id="favor2" value="레저" checked> 레저</label></li>
+		                <li><label><input type="checkbox" name="favor" id="favor3" value="휴양" checked> 휴양</label></li>
+		                <li><label><input type="checkbox" name="favor" id="favor4" value="캠핑" checked> 캠핑</label></li>
+		            </ul>
+		    </div>
+		     
+		    <div class="search_btn col-xl-2">
+		        <button id="searchbtn" class="btn-block genric-btn default radius" type="submit" >Search</button>
+		     </div>
+		     </form>
+		    <hr>
     </div>
-    <form id="catefrm" action="<%=request.getContextPath()%>/filterProductList">
-    <div id="areadiv" class="dropdown catediv">
-        
-        <button id="areabtn" data-toggle="dropdown" class="genric-btn info radius">지역별</button>
-            <ul class="dropdown-menu check-content">
-                <li><label><input type="checkbox" name="place" id="place0" value="동제주시" checked> 동제주시</label> </li>
-                <li><label><input type="checkbox" name="place" id="place1" value="서제주시" checked> 서제주시</label> </li>
-                <li><label><input type="checkbox" name="place" id="place2" value="서귀포시" checked> 서귀포시</label> </li>
-                <li><label><input type="checkbox" name="place" id="place3" value="제주시" checked> 제주시</label> </li>
-            </ul>
-        
-    </div>
-    <div id="datediv" class="catediv">
-        <!-- <button id="datepicker" class="btn">날짜</button>
-            <div class="cate-content"> -->
-               <input id="datepicker" name="startdate" autocomplete="off" placeholder="날짜" class="catebtn genric-btn info radius">
-           <!--  </div> -->
-
-    
-    </div>
-  
-    <div id="tastediv" class="dropdown catediv">
-        
-            <button id="tastebtn" class="genric-btn info radius" data-toggle="dropdown"> 취향별</button>
-            <ul class="dropdown-menu check-content" role="menu">
-                
-                <li><label><input type="checkbox" name="favor" id="favor0" value="산" checked> 산</label></li>
-                <li><label><input type="checkbox" name="favor" id="favor1" value="바다" checked> 바다</label></li>
-                <li><label><input type="checkbox" name="favor" id="favor2" value="레저" checked> 레저</label></li>
-                <li><label><input type="checkbox" name="favor" id="favor3" value="휴양" checked> 휴양</label></li>
-                <li><label><input type="checkbox" name="favor" id="favor4" value="캠핑" checked> 캠핑</label></li>
-            </ul>
-    </div>
-    
-    <div class="search_btn">
-        <button id="searchbtn" class="catebtn genric-btn default radius" type="submit" >Search</button>
-     </div>
-     </form>
-    <hr>
 </div>
-
+ --%>
+ 
+ 	<h1>전체 상품</h1>
 
     <div id="products-list-container"> 
         <div class="travels" z-index="10">
@@ -302,7 +294,6 @@ button+div{
       }
 	</style>
 
-	
 	<script> 
 	
        $(document).ready(function() {
@@ -311,7 +302,7 @@ button+div{
        
        $(function() {
            //input을 datepicker로 선언
-           /* $("#datepicker").datepicker({
+           $("#datepicker").datepicker({
                dateFormat: 'yyyy-mm-dd' //Input Display Format 변경
                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
@@ -328,7 +319,7 @@ button+div{
                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
                ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                
-           });  */                   
+           });                   
            
            //초기값을 오늘 날짜로 설정
            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
@@ -336,24 +327,6 @@ button+div{
        
        
 	</script>
-<%-- <%-- =======
-	<section id="content">
-	<%if(loggined!=null){%>
-		<button onclick="location.assign('<%=request.getContextPath() %>/product/productList')">버튼1</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼2</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼3</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼4</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼5</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼6</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼7</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼8</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼9</button>
-		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼10</button>
-		<%} %>
-	
-	</section>
->>>>>>> branch 'jisun_semi_dev' of https://github.com/you4ranghe/kh-semi.git --%> --%>
-	
 	
 <%@ include file="/views/common/footer.jsp" %>
 

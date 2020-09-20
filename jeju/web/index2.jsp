@@ -114,7 +114,20 @@
         </div>
     </div>
     
-    <div>
+    <div class="container">
+    	<div class="row">
+    	
+    	<div class="col-xl-3">
+    		<button class="btn-block default">5</button>
+    	</div>
+    	<div class="col-xl-2">
+    		<button class="default">5</button>
+    	</div>
+    	<div class="col-xl-2">
+    		<button class="default">5</button>
+    	</div>
+    	
+    	</div>
     	
     	
     </div>
