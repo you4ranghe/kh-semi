@@ -124,16 +124,16 @@
 
 
 
-$('.starRev span').click(function(){
+
+
+//지선 별점 js
+
+/*$('.starRev span').click(function(){
 	  $(this).parent().children('span').removeClass('on');
 	  $(this).addClass('on').prevAll('span').addClass('on');
 	  return false;
 	});
-
-
-
-
-
+*/
 
 
 

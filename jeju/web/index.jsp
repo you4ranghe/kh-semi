@@ -4,7 +4,7 @@
 <%@ include file="/views/common/header.jsp" %>
 <%
 	Member loggined=(Member)session.getAttribute("logginedMember");
-	
+
 %>
 
 	<section id="content">

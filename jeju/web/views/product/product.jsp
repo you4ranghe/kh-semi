@@ -1,80 +1,97 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-    <%@page import = "java.util.List"%>
-    <%@page import="com.semi.product.model.vo.Product"%>
-    <%@page import="com.semi.payment.model.vo.Payment"%>
-    <%@page import="com.semi.wishList.model.vo.WishList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.semi.product.model.vo.Product"%>
+<%@page import="com.semi.payment.model.vo.Payment"%>
+<%@page import="com.semi.wishList.model.vo.WishList"%>
+<%@page import="com.semi.review.model.vo.Review"%>
 
 <%
 	Product p = (Product)request.getAttribute("product");
 	Payment pm = (Payment)request.getAttribute("payment");
 	WishList wl = (WishList)request.getAttribute("wishlist");
-%>    
+	Review r = (Review)request.getAttribute("review");
+/* 	//List<Review> list = (List)request.getAttribute("list"); */
+%>
 
-<%@ include file="/views/common/header.jsp" %>
+<%@ include file="/views/common/header.jsp"%>
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>GotJeju</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>GotJeju</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- <link rel="manifest" href="site.webmanifest"> -->
-        <link rel="shortcut icon" type="image/x-icon" href="<%=request.getContextPath() %>/img/favicon.png">
-        <!-- Place favicon.ico in the root directory -->
+<!-- <link rel="manifest" href="site.webmanifest"> -->
+<link rel="shortcut icon" type="image/x-icon"
+	href="<%=request.getContextPath() %>/img/favicon.png">
+<!-- Place favicon.ico in the root directory -->
 
-        <!-- CSS here -->
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/magnific-popup.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/font-awesome.min.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/themify-icons.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/nice-select.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/flaticon.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/gijgo.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/animate.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slick.css">
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/slicknav.css">
-        <link
-            rel="stylesheet"
-            href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+<!-- CSS here -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/magnific-popup.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/themify-icons.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/nice-select.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/flaticon.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/gijgo.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/animate.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/slick.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/slicknav.css">
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/style.css">
 
-        <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+<!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
-        <!--써치 필터 css-->
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jisun_search-filter.css"> 
-        <!-- 디테일 상품 본문 css -->
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jisun_detail-product.css">
+<!--써치 필터 css-->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/jisun_search-filter.css">
+<!-- 디테일 상품 본문 css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/jisun_detail-product.css">
 
-    </head>
+</head>
 
-    <body>
-        <!--[if lte IE 9]> <p class="browserupgrade">You are using an
+<body>
+	<!--[if lte IE 9]> <p class="browserupgrade">You are using an
         <strong>outdated</strong> browser. Please <a
         href="https://browsehappy.com/">upgrade your browser</a> to improve your
         experience and security.</p> <![endif]-->
 
-        
 
-        <div class="destination_banner_wrap overlay">
-            <div class="destination_text text-center">
-        
-                <h3>${p.pBigNameEng}</h3> 
-                <p> ${p.pBigNameKor}</p>
-            </div>
-        </div>
-        
-        
 
-     	 
-        <!-- 데스티네이션 -->
-        <!-- <div class="destination_details_info"> <div class="container"> <div
+	<div class="destination_banner_wrap overlay">
+		<div class="destination_text text-center">
+
+			<h3>${p.pBigNameEng}</h3>
+			<p>${p.pBigNameKor}</p>
+		</div>
+	</div>
+
+
+
+
+	<!-- 데스티네이션 -->
+	<!-- <div class="destination_details_info"> <div class="container"> <div
         class="row justify-content-center"> <div class="col-lg-8 col-md-9"> <div
         class="destination_info"> <h3>Description</h3> <p>There are many variations of
         passages of Lorem Ipsum available, but the majority have suffered alteration in
@@ -103,72 +120,70 @@
         </div> <div class="col-lg-12"> <div class="submit_btn"> <button
         class="boxed-btn4" type="submit">submit</button> </div> </div> </div> </form>
         </div> </div> </div> </div> </div> -->
-        <!-- 데스티네이션 끝 -->
-        
-        
-        
- <!-- 써치필터 Section Begin -->
-        
-            <section class="search-filter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                        
-                            <form action="<%=request.getContextPath() %>/product/productGoCart" method="post" class="check-form" name="price_exec">
-                            
-                                <h4>Check Option</h4>
-                                <div class="datepicker">
-                                    <p>From</p>
-                                    <input type="date" name="pDateStart" min="${p.pDateStart}" max="${p.pDateFinish}" >
-                                    <input type="hidden" name="poDate">
-                                    <!-- <img src="img/calendar.png" alt=""> -->
-                                </div>
-<%--                                 <div class="datepicker">
+	<!-- 데스티네이션 끝 -->
+
+
+
+	<!-- 써치필터 Section Begin -->
+
+	<section class="search-filter">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+
+					<form action="<%=request.getContextPath() %>/product/productGoCart"
+						method="post" class="check-form" name="price_exec">
+
+						<h4>Check Option</h4>
+						<div class="datepicker">
+							<p>From</p>
+							<input type="date" name="pDateStart" min="${p.pDateStart}"
+								max="${p.pDateFinish}"> <input type="hidden"
+								name="poDate">
+							<!-- <img src="img/calendar.png" alt=""> -->
+						</div>
+						<%--                                 <div class="datepicker">
                                     <p>To</p>
                                 <input type="date" name="pDateFinish" min="2020-01-01" max="2020-12-31" value="${pm.pDateFinish}">
                                     <!-- <img src="img/calendar.png" alt=""> -->
                                 </div> --%>
-                                
-                                
-                                
-                                <div class="room-quantity">
-                                
-										Total <span id='total_price' name='total_price'>0</span>원
-										
-										<input type=hidden name='total_price' value='${p.pPriceA}'>
-										<input type=hidden name='total_price2' value='${p.pPriceC}'>
-										
-										<input type=hidden name='totalPrice' value='0'>
-										
-										Adult <select name='pCountA' onChange='change_price();' >
-												    <option value='0'>0</option>
-												    <option value='1'>1</option>
-												    <option value='2'>2</option>
-												    <option value='3'>3</option>
-												    <option value='4'>4</option>
-												    <option value='5'>5</option>
-												    <option value='6'>6</option>
-												    <option value='7'>7</option>
-												    <option value='8'>8</option>
-												    <option value='9'>9</option>
-												    <option value='10'>10</option>
-										    	</select>
-										  
-										Child <select name='pCountC' onChange='change_price();'>
-												    <option value='0'>0</option>
-												    <option value='1'>1</option>
-												    <option value='2'>2</option>
-												    <option value='3'>3</option>
-												    <option value='4'>4</option>
-												    <option value='5'>5</option>
-												    <option value='6'>6</option>
-												    <option value='7'>7</option>
-												    <option value='8'>8</option>
-												    <option value='9'>9</option>
-												    <option value='10'>10</option>
-												</select>
-										      
-										<script>
+
+
+
+						<div class="room-quantity">
+
+							Total <span id='total_price' name='total_price'>0</span>원 
+							<input type=hidden name='total_price' value='${p.pPriceA}'> 
+							<input type=hidden name='total_price2' value='${p.pPriceC}'> 
+							<input type=hidden name='totalPrice' value='0'> Adult 
+							<select name='pCountA' onChange='change_price();'>
+								<option value='0'>0</option>
+								<option value='1'>1</option>
+								<option value='2'>2</option>
+								<option value='3'>3</option>
+								<option value='4'>4</option>
+								<option value='5'>5</option>
+								<option value='6'>6</option>
+								<option value='7'>7</option>
+								<option value='8'>8</option>
+								<option value='9'>9</option>
+								<option value='10'>10</option>
+								
+							</select> Child <select name='pCountC' onChange='change_price();'>
+								<option value='0'>0</option>
+								<option value='1'>1</option>
+								<option value='2'>2</option>
+								<option value='3'>3</option>
+								<option value='4'>4</option>
+								<option value='5'>5</option>
+								<option value='6'>6</option>
+								<option value='7'>7</option>
+								<option value='8'>8</option>
+								<option value='9'>9</option>
+								<option value='10'>10</option>
+							</select>
+
+							<script>
 										
 										function change_price(value){
 										    
@@ -211,8 +226,8 @@
 										}
 										
 										change_price();
-										</script>
-                                    <%-- <div class="single-quantity">
+								</script>
+							<%-- <div class="single-quantity">
                                         <p>Adults</p>
                                         <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountA}" name="getsu" onclick='change_price();'>
                                     </div>
@@ -223,130 +238,84 @@
                                          <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountC}" name="getsu" onclick='change_price();'>
                                         
                                     </div> --%>
-                                    <!-- <div class="single-quantity last">
+							<!-- <div class="single-quantity last">
                                         <p>Rooms</p>
                                         <div class="pro-qty"><input type="text" value="0"></div>
                                     </div> -->
-                                   
-                                </div>
-                                
-                                
-                                
-                                
-                                <div class="room-selector">
-                                    <p>Time</p>
-                                    <select class="suit-select" name="pTime">
-                                        <option>Check your Time</option>
-                                        <option value="09:00">09:00</option>
-                                        <option value="12:00">12:00</option>
-                                        <option value="15:00">15:00</option>
 
-                                    </select>
-                                </div>
-                                
-                                
-                                <!-- 아이디넘기기 -->
-                                <input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>">
-                                <input type="hidden" name="pNum" value='${p.pNum}'>
-                                
-                                
-                                
-                                <button type="submit">buy</button>
-                               
-                                
-                            </form>
-                            
-                        </div>
-                    </div>
-                </div>
-            </section>
-	  
-      
-<!-- Search Filter Section End -->
+						</div>
 
 
 
-        <!--================Blog Area =================-->
-        <section class="blog_area single-post-area section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 posts-list">
 
-                        <div class="single-post">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="<%=request.getContextPath() %>/img/destination/jeju_yacht.png" alt="">
-                            </div>
+						<div class="room-selector">
+							<p>Time</p>
+							<select class="suit-select" name="pTime">
+								<option>Check your Time</option>
+								<option value="09:00">09:00</option>
+								<option value="12:00">12:00</option>
+								<option value="15:00">15:00</option>
 
-                            <div class="blog_details">
-                                <h2>${p.pBigNameKor}
-                                
-                                
-                                  <a class="heart-button" href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId()%>
-                                  &&pNum=${p.pNum}">
-                                        ♥
-                                    </a>
-                                          	 
-                       
-<!--                                   <script>
-                                 	
-                                  $.ajaxSettings.traditional = true;
-                                  
-                                    $.ajax({
-                                    	var id = document.getElementsByName("userId");
-                                    	var num = document.getElementsByName("pNum");
-									    url: '/views/wishlist/wishListView.jsp',
-									    type: 'post',
-									    data: {"id":id,
-									       			"num":num,
+							</select>
+						</div>
 
-									    success: function (data) {
-									            alert("데이터 전송 성공");
-									        }
-									});
-                                    </script>   -->
-                                <%--     <script>
-										$("#ajax").click(e => {
-											$.ajax({
-												url:'<%=request.getContextPath()%>/wishList',
-												type:"get",
-												data: {userId: "${pm.userId}",
-									       					pNum: "${pm.pNum}"},
-												success: data => {
-													console.log(data);
-													$("#ajax").html(data);
-												}
-											})
-										})
-								</script> --%>
-                                    
-                                </h2>
-                                <!-- <ul class="blog-info-link mt-3 mb-4">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fas fa-location-arrow"></i>
-                                            제주도&nbsp;</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            - 서귀포시
-                                        </a>
-                                    </li>
-                                </ul> -->
-<%--  <%} %> --%>
-                                <!-----♥♥♥♥♥♥♥간단한 상품정보♥♥♥♥♥♥♥----->
-                                <div class="product-benefit">
-                                    <hr>
-                                    <!---->
-                                    <div class="critical-info">
-                                        <!-- <i class="far fa-clock"></i> -->
-                                        <span>
-                                        	<p style="white-space: pre-line;">
-                                        	${p.pPointInfo}
-                                        	</p>
-                                        </span>
-                                    </div>
 
-                                   <!--  <div class="critical-info">
+						<!-- 아이디넘기기 -->
+						<input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>"> 
+							<input type="hidden" name="pNum" value='${p.pNum}'>
+
+	
+
+						<button type="submit">buy</button>
+
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Search Filter Section End -->
+
+
+
+	<!--================Blog Area =================-->
+	<section class="blog_area single-post-area section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+
+					<div class="single-post">
+						<div class="feature-img">
+							<img class="img-fluid"
+								src="<%=request.getContextPath() %>/img/destination/jeju_yacht.png"
+								alt="">
+						</div>
+
+						<div class="blog_details">
+							<h2>${p.pBigNameKor}
+
+								<!-- 위시리스트 넘기기 -->
+								<a class="heart-button"
+									href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId()%>&pNum=${p.pNum}">
+									♥ </a>
+								
+							</h2>
+
+							<!-----♥♥♥♥♥♥♥간단한 상품정보♥♥♥♥♥♥♥----->
+							<div class="product-benefit">
+								<hr>
+								<!---->
+								<div class="critical-info">
+									<!-- <i class="far fa-clock"></i> -->
+									<span>
+										<p style="white-space: pre-line;">${p.pPointInfo}</p>
+									</span>
+								</div>
+
+								<!--  <div class="critical-info">
                                         <i class="fab fa-glide"></i>
                                         <span>
                                             한국어,영어 가이드</span>
@@ -357,14 +326,12 @@
                                         <span>현장에서 전자바우처를 제시해주세요.</span>
                                     </div> -->
 
-                                    <hr>
-                                </div>
-                                <!-----♥♥♥♥♥♥♥간단한 상품정보 끝♥♥♥♥♥♥♥----->
+								<hr>
+							</div>
+							<!-----♥♥♥♥♥♥♥간단한 상품정보 끝♥♥♥♥♥♥♥----->
 
-                                <p class="excert" style="white-space: pre-line;">
-                                    ${p.pInfo}
-                                </p>
-                                <!-- <p style="white-space: pre-line;">
+							<p class="excert" style="white-space: pre-line;">${p.pInfo}</p>
+							<!-- <p style="white-space: pre-line;">
                                     Did you know that you can enjoy a luxury yacht trip on a small travel budget?
                                     Let's go to the Grand Blue yacht experience with Jeju! From Seogwipo Daepo Port,
                                     you will board the Grand Blue Yacht and follow the dolphin spotting route,
@@ -373,25 +340,21 @@
                                     fishing directly at the fishing spot, You can relax with beer and wine on board.
                                     Enjoy a luxurious yacht experience at a reasonable price!
                                 </p> -->
-                                <div class="quote-wrapper">
-                                    <div id="product-info-sec" class="info-section">
+							<div class="quote-wrapper">
+								<div id="product-info-sec" class="info-section">
 
-                                        <h3 class="info-title">PRODUCT DESCRIPTION</h3>
+									<h3 class="info-title">PRODUCT DESCRIPTION</h3>
 
-                                        <div>
-                                            <a
-                                                href="#none"
-                                                id="explain"
-                                                onclick="if(hide2.style.display=='none')
+									<div>
+										<a href="#none" id="explain"
+											onclick="if(hide2.style.display=='none')
                             {hide2.style.display='';explain.innerText='▲FOLD'}
                             else {hide2.style.display='none';explain.innerText='▶MORE'}">▶MORE</a>
-                                            <div id="hide2" style="display: none">
-                                                <div class="info-sec-collapsable expand">
-                                                    <div>
-	                                                    <p style="white-space: pre-line;">
-	                                                    	${p.pIntd}
-	                                                    </p>
-                                                        <!-- <p>【POINTS】</p>
+										<div id="hide2" style="display: none">
+											<div class="info-sec-collapsable expand">
+												<div>
+													<p style="white-space: pre-line;">${p.pIntd}</p>
+													<!-- <p>【POINTS】</p>
                                                         <p>・ 8월 31일 13:00까지 저렴한 한정특가로 예약해보세요! 12월 31일까지 체험할 수 있습니다!</p>
                                                         <p>・ 제주도의 절경! 주상절리 대를 직접 감상해보세요.</p>
                                                         <p>・ 시원한 맥주를 마시고 낚시를 하며 최고의 여유로움을 만끽해보세요.</p>
@@ -406,43 +369,41 @@
                                                             <br><br>항해 노선 :
                                                             <br>대포항 - 주상절리 대 - 바다낚시, 돌고래 감상 - 선상 자유활동 - 대포항<br><br><br>【OPTION】<br>체험 포함 내용 :
                                                             <br>주상절리 대 감상 (개별 사진 촬영 가능)<br>바다 낚시 (15-20분)<br>돌고래 흔적 탐색 (돌고래 감상)<br><br><br>【NOTICE】<br>・ 본 체험에는 생선회 제공이 포함되어 있지 않습니다.<br>・ 요트 체험 시 맥주, 와인 그리고 과일을 제공하나, 바다 낚시 체험 시 알코올 음료를 제공하지 않습니다.<br>・ 만 3세 미만의 아동은 무료 참여가 가능하며, 만 3세 이상의 아동은 체험 티켓을 예매해야 합니다.<br>・ 날씨 혹은 선박 상태에 따라 체험 시간이 조정되거나 취소될 수 있습니다.<br><br><br>【HOW TO USE】<br>체험 시간 20분 전까지 매표소에서 신분증과 전자바우처 제시 후 승선신청표를 작성해 주시기 바랍니다.</p> -->
-                                                    </div>
+												</div>
 
-                                                </div>
-                                            </div>
-                                        </div>
+											</div>
+										</div>
+									</div>
 
-                                    </div>
-                                </div>
+								</div>
+							</div>
 
-                                <!-----♥♥♥♥♥♥♥일정소개사진♥♥♥♥♥♥♥----->
-                                <div id="schedule-sec" class="info-section">
-                                    <h3 class="info-title">SCHEDULE</h3>
+							<!-----♥♥♥♥♥♥♥일정소개사진♥♥♥♥♥♥♥----->
+							<div id="schedule-sec" class="info-section">
+								<h3 class="info-title">SCHEDULE</h3>
 
-                                    <div>
-                                        <a
-                                            href="#none"
-                                            id="schedule"
-                                            onclick="if(hide3.style.display=='none')
+								<div>
+									<a href="#none" id="schedule"
+										onclick="if(hide3.style.display=='none')
 											    {hide3.style.display='';schedule.innerText='▲FOLD'}
 											    else {hide3.style.display='none';schedule.innerText='▶MORE'}">▶MORE</a>
-                                        <div id="hide3" style="display: none">
-                                            <div class="info-sec-collapsable expand">
+									<div id="hide3" style="display: none">
+										<div class="info-sec-collapsable expand">
 
-                                                <i class="fas fa-clock"></i>
-                                                <span>${p.runtime}</span></div>
+											<i class="fas fa-clock"></i> <span>${p.runtime}</span>
+										</div>
 
-                                            <div>
+										<div>
 
-                                                <ul class="time-info">
-                                                    <li class="time-info-spot">
+											<ul class="time-info">
+												<li class="time-info-spot">
 
-                                                        <div class="pd-info-img">
-                                                        	<img src="${p.scheduleImgPath}">
-                                                           <%--  <img src="<%=request.getContextPath() %>/img/destination/jeju1.jpg" alt=""> --%>
-                                                        </div>
-                                                    </li>
-                                                   <%--  <li>
+													<div class="pd-info-img">
+														<img src="${p.scheduleImgPath}">
+														<%--  <img src="<%=request.getContextPath() %>/img/destination/jeju1.jpg" alt=""> --%>
+													</div>
+												</li>
+												<%--  <li>
                                                         <div class="pd-info-img">
                                                             <img src="<%=request.getContextPath() %>/img/destination/jeju2.jpg" alt="">
                                                         </div>
@@ -457,55 +418,42 @@
                                                             <img src="<%=request.getContextPath() %>/img/destination/jeju4.jpg" alt="">
                                                         </div>
                                                     </li> --%>
-                                                </ul>
+											</ul>
 
-                                            </div>
-                                        </div>
-                                    </div>
+										</div>
+									</div>
+								</div>
 
-                                </div>
-                                
-                                <!-- 일정소개사진 끝 -->
+							</div>
 
-                            </div>
+							<!-- 일정소개사진 끝 -->
 
-                        </div>
+						</div>
 
-                        <div class="navigation-top">
-                            <div class="d-sm-flex justify-content-between text-center">
-                                <p class="like-info">
-                                    <span class="align-middle">
-                                        <i class="fa fa-heart"></i>
-                                    </span>
-                                    Lily and 4 people like this</p>
-                                <div class="col-sm-4 text-center my-2 my-sm-0">
-                                    <!-- <p class="comment-count"><span class="align-middle"><i class="fa
+					</div>
+
+					<div class="navigation-top">
+						<div class="d-sm-flex justify-content-between text-center">
+							<p class="like-info">
+								<span class="align-middle"> <i class="fa fa-heart"></i>
+								</span> Lily and 4 people like this
+							</p>
+							<div class="col-sm-4 text-center my-2 my-sm-0">
+								<!-- <p class="comment-count"><span class="align-middle"><i class="fa
                                     fa-comment"></i></span> 06 Comments</p> -->
-                                </div>
-                                <ul class="social-icons">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-dribbble"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-behance"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- <div class="navigation-area"> <div class="row"> <div class="col-lg-6
+							</div>
+							<ul class="social-icons">
+								<li><a href="#"> <i class="fa fa-facebook-f"></i>
+								</a></li>
+								<li><a href="#"> <i class="fa fa-twitter"></i>
+								</a></li>
+								<li><a href="#"> <i class="fa fa-dribbble"></i>
+								</a></li>
+								<li><a href="#"> <i class="fa fa-behance"></i>
+								</a></li>
+							</ul>
+						</div>
+						<!-- <div class="navigation-area"> <div class="row"> <div class="col-lg-6
                             col-md-6 col-12 nav-left flex-row d-flex justify-content-start
                             align-items-center"> <div class="thumb"> <a href="#"> <img class="img-fluid"
                             src="img/post/preview.png" alt=""> </a> </div> <div class="arrow"> <a href="#">
@@ -517,25 +465,25 @@
                             href="#"> <span class="lnr text-white ti-arrow-right"></span> </a> </div> <div
                             class="thumb"> <a href="#"> <img class="img-fluid" src="img/post/next.png"
                             alt=""> </a> </div> </div> </div> </div> -->
-                        </div>
+					</div>
 
 
 
 
 
-                        <div class="blog-author">
-                            <div class="media align-items-center">
-                                <img src="img/destination/yoo.jpg" alt="">
-                                <div class="media-body">
-                                    <div class="board bg-highlihgt mt-20" id="becareful">
-                                        <h4 class="info-subtitle mt-0">NOTICE</h4>
+					<div class="blog-author">
+						<div class="media align-items-center">
+							<img src="img/destination/yoo.jpg" alt="">
+							<div class="media-body">
+								<div class="board bg-highlihgt mt-20" id="becareful">
+									<h4 class="info-subtitle mt-0">NOTICE</h4>
 
-                                        <div class="mt-10">
-                                            <ul>
-                                                <li>
-                                                    <p>${p.precaution}</p>
-                                                </li>
-                                               <!--  <li>
+									<div class="mt-10">
+										<ul>
+											<li>
+												<p>${p.precaution}</p>
+											</li>
+											<!--  <li>
                                                     <p>승전 전, 반드시 승선신청표를 작성해 주셔야 합니다. 또한 현장 직원에게 신분증을 제시해 주시기 바랍니다.</p>
                                                 </li>
                                                 <li>
@@ -551,36 +499,36 @@
                                                 <li>
                                                     <p>날씨 혹은 선박 상태에 따라 체험 시간이 조정되거나 취소될 수 있습니다.</p>
                                                 </li> -->
-                                            </ul>
-                                        </div>
+										</ul>
+									</div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
+								</div>
+							</div>
+						</div>
+					</div>
 
 
 
-                        <!-----♥♥♥♥♥♥♥집합장소 지도♥♥♥♥♥♥♥----->
-                        <!-- <div id="meeting-sec" class="info-section2"> <h3 class="info-title">집합
+
+
+					<!-----♥♥♥♥♥♥♥집합장소 지도♥♥♥♥♥♥♥----->
+					<!-- <div id="meeting-sec" class="info-section2"> <h3 class="info-title">집합
                         장소</h3> -->
 
-                        <!-- <div> -->
-                        <div class="map-board">
+					<!-- <div> -->
+					<div class="map-board">
 
-                            <div class="board-title">
-                                <h3 class="info-title">MEETING PLACE</h3>
-                                <h4>위치：GRANDEBLEU 탑승장소</h4>
-                                <div class="text-grey">${p.pMapName}</div>
-                            </div>
+						<div class="board-title">
+							<h3 class="info-title">MEETING PLACE</h3>
+							<h4>위치：GRANDEBLEU 탑승장소</h4>
+							<div class="text-grey">${p.pMapName}</div>
+						</div>
 
-                            <hr>
+						<hr>
 
-                            <div class="pd-info-img">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                   <!--  <iframe
+						<div class="pd-info-img">
+							<div class="embed-responsive embed-responsive-16by9">
+								<!--  <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d26624.14631548044!2d126.3802559!3d33.4748746!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1597559729830!5m2!1sko!2skr"
                                         width="600"
                                         height="450"
@@ -589,197 +537,241 @@
                                         allowfullscreen="allowfullscreen"
                                         aria-hidden="false"
                                         tabindex="0"></iframe> -->
-                                        <iframe   src="${p.pMap}"
-                                        width="600"
-                                        height="450"
-                                        frameborder="0"
-                                        style="border: 0px;"
-                                        allowfullscreen="allowfullscreen"
-                                        aria-hidden="false"
-                                        tabindex="0"></iframe>
-                                </div>
-                            </div>
+								<iframe src="${p.pMap}" width="600" height="450" frameborder="0"
+									style="border: 0px;" allowfullscreen="allowfullscreen"
+									aria-hidden="false" tabindex="0"></iframe>
+							</div>
+						</div>
 
-                        </div>
-                        <!-----♥♥♥♥♥♥♥집합장소 지도 끝♥♥♥♥♥♥♥----->
+					</div>
+					<!-----♥♥♥♥♥♥♥집합장소 지도 끝♥♥♥♥♥♥♥----->
 
 
 
 
 
 
-                        <div class="comments-area">
-                            <h4>REVIEW</h4>
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="<%=request.getContextPath() %>/img/comment/comment_1.png" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <p class="comment">
-                                                Multiply sea night grass fourth day sea lesser rule open subdue female fill
-                                                which them Blessed, give fill lesser bearing multiply sea night grass fourth day
-                                                sea lesser
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <h5>
-                                                        <a href="#">Emilly Blunt</a>
-                                                    </h5>
-                                                    <p class="date">December 4, 2020 at 3:12 pm
-                                                    </p>
-                                                </div>
-                                                <div class="reply-btn">
-                                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="<%=request.getContextPath() %>/img/comment/comment_2.png" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <p class="comment">
-                                                Multiply sea night grass fourth day sea lesser rule open subdue female fill
-                                                which them Blessed, give fill lesser bearing multiply sea night grass fourth day
-                                                sea lesser
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <h5>
-                                                        <a href="#">Emilly Blunt</a>
-                                                    </h5>
-                                                    <p class="date">December 4, 2017 at 3:12 pm
-                                                    </p>
-                                                </div>
-                                                <div class="reply-btn">
-                                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="<%=request.getContextPath() %>/img/comment/comment_3.png" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <p class="comment">
-                                                Multiply sea night grass fourth day sea lesser rule open subdue female fill
-                                                which them Blessed, give fill lesser bearing multiply sea night grass fourth day
-                                                sea lesser
-                                            </p>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <h5>
-                                                        <a href="#">Emilly Blunt</a>
-                                                    </h5>
-                                                    <p class="date">December 4, 2017 at 3:12 pm
-                                                    </p>
-                                                </div>
-                                                <div class="reply-btn">
-                                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+					<div class="comments-area">
+						<h4>REVIEW</h4>
+						
+						<%-- <%if(logginedMember!=null&&pm.getPoNum()!=null) {  --%>
+						<%-- 	<%for(Review r : list) { %> --%>
+						
+						<div class="comment-list">
+							<div class="single-comment justify-content-between d-flex">
+								<div class="user justify-content-between d-flex">
+									<div class="thumb">
+										<img src="<%=request.getContextPath() %>/img/comment/comment_1.png" alt="">
+									</div>
+									<div class="desc">
+										<p class="comment" id="reviewTitle"'>${r.reviewTitle}</p>
+										<p class="comment">${r.reviewContents }</p>
+										<div class="d-flex justify-content-between">
+											<div class="d-flex align-items-center">
+												<h5>
+													<a href="#">${r.reviewWriter }</a>
+												</h5>
+												<p class="date">${r.registerDate }</p>
+							
+									<!-- 글작성자.관리자 수정삭제 -->
+<%-- 									<%if(logginedMember!=null&&(logginedMember.getUserId().equals(r.getReviewWriter())
+											||logginedMember.getUserId().equals("admin"))){ %>
+											<button type="button" onclick="fn_uppdate()">수정</button>
+											<button type="button" onclick="fn_remove()">삭제</button>
+									<%} %> --%>
+									
+											</div>
+											<div class="reply-btn">
+												<a href="#" class="btn-reply text-uppercase">reply</a>
+												<p>${r.reviewNum}
+												${r.reviewScore }
+												$(r.poNum}
+												${r.reviewViews }
+												${r.pNum }</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+				<%-- 		<%} %> --%>
+						
+						
+<%-- 						<div class="comment-list">
+							<div class="single-comment justify-content-between d-flex">
+								<div class="user justify-content-between d-flex">
+									<div class="thumb">
+										<img
+											src="<%=request.getContextPath() %>/img/comment/comment_2.png"
+											alt="">
+									</div>
+									<div class="desc">
+										<p class="comment">Multiply sea night grass fourth day sea
+											lesser rule open subdue female fill which them Blessed, give
+											fill lesser bearing multiply sea night grass fourth day sea
+											lesser</p>
+										<div class="d-flex justify-content-between">
+											<div class="d-flex align-items-center">
+												<h5>
+													<a href="#">Emilly Blunt</a>
+												</h5>
+												<p class="date">December 4, 2017 at 3:12 pm</p>
+											</div>
+											<div class="reply-btn">
+												<a href="#" class="btn-reply text-uppercase">reply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="comment-list">
+							<div class="single-comment justify-content-between d-flex">
+								<div class="user justify-content-between d-flex">
+									<div class="thumb">
+										<img
+											src="<%=request.getContextPath() %>/img/comment/comment_3.png"
+											alt="">
+									</div>
+									<div class="desc">
+										<p class="comment">Multiply sea night grass fourth day sea
+											lesser rule open subdue female fill which them Blessed, give
+											fill lesser bearing multiply sea night grass fourth day sea
+											lesser</p>
+										<div class="d-flex justify-content-between">
+											<div class="d-flex align-items-center">
+												<h5>
+													<a href="#">Emilly Blunt</a>
+												</h5>
+												<p class="date">December 4, 2017 at 3:12 pm</p>
+											</div>
+											<div class="reply-btn">
+												<a href="#" class="btn-reply text-uppercase">reply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+ --%>
 
 
 
 
 
-
-                        <div class="comment-form">
-                            <h4>LEAVE A REVIEW</h4>
-                            <form class="form-contact comment_form" action="#" id="commentForm">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <textarea
-                                                class="form-control w-100"
-                                                name="comment"
-                                                id="comment"
-                                                cols="30"
-                                                rows="9"
-                                                placeholder="Write Comment"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input
-                                                class="form-control"
-                                                name="name"
-                                                id="name"
-                                                type="text"
-                                                placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input
-                                                class="form-control"
-                                                name="review-password"
-                                                id="review-password"
-                                                type="password"
-                                                placeholder="Passwrod">
-                                        </div>
-                                    </div>
-                                   <input type="hidden" name="rate" id="rate" value="0"/>
-                                   
-  
-
-                                
-                                <div class="starRev">
-  <span class="starR on">별1</span>
-  <span class="starR">별2</span>
-  <span class="starR">별3</span>
-  <span class="starR">별4</span>
-  <span class="starR">별5</span>
-<!--   <span class="starR">별6</span>
-  <span class="starR">별7</span>
-  <span class="starR">별8</span>
-  <span class="starR">별9</span>
-  <span class="starR">별10</span> -->
-</div>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                </div>
-                                
-                                
-                                
-                                <div class="form-group">
-                                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-
-
-
+					<div class="comment-form">
+						<h4>LEAVE A REVIEW</h4>
+						
+						<form class="form-contact comment_form" action="<%=request.getContextPath()%>/review/reviewEndServlet" id="commentForm" method="post">
+						
+							<div class="row">
+							
+							<!-- 리뷰번호 -->
+							<!-- <input type="hidden" name="reviewNum"> -->
+							 <input type="hidden" value="${p.pNum }" name="pNum" > 
+							 <%-- <input type="hidden" value="${pm.poNum }" name="poNum">  --%>
+							
+							<!-- 리뷰제목 -->
+							<div class="col-sm-6">
+									<div class="form-group">
+										<input class="form-control" name="reviewTitle" id="reviewTitle" type="text" placeholder="Write title">
+									</div>
+								</div>
+								
+								
+								
+								
+							<!-- 작성자 -->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input class="form-control" name="reviewWriter" id="reviewWriter" type="text" value="<%=logginedMember.getUserId()%>" placeholder="Name" readonly>
+								</div>
+							</div>
+							
+								
+								<!-- 리뷰내용 -->
+								<div class="col-12">
+									<div class="form-group">
+										<textarea class="form-control w-100" name="reviewContents"
+											id="reviewContents" cols="30" rows="9"
+											 placeholder="Write Comment"></textarea>
+									</div>
+								</div>
+								
+								
+								<!-- 등록날짜 -->
+								<div class="col-sm-6">
+									<div class="form-group">
+<!-- 										<input class="form-control" name="registerDate" 
+										id="registerDate" type="text"> -->
+										 <input type='date' id='currentDate' class="form-control">
+										 
+									</div>
+								</div>
+								</div>
+						<script>
+						  document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+						</script>
+																
+								<!-- 별점 -->
+								<div class="col-sm-6">
+ 								 <select name="reviewScore" class="starRev">
+									<option value='1' class="starR on">★</option>
+									<option value='2' class="starR">★★</option>
+									<option value='3' class="starR">★★★</option>
+									<option value='4' class="starR">★★★★</option>
+									<option value='5' class="starR">★★★★★</option>
+ 								</select> 
+ 								 </div>
+ 								<!--  <select class="starRev">
+									<input type="radio" class="starR on">별1</span> 
+									<span class="starR">별2</span>
+									<span class="starR">별3</span> 
+									<span class="starR">별4</span> 
+									<span class="starR">별5</span> 
+								</div>
+ -->
 
 
-                    <div class="col-lg-4">
-                        <div class="blog_right_sidebar">
-                            <aside class="single_sidebar_widget search_widget">
-                                <!-- <form action="#">
+							<div class="form-group">
+								<button type="submit" class="button button-contactForm btn_1 boxed-btn" onclick="return validate();">
+									Leave Review</button>
+							</div>
+							
+						</form>
+				
+				
+				<script>
+						function validate(){
+							const content=$("[reviewWriter=reviewContents]").val();
+							if(content.trim().length==0){
+								alert("내용을 입력해주세요!");
+								$("[reviewWriter=reviewContents]").focus();
+								return false;
+							}
+						}
+					
+				</script>
+				
+				
+						
+					</div>
+				</div>
+
+				
+
+
+
+
+				<div class="col-lg-4">
+					<div class="blog_right_sidebar">
+						<aside class="single_sidebar_widget search_widget">
+							<!-- <form action="#">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <input
@@ -799,302 +791,219 @@
                                         class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Search</button>
                                 </form> -->
-                                <div id="product-price-box">
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>ADULT &nbsp;</p>
-                                            <p>${p.pPriceA}</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>CHILDREN &nbsp;</p>
-                                            <p>${p.pPriceC}</p>
-                                        </a>
-                                    </li>
-                                    
-                                </div>
-                                
-                               <!--  원래가격 : <span id='total_price'>0</span>원
+							<div id="product-price-box">
+								<li><a href="#" class="d-flex">
+										<p>ADULT &nbsp;</p>
+										<p>${p.pPriceA}</p>
+								</a></li>
+								<li><a href="#" class="d-flex">
+										<p>CHILDREN &nbsp;</p>
+										<p>${p.pPriceC}</p>
+								</a></li>
+
+							</div>
+
+							<!--  원래가격 : <span id='total_price'>0</span>원
                                 <form name='price_exec' method='get' onSubmit='submit_value();'> -->
 
-                               <!--  금액 : <input type="text" name="sum" size="11" readonly> 원 -->
-                                
-                            </aside>
-                            <!-- <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title">Category</h4>
-                                <ul class="list cat-list">
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Resaurant food</p>
-                                            <p>(37)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Travel news</p>
-                                            <p>(10)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Modern technology</p>
-                                            <p>(03)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Product</p>
-                                            <p>(11)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Inspiration</p>
-                                            <p>(21)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Health Care</p>
-                                            <p>(21)</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </aside> -->
-                            <!-- <aside class="single_sidebar_widget popular_post_widget"> <h3
-                            class="widget_title">Recent Post</h3> <div class="media post_item"> <img
-                            src="img/post/post_1.png" alt="post"> <div class="media-body"> <a
-                            href="single-blog.html"> <h3>From life was you fish...</h3> </a> <p>January 12,
-                            2019</p> </div> </div> <div class="media post_item"> <img
-                            src="img/post/post_2.png" alt="post"> <div class="media-body"> <a
-                            href="single-blog.html"> <h3>The Amazing Hubble</h3> </a> <p>02 Hours ago</p>
-                            </div> </div> <div class="media post_item"> <img src="img/post/post_3.png"
-                            alt="post"> <div class="media-body"> <a href="single-blog.html"> <h3>Astronomy
-                            Or Astrology</h3> </a> <p>03 Hours ago</p> </div> </div> <div class="media
-                            post_item"> <img src="img/post/post_4.png" alt="post"> <div class="media-body">
-                            <a href="single-blog.html"> <h3>Asteroids telescope</h3> </a> <p>01 Hours
-                            ago</p> </div> </div> </aside> -->
-                            <!-- <aside class="single_sidebar_widget tag_cloud_widget"> <h4
-                            class="widget_title">Tag Clouds</h4> <ul class="list"> <li> <a
-                            href="#">project</a> </li> <li> <a href="#">love</a> </li> <li> <a
-                            href="#">technology</a> </li> <li> <a href="#">travel</a> </li> <li> <a
-                            href="#">restaurant</a> </li> <li> <a href="#">life style</a> </li> <li> <a
-                            href="#">design</a> </li> <li> <a href="#">illustration</a> </li> </ul> </aside>
-                            <aside class="single_sidebar_widget instagram_feeds"> <h4
-                            class="widget_title">Instagram Feeds</h4> <ul class="instagram_row flex-wrap">
-                            <li> <a href="#"> <img class="img-fluid" src="img/post/post_5.png" alt=""> </a>
-                            </li> <li> <a href="#"> <img class="img-fluid" src="img/post/post_6.png" alt="">
-                            </a> </li> <li> <a href="#"> <img class="img-fluid" src="img/post/post_7.png"
-                            alt=""> </a> </li> <li> <a href="#"> <img class="img-fluid"
-                            src="img/post/post_8.png" alt=""> </a> </li> <li> <a href="#"> <img
-                            class="img-fluid" src="img/post/post_9.png" alt=""> </a> </li> <li> <a href="#">
-                            <img class="img-fluid" src="img/post/post_10.png" alt=""> </a> </li> </ul>
-                            </aside> -->
-                            <!-- <aside class="single_sidebar_widget newsletter_widget"> <h4
-                            class="widget_title">Newsletter</h4> <form action="#"> <div class="form-group">
-                            <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                            </div> <button class="button rounded-0 primary-bg text-white w-100 btn_1
-                            boxed-btn" type="submit">Subscribe</button> </form> </aside> -->
-                        </div>
-                    </div>
+							<!--  금액 : <input type="text" name="sum" size="11" readonly> 원 -->
 
-                    
-                </div>
-            </div>
-        </section>
-        <!--================ Blog Area end =================-->
+						</aside>
 
-    </div>
-    <!-- </div> </div> -->
-
-    <!-- newletter_area_start -->
-    <div class="newletter_area overlay">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-10">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="newsletter_text">
-                                <h4>Subscribe Our Newsletter</h4>
-                                <p>Subscribe newsletter to get offers and about new places to discover.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="mail_form">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-9 col-md-8">
-                                        <div class="newsletter_field">
-                                            <input type="email" placeholder="Your mail">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4">
-                                        <div class="newsletter_btn">
-                                            <button class="boxed-btn4 " type="submit">Subscribe</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- newletter_area_end -->
-
-    <div class="popular_places_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>More Places</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="<%=request.getContextPath() %>/img/place/1.png" alt="">
-                            <a href="#" class="prise">$500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="#">
-                                <h3>California</h3>
-                            </a>
-                            <p>United State of America</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="<%=request.getContextPath() %>/img/place/2.png" alt="">
-                            <a href="#" class="prise">$500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="#">
-                                <h3>Korola Megna</h3>
-                            </a>
-                            <p>United State of America</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="<%=request.getContextPath() %>/img/place/3.png" alt="">
-                            <a href="#" class="prise">$500</a>
-                        </div>
-                        <div class="place_info">
-                            <a href="#">
-                                <h3>London</h3>
-                            </a>
-                            <p>United State of America</p>
-                            <div class="rating_days d-flex justify-content-between">
-                                <span class="d-flex justify-content-center align-items-center">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <a href="#">(20 Review)</a>
-                                </span>
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">5 Days</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+					</div>
+				</div>
 
 
-                <!-- Modal -->
-                <div
-                    class="modal fade custom_search_pop"
-                    id="exampleModalCenter"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalCenterTitle"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="serch_form">
-                                <input type="text" placeholder="Search">
-                                <button type="submit">search</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- link that opens popup -->
-                <!-- <script
+			</div>
+		</div>
+	</section>
+	<!--================ Blog Area end =================-->
+
+	</div>
+	<!-- </div> </div> -->
+
+	<!-- newletter_area_start -->
+	<div class="newletter_area overlay">
+		<div class="container">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-lg-10">
+					<div class="row align-items-center">
+						<div class="col-lg-5">
+							<div class="newsletter_text">
+								<h4>Subscribe Our Newsletter</h4>
+								<p>Subscribe newsletter to get offers and about new places
+									to discover.</p>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="mail_form">
+								<div class="row no-gutters">
+									<div class="col-lg-9 col-md-8">
+										<div class="newsletter_field">
+											<input type="email" placeholder="Your mail">
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-4">
+										<div class="newsletter_btn">
+											<button class="boxed-btn4 " type="submit">Subscribe</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- newletter_area_end -->
+
+	<div class="popular_places_area">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+					<div class="section_title text-center mb_70">
+						<h3>More Places</h3>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single_place">
+						<div class="thumb">
+							<img src="<%=request.getContextPath() %>/img/place/1.png" alt="">
+							<a href="#" class="prise">$500</a>
+						</div>
+						<div class="place_info">
+							<a href="#">
+								<h3>California</h3>
+							</a>
+							<p>United State of America</p>
+							<div class="rating_days d-flex justify-content-between">
+								<span class="d-flex justify-content-center align-items-center">
+									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <a href="#">(20 Review)</a>
+								</span>
+								<div class="days">
+									<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+				<div class="col-lg-4 col-md-6">
+					<div class="single_place">
+						<div class="thumb">
+							<img src="<%=request.getContextPath() %>/img/place/2.png" alt="">
+							<a href="#" class="prise">$500</a>
+						</div>
+						<div class="place_info">
+							<a href="#">
+								<h3>Korola Megna</h3>
+							</a>
+							<p>United State of America</p>
+							<div class="rating_days d-flex justify-content-between">
+								<span class="d-flex justify-content-center align-items-center">
+									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <a href="#">(20 Review)</a>
+								</span>
+								<div class="days">
+									<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="col-lg-4 col-md-6">
+					<div class="single_place">
+						<div class="thumb">
+							<img src="<%=request.getContextPath() %>/img/place/3.png" alt="">
+							<a href="#" class="prise">$500</a>
+						</div>
+						<div class="place_info">
+							<a href="#">
+								<h3>London</h3>
+							</a>
+							<p>United State of America</p>
+							<div class="rating_days d-flex justify-content-between">
+								<span class="d-flex justify-content-center align-items-center">
+									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <a href="#">(20 Review)</a>
+								</span>
+								<div class="days">
+									<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+</div>
+</div>
+</div>
+
+				<!-- Modal -->
+				<div class="modal fade custom_search_pop" id="exampleModalCenter"
+					tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="serch_form">
+								<input type="text" placeholder="Search">
+								<button type="submit">search</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- link that opens popup -->
+				<!-- <script
                 src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script
                 src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
                 <script src="
                 https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
                 </script> -->
-                <!-- JS here -->
-                <script src="<%=request.getContextPath() %>/js/vendor/modernizr-3.5.0.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/vendor/jquery-1.12.4.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/isotope.pkgd.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/ajax-form.js"></script>
-                <script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/jquery.counterup.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/imagesloaded.pkgd.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/scrollIt.js"></script>
-                <script src="<%=request.getContextPath() %>/js/jquery.scrollUp.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/wow.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/nice-select.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/jquery.slicknav.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/jquery.magnific-popup.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/plugins.js"></script>
-                <script src="<%=request.getContextPath() %>/js/gijgo.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/slick.min.js"></script>
+				<!-- JS here -->
+				<script src="<%=request.getContextPath() %>/js/vendor/modernizr-3.5.0.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/vendor/jquery-1.12.4.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/isotope.pkgd.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/ajax-form.js"></script>
+				<script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/jquery.counterup.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/imagesloaded.pkgd.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/scrollIt.js"></script>
+				<script src="<%=request.getContextPath() %>/js/jquery.scrollUp.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/wow.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/nice-select.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/jquery.slicknav.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/jquery.magnific-popup.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/plugins.js"></script>
+				<script src="<%=request.getContextPath() %>/js/gijgo.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/slick.min.js"></script>
 
-                <!--contact js-->
-                <script src="<%=request.getContextPath() %>/js/contact.js"></script>
-                <script src="<%=request.getContextPath() %>/js/jquery.ajaxchimp.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/jquery.form.js"></script>
-                <script src="<%=request.getContextPath() %>/js/jquery.validate.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/mail-script.js"></script>
+				<!--contact js-->
+				<script src="<%=request.getContextPath() %>/js/contact.js"></script>
+				<script src="<%=request.getContextPath() %>/js/jquery.ajaxchimp.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/jquery.form.js"></script>
+				<script src="<%=request.getContextPath() %>/js/jquery.validate.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/mail-script.js"></script>
 
-                <script src="<%=request.getContextPath() %>/js/main.js"></script>
-                <script>
+				<script src="<%=request.getContextPath() %>/js/main.js"></script>
+				<script>
                     $('#datepicker').datepicker({
                         iconsLibrary: 'fontawesome',
                         icons: {
@@ -1103,20 +1012,26 @@
                     });
                 </script>
 
-                <!-- 써치 필터 js -->
-                <script src="<%=request.getContextPath() %>/js/js_cal/jquery-3.3.1.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/js_cal/bootstrap.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/js_cal/jquery.magnific-popup.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/js_cal/jquery-ui.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/js_cal/jquery.nice-select.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/js_cal/jquery.slicknav.js"></script>
-                <script src="<%=request.getContextPath() %>/js/js_cal/owl.carousel.min.js"></script>
-                <script src="<%=request.getContextPath() %>/js/js_cal/main.js"></script>
+				<!-- 써치 필터 js -->
+				<script
+					src="<%=request.getContextPath() %>/js/js_cal/jquery-3.3.1.min.js"></script>
+				<script
+					src="<%=request.getContextPath() %>/js/js_cal/bootstrap.min.js"></script>
+				<script
+					src="<%=request.getContextPath() %>/js/js_cal/jquery.magnific-popup.min.js"></script>
+				<script
+					src="<%=request.getContextPath() %>/js/js_cal/jquery-ui.min.js"></script>
+				<script
+					src="<%=request.getContextPath() %>/js/js_cal/jquery.nice-select.min.js"></script>
+				<script
+					src="<%=request.getContextPath() %>/js/js_cal/jquery.slicknav.js"></script>
+				<script
+					src="<%=request.getContextPath() %>/js/js_cal/owl.carousel.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/js_cal/main.js"></script>
+				
+			
+</body>
 
+</html>
 
-
-            </body>
-
-        </html>
-        
-<%@ include file="/views/common/footer.jsp" %>
+<%@ include file="/views/common/footer.jsp"%>

@@ -31,8 +31,6 @@ public class PaymentDao {
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("insertProduct"));
 
-		
-
 			pstmt.setDate(1, pm.getpDateStart());
 			pstmt.setInt(2, pm.getTotalPrice());
 			pstmt.setInt(3, pm.getpNum());
