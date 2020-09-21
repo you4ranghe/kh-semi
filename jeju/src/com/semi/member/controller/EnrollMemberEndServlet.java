@@ -39,6 +39,8 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		m.setUserId(request.getParameter("userId"));
 		m.setUserName(request.getParameter("userName"));
 		
+//		m.setAddress(String.join(",", request.getParameterValues("address")));
+		
 		String email=request.getParameter("email");
 		String phone=request.getParameter("phone");
 		

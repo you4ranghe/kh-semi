@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.semi.member.model.vo.Member,com.semi.common.listener.LoginCheckListener" %>
+<%@ page import="com.semi.member.model.vo.Member,com.semi.common.listener.LoginCheckListener,com.semi.partner.model.vo.Partner" %>
 <%
 	Member logginedMember = (Member)session.getAttribute("logginedMember");
+	Partner logginedPartner=(Partner)session.getAttribute("logginedPartner");
 	int connectCount=LoginCheckListener.getConnectCount();
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,11 +120,17 @@
 												<%if(logginedMember==null){ %>
                                                         <li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
                                                         <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
-	                                         	<%}else{%>
+	                                         	<%}if(logginedMember!=null){%>
 	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
+	                                         			<li><a href="<%=request.getContextPath()%>/partner/enroll?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
 	                                         			<li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
 	                                         			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
+                                   				<%}if(logginedPartner!=null&&logginedMember.getUserId().equals(logginedPartner.getPartnerId())){ %>
+
+	                                   					<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 페이지</a>
                                    				<%} %>
+       
+        		                           		
                                    				<%if(logginedMember!=null&&logginedMember.getUserId().equals("admin")){ %>
                                    						<li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
 	                                         	<%} %>

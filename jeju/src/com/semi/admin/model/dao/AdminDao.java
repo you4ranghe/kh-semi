@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.semi.common.AESCrypto;
 import com.semi.member.model.vo.Member;
 public class AdminDao {
 	
@@ -43,10 +44,18 @@ public class AdminDao {
 				m.setUserName(rs.getString("user_name"));
 				m.setAge(rs.getInt("age"));
 				m.setGender(rs.getString("gender"));
-				m.setEmail(rs.getString("email"));
-				m.setPhone(rs.getString("phone"));
-				m.setAddress(rs.getString("address"));
+				
+				try {
+					m.setEmail(AESCrypto.decrypt(rs.getString("email")));
+					m.setPhone(AESCrypto.decrypt(rs.getString("phone")));
+					System.out.println(m.getEmail()+m.getAddress());
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+				m.setAddress(rs.getString("address"));	
 				m.setEnrolldate(rs.getDate("enrolldate"));
+				
 				//생성된 회원을 List에 넣어주기
 				list.add(m);
 			}

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.semi.member.model.service.MemberService;
 import com.semi.member.model.vo.Member;
+import com.semi.partner.model.service.PartnerService;
+import com.semi.partner.model.vo.Partner;
 
 /**
  * Servlet implementation class LoginEndServlet
@@ -40,12 +42,18 @@ public class LoginEndServlet extends HttpServlet {
 		
 		Member m = new MemberService().loginMember(id,pw);
 		
+		Partner p = new PartnerService().selectPartner(id);
+		
+		System.out.println("파트너 : "+p);
+		
 		System.out.println(m);
 		
 		if(m!=null) {
 
 			HttpSession session=request.getSession();
 			session.setAttribute("logginedMember",m);
+			session.setAttribute("logginedPartner", p);
+			
 			
 			response.sendRedirect(request.getContextPath()); 
 			
