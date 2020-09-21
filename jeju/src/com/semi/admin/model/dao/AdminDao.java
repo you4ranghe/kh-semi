@@ -26,7 +26,7 @@ public class AdminDao {
 		}
 	}
 	
-	
+	//전체회원 리스트 조회dao
 	public List<Member> selectMemberList(Connection conn,int cPage, int numPerPage){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -58,7 +58,7 @@ public class AdminDao {
 		}return list;
 	}
 	
-	
+	//키워드에 따른 검색된 회원 조회 서비스
 	public List<Member> selectMemberSearch(Connection conn, String type, 
 			String keyword, int cPage, int numPerpage){
 		PreparedStatement pstmt=null;
@@ -95,7 +95,7 @@ public class AdminDao {
 			close(pstmt);
 		}return list;
 	}
-	
+	//전체회원수 조회 dao
 	public int selectMemberCount(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -112,7 +112,7 @@ public class AdminDao {
 		}return count;
 	}
 	
-	
+	//키워드로 검색된 회원수 조회 dao
 	public int selectMemberSearchCount(Connection conn, String type, String keyword) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -134,9 +134,24 @@ public class AdminDao {
 		}return count;
 	}
 	
+	//강제 회원 탈퇴 dao
+	public int adminDeleteMember(Connection conn, String userId) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("adminDeleteMember"));
+			pstmt.setString(1, userId);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
 	
 	
-}
+}//클래스
 
 
 

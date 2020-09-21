@@ -88,18 +88,36 @@
 		<%for(Member m : list) {%>
 			<tr>
 				<td>
-					<a href="<%=request.getContextPath()%>/memberView?userId=<%=m.getUserId() %>">
-						<%=m.getUserId() %>
-					</a>
+					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+						<%=m.getUserId() %></a>
 				</td>
-				<td><%=m.getUserNum()%>
-				<td><%=m.getUserName() %></td>
-				<td><%=m.getGender() %></td>
-				<td><%=m.getAge() %></td>
-				<td><%=m.getEmail() %></td>
-				<td><%=m.getPhone() %></td>
-				<td><%=m.getAddress() %></td>
-				<td><%=m.getEnrolldate() %></td>	
+				<td>
+					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+					<%=m.getUserNum()%></a>
+				</td>
+				<td>
+					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+					<%=m.getUserName() %></a>
+				</td>
+				<td>
+					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+						<%=m.getGender() %></a>
+				</td>
+				<td><a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+					<%=m.getAge() %></a>
+				</td>
+				<td><a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+					<%=m.getEmail() %></a>
+				</td>
+				<td><a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+					<%=m.getPhone() %></a>
+				</td>
+				<td><a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+					<%=m.getAddress() %></a>
+				</td>
+				<td><a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
+					<%=m.getEnrolldate() %></a>
+				</td>	
 			</tr>
 		<%} %>	
 		</tbody>
