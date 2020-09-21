@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" %>
+<%@ page import="com.semi.product.model.vo.Product,java.util.List" %>
 
 <%@ include file="/views/common/header.jsp" %>
 
+<%
+	List<Product> list=(List)request.getAttribute("list");
+
+
+%>
 
 <%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css" type="text/css"/>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
@@ -119,6 +125,36 @@ button+div{
 .btn{
 	padding: 20px;
 }
+
+
+	.thumbnail{
+		background-color: rgb(244, 244, 244);
+		radius : 10px;
+		margin:20px;
+	}
+	.img-div{
+		/* 둥글고 좀 여유있게 하기 */
+	width :400px;
+		
+	
+	}
+	.wish,.wishclick{
+		width:20px;
+		height:20px;
+		margin :10px;
+	}
+	.wish:hover,.wishclick:hover{
+		transform: scale(1.5,1.5);
+	}	
+	.caption{
+	margin:0px 10px 10px 10px;
+	}
+	.wishclick{
+		color:red;
+	}
+	
+
+
 </style>
 
 
@@ -269,21 +305,54 @@ button+div{
 </div>
  --%>
  
- 	<h1>전체 상품</h1>
-
-    <div id="products-list-container"> 
-        <div class="travels" z-index="10">
-            <img src="https://www.lottehotel.com/content/dam/lotte-hotel/lotte/jeju/overview/introduction/g-0809.jpg.thumb.768.768.jpg" alt="" z-index="1">
-            <h4>제주 어쩌구 저쩌구 투어</h4>
-			<h5>3.5</h5>
-            <h4 id="price">50000원</h4>
-        </div>
-    </div>
+ 	<h3>최근 등록된 상품<a href="<%=request.getContextPath()%>/product/allProductList" class="more">더보기</a></h3>
+	
+ 	  <%-- <div class="row">
+		<%for(Product p:list){ %>
+		  <div class="col-sm-6 col-lg-4">
+		    <div class="thumbnail img-div" >
+		    
+		    	
+		      <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="400px" height="200px" class="img-rounded"></a>
+		      <a href="" onclick="clickheart();"><img src="<%=request.getContextPath()%>/img/product/transheart.png" class="wish"></a>
+		      <span class="heartspan"><i class="fas fa-heart wish" onclick="javascript:clickheart();"></i></span>
+		      <div class="caption" >
+		        <h3><%=p.getpName() %></h3>
+		        <p><%=p.getpNum() %></p>
+		        <input type="hidden" name=pNum value=<%=p.getpNum() %> >
+		      </div>
+		    </div>
+		  </div>
+		
+	
+	<%} %>
+			</div>
+ --%>			
+			
+	<div id="productList">
+	
+	
+	</div>
+			
+	<%-- <div id="pageBar" class="col-lg-12 text-center">
+		<%=request.getAttribute("pageBar") %>
+	
+	</div>  --%>
 
 
 </section>
 
       <style>
+		.more{
+		font-size:15px;
+		margin:10px;
+		margin-left:50px;
+		}
+
+
+      h3{
+      	margin:10px;
+      }
       h5{
       padding : 10px;
       float:left;
@@ -296,8 +365,41 @@ button+div{
 
 	<script> 
 	
-       $(document).ready(function() {
-           $('#area-select').multiselect();
+	$(".heartspan").on('click','i',function(event){
+		$(event.target).toggleClass("wishclick");
+		console.log($(this).parent().next().children("input").val());
+		$.ajax({
+			
+			url:"<%=request.getContextPath()%>/product/clickHeart.do",
+			 <%-- "userId":<%=logginedMember.getUserId()%>, --%>
+			data:{"productNum":$(this).parent().next().children("input").val()},
+			dataType:"json",
+			success:function(data){
+				
+			},
+			error:function(re,s,e){
+				console.log(s);
+				console.log(e);
+			}
+		});
+	
+		});
+	
+        $(document).ready(function() {
+          
+           $.ajax({
+        	   url:"<%=request.getContextPath()%>/indexProductList",
+  				dataType:"html",
+  				success:data => {
+				console.log(data);
+				$("#productList").html(data);
+				},
+	  			error:function(re,s,e){
+	  				console.log(s);
+	  				console.log(e);
+	  			}
+        	   
+           });
        });
        
        $(function() {

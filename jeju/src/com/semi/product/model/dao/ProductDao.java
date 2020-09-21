@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.semi.product.model.vo.Product;
+import com.semi.product.model.vo.Wish;
 
 public class ProductDao {
 
@@ -27,6 +28,35 @@ public class ProductDao {
 		}
 	}
 	
+	public List<Product> selectAllProductList(Connection conn,int cPage,int numPerPage){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Product> list=new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectProductList2"));
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Product p=new Product();
+				p.setpNum(rs.getInt("p_num"));
+				p.setpName(rs.getString("p_name"));
+				p.setpBigNameEng(rs.getString("p_big_name_eng"));
+				p.setpBigNameKor(rs.getString("p_big_name_kor"));
+				p.setpMap(rs.getString("p_map_address"));
+				p.setTitleImgPath(rs.getString("img_path"));
+				list.add(p);
+			}
+			
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	
 	public Product selectProductList(Connection conn){
 		PreparedStatement pstmt = null;
@@ -82,20 +112,7 @@ public class ProductDao {
 		}return p;
 	}
 	
-	public List<Product> filterProductList(Connection conn,Product p){
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		List<Product> list=new ArrayList();
-		
-		try {
-			pstmt=conn.prepareStatement(prop.getProperty(""));
-			pstmt.setString(1, "");
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
+	
 	
 	public List<Product> selectSearchProductList(Connection conn,String search,int cPage,int numPerPage){
 		PreparedStatement pstmt=null;
@@ -133,7 +150,25 @@ public class ProductDao {
 		
 		return list;
 	}
-	
+	public int selectProductCount(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectProductCount"));
+
+			rs=pstmt.executeQuery();
+		
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+			System.out.println("전체 상품 몇개?"+ result);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	public int selectSearchProductCount(Connection conn,String search) {
 		PreparedStatement pstmt=null;
@@ -151,7 +186,7 @@ public class ProductDao {
 			if(rs.next()) {
 				result=rs.getInt(1);
 			}
-			System.out.println("몇개?"+ result);
+			System.out.println("검색된 상품 몇개?"+ result);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -160,9 +195,49 @@ public class ProductDao {
 	}
 	
 	public int clickHeart(Connection conn,int productNum,String userId) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("clickHeart"));
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, productNum);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
 		
 		
+		return result;
+	}
+	
+	public List<Wish> checkWish(Connection conn, String userId) {
+		PreparedStatement pstmt=null;
+		List<Wish> wishlist=new ArrayList();
+		ResultSet rs=null;
 		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("checkWish"));
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Wish w=new Wish();
+				w.setpNum(rs.getInt("p_num"));
+				w.setUserId(rs.getString("use_id"));
+				wishlist.add(w);
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+			
+		}
+		
+		return wishlist;
 	}
 	
 }

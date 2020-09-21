@@ -28,11 +28,13 @@ public class ClickHeartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String productNum=request.getParameter("productNum");
+		int productNum=Integer.parseInt(request.getParameter("productNum"));
 		String userId=request.getParameter("userId");
 		
 		int result=new ProductService().clickHeart(productNum,userId);
-		
+		if(result!=0) {
+			
+		}
 	
 	
 	
