@@ -5,7 +5,7 @@
 <%
 	Member logginedMember = (Member)session.getAttribute("logginedMember");
 	int connectCount=LoginCheckListener.getConnectCount();
-
+	String search=request.getParameter("searchWord");
 
 %>
 <!DOCTYPE html>
@@ -128,7 +128,7 @@
                                     </div>
                                     <!--end of col-->
                                     <div class="col">
-                                        <input id="searchWord" name="searchWord" class="form-control-borderless" type="search" placeholder="Search">
+                                        <input id="searchWord" name="searchWord" class="form-control-borderless" type="search" placeholder="Search" value="<%=search!=null? search:""%>">
                                     </div>
                                     <!--end of col-->
                                     <div class="col-auto">
@@ -189,8 +189,13 @@
                 </div>
             </div>
         </div>
+    	<script>
+    	
+    	
+    	</script>
+    
     </header>
-
+	
 
     <!-- header-end -->
 

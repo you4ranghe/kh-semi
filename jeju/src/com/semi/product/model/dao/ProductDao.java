@@ -159,5 +159,10 @@ public class ProductDao {
 		return result;
 	}
 	
+	public int clickHeart(Connection conn,int productNum,String userId) {
+		
+		
+		
+	}
 	
 }

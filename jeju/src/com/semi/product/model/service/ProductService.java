@@ -49,4 +49,12 @@ public class ProductService {
 				
 	}
 	
+	public int clickHeart(int productNum, String userId) {
+		Connection conn=getConnection();
+		int result=dao.clickHeart(conn,productNum,userId);
+		close(conn);
+		return result;
+	}
+	
+	
 }
