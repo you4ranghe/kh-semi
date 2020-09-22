@@ -79,4 +79,17 @@ public class ProductService {
 		close(conn);
 		return wishlist;
 	}
+	
+	public int addProduct(Product p) {
+		Connection conn=getConnection();
+		int result=dao.addProduct(conn,p);
+		if(result==1) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	
 }

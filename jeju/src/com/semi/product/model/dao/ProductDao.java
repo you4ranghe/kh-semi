@@ -83,9 +83,9 @@ public class ProductDao {
 				p.setpDateStart(rs.getDate("p_date_start"));
 				p.setpDateFinish(rs.getDate("p_date_finish"));
 				p.setpTime(rs.getString("p_time"));
-				p.setpPeriod(rs.getString("p_period"));
 				
-               p.setgNum(rs.getString("g_num"));
+				
+               
                p.setTitleImgPath(rs.getString("title_img_path"));
                p.setpInfo(rs.getString("p_info"));
                p.setpPointInfo(rs.getString("p_point_info"));
@@ -240,4 +240,41 @@ public class ProductDao {
 		return wishlist;
 	}
 	
+	public int addProduct(Connection conn, Product p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("addProduct"));
+			pstmt.setString(1, p.getpBigNameEng());
+			pstmt.setString(2, p.getpBigNameKor());
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getpPriceA());
+			pstmt.setInt(5, p.getpPriceC());
+			pstmt.setDate(6, p.getpDateStart());
+			pstmt.setDate(7, p.getpDateFinish());
+			pstmt.setString(8, p.getpTime());
+			pstmt.setString(9, p.getTitleImgPath());
+			pstmt.setString(10, p.getpImgPath());
+			pstmt.setString(11, p.getpInfo());
+			pstmt.setString(12, p.getpPointInfo());
+			pstmt.setString(13, p.getpIntd());
+			pstmt.setString(14, p.getRuntime());
+			pstmt.setString(15, p.getSchedule());
+			pstmt.setString(16, p.getPrecaution());
+			pstmt.setString(17, p.getpMapName());
+			pstmt.setString(18, p.getpMap());
+//			pstmt.setString(19, p.getPartnerId());
+			pstmt.setString(19, "user01");
+			
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }

@@ -34,10 +34,20 @@
 	.wishclick{
 		color:red;
 	}
-	
+	 h3{
+      	margin:10px;
+      }
+      h5{
+      padding : 10px;
+      float:left;
+      }
+      h4#price{
+      float:right;
 
 </style>
 <section>
+
+	<h3> 전체 상품 보기</h3>
 	<div class="row">
 		<%for(Product p:list){ %>
 		  <div class="col-sm-6 col-lg-4">
