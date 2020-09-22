@@ -30,7 +30,7 @@
                 
                  <tr>
                     <td class="btn-area">
-                        <button id="btn2" type="submit"  onclick="delete_partner();">탈퇴하기</button>
+                        <button id="btn2" type="submit"  onclick="return delete_partner();">탈퇴하기</button>
                     </td>
                     <td>
                         <button id="btn3" type="button" onclick="location.assign('<%=request.getContextPath()%>');">취소</button>
@@ -43,7 +43,11 @@
     
     <script>
     function delete_partner(){
-    	confirm("파트너를 탈퇴하시겠습니까?");
+    	if(confirm("파트너를 탈퇴하시겠습니까?")){
+    		
+    	}else{
+    		return false;
+    	};
     }
     
     
