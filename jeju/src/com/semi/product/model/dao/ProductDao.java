@@ -53,7 +53,11 @@ public class ProductDao {
 			
 		}catch(SQLException e){
 			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
 		}
+		
 		
 		return list;
 	}
@@ -146,7 +150,11 @@ public class ProductDao {
 			System.out.println();
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
 		}
+		
 		
 		return list;
 	}
@@ -165,7 +173,11 @@ public class ProductDao {
 			System.out.println("전체 상품 몇개?"+ result);
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
 		}
+		
 		
 		return result;
 	}
@@ -189,7 +201,11 @@ public class ProductDao {
 			System.out.println("검색된 상품 몇개?"+ result);
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
 		}
+		
 		
 		return result;
 	}
@@ -277,4 +293,11 @@ public class ProductDao {
 		
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
 }

@@ -21,9 +21,10 @@
 
 </style>
 <section>
-
+<%@ include file="/views/common/partnerSide.jsp"%>
 <div id="container">
-	<form action="<%=request.getContextPath() %>/partner/addProduct" method="post" enctype="multipart/form-data">
+
+	<form action="<%=request.getContextPath() %>/partner/addProductEnd" method="post" enctype="multipart/form-data">
 		<table class="table-bordered" >
 			<tr>
 				<th>상품 이름</th>

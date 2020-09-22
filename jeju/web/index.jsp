@@ -334,10 +334,7 @@ button+div{
 	
 	</div>
 			
-	<%-- <div id="pageBar" class="col-lg-12 text-center">
-		<%=request.getAttribute("pageBar") %>
-	
-	</div>  --%>
+	<a href="<%=request.getContextPath()%>/partner/partnerProductList"><button class="btn-info">파트너페이지</button></a>
 
 
 </section>
