@@ -4,30 +4,6 @@
     margin: 0; padding:0; box-sizing:border-box;
 }
 
-/* body{
-    font-family: 'Do Hyeon', sans-serif;
-    display:flex;
-    justify-content : center;
-    align-items: center;
-    height:100vh;
-    background : url(../img/enrollback.jpg) no-repeat center;
-    background-size : cover;
-}
-
-body ::before{
-     content: "";
-    position:  absolute;
-    z-index: 1;
-    top: 0; right: 0; left: 0; bottom: 0;
-    background-color: rgba(0,0,0,.7);
-}
-
-.login-form h1{
-    font-size:32px;color:#fff;
-    text-align: center;
-    margin-bottom: 60px;
-} */
-
 .file_input label {
     position:relative;
     cursor:pointer;
@@ -59,13 +35,30 @@ body ::before{
     
 }
 
-#Loading2{
-	border:0.5px yellowgreen dotted;
-	width:80px;
-	height:80px;
-    border-radius:40px;
-    
+
+/* body{
+    font-family: 'Do Hyeon', sans-serif;
+    display:flex;
+    justify-content : center;
+    align-items: center;
+    height:100vh;
+    background : url(../img/enrollback.jpg) no-repeat center;
+    background-size : cover;
 }
+
+body ::before{
+     content: "";
+    position:  absolute;
+    z-index: 1;
+    top: 0; right: 0; left: 0; bottom: 0;
+    background-color: rgba(0,0,0,.7);
+}
+
+.login-form h1{
+    font-size:32px;color:#fff;
+    text-align: center;
+    margin-bottom: 60px;
+} */
 
 .mypage_img{
     background : url(../img/mypageimg.jpg) no-repeat center;
@@ -92,9 +85,11 @@ body ::before{
     position: relative;
     left:110px;
     top:10px;
-    width:500px;
-    height:100vh;
+    width:400px;
+    height:500px;
     display: inline-block;
+
+
 }
 
 
@@ -104,7 +99,7 @@ body ::before{
     z-index: 2;
     top:50px;
     width:530px;
-    height:100vh;
+    height:550px;
     /* border :3px solid red; */
 
 }
@@ -203,8 +198,8 @@ th{
 #btn2{
     position: relative;
     top:10px;
-    left:110px;
-    width:130px; height:50px;
+    left:105px;
+    width:100px; height:50px;
     background : olivedrab;
     color : #fff;
     font-size:20px;
@@ -216,7 +211,7 @@ th{
 }
 #btn3{
     position: relative;
-    left:110px;
+    left:105px;
     top:10px;
     width:100px ;height:50px;
     background : darkgray;

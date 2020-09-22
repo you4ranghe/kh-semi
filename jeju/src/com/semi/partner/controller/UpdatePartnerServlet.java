@@ -11,22 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.common.MyFileRename;
 import com.semi.partner.model.service.PartnerService;
 import com.semi.partner.model.vo.Partner;
 
 /**
- * Servlet implementation class EnrollPartnerEnd
+ * Servlet implementation class UpdatePartnerServlet
  */
-@WebServlet("/partner/enrollPartnerEnd")
-public class EnrollPartnerEndServlet extends HttpServlet {
+@WebServlet("/partner/updatePartner")
+public class UpdatePartnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EnrollPartnerEndServlet() {
+    public UpdatePartnerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,49 +36,36 @@ public class EnrollPartnerEndServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(!ServletFileUpload.isMultipartContent(request)) {
-			request.setAttribute("msg", "파트너 신청 오류[form:enctype 관리자에게 문의해주세요]");
-			request.setAttribute("loc", "/");
+			request.setAttribute("msg", "파트너 정보 수정오류[form:enctype 관리자에게 문의해주세요]");
+			request.setAttribute("loc","/");
 			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
-			return;
 		}
-		System.out.println(getServletContext().getRealPath("/"));
-		
-		String path=getServletContext().getRealPath("/")+"upload/partner";
-		int maxSize=1024*1024*10;
+		String path = getServletContext().getRealPath("/")+"upload/partner";
 		String encode="utf-8";
+		int MaxSize=1024*1024*10;
+		MultipartRequest mr = new MultipartRequest(request, path, MaxSize, encode, new MyFileRename());
 		
-//		MultipartRequest mr=new MultipartRequest(request, path, maxSize, encode, new DefaultFileRenamePolicy());
-		MultipartRequest mr=new MultipartRequest(request, path, maxSize, encode, new MyFileRename());
-		
-		Partner p = new Partner();
+		Partner p  = new Partner();
 		p.setIdCardImgOriginal(mr.getOriginalFileName("idcard"));
 		p.setIdCardImgRename(mr.getFilesystemName("idcard"));
+		p.setPartnerId(mr.getParameter("partnerId"));
 		p.setPartnerImgOriginal(mr.getOriginalFileName("profile"));
 		p.setPartnerImgRename(mr.getFilesystemName("profile"));
-		p.setPartnerId(mr.getParameter("userId"));
-		p.setPartnerNick(mr.getParameter("nickname"));
+		p.setPartnerNick(mr.getParameter("partnerNick"));
 		
-		System.out.println(p);
+		int result = new PartnerService().updatePartner(p);
 		
-		int result = new PartnerService().insertPartner(p);
-	
 		String msg="";
 		String loc="/";
 		
 		if(result>0) {
-			msg="파트너가 되신걸 환영합니다 :-)";
-		
-		}
-		else {
-			msg="파트너 등록에 실패하였습니다";
-		
+			msg="파트너 정보를 성공적으로 수정하였습니다";
+		}else {
+			msg="파트저 정보 수정에 실패하였습니다";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
-		
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
-		
-		
 	}
 
 	/**

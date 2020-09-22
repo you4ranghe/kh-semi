@@ -26,7 +26,7 @@ public class PartnerDao {
 		}
 	}
 	
-	//파트너 가입 서비스
+	//파트너 가입 서비스 dao
 	public int insertPartner(Connection conn ,Partner p) {
 		PreparedStatement pstmt=null;
 		int result=0;
@@ -50,7 +50,7 @@ public class PartnerDao {
 		
 	}
 	
-	//파트너 아이디로 조회
+	//파트너 아이디로 조회 dao
 	public Partner selectPartner(Connection conn, String userId) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -80,5 +80,46 @@ public class PartnerDao {
 			close(pstmt);
 		}return p;
 	}
+	
+	//파트너 정보 수정 dao
+	public int updatePartner(Connection conn, Partner p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updatePartner"));
+			pstmt.setString(1, p.getPartnerImgOriginal());
+			pstmt.setString(2, p.getPartnerImgRename());
+			pstmt.setString(3, p.getIdCardImgOriginal());
+			pstmt.setString(4, p.getIdCardImgRename());
+			pstmt.setString(5, p.getPartnerNick());
+			pstmt.setString(6, p.getPartnerId());
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	//회원 탈퇴 dao
+	public int deletePartner(Connection conn, String partnerId) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("deletePartner"));
+			pstmt.setString(1, partnerId);
+			
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 
 }//클래스

@@ -8,7 +8,7 @@
 
 
 <section id="member-viewForm">
-	<form id="MypageFrm" action="<%=request.getContextPath() %>/partner/enrollPartnerEnd?userId=<%=m.getUserId() %>" method="post">
+	<form id="MypageFrm" action="<%=request.getContextPath() %>/partner/enrollPartnerEnd?userId=<%=m.getUserId() %>" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>아이디</th>
@@ -43,23 +43,39 @@
 			</tr>
 			
 			<tr>
-				<th>프로필 사진</th>
-				<td class="int-area">
-					<td><input type="file" name="profile" id="profile"></td>
+				<th>프로필사진</th>
+					<td>
+						<img id="Loading"></td>
+					<td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="file_input">
+					<label>사진첨부
+						<pre class="brush.html"><input type="file" id="profile" name="profile" onchange="LoadImg(this);" required></pre>
+					</label>
 				</td>
 			</tr>
 			
 			<tr>
-				<th>주민동록 사진</th>
-				<td class="int-area">
-					<td><input type="file" name="idcard" id="idcard"></td>
+				<th>주민등록사진</th>
+					<td>
+						<img id="Loading2"></td>
+					<td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="file_input">
+					<label>사진첨부
+						<pre class="brush.html"><input type="file" id="idcard" name="idcard" onchange="LoadImg2(this);" required></pre>
+					</label>
 				</td>
 			</tr>
 			
 			<tr>
 				<th>파트너 닉네임</th>
 				<td class="int-area">
-					<input type="text" name="nickname" id="nickname">
+					<input type="text" name="nickname" id="nickname" autocomplete="off" required>
 				</td>
 			</tr>
 			
@@ -78,6 +94,25 @@
 </section>
 
 <script>
+function LoadImg(value){
+if(value.files&&value.files[0]){
+	var reader =new FileReader();
+	reader.onload=function(e){
+		$("#Loading").attr("src",e.target.result);
+	}
+	reader.readAsDataURL(value.files[0]);
+}
+}
+
+function LoadImg2(value){
+if(value.files&&value.files[0]){
+	var reader =new FileReader();
+	reader.onload=function(e){
+		$("#Loading2").attr("src",e.target.result);
+	}
+	reader.readAsDataURL(value.files[0]);
+}
+}
 
 function enroll_partner(){
 	
