@@ -154,7 +154,24 @@ button+div{
 	}
 	
 
+	.more{
+		font-size:15px;
+		margin:10px;
+		margin-left:50px;
+		}
 
+
+      h3{
+      	margin:10px;
+      }
+      h5{
+      padding : 10px;
+      float:left;
+      }
+      h4#price{
+      float:right;
+      
+      }
 </style>
 
 
@@ -339,26 +356,6 @@ button+div{
 
 </section>
 
-      <style>
-		.more{
-		font-size:15px;
-		margin:10px;
-		margin-left:50px;
-		}
-
-
-      h3{
-      	margin:10px;
-      }
-      h5{
-      padding : 10px;
-      float:left;
-      }
-      h4#price{
-      float:right;
-      
-      }
-	</style>
 
 	<script> 
 	

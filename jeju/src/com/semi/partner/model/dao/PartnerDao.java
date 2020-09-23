@@ -45,7 +45,7 @@ public class PartnerDao {
 				p.setpBigNameEng(rs.getString("p_big_name_eng"));
 				p.setpBigNameKor(rs.getString("p_big_name_kor"));
 				p.setpMap(rs.getString("p_map_address"));
-				//p.setTitleImgPath(rs.getString("p_img_path"));
+				p.setTitleImgPath(rs.getString("title_img_path"));
 				list.add(p);
 			}
 			
@@ -83,5 +83,22 @@ public class PartnerDao {
 		return result;
 	}
 	
+	public int deleteProduct(Connection conn, int pNum) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("deleteProduct"));
+			pstmt.setInt(1, pNum);
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		return result;
+		
+	}
 	
 }

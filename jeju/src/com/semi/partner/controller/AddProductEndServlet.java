@@ -123,7 +123,7 @@ public class AddProductEndServlet extends HttpServlet {
 				String loc="";
 				if(result>0) {
 					msg="상품이 등록되었습니다!";
-					loc="/views/partner/partnerProductList.jsp";//나중에 바로 상세페이지로 옮겨가기
+					loc="/partner/partnerProductList";//나중에 바로 상세페이지로 옮겨가기
 				}else {
 					msg="상품 등록에 실패하였습니다.";
 					loc="/"; //나중에 상품등록 페이지가는걸로 바꾸기

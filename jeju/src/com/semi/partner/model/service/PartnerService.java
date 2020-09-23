@@ -1,6 +1,8 @@
 package com.semi.partner.model.service;
 
 import static com.semi.common.JDBCTemplate.close;
+import static com.semi.common.JDBCTemplate.commit;
+import static com.semi.common.JDBCTemplate.rollback;
 import static com.semi.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
@@ -27,5 +29,16 @@ public class PartnerService {
 		return count;
 		
 	}
+	
+	public int deleteProduct(int pNum) {
+		Connection conn=getConnection();
+		int result=dao.deleteProduct(conn,pNum);
+		if(result==1) commit(conn);
+		else rollback(conn);
+		
+		return result;
+		
+	}
+	
 	
 }
