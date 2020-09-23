@@ -13,6 +13,7 @@ import java.util.Properties;
 import com.semi.member.model.vo.Member;
 
 
+
 public class MemberDao {
 	
 	private Properties prop= new Properties();
@@ -42,7 +43,7 @@ public class MemberDao {
 			
 			if(rs.next()) {
 			m=new Member();
-			m.setUserNum(rs.getInt("user_num"));
+			
 			m.setUserId(rs.getString("user_id"));
 			m.setPassword(rs.getString("password"));
 			m.setUserName(rs.getString("user_name"));
@@ -60,6 +61,7 @@ public class MemberDao {
 			close(rs);
 			close(conn);
 		}return m;
+
 	}
 	
 	//회원가입 dao
@@ -101,7 +103,7 @@ public class MemberDao {
 			
 			if(rs.next()) {
 				m=new Member();
-				m.setUserNum(rs.getInt("user_num"));
+				
 				m.setUserId(rs.getString("user_id"));
 				m.setPassword(rs.getString("password"));
 				m.setUserName(rs.getString("user_name"));
@@ -119,6 +121,7 @@ public class MemberDao {
 			close(rs);
 			close(pstmt);
 		}return m;
+
 	}
 
 	//회원정보 수정 dao

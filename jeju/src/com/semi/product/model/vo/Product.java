@@ -13,7 +13,7 @@ public class Product {
 	private Date pDateStart;
 	private Date pDateFinish;
 	private String pTime;
-
+	
 	private String titleImgPath;
 	private String pImgPath;
 	private String pInfo;
@@ -22,19 +22,20 @@ public class Product {
 	private String runtime;
 	private String scheduleImgPath;
 	private String precaution;
-	private String pMapName;
+	private String pMapAddress;
 	private String pMap;
 	private int pScore;
-	private int partnerNum;
-	
+
+	private String partnerId;
+
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Product(int pNum, String pBigNameEng, String pBigNameKor, String pName, int pPriceA, int pPriceC,
 			Date pDateStart, Date pDateFinish, String pTime, String titleImgPath, String pImgPath, String pInfo,
-			String pPointInfo, String pIntd, String runtime, String scheduleImgPath, String precaution, String pMapName,
-			String pMap, int pScore, int partnerNum) {
+			String pPointInfo, String pIntd, String runtime, String scheduleImgPath, String precaution,
+			String pMapAddress, String pMap, int pScore, String partnerId) {
 		super();
 		this.pNum = pNum;
 		this.pBigNameEng = pBigNameEng;
@@ -53,10 +54,10 @@ public class Product {
 		this.runtime = runtime;
 		this.scheduleImgPath = scheduleImgPath;
 		this.precaution = precaution;
-		this.pMapName = pMapName;
+		this.pMapAddress = pMapAddress;
 		this.pMap = pMap;
 		this.pScore = pScore;
-		this.partnerNum = partnerNum;
+		this.partnerId = partnerId;
 	}
 
 	public int getpNum() {
@@ -195,12 +196,12 @@ public class Product {
 		this.precaution = precaution;
 	}
 
-	public String getpMapName() {
-		return pMapName;
+	public String getpMapAddress() {
+		return pMapAddress;
 	}
 
-	public void setpMapName(String pMapName) {
-		this.pMapName = pMapName;
+	public void setpMapAddress(String pMapAddress) {
+		this.pMapAddress = pMapAddress;
 	}
 
 	public String getpMap() {
@@ -219,12 +220,12 @@ public class Product {
 		this.pScore = pScore;
 	}
 
-	public int getPartnerNum() {
-		return partnerNum;
+	public String getPartnerId() {
+		return partnerId;
 	}
 
-	public void setPartnerNum(int partnerNum) {
-		this.partnerNum = partnerNum;
+	public void setPartnerId(String partnerId) {
+		this.partnerId = partnerId;
 	}
 
 	@Override
@@ -233,16 +234,12 @@ public class Product {
 				+ pName + ", pPriceA=" + pPriceA + ", pPriceC=" + pPriceC + ", pDateStart=" + pDateStart
 				+ ", pDateFinish=" + pDateFinish + ", pTime=" + pTime + ", titleImgPath=" + titleImgPath + ", pImgPath="
 				+ pImgPath + ", pInfo=" + pInfo + ", pPointInfo=" + pPointInfo + ", pIntd=" + pIntd + ", runtime="
-				+ runtime + ", scheduleImgPath=" + scheduleImgPath + ", precaution=" + precaution + ", pMapName="
-				+ pMapName + ", pMap=" + pMap + ", pScore=" + pScore + ", partnerNum=" + partnerNum + "]";
+				+ runtime + ", scheduleImgPath=" + scheduleImgPath + ", precaution=" + precaution + ", pMapAddress="
+				+ pMapAddress + ", pMap=" + pMap + ", pScore=" + pScore + ", partnerId=" + partnerId + "]";
 	}
 
 	
 	
+
 	
-	
-	
-	
-	
-	
-	}
+}

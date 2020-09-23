@@ -14,6 +14,8 @@ import java.util.Properties;
 
 
 import com.semi.product.model.vo.Product;
+import com.semi.product.model.vo.Wish;
+
 
 public class ProductDao {
 
@@ -28,8 +30,49 @@ public class ProductDao {
 		}
 	}
 	
+	public List<Product> selectAllProductList(Connection conn,int cPage,int numPerPage){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Product> list=new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectProductList2"));
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Product p=new Product();
+				p.setpNum(rs.getInt("p_num"));
+				p.setpName(rs.getString("p_name"));
+				p.setpBigNameEng(rs.getString("p_big_name_eng"));
+				p.setpBigNameKor(rs.getString("p_big_name_kor"));
+				p.setpMap(rs.getString("p_map_address"));
+				p.setTitleImgPath(rs.getString("title_img_path"));
+				list.add(p);
+			}
+			
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
 	
-	public List<Product> selectProductList(Connection conn){
+	
+	
+	
+	
+	
+	//
+	
+	
+	public List<Product> selectProductList(Connection conn, int pNum){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Product> list = new ArrayList();
@@ -37,10 +80,14 @@ public class ProductDao {
 		
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("selectProductList"));
+			pstmt.setInt(1, pNum);
 			rs = pstmt.executeQuery();
-					
+
 			while(rs.next()) {
+
 				Product p = new Product();
+
+				p = new Product();
 				p.setpNum(rs.getInt("p_num"));
 				p.setpBigNameEng(rs.getString("p_big_name_eng"));
 				p.setpBigNameKor(rs.getString("p_big_name_kor"));
@@ -59,10 +106,10 @@ public class ProductDao {
                p.setRuntime(rs.getString("runtime"));
                p.setScheduleImgPath(rs.getString("schedule_img_path"));
                p.setPrecaution(rs.getString("precaution"));
-               p.setpMapName(rs.getString("p_map_name"));
+               p.setpMapAddress(rs.getString("p_map_address"));
                p.setpMap(rs.getString("p_map"));
                p.setpScore(rs.getInt("p_score"));
-               p.setPartnerNum(rs.getInt("partner_num"));
+               p.setPartnerId(rs.getString("partner_id"));
 	               
 	           list.add(p);
 	           
@@ -79,32 +126,32 @@ public class ProductDao {
 		}return list;
 	}
 	
-	public int selectProductCount(Connection conn) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectProductCount"));
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-			
-		}return result;
-	}
-	
-	public Product selectProductOne(Connection conn, int no) {
+//	public int selectProductCount(Connection conn) {
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		int result = 0;
+//		try {
+//			pstmt = conn.prepareStatement(prop.getProperty("selectProductCount"));
+//			rs = pstmt.executeQuery();
+//			if(rs.next()) {
+//				result = rs.getInt(1);
+//			}
+//		}catch(SQLException e) {
+//			e.printStackTrace();
+//		}finally {
+//			close(rs);
+//			close(pstmt);
+//			
+//		}return result;
+//	}
+//	
+	public Product selectProductOne(Connection conn, int pNum) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Product p =null;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("selectProductOne"));
-			pstmt.setInt(1, no);
+			pstmt.setInt(1, pNum);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				 p = new Product();
@@ -126,10 +173,10 @@ public class ProductDao {
                p.setRuntime(rs.getString("runtime"));
                p.setScheduleImgPath(rs.getString("schedule_img_path"));
                p.setPrecaution(rs.getString("precaution"));
-               p.setpMapName(rs.getString("p_map_name"));
+               p.setpMapAddress(rs.getString("p_map_address"));
                p.setpMap(rs.getString("p_map"));
                p.setpScore(rs.getInt("p_score"));
-               p.setPartnerNum(rs.getInt("partner_num"));
+               p.setPartnerId(rs.getString("partner_id"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -139,5 +186,194 @@ public class ProductDao {
 		}return p;
 		
 	}
+	
+	
+	
+	public List<Product> selectSearchProductList(Connection conn,String search,int cPage,int numPerPage){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Product> list=new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectSearchProductList"));
+
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setString(2, "%"+search+"%");
+			pstmt.setString(3, "%"+search+"%");
+			pstmt.setString(4, "%"+search+"%");
+			pstmt.setInt(5, (cPage-1)*numPerPage+1);
+			pstmt.setInt(6, cPage*numPerPage);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Product p=new Product();
+				p.setpNum(rs.getInt("p_num"));
+				p.setpName(rs.getString("p_name"));
+				p.setpBigNameEng(rs.getString("p_big_name_eng"));
+				p.setpBigNameKor(rs.getString("p_big_name_kor"));
+				p.setpMap(rs.getString("p_map_address"));
+				p.setTitleImgPath(rs.getString("img_path"));
+				list.add(p);
+				
+			}
+			for(Product p:list) {
+				System.out.println("상품이름"+p.getpName());
+			}
+			System.out.println();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	public int selectProductCount(Connection conn) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectProductCount"));
+
+			rs=pstmt.executeQuery();
+		
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+			System.out.println("전체 상품 몇개?"+ result);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+	
+	public int selectSearchProductCount(Connection conn,String search) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectSearchProductCount"));
+
+			pstmt.setString(1, "%"+search+"%");
+			pstmt.setString(2, "%"+search+"%");
+			pstmt.setString(3, "%"+search+"%");
+			pstmt.setString(4, "%"+search+"%");
+			rs=pstmt.executeQuery();
+		
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
+			System.out.println("검색된 상품 몇개?"+ result);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+	
+	public int clickHeart(Connection conn,int productNum,String userId) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("clickHeart"));
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, productNum);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+	
+	public List<Wish> checkWish(Connection conn, String userId) {
+		PreparedStatement pstmt=null;
+		List<Wish> wishlist=new ArrayList();
+		ResultSet rs=null;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("checkWish"));
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Wish w=new Wish();
+				w.setpNum(rs.getInt("p_num"));
+				w.setUserId(rs.getString("use_id"));
+				wishlist.add(w);
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+			
+		}
+		
+		return wishlist;
+	}
+	
+	public int addProduct(Connection conn, Product p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("addProduct"));
+			pstmt.setString(1, p.getpBigNameEng());
+			pstmt.setString(2, p.getpBigNameKor());
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getpPriceA());
+			pstmt.setInt(5, p.getpPriceC());
+			pstmt.setDate(6, p.getpDateStart());
+			pstmt.setDate(7, p.getpDateFinish());
+			pstmt.setString(8, p.getpTime());
+			pstmt.setString(9, p.getTitleImgPath());
+			pstmt.setString(10, p.getpImgPath());
+			pstmt.setString(11, p.getpInfo());
+			pstmt.setString(12, p.getpPointInfo());
+			pstmt.setString(13, p.getpIntd());
+			pstmt.setString(14, p.getRuntime());
+			pstmt.setString(15, p.getScheduleImgPath());
+			pstmt.setString(16, p.getPrecaution());
+			pstmt.setString(17, p.getpMapAddress());
+			pstmt.setString(18, p.getpMap());
+//			pstmt.setString(19, p.getPartnerId());
+			pstmt.setString(19, "user01");
+			
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
 	
 }

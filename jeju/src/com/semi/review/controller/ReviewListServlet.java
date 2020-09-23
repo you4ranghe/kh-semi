@@ -36,10 +36,10 @@ public class ReviewListServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		
-//		int no = Integer.parseInt(request.getParameter("pNum"));
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
 		
 
-		List<Review> reviewList = new ReviewService().selectReviewList();
+		List<Review> reviewList = new ReviewService().selectReviewList(pNum);
 		request.setAttribute("reviewList", reviewList);
 
 		

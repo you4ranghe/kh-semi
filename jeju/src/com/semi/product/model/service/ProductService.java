@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.semi.product.model.dao.ProductDao;
 import com.semi.product.model.vo.Product;
+import com.semi.product.model.vo.Wish;
 
 import static com.semi.common.JDBCTemplate.commit;
 import static com.semi.common.JDBCTemplate.rollback;
@@ -15,28 +16,116 @@ public class ProductService {
 
 	private ProductDao dao = new ProductDao();
 	
-	public List<Product> selectProductList(){
-		Connection conn = getConnection();
-		List<Product> list = dao.selectProductList(conn);
-
-		close(conn);
-		return list;
-	
-	}
-	
-	public int selectProductCount() {
-		Connection conn = getConnection();
-		int count = dao.selectProductCount(conn);
-		close(conn);
-		return count;
-	}
-	
-	public Product selectBoardOne(int no) {
+//	public List<Product> selectProductList(){
+//		Connection conn = getConnection();
+//		List<Product> list = dao.selectProductList(conn);
+//
+//		close(conn);
+//		return list;
+//	
+//	}
+//	
+//	public int selectProductCount() {
+//		Connection conn = getConnection();
+//		int count = dao.selectProductCount(conn);
+//		close(conn);
+//		return count;
+//	}
+//	
+	public Product selectProductOne(int pNum) {
 		Connection conn=getConnection();
-		Product p =dao.selectProductOne(conn,no);
+		Product p =dao.selectProductOne(conn,pNum);
 		
 		
 		close(conn);
 		return p;
 	}
-}
+	
+	
+	
+	
+	
+	
+	
+	
+	// 정연
+	
+	
+	public List<Product> selectAllProductList(int cPage,int numPerPage){
+		Connection conn=getConnection();
+		List<Product> list=dao.selectAllProductList(conn,cPage,numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	public List<Product> selectProductList(int pNum){
+		Connection conn = getConnection();
+		List<Product> list = dao.selectProductList(conn,pNum);
+		close(conn);
+		//System.out.println(p.toString());
+		return list;
+	
+	}
+	
+	public List<Product> selectSearchProductList(String search,int cPage,int numPerPage){
+		
+		Connection conn=getConnection();
+		List<Product> list=dao.selectSearchProductList(conn,search,cPage,numPerPage);
+		
+		close(conn);
+		
+		return list;
+		
+	}
+	
+	public int selectProductCount() {
+		Connection conn=getConnection();
+		int count=dao.selectProductCount(conn);
+		close(conn);
+		return count;
+		
+	}
+	
+	public int selectSearchProductCount(String search) {
+		Connection conn=getConnection();
+		int count=dao.selectSearchProductCount(conn,search);
+		
+		close(conn);
+		return count;
+				
+	}
+	
+	public int clickHeart(int productNum, String userId) {
+		Connection conn=getConnection();
+		int result=dao.clickHeart(conn,productNum,userId);
+		
+		if(result==1) commit(conn);
+		else rollback(conn);
+					
+		close(conn);
+		
+		return result;
+	}
+	
+	public List<Wish> checkWish(String userId) {
+		Connection conn=getConnection();
+		List<Wish> wishlist=dao.checkWish(conn,userId);
+		close(conn);
+		return wishlist;
+	}
+	
+	public int addProduct(Product p) {
+		Connection conn=getConnection();
+		int result=dao.addProduct(conn,p);
+		if(result==1) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	
+
+
+
+	}

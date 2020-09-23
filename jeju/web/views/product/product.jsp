@@ -9,11 +9,15 @@
 <%@page import="com.semi.review.model.vo.Review"%>
 
 <%
-	Product p = (Product)request.getAttribute("product");
+	Product p = (Product)request.getAttribute("p");
+	//List<Product> plist = (List)request.getAttribute("productList");
+	
 	Payment pm = (Payment)request.getAttribute("payment");
+	
 	WishList wl = (WishList)request.getAttribute("wishlist");
+	
 	Review r = (Review)request.getAttribute("review");
-	List<Review> list = (List)request.getAttribute("list"); 
+	List<Review> rlist = (List)request.getAttribute("reviewList"); 
 
 %>
 
@@ -79,7 +83,9 @@
         href="https://browsehappy.com/">upgrade your browser</a> to improve your
         experience and security.</p> <![endif]-->
 
+<%-- <input type="hidden" value="${p.pNum}"> --%>
 
+<%-- <c:forEach var="p" items="${productList}" > --%>
 
 	<div class="destination_banner_wrap overlay">
 		<div class="destination_text text-center">
@@ -264,7 +270,7 @@
 
 						<!-- 아이디넘기기 -->
 						<input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>"> 
-						<input type="hidden" name="pNum" value='${p.pNum}'>
+						<input type="hidden" name="pNum" value='${p.pNum}'> 
 
 
 
@@ -301,7 +307,7 @@
 					<div class="single-post">
 						<div class="feature-img">
 							<img class="img-fluid"
-								src="<%=request.getContextPath() %>/img/destination/jeju_yacht.png"
+								src="<%=request.getContextPath() %>${p.titleImgPath}%>"
 								alt="">
 						</div>
 
@@ -532,7 +538,7 @@
 						<div class="board-title">
 							<h3 class="info-title">MEETING PLACE</h3>
 							<h4>위치：GRANDEBLEU 탑승장소</h4>
-							<div class="text-grey">${p.pMapName}</div>
+							<div class="text-grey">${p.pMapAddress}</div>
 						</div>
 
 						<hr>
@@ -556,6 +562,7 @@
 
 					</div>
 					<!-----♥♥♥♥♥♥♥집합장소 지도 끝♥♥♥♥♥♥♥----->
+
 
 
 
@@ -586,7 +593,6 @@
 ${movie}<br>
 ${status.index}
 </c:forEach>
-
  --%>
 
     
@@ -626,7 +632,7 @@ ${status.index}
 												<a href="#" class="btn-reply text-uppercase">reply</a>
 												<input type="hidden" value="${e.reviewNum}">
 												<input type="hidden" value="${e.reviewScore}">
-												<input type="hidden" value="${e.poNum}">
+												<input type="hidden" value="$(e.poNum}">
 												<input type="hidden" value="${e.reviewViews}">
 												<input type="hidden" value="${e.pNum}">
 											</div>
@@ -706,8 +712,7 @@ ${status.index}
 
 
 
-
-					<div class="comment-form">
+			<div class="comment-form">
 						<h4>LEAVE A REVIEW</h4>
 						
 						<form class="form-contact comment_form" action="<%=request.getContextPath()%>/review/reviewEndServlet" id="commentForm" method="post">
@@ -732,7 +737,7 @@ ${status.index}
 							<!-- 작성자 -->
 							<div class="col-sm-6">
 								<div class="form-group">
-									<input class="form-control" name="reviewWriter" id="reviewWriter" type="text" value="<%=logginedMember!=null?logginedMember.getUserId():"" %>" placeholder="Name" readonly>
+									<input class="form-control" name="reviewWriter" id="reviewWriter" type="text" value="<%=logginedMember.getUserId()%>" placeholder="Name" readonly>
 								</div>
 							</div>
 							
@@ -779,21 +784,13 @@ ${status.index}
 									<span class="starR">별5</span> 
 								</div>
  -->
-
-							<%if(r.getpoNum().equals(pm.getpoNum()){ %>
+							
 							<div class="form-group">
 								<button type="submit" class="button button-contactForm btn_1 boxed-btn" 
 								onclick = "function validate();" >
 									Leave Review</button>
 							</div>
-							<%} else{%>
-							<script>
-							$(function(){
-					    			alert("상품을 구매하신 분만 작성할 수 있습니다");
-					    			//$("#userId").focus(); 
-					    		});
-							</script>
-							<%} %>
+							
 							
 						</form>
 				
@@ -814,12 +811,7 @@ ${status.index}
 						
 					</div>
 				</div>
-
 				
-
-
-
-
 				<div class="col-lg-4">
 					<div class="blog_right_sidebar">
 						<aside class="single_sidebar_widget search_widget">
@@ -852,19 +844,13 @@ ${status.index}
 										<p>CHILDREN &nbsp;</p>
 										<p>${p.pPriceC}</p>
 								</a></li>
-
-
 							</div>
 							
-
 							 
 							<!--  원래가격 : <span id='total_price'>0</span>원
                                 <form name='price_exec' method='get' onSubmit='submit_value();'> -->
-
 							<!--  금액 : <input type="text" name="sum" size="11" readonly> 원 -->
-
 						</aside>
-
 							  <div class="review-score">
                                     <div class="review-badge">${p.pScore }</div>
                                     <div class="product-star text-sm">
@@ -875,22 +861,18 @@ ${status.index}
                                             <a href="#">★</a>
                                             <a href="#">★</a>
                                         </p>
-
                                     </div>
                                 </div>
                                 
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</section>
-	<!--================ Blog Area end =================-->
 
+	<!--================ Blog Area end =================-->
 	</div>
 	<!-- </div> </div> -->
-
 	<!-- newletter_area_start -->
 	<div class="newletter_area overlay">
 		<div class="container">
@@ -926,7 +908,6 @@ ${status.index}
 		</div>
 	</div>
 	<!-- newletter_area_end -->
-
 	<div class="popular_places_area">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -1021,7 +1002,6 @@ ${status.index}
 </div>
 </div>
 </div>
-
 				<!-- Modal -->
 				<div class="modal fade custom_search_pop" id="exampleModalCenter"
 					tabindex="-1" role="dialog"
@@ -1063,14 +1043,12 @@ ${status.index}
 				<script src="<%=request.getContextPath() %>/js/plugins.js"></script>
 				<script src="<%=request.getContextPath() %>/js/gijgo.min.js"></script>
 				<script src="<%=request.getContextPath() %>/js/slick.min.js"></script>
-
 				<!--contact js-->
 				<script src="<%=request.getContextPath() %>/js/contact.js"></script>
 				<script src="<%=request.getContextPath() %>/js/jquery.ajaxchimp.min.js"></script>
 				<script src="<%=request.getContextPath() %>/js/jquery.form.js"></script>
 				<script src="<%=request.getContextPath() %>/js/jquery.validate.min.js"></script>
 				<script src="<%=request.getContextPath() %>/js/mail-script.js"></script>
-
 				<script src="<%=request.getContextPath() %>/js/main.js"></script>
 <!-- 				<script>
                     $('#datepicker').datepicker({

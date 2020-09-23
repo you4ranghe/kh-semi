@@ -59,14 +59,14 @@ public class ReviewDao {
 	}
 	
 	
-	public List<Review> selectReviewList(Connection conn){
+	public List<Review> selectReviewList(Connection conn, int pNum){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Review> list = new ArrayList();
 		
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("selectReviewList"));
-//			pstmt. setInt(1,no);
+			pstmt. setInt(1,pNum);
 
 			rs = pstmt.executeQuery();
 			

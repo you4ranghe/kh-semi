@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Member {
 	
-	private int userNum;
+	
 	private String userId;
 	private String password;
 	private String userName;
@@ -19,10 +19,9 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(int userNum, String userId, String password, String userName, String gender, int age, String email,
-			String phone, String address, Date enrolldate) {
+	public Member(String userId, String password, String userName, String gender, int age, String email, String phone,
+			String address, Date enrolldate) {
 		super();
-		this.userNum = userNum;
 		this.userId = userId;
 		this.password = password;
 		this.userName = userName;
@@ -32,14 +31,6 @@ public class Member {
 		this.phone = phone;
 		this.address = address;
 		this.enrolldate = enrolldate;
-	}
-
-	public int getUserNum() {
-		return userNum;
-	}
-
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
 	}
 
 	public String getUserId() {
@@ -114,12 +105,5 @@ public class Member {
 		this.enrolldate = enrolldate;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [userNum=" + userNum + ", userId=" + userId + ", password=" + password + ", userName=" + userName
-				+ ", gender=" + gender + ", age=" + age + ", email=" + email + ", phone=" + phone + ", address="
-				+ address + ", enrolldate=" + enrolldate + "]";
-	}
-	
 	
 }
