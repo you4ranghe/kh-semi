@@ -129,10 +129,12 @@
 
 	                                   					<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 페이지</a>
                                    				<%} %>
-       
+                                   				
+                                   				
         		                           		
                                    				<%if(logginedMember!=null&&logginedMember.getUserId().equals("admin")){ %>
                                    						<li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
+                                   						<li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>
 	                                         	<%} %>
                                                 </ul>
 											</li>

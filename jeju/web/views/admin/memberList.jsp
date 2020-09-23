@@ -73,14 +73,14 @@
 						<thead>
 							<tr>
 								<th>회원번호</th>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>성별</th>
-				<th>나이</th>
-				<th>이메일</th>
-				<th>전화번호</th>
-				<th>주소</th>
-				<th>가입일</th>
+								<th>아이디</th>
+								<th>이름</th>
+								<th>성별</th>
+								<th>나이</th>
+								<th>이메일</th>
+								<th>전화번호</th>
+								<th>주소</th>
+								<th>가입일</th>
 			</tr>
 		<thead>
 
@@ -89,11 +89,11 @@
 			<tr>
 				<td>
 					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
-						<%=m.getUserId() %></a>
+						<%=m.getUserNum()%></a>
 				</td>
 				<td>
 					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
-					<%=m.getUserNum()%></a>
+					<%=m.getUserId()%></a>
 				</td>
 				<td>
 					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
@@ -143,6 +143,7 @@
 			let value=$(e.target).val();
 			$("#search-"+value).css("display","inline-block");
 		});
+		
 		$("#searchType").change();
 		
 		$("#numPerPage").change(e => {

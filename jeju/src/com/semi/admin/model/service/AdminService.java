@@ -1,8 +1,8 @@
 package com.semi.admin.model.service;
 
 import static com.semi.common.JDBCTemplate.close;
-import static com.semi.common.JDBCTemplate.getConnection;
 import static com.semi.common.JDBCTemplate.commit;
+import static com.semi.common.JDBCTemplate.getConnection;
 import static com.semi.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.semi.admin.model.dao.AdminDao;
 import com.semi.member.model.vo.Member;
+import com.semi.partner.model.vo.Partner;
 
 public class AdminService {
 
@@ -54,6 +55,39 @@ public class AdminService {
 		if(result>0) commit(conn);
 		else rollback(conn);
 		close(conn);
+		return result;
+	}
+	
+	//파트너 정보 보기 서비스
+	public List<Partner> selectPartnerList(int cPage,int numPerPage){
+		Connection conn=getConnection();
+		List<Partner>list =dao.selectPartnerList(conn,cPage,numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	//총파트너 인원 가져오는 서비스
+	public int selectPartnerCount() {
+		Connection conn = getConnection();
+		int totalCount = dao.selectPartnerCount(conn);
+		close(conn);
+		return totalCount;
+	}
+	
+	//타입,키워드에 다른 파트너 조회 서비스
+	public List<Partner> selectPartnerSearch(String type, String keyword,int cPage,int numPerPage){
+		Connection conn=getConnection();
+		List<Partner>list=dao.selectPartnerSearch(conn,type,keyword,cPage,numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	//파트너 탈퇴 서비스
+	public int deletePartner(String partnerId) {
+		Connection conn = getConnection();
+		int result =dao.deletePartner(conn,partnerId);
+		if(result>0) commit(conn);
+		else rollback(conn);
 		return result;
 	}
 	

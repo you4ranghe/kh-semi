@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.admin.model.service.AdminService;
-import com.semi.member.model.vo.Member;
+import com.semi.partner.model.vo.Partner;
 
 /**
- * Servlet implementation class AdminMemberSearch
+ * Servlet implementation class AdminPartnerListServlet
  */
-@WebServlet("/admin/memberSearch")
-public class AdminMemberSearch extends HttpServlet {
+@WebServlet("/partner/partnerList")
+public class AdminPartnerListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminMemberSearch() {
+    public AdminPartnerListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,75 +31,67 @@ public class AdminMemberSearch extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//클라이언트가 보낸 데이터를 가져옴
-		String type=request.getParameter("searchType");
-		String keyword=request.getParameter("searchkeyword");
 		
 		int cPage;
-		try {
+		try{
 			cPage=Integer.parseInt(request.getParameter("cPage"));
 		}catch(NumberFormatException e) {
 			cPage=1;
 		}
-		//int numPerPage=5;
+
 		int numPerPage;
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
 			numPerPage=5;
 		}
-				
-		List<Member> list=new AdminService().selectMemberSearch(type,keyword,cPage,numPerPage);
-		//list.size(); --> ??? 평생~~ 5만 나옴! 
-		//전체자료
-		int totalData=new AdminService().selectMemberSearchCount(type,keyword);
-		int totalPage=(int)(Math.ceil((double)totalData/numPerPage));
+		
+		List<Partner>list = new AdminService().selectPartnerList(cPage,numPerPage);
+		System.out.println("여기까지 partner list :"+list);
 		
 		int pageBarSize=5;
+		//총몇명의 파트너 인원 가져오는 서비스
+		int totalData=new AdminService().selectPartnerCount();
+		System.out.println(totalData);
+		int totalPage=(int)(Math.ceil((double)totalData/numPerPage));
+		
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 		int pageEnd=pageNo+pageBarSize-1;
 		String pageBar="";
-		
 		if(pageNo==1) {
-			pageBar="<span>[이전]</span>";
+			pageBar="<span>이전</span>";
 		}else {
 			pageBar="<a href='"+request.getContextPath()
-					+ "/admin/memberSearch?cPage="+(pageNo-1)
-					+"&searchType="+type+"&searchkeyword="+keyword
-					+"&numPerPage="+numPerPage+"'>[이전]</a>";
+					+ "/partner/partnerList?cPage="+(pageNo-1)+"&numPerPage="+numPerPage+"'>[이전]</a>";
 		}
 		
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
-			if(pageNo==cPage) {
+			if(cPage==pageNo) {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
-				pageBar+="<a href='"+request.getContextPath()
-				+"/admin/memberSearch?cPage="+pageNo
-				+"&searchType="+type+"&searchkeyword="+keyword
-				+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
+				pageBar+="<a href='"+request.getContextPath()+
+						"/admin/memberList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
+		
 		if(pageNo>totalPage) {
 			pageBar+="<span>[다음]</span>";
+			
 		}else {
-			pageBar+="<a href='"+request.getContextPath()
-			+"/admin/memberSearch?cPage="+pageNo
-			+"&searchType="+type+"&searchkeyword="+keyword
-			+"&numPerPage="+numPerPage+"'>[다음]</a>";
+			pageBar+="<a href='"+request.getContextPath()+
+					"/admin/memberList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>[다음]</a>";
 		}
 		
+		request.setAttribute("partners", list);
 		request.setAttribute("pageBar",pageBar);
+		request.getRequestDispatcher("/views/admin/partnerList.jsp")
+		.forward(request, response);
+	
 		
-		request.setAttribute("members",list);
 		
-		request.getRequestDispatcher("/views/admin/memberList.jsp")
-		.forward(request,response);
-	
-	
-	
-	}
+		
+	}//doGet메서드
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
