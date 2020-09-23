@@ -8,7 +8,7 @@
 %>
 
 	<section id="content">
-<%-- 	<%if(loggined!=null){%> --%>
+<%if(loggined!=null){%> 
 
 		<button onclick="location.assign('<%=request.getContextPath() %>/product/productList')">버튼1</button>
 		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼2</button>
@@ -22,7 +22,7 @@
 		<button onclick="location.assign('<%=request.getContextPath() %>/views/product/product.jsp')">버튼10</button>
 		
 
-<%-- 		<% } %>   --%>
+<% } %> 
 		
 
 	</section>

@@ -269,7 +269,7 @@
 
 
 						<button type="submit" name="submit">buy</button>
-					<%-- 	<script>
+						<script>
 						$(function(){
 			    		$("[name=submit]").focus(e => {
 			    			if(<%=logginedMember==null%>){
@@ -278,7 +278,7 @@
 			    				document.location.href="/views/product/product.jsp";
 			    			}
 			    		})
-						</script> --%>
+						</script> 
 						
 					</form>
 
@@ -626,7 +626,7 @@ ${status.index}
 												<a href="#" class="btn-reply text-uppercase">reply</a>
 												<input type="hidden" value="${e.reviewNum}">
 												<input type="hidden" value="${e.reviewScore}">
-												<input type="hidden" value="$(e.poNum}">
+												<input type="hidden" value="${e.poNum}">
 												<input type="hidden" value="${e.reviewViews}">
 												<input type="hidden" value="${e.pNum}">
 											</div>
@@ -732,7 +732,7 @@ ${status.index}
 							<!-- 작성자 -->
 							<div class="col-sm-6">
 								<div class="form-group">
-									<input class="form-control" name="reviewWriter" id="reviewWriter" type="text" value="<%=logginedMember.getUserId()%>" placeholder="Name" readonly>
+									<input class="form-control" name="reviewWriter" id="reviewWriter" type="text" value="<%=logginedMember!=null?logginedMember.getUserId():"" %>" placeholder="Name" readonly>
 								</div>
 							</div>
 							
@@ -780,13 +780,20 @@ ${status.index}
 								</div>
  -->
 
-							
+							<%if(r.getpoNum().equals(pm.getpoNum()){ %>
 							<div class="form-group">
 								<button type="submit" class="button button-contactForm btn_1 boxed-btn" 
 								onclick = "function validate();" >
 									Leave Review</button>
 							</div>
-							
+							<%} else{%>
+							<script>
+							$(function(){
+					    			alert("상품을 구매하신 분만 작성할 수 있습니다");
+					    			//$("#userId").focus(); 
+					    		});
+							</script>
+							<%} %>
 							
 						</form>
 				
