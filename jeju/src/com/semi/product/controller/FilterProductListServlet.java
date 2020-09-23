@@ -46,7 +46,6 @@ public class FilterProductListServlet extends HttpServlet {
 		
 		p.setpDateStart(d);
 		
-		List<Product> list=new ProductService().filterProductList(p);
 	}
 
 	/**

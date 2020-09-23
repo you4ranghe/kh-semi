@@ -16,7 +16,7 @@
 	}
 	.img-div{
 		/* 둥글고 좀 여유있게 하기 */
-	width :400px;
+	
 		
 	
 	}
@@ -54,8 +54,8 @@
 		margin-left:50px;
 		}
 
-	.clear-both{
-		clear:both;
+	.paddingadd{
+		box-sizing: content-box;
 	}
    
 	
@@ -106,17 +106,17 @@
 	<h3> 내가 등록한 상품 보기</h3>
 	<div class="row clear-both">
 		<%for(Product p:list){ %>
-		  <div class="col-sm-6 col-lg-4 ">
+		  <div class="col-sm-6 col-lg-4 paddingadd">
 		    <div class="thumbnail img-div" >
 		    
 		    	
-		      <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="400px" height="200px" class="img-rounded"></a>
+		      <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="320px" height="200px" class="img-rounded"></a>
 		      
 		      <div class="caption" >
 		        <h3><%=p.getpName() %></h3>
 		        <p><%=p.getpNum() %></p>
-		        <a href="<%=request.getContextPath()%>/partner/updateProduct?pNum=<%=p.getpNum()%>"><button type="button" class="btn btn-default btn-sm">수정하기</button></a>
-		        <a href="<%=request.getContextPath()%>/partner/deleteProduct?pNum=<%=p.getpNum()%>"><button type="button" class="btn btn-danger btn-sm">삭제하기</button></a>
+		        <a href="<%=request.getContextPath()%>/partner/updateProduct?pNum=<%=p.getpNum()%>" onclick="return confirm('정말 삭제하시겠습니까?');"><button type="button" class="btn btn-default btn-sm">수정하기</button></a>
+		        <a href="<%=request.getContextPath()%>/partner/deleteProduct?pNum=<%=p.getpNum()%>" onclick="return confirm('정말 삭제하시겠습니까?');"><button type="button" class="btn btn-danger btn-sm" >삭제하기</button></a>
 		        <input type="hidden" name="pNum" value=<%=p.getpNum() %> >
 		      </div>
 		    </div>

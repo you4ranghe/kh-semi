@@ -296,8 +296,4 @@ public class ProductDao {
 	
 	
 	
-	
-	
-	
-	
 }

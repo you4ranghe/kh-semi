@@ -101,4 +101,47 @@ public class PartnerDao {
 		
 	}
 	
+	public Product selectProduct(Connection conn,int pNum) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Product p=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectOneProduct"));
+			pstmt.setInt(1, pNum);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				p=new Product();
+				p.setpNum(rs.getInt("p_num"));
+				p.setpBigNameEng(rs.getString("p_big_name_eng"));
+				p.setpBigNameKor(rs.getString("p_big_name_kor"));
+				p.setpName(rs.getString("p_name"));
+				p.setpPriceA(rs.getInt("p_price_a"));
+				p.setpPriceC(rs.getInt("p_price_c"));
+				p.setpDateStart(rs.getDate("p_date_start"));
+				p.setpDateFinish(rs.getDate("p_date_finish"));
+				p.setpTime(rs.getString("p_time"));
+				p.setTitleImgPath(rs.getString("title_img_path"));
+				p.setpImgPath(rs.getString("p_img_path"));
+				p.setpInfo(rs.getString("p_info"));
+				p.setpIntd(rs.getString("p_intd"));
+				p.setpPointInfo(rs.getString("p_point_info"));
+				p.setRuntime(rs.getString("runtime"));
+				p.setSchedule(rs.getString("schedule_img_path"));
+				p.setPrecaution(rs.getString("precaution"));
+				p.setpMapName(rs.getString("p_map_address"));
+				p.setpMap(rs.getString("p_map"));
+				p.setpScore(rs.getInt("p_score"));
+				p.setPartnerId(rs.getString("partner_id"));
+				
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return p;
+	}
+	
 }

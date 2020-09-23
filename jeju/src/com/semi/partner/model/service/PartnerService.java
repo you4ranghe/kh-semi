@@ -39,6 +39,13 @@ public class PartnerService {
 		return result;
 		
 	}
-	
+	public Product selectProduct(int pNum) {
+		Connection conn=getConnection();
+		Product p=dao.selectProduct(conn,pNum);
+		
+		close(conn);
+		return p;
+		
+	}
 	
 }
