@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@page import="java.util.List"%>
 <%@page import="com.semi.product.model.vo.Product"%>
 <%@page import="com.semi.payment.model.vo.Payment"%>
@@ -12,19 +13,20 @@
 	Payment pm = (Payment)request.getAttribute("payment");
 	WishList wl = (WishList)request.getAttribute("wishlist");
 	Review r = (Review)request.getAttribute("review");
-/* 	//List<Review> list = (List)request.getAttribute("list"); */
+	List<Review> list = (List)request.getAttribute("list"); 
+
 %>
 
 <%@ include file="/views/common/header.jsp"%>
 
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<!-- <html class="no-js" lang="zxx">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>GotJeju</title>
 <meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
 <link rel="shortcut icon" type="image/x-icon"
@@ -69,9 +71,9 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath() %>/css/jisun_detail-product.css">
 
-</head>
+<!-- </head> -->
 
-<body>
+<!-- <body> -->
 	<!--[if lte IE 9]> <p class="browserupgrade">You are using an
         <strong>outdated</strong> browser. Please <a
         href="https://browsehappy.com/">upgrade your browser</a> to improve your
@@ -81,7 +83,7 @@
 
 	<div class="destination_banner_wrap overlay">
 		<div class="destination_text text-center">
-
+<%-- ${p.pBigNameEng} --%>
 			<h3>${p.pBigNameEng}</h3>
 			<p>${p.pBigNameKor}</p>
 		</div>
@@ -262,13 +264,22 @@
 
 						<!-- 아이디넘기기 -->
 						<input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>"> 
-							<input type="hidden" name="pNum" value='${p.pNum}'>
-
-	
-
-						<button type="submit">buy</button>
+						<input type="hidden" name="pNum" value='${p.pNum}'>
 
 
+
+						<button type="submit" name="submit">buy</button>
+					<%-- 	<script>
+						$(function(){
+			    		$("[name=submit]").focus(e => {
+			    			if(<%=logginedMember==null%>){
+			    				alert("로그인 후 이용해주세요!");
+			    				/* $("#userId").focus(); */
+			    				document.location.href="/views/product/product.jsp";
+			    			}
+			    		})
+						</script> --%>
+						
 					</form>
 
 				</div>
@@ -555,26 +566,56 @@
 						<h4>REVIEW</h4>
 						
 						<%-- <%if(logginedMember!=null&&pm.getPoNum()!=null) {  --%>
-						<%-- 	<%for(Review r : list) { %> --%>
+						<%--  <jsp:useBean id="elp" class="com.semi.review.model.vo.Review" scope="session" />--%>
 						
+
 						<div class="comment-list">
 							<div class="single-comment justify-content-between d-flex">
 								<div class="user justify-content-between d-flex">
 									<div class="thumb">
-										<img src="<%=request.getContextPath() %>/img/comment/comment_1.png" alt="">
+										<img src="<%=request.getContextPath() 
+										%>/img/comment/comment_1.png" alt="">
 									</div>
-									<div class="desc">
-										<p class="comment" id="reviewTitle"'>${r.reviewTitle}</p>
-										<p class="comment">${r.reviewContents }</p>
+									
+
+					
+<%-- 					<input type="hidden" value="${p.pNum}"> --%>		
+
+<%-- 
+<c:forEach var="movie" items="${movieList}" varStatus="status">
+${movie}<br>
+${status.index}
+</c:forEach>
+
+ --%>
+
+    
+
+
+					 <c:forEach var="e" items="${reviewList}" >
+					 						
+<%-- 					 						<p>${e.reviewNum}</p>
+					 						<p>${e.reviewScore}</p>
+					 						<p>${e.reviewTitle}</p>
+					 						<p>${e.reviewContents}</p>
+					 						<p>${e.reviewWriter}</p>
+					 						<p>${e.poNum}</p>
+					 						<p>${e.registerDate}</p>
+					 						<p>${e.reviewViews}</p>
+					 						<p>${e.pNum}  </p> --%>
+					 				
+							 		<div class="desc">
+										<p class="comment" id="reviewTitle"'>${e.reviewTitle}</p>
+										<p class="comment">${e.reviewContents }</p>
 										<div class="d-flex justify-content-between">
 											<div class="d-flex align-items-center">
 												<h5>
-													<a href="#">${r.reviewWriter }</a>
+													<a href="#">${e.reviewWriter }</a>
 												</h5>
-												<p class="date">${r.registerDate }</p>
+												<p class="date">${e.registerDate }</p>
 							
-									<!-- 글작성자.관리자 수정삭제 -->
-<%-- 									<%if(logginedMember!=null&&(logginedMember.getUserId().equals(r.getReviewWriter())
+<%-- 									<!-- 글작성자.관리자 수정삭제 -->
+									<%if(logginedMember!=null&&(logginedMember.getUserId().equals(r.getReviewWriter())
 											||logginedMember.getUserId().equals("admin"))){ %>
 											<button type="button" onclick="fn_uppdate()">수정</button>
 											<button type="button" onclick="fn_remove()">삭제</button>
@@ -583,19 +624,21 @@
 											</div>
 											<div class="reply-btn">
 												<a href="#" class="btn-reply text-uppercase">reply</a>
-												<p>${r.reviewNum}
-												${r.reviewScore }
-												$(r.poNum}
-												${r.reviewViews }
-												${r.pNum }</p>
+												<input type="hidden" value="${e.reviewNum}">
+												<input type="hidden" value="${e.reviewScore}">
+												<input type="hidden" value="$(e.poNum}">
+												<input type="hidden" value="${e.reviewViews}">
+												<input type="hidden" value="${e.pNum}">
 											</div>
 										</div>
-									</div>
+									</div> --%>
+								</c:forEach> 
+								
 								</div>
 							</div>
 						</div>
 						
-				<%-- 		<%} %> --%>
+				
 						
 						
 <%-- 						<div class="comment-list">
@@ -737,11 +780,13 @@
 								</div>
  -->
 
-
+							
 							<div class="form-group">
-								<button type="submit" class="button button-contactForm btn_1 boxed-btn" onclick="return validate();">
+								<button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+								onclick = "function validate();" >
 									Leave Review</button>
 							</div>
+							
 							
 						</form>
 				
@@ -756,7 +801,7 @@
 							}
 						}
 					
-				</script>
+				</script> 
 				
 				
 						
@@ -801,8 +846,11 @@
 										<p>${p.pPriceC}</p>
 								</a></li>
 
-							</div>
 
+							</div>
+							
+
+							 
 							<!--  원래가격 : <span id='total_price'>0</span>원
                                 <form name='price_exec' method='get' onSubmit='submit_value();'> -->
 
@@ -810,6 +858,20 @@
 
 						</aside>
 
+							  <div class="review-score">
+                                    <div class="review-badge">${p.pScore }</div>
+                                    <div class="product-star text-sm">
+                                        <p class="star_rating">
+                                            <a href="#" class="on">★</a>
+                                            <a href="#" class="on">★</a>
+                                            <a href="#" class="on">★</a>
+                                            <a href="#">★</a>
+                                            <a href="#">★</a>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                
 					</div>
 				</div>
 
@@ -1003,35 +1065,28 @@
 				<script src="<%=request.getContextPath() %>/js/mail-script.js"></script>
 
 				<script src="<%=request.getContextPath() %>/js/main.js"></script>
-				<script>
+<!-- 				<script>
                     $('#datepicker').datepicker({
                         iconsLibrary: 'fontawesome',
                         icons: {
                             rightIcon: '<span class="fa fa-caret-down"></span>'
                         }
                     });
-                </script>
+                </script> -->
 
 				<!-- 써치 필터 js -->
-				<script
-					src="<%=request.getContextPath() %>/js/js_cal/jquery-3.3.1.min.js"></script>
-				<script
-					src="<%=request.getContextPath() %>/js/js_cal/bootstrap.min.js"></script>
-				<script
-					src="<%=request.getContextPath() %>/js/js_cal/jquery.magnific-popup.min.js"></script>
-				<script
-					src="<%=request.getContextPath() %>/js/js_cal/jquery-ui.min.js"></script>
-				<script
-					src="<%=request.getContextPath() %>/js/js_cal/jquery.nice-select.min.js"></script>
-				<script
-					src="<%=request.getContextPath() %>/js/js_cal/jquery.slicknav.js"></script>
-				<script
-					src="<%=request.getContextPath() %>/js/js_cal/owl.carousel.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/js_cal/jquery-3.3.1.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/js_cal/bootstrap.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/js_cal/jquery.magnific-popup.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/js_cal/jquery-ui.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/js_cal/jquery.nice-select.min.js"></script>
+				<script src="<%=request.getContextPath() %>/js/js_cal/jquery.slicknav.js"></script>
+				<script src="<%=request.getContextPath() %>/js/js_cal/owl.carousel.min.js"></script>
 				<script src="<%=request.getContextPath() %>/js/js_cal/main.js"></script>
 				
 			
-</body>
+<!-- </body> -->
 
-</html>
+<!-- </html> -->
 
 <%@ include file="/views/common/footer.jsp"%>

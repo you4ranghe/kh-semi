@@ -53,14 +53,14 @@ public class ReviewEndServlet extends HttpServlet {
 		int result = new ReviewService().insertReview(r);
 		
 		String msg="";
-		String loc="";
+		String loc="/review/reviewList";
 		
 		if(result>0) {
 			msg="리뷰 등록 성공!";
-			loc="/";
+
 		}else {
 			msg="리뷰 등록 실패!";
-			loc="/";
+
 		}
 		request.setAttribute("msg",msg);
 		request.setAttribute("loc",loc);

@@ -1,6 +1,7 @@
 package com.semi.review.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,14 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import com.semi.review.model.service.ReviewService;
 import com.semi.review.model.vo.Review;
+
 
 /**
  * Servlet implementation class ReviewListServlet
  */
-@WebServlet("/review/reviewtList")
+@WebServlet("/review/reviewList")
 public class ReviewListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,23 +34,21 @@ public class ReviewListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-//		int cPage;
-//		try {
-//			cPage=Integer.parseInt(request.getParameter("cPage"));
-//			
-//		}catch(NumberFormatException e) {
-//			cPage=1;
-//		}
-//		int numPerPage=5;
-//		
-		
-		Review r = new ReviewService().selectReviewList();
-		request.setAttribute("r", r);
 
 		
-		request.getRequestDispatcher("/views/product/product.jsp")
-		.forward(request, response);
+//		int no = Integer.parseInt(request.getParameter("pNum"));
+		
+
+		List<Review> reviewList = new ReviewService().selectReviewList();
+		request.setAttribute("reviewList", reviewList);
+
+		
+		
+		request.getRequestDispatcher("/views/product/product.jsp").forward(request,response);
+		
+		for(Review r : reviewList) {
+			System.out.println(r);
+		}
 	}
 
 	/**

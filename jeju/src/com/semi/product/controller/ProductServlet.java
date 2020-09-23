@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.product.model.vo.Product;
+import com.semi.review.model.service.ReviewService;
 
 /**
  * Servlet implementation class ProductServlet
@@ -25,6 +26,7 @@ public class ProductServlet extends HttpServlet{
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
+	   
       String url = "jdbc:oracle:thin:@localhost:1521:xe"; 
       String sql = "SELECT * FROM PRODUCT";
       
@@ -74,6 +76,7 @@ public class ProductServlet extends HttpServlet{
       } catch (SQLException e) {
          e.printStackTrace();
       }
+
       
       RequestDispatcher dispatcher = request.getRequestDispatcher("/views/product/product.jsp"); 
       dispatcher.forward(request, response);

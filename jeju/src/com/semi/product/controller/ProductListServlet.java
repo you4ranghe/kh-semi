@@ -1,11 +1,16 @@
 package com.semi.product.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.semi.product.model.service.ProductService;
+import com.semi.product.model.vo.Product;
 
 /**
  * Servlet implementation class ProductListServlet
@@ -27,6 +32,9 @@ public class ProductListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		List<Product> list = new ProductService().selectProductList();
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("/views/product/productList.jsp").forward(request, response);
 	}
 

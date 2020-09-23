@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-
 import com.semi.review.model.vo.Review;
+
 
 public class ReviewDao {
 
@@ -59,34 +59,41 @@ public class ReviewDao {
 	}
 	
 	
-	public Review selectReviewList(Connection conn){
+	public List<Review> selectReviewList(Connection conn){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Review r = new Review();
+		List<Review> list = new ArrayList();
 		
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("selectReviewList"));
+//			pstmt. setInt(1,no);
+
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				Review r = new Review();
+				r.setReviewNum(rs.getInt(1));
+				r.setReviewScore(rs.getInt(2));
+				r.setReviewTitle(rs.getString(3));
+				r.setReviewContents(rs.getString(4));
+				r.setReviewWriter(rs.getString(5));
+				r.setPoNum(rs.getString(6));
+				r.setRegisterDate(rs.getDate(7));
+				r.setReviewViews(rs.getInt(8));
+				r.setpNum(rs.getInt(9));
+
 				
-				r.setReviewNum(rs.getInt("review_num"));
-				r.setReviewScore(rs.getInt("review_score"));
-				r.setReviewTitle(rs.getString("review_title"));
-				r.setReviewContents(rs.getString("review_contents"));
-				r.setReviewWriter(rs.getString("review_writer"));
-				r.setPoNum(rs.getString("po_num"));
-				r.setRegisterDate(rs.getDate("register_date"));
-				r.setReviewViews(rs.getInt("review_views"));
-				r.setpNum(rs.getInt("p_num"));
+				list.add(r);
 				
+				
+
 				}
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}finally {
 				close(rs);
 				close(pstmt);
-			}return r;
+			}return list;
 	}
 	
 	
