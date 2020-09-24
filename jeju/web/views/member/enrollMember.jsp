@@ -12,6 +12,7 @@
     <title>Jeju_LoginPage</title>
 </head>
 <body>
+
     <section class="login-form">
         <h1 id="title">회원가입</h1>
         <h2 id="h2"><a href="<%=request.getContextPath() %>">gotJeju</a>&nbsp;에서 지금까지 경험하지 못했던 <br>색다른 제주도여행을 시작해보세요</h2>
@@ -25,28 +26,35 @@
                             <td class="int-area">
                                 <input type="text" name="userId" id="userId_" required autocomplete="off">
                                 <label for="userId_">4~18개의 영대소문자, 숫자조합</label>
+
                             </td>
                         </tr>
                         <tr>
                             <th>패스워드</th>
                             <td class="int-area">
+
                                 <input type="password" name="password" id="password_" required autocomplete="off">
+
                                 <label for="password_">4~18개의 영대소문자, 숫자조합</label>
                             </td>
                         </tr>
                         <tr>
                             <th>패스워드확인</th>
+
                             <td class="int-area">
                             <input type="password" id="password_2" autocomplete="off" required>
                             <label for="password_2">비밀번호 확인</label>
+
                                 
                             </td>
                         </tr>
                         <tr>
                             <th>이름</th>
                             <td class="int-area">
+
                                 <input type="text" name="userName" id="userName" required autocomplete="off">
                                 <label for="userName">한글 2~4글자</label>
+
                             </td>
                         </tr>
                         <tr>
@@ -54,11 +62,13 @@
                             <td class="int-area">
                                 <input type="number" name="age" id="age" min="0" autocomplete="off" required>
                                 <label for="age">제주도가기 딱 좋을나이</label>
+
                             </td>
                         </tr>
                         <tr>
                             <th>이메일</th>
                             <td class="int-area">
+
                                 <input type="email" name="email" id="email" autocomplete="off"  required>
                             	 <label for="email">ex)letsgo@gotjeju.com</label>
                             </td>
@@ -68,13 +78,16 @@
                             <td class="int-area">
                                 <input type="tel" name="phone" id="phone" maxlength="11" autocomplete="off"  required>
                             	<label for="phone">(-)을 제외하고 입력해주세요</label>
+
                             </td>
                         </tr>
                 <!--        <tr>
                             <th>주소</th>
                             <td class="int-area">
+
                                 <input type="text" name="address" id="address" autocomplete="off" required>
                                 <label for="address">주소를 입력해주세요</label>
+
                             </td>
                         </tr>  -->
 			   			 <tr>
@@ -98,24 +111,30 @@
                         </tr>
                         <tr>
                         <td class="btn-area">
+
                             <button id="btn2" type="submit"  onclick="return enroll_validate();">가입하기</button>
                         </td>
                         <td>
                             <button id="btn3" type="reset">취소</button>
+
                         </td>
                         </tr>
                     </table>
                 </form>
+
                 	<!-- 아이디 중복검사 폼 -->
 					<form action="" name="checkIdDuplicate">
 					<!-- 유저가 입력한 아이디를 집어넣고 전송 hidden-->
 					<input type="hidden" name="userId"> 
 					</form>
 
+
         </section>
 
         <script>
+
 		//비밀번호 일치여부 확인체크
+
 		$(function(){
 			$("#password_2").blur(e=>{
 			let pw=$("#password_").val();
@@ -254,6 +273,7 @@
 	        }).open();
 	    }
 			
+
 
         </script>
 

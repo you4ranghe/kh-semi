@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<style>
+	.footer{
+		clear:both;
+	}
 	
+	</style>
 	<footer class="footer">
 	<div class="copy-right_text">
 	            <div class="container">
@@ -55,10 +60,11 @@
 
     <script src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
 
-   
 
     
     <!--contact js-->
+
+
     <script src="<%=request.getContextPath() %>/js/contact.js"></script>
     <script src="<%=request.getContextPath() %>/js/jquery.ajaxchimp.min.js"></script>
     <script src="<%=request.getContextPath() %>/js/jquery.form.js"></script>
