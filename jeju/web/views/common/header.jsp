@@ -85,9 +85,6 @@
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
 
-                                    <a href="index.html">
-
-
                                     <a href="<%=request.getContextPath()%>">
 
                                         <img src="<%=request.getContextPath() %>/img/logo.png" alt=""><!--이미지로고바꾸면됨-->
@@ -123,8 +120,7 @@
              
                        
              
-                            <div class="col-xl-3 col-lg-4 d-none d-lg-block">
-                                <div class="social_wrap d-flex align-items-center justify-content-end">
+                            
                             <!-- 검색 -->
 							<div class="col-xl-4 col-lg-4">
 								<form action="<%=request.getContextPath()%>/product/selectSearchProductList" >
