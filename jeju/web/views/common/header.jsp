@@ -106,8 +106,8 @@
                                                 </ul>
                                             </li>
                                             
-                                            <li><a class="" href="travel_destination.html">Travel</a></l/li>
-                                            <li><a href="#">Community <i class="ti-angle-down"></i></a>
+<!--                                             <li><a class="" href="travel_destination.html">Travel</a></li>
+                                            <li><a href="#">Community <i class="ti-angle-down"></i></a> -->
 
                                             <li><a class="" href="<%=request.getContextPath()%>/productList">Travel</a></li>
                                             <li><a href="#">Community </a> <!-- <i class="ti-angle-down"></i> -->
@@ -177,10 +177,12 @@
 	                                         	 <%} %>
 	                                         	 <!-- 로그인한후 일반회원일 경우 -->
 	                                         	<%if(logginedMember!=null){%>
+	                          
 	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
+	                                         			<li><a href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId() %>" id="wishSubmit">위시리스트</a></li>
 	                                         			<li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
+	                                         			<li><a href="<%=request.getContextPath()%>/payReservation?userId=<%=logginedMember.getUserId() %>">예약 조회</a></li>
 	                                         			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
-	                                         			
 	                                         	
 	                                         	<!-- 로그인후 회원 아이디가 admin일 경우 -->
 	                                        	<%if(logginedMember!=null &&logginedMember.getUserId().equals("admin")){ %>
