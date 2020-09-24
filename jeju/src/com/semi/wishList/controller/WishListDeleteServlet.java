@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.semi.wishList.model.service.WishListService;
 
 /**
- * Servlet implementation class WishListServlet
+ * Servlet implementation class wishListDeleteServlet
  */
-@WebServlet("/wishList")
-public class WishListServlet extends HttpServlet {
+@WebServlet("/wishListDelete")
+public class WishListDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WishListServlet() {
+    public WishListDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +32,24 @@ public class WishListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String pName=request.getParameter("pName");
 		String userId=request.getParameter("userId");
-		System.out.println("들어오나 확인"+userId);
-	
-		ArrayList<Map<String, Object>> list = new WishListService().selectWish(userId);
-	
-			
 		
+		int result=new WishListService().deleteWish(pName,userId);
+		
+//		 String msg="";
+//		 String loc="/";
+//		 if(result>0) {
+//			msg="삭제 성공";
+//		 }else {
+//			msg="삭제 실패";
+//			loc="/wishList";
+//		}
+//		request.setAttribute("msg", msg);
+//		request.setAttribute("loc", loc);
+//		
+
+		ArrayList<Map<String, Object>> list = new WishListService().selectWish(userId);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/views/wishlist/wishListView.jsp").forward(request, response);
 	}
@@ -49,6 +60,7 @@ public class WishListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.semi.wishList.controller;
+package com.semi.payend.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.payend.model.service.PayService;
 import com.semi.wishList.model.service.WishListService;
 
 /**
- * Servlet implementation class WishListServlet
+ * Servlet implementation class PayReservationView
  */
-@WebServlet("/wishList")
-public class WishListServlet extends HttpServlet {
+@WebServlet("/payReservation")
+public class PayReservationView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WishListServlet() {
+    public PayReservationView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +34,10 @@ public class WishListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String userId=request.getParameter("userId");
-		System.out.println("들어오나 확인"+userId);
-	
-		ArrayList<Map<String, Object>> list = new WishListService().selectWish(userId);
-	
-			
 		
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/wishlist/wishListView.jsp").forward(request, response);
+		ArrayList<Map<String, Object>> reserveList = new PayService().selectPay(userId);
+		request.setAttribute("reserveList", reserveList);
+		request.getRequestDispatcher("/views/pay/payReservationView.jsp").forward(request, response);
 	}
 
 	/**
