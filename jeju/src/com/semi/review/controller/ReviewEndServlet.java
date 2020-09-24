@@ -1,7 +1,6 @@
 package com.semi.review.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.review.model.service.ReviewService;
+import com.semi.product.model.service.ProductService;
 import com.semi.review.model.vo.Review;
 
 /**
@@ -39,22 +38,28 @@ public class ReviewEndServlet extends HttpServlet {
 		String reviewTitle = request.getParameter("reviewTitle");
 		String reviewContents = request.getParameter("reviewContents");
 		String reviewWriter = request.getParameter("reviewWriter");
-//		String poNum = request.getParameter("poNum");
+		String poNum = request.getParameter("poNum");
 //		String registerDate = request.getParameter("registerDate");
 //		Date rd = Date.valueOf(registerDate);
 		//int reviewViews = request.getParameter("reviewViews");
 		int pNum = Integer.parseInt(request.getParameter("pNum"));
-
 		
-		System.out.println(reviewScore+" "+reviewTitle+" "+reviewContents+" "+reviewWriter+" "+pNum);
+		int reviewLevel = Integer.parseInt(request.getParameter("reviewLevel"));
+		int productRef = Integer.parseInt(request.getParameter("productRef"));
+		int reviewRef = Integer.parseInt(request.getParameter("reviewRef"));
 		
-		Review r = new Review(0,reviewScore,reviewTitle,reviewContents,reviewWriter,null,null,0,pNum);
 		
-		int result = new ReviewService().insertReview(r);
+		
+		Review r = new Review(0,reviewScore,reviewTitle,reviewContents,reviewWriter,poNum,null,0,pNum,reviewLevel,productRef,reviewRef);
+		int result = new ProductService().insertReview(r);
+		
+		
+		
+		
 		
 		String msg="";
 //		String loc="/review/reviewList";
-		String loc="/product/productList";
+		String loc="/product/productList?no="+productRef;
 		
 		if(result>0) {
 			msg="리뷰 등록 성공!";
@@ -65,8 +70,7 @@ public class ReviewEndServlet extends HttpServlet {
 		}
 		request.setAttribute("msg",msg);
 		request.setAttribute("loc",loc);
-		request.getRequestDispatcher("/views/common/msg.jsp")
-		.forward(request, response);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		
 		
 		

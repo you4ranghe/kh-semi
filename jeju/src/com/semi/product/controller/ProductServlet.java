@@ -113,7 +113,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.semi.product.model.service.ProductService;
 import com.semi.product.model.vo.Product;
-import com.semi.review.model.service.ReviewService;
 import com.semi.review.model.vo.Review;
 
 /**
@@ -139,9 +138,12 @@ public class ProductServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		int pNum = Integer.parseInt(request.getParameter("pNum"));
-		System.out.println(pNum);
 		
+		 int pNum = Integer.parseInt(request.getParameter("pNum"));
+		 System.out.println(pNum);
+		
+	
+	
 		Product p = new ProductService().selectProductOne(pNum);
 		request.setAttribute("p", p);
 		//List<Product> productList = new ProductService().selectProductList(pNum);
@@ -152,6 +154,19 @@ public class ProductServlet extends HttpServlet {
 		//System.out.println(p.toString());
 		
 		System.out.println(p);
+		
+		
+		
+		
+		
+		
+		
+		//리뷰
+
+		
+		List<Review> reviewList = new ProductService().selectReviewList(pNum);
+		request.setAttribute("reviewList", reviewList);
+		
 		
 		request.getRequestDispatcher("/views/product/product.jsp").forward(request, response);
 	

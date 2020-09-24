@@ -47,18 +47,11 @@ public class ProductGoCartServlet extends HttpServlet {
 		int countc = Integer.parseInt(request.getParameter("pCountC"));
 
 		
-		System.out.println(pds+" "+totalprice+" "+pNum+" "+userId+" "+counta+" "+countc);
-
 		
-
-		
-//		System.out.println(paydate+datestart+counta+countc+pTime+totalprice+pNum+userId);
-		
-		//Payment pm = new Payment(null,paydate,null,);
-		
-		//System.out.println(pds+totalprice+pNum+userId+counta+countc);
 		
 		Payment pm = new Payment (null,null,null,pds,totalprice,pNum,userId,counta,countc);
+		
+		System.out.println(pm);
 		
 		int result = new PaymentService().insertProduct(pm);
 		

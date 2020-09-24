@@ -1,7 +1,6 @@
 package com.semi.review.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.review.model.service.ReviewService;
+import com.semi.product.model.service.ProductService;
 import com.semi.review.model.vo.Review;
 
 
@@ -37,9 +36,8 @@ public class ReviewListServlet extends HttpServlet {
 
 		
 		int pNum = Integer.parseInt(request.getParameter("pNum"));
-		
 
-		List<Review> reviewList = new ReviewService().selectReviewList(pNum);
+		List<Review> reviewList = new ProductService().selectReviewList(pNum);
 		request.setAttribute("reviewList", reviewList);
 
 		

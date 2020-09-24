@@ -95,6 +95,13 @@
 		</div>
 	</div>
 
+<%-- .destination_banner_wrap2 {
+	background-image: url(${p.titleImgsPath});
+  padding: 340px 0;
+  background-size: cover;
+  background-position: center center;
+}  --%>
+
 
 
 
@@ -308,7 +315,7 @@
 						<div class="feature-img">
 							<img class="img-fluid"
 								src="<%=request.getContextPath() %>${p.titleImgPath}%>"
-								alt="">
+								alt="" >
 						</div>
 
 						<div class="blog_details">
@@ -632,7 +639,7 @@ ${status.index}
 												<a href="#" class="btn-reply text-uppercase">reply</a>
 												<input type="hidden" value="${e.reviewNum}">
 												<input type="hidden" value="${e.reviewScore}">
-												<input type="hidden" value="$(e.poNum}">
+												<input type="hidden" value="${e.poNum}">
 												<input type="hidden" value="${e.reviewViews}">
 												<input type="hidden" value="${e.pNum}">
 											</div>
@@ -721,8 +728,11 @@ ${status.index}
 							
 							<!-- 리뷰번호 -->
 							<!-- <input type="hidden" name="reviewNum"> -->
-							 <input type="hidden" value="${p.pNum }" name="pNum" > 
-							 <%-- <input type="hidden" value="${pm.poNum }" name="poNum">  --%>
+							 <input type="hidden" value="${p.pNum}" name="pNum" > 
+							<input type="hidden" value="${r.poNum}" name="poNum">
+							<input type="hidden" name="reviewLevel" value="1">
+							<input type="hidden" name="productRef"  value="${p.pNum}">
+							<input type="hidden" name="reviewRef" value="0">
 							
 							<!-- 리뷰제목 -->
 							<div class="col-sm-6">
@@ -784,7 +794,7 @@ ${status.index}
 									<span class="starR">별5</span> 
 								</div>
  -->
-							
+							<input type="hidden" value="{pm.po_num}">
 							<div class="form-group">
 								<button type="submit" class="button button-contactForm btn_1 boxed-btn" 
 								onclick = "function validate();" >

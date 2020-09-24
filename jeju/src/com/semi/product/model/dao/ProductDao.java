@@ -15,6 +15,7 @@ import java.util.Properties;
 
 import com.semi.product.model.vo.Product;
 import com.semi.product.model.vo.Wish;
+import com.semi.review.model.vo.Review;
 
 
 public class ProductDao {
@@ -373,6 +374,88 @@ public class ProductDao {
 	
 	
 	
+	
+	
+	/////////리뷰
+	
+	
+	public int insertReview(Connection conn, Review r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertReview"));
+			pstmt.setInt(1,r.getReviewScore());
+			pstmt.setString(2, r.getReviewTitle());
+			pstmt.setString(3, r.getReviewContents());
+			pstmt.setString(4, r.getReviewWriter());
+			
+			pstmt.setInt(5, r.getpNum());
+			pstmt.setString(6, r.getReviewWriter());
+			pstmt.setInt(7, r.getpNum());
+			
+			pstmt.setInt(8, r.getReviewLevel());
+			pstmt.setInt(9, r.getProductRef());
+			pstmt.setInt(10, r.getReviewRef());
+			
+			System.out.println(r.getReviewScore());
+			System.out.println(r.getReviewTitle());
+			System.out.println(r.getReviewContents());
+			System.out.println(r.getReviewWriter());
+			System.out.println(r.getPoNum());
+			System.out.println(r.getpNum());
+			
+			System.out.println(r.getReviewLevel());
+			System.out.println(r.getProductRef());
+			System.out.println(r.getReviewRef());
+			
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	
+	
+	public List<Review> selectReviewList(Connection conn, int pNum){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Review> list = new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectReviewList"));
+			pstmt. setInt(1,pNum);
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Review r = new Review();
+				r.setReviewNum(rs.getInt(1));
+				r.setReviewScore(rs.getInt(2));
+				r.setReviewTitle(rs.getString(3));
+				r.setReviewContents(rs.getString(4));
+				r.setReviewWriter(rs.getString(5));
+				r.setPoNum(rs.getString(6));
+				r.setRegisterDate(rs.getDate(7));
+				r.setReviewViews(rs.getInt(8));
+				r.setpNum(rs.getInt(9));
+				
+				r.setReviewLevel(rs.getInt(10));
+				r.setProductRef(rs.getInt(11));
+				r.setReviewRef(rs.getInt(12));
+
+				list.add(r);
+				
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return list;
+	}
 	
 	
 	
