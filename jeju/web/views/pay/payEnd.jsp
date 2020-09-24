@@ -3,13 +3,14 @@
 <%@ include file="/views/common/header.jsp" %>
 <%@page import="com.semi.member.model.vo.Member" %>    
 <%
-	Member loginUser2=(Member)session.getAttribute("loginUser");
+	Member logginedMember2 = (Member)session.getAttribute("logginedMember");
 %>
 
-<section>
-		<%=loginUser2.getUserId() %>님의 예약이 완료되었습니다.
-		<button>예약조회</button> <button>다른 상품 추가예약</button>
+<section style="width:1200px;height:500px;">
+	<div style="margin-left:700px;margin-top:300px;width:100%">
+		<h2><%=logginedMember2.getUserId() %>님의 예약이 완료되었습니다.</h2>
 	
+	</div>
 </section>
 
 <%@ include file="/views/common/footer.jsp" %>

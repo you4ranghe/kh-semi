@@ -8,6 +8,9 @@
     	#sidebar{
     		float:left;
     	}
+    	.clearboth{
+    		/* clear:both; */
+    	}
     </style>
     
 <div id="sidebar" class="col-lg-2">
@@ -48,4 +51,5 @@
 		        <li class="list-group-item border-0"><a href="#">Help</a></li>
 		      </ul>
 		    </div>
-		</div> 
+		</div>
+		<div class="clearboth"></div>

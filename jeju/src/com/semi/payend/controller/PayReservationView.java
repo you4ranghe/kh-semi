@@ -1,10 +1,8 @@
-package com.semi.product.controller;
+package com.semi.payend.controller;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.product.model.service.ProductService;
-import com.semi.product.model.vo.Product;
+import com.semi.payend.model.service.PayService;
+import com.semi.wishList.model.service.WishListService;
 
 /**
- * Servlet implementation class SelectProductListServlet
+ * Servlet implementation class PayReservationView
  */
-@WebServlet("/filterProductList")
-public class FilterProductListServlet extends HttpServlet {
+@WebServlet("/payReservation")
+public class PayReservationView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FilterProductListServlet() {
+    public PayReservationView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +32,12 @@ public class FilterProductListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-		Product p=new Product();
-		p.setpPlace(String.join(",",request.getParameterValues("place")));
-		p.setpWish(String.join(",", request.getParameterValues("favor")));
+		// TODO Auto-generated method stub
+		String userId=request.getParameter("userId");
 		
-		String str = request.getParameter("startdate");
-		String date=str.substring(6)+"-"+str.substring(0,2)+"-"+str.substring(3,5);
-		
-		java.sql.Date d = java.sql.Date.valueOf(date);
-		
-		p.setpDateStart(d);
-		
+		ArrayList<Map<String, Object>> reserveList = new PayService().selectPay(userId);
+		request.setAttribute("reserveList", reserveList);
+		request.getRequestDispatcher("/views/pay/payReservationView.jsp").forward(request, response);
 	}
 
 	/**

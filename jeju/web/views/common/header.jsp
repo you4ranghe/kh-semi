@@ -91,7 +91,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-5">
+                            <div class="col-xl-4 col-lg-4">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">

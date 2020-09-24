@@ -9,14 +9,18 @@
 	
 %>
 <style>
+
+	.addmargin{
+		margin:20px;
+	}
 	.thumbnail{
 		background-color: rgb(244, 244, 244);
 		radius : 10px;
-		margin:20px;
+		/* margin:20px; */
 	}
 	.img-div{
 		/* 둥글고 좀 여유있게 하기 */
-	width :400px;
+	/* width :300px; */
 		
 	
 	}
@@ -29,33 +33,41 @@
 		transform: scale(1.5,1.5);
 	}	
 	.caption{
-	margin:0px 10px 10px 10px;
+		margin:0px 10px 10px 10px;
 	}
 	.wishclick{
 		color:red;
 	}
 	 h3{
-      	margin:10px;
+     	margin:10px;
       }
       h5{
-      padding : 10px;
+     padding : 10px;
       float:left;
       }
       h4#price{
       float:right;
-
+	
+	paddingadd{
+		
+	}
+	
+	
 </style>
 <section>
 
 	<h3> 전체 상품 보기</h3>
 	<div class="row">
+		
 		<%for(Product p:list){ %>
-		  <div class="col-sm-6 col-lg-4">
+		  <div class="col-sm-6 col-lg-4 border paddingadd">
 		    <div class="thumbnail img-div" >
 		    
-		    	<a href="<%=request.getContextPath() %>/product/productList?pNum=<%=p.getpNum() %>"><img src="<%=request.getContextPath() %><%=p.getTitleImgPath() %>"  alt="..." width="400px" height="200px" class="img-rounded"></a> <!-- 이부분 지선수정 이미지패스 -->
-<%-- 		    	 <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="400px" height="200px" class="img-rounded"></a>
- --%>		      <%-- <a href="" onclick="clickheart();"><img src="<%=request.getContextPath()%>/img/product/transheart.png" class="wish"></a> --%>
+
+		    	
+		      <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="399px" height="200px" class="img-rounded"></a>
+		      <%-- <a href="" onclick="clickheart();"><img src="<%=request.getContextPath()%>/img/product/transheart.png" class="wish"></a> --%>
+
 		      <span class="heartspan"><i class="fas fa-heart wish" onclick="javascript:clickheart();"></i></span>
 		      <div class="caption" >
 		        <h3><%=p.getpName() %></h3>
