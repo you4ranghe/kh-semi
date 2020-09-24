@@ -112,7 +112,7 @@
 			<tr>
 				<th>여행 루트 사진</th>
 				<td><input type="file" name="route" >
-				<input type="hidden" name="routeorigin" value="<%=p.getSchedule()%>"></td>
+				<input type="hidden" name="routeorigin" value="<%=p.getScheduleImgPath()%>"></td>
 					
 			</tr>
 			<tr>
@@ -123,7 +123,7 @@
 			<tr>
 				<th>주소</th>
 				<td>
-					<input type="text" id="sample6_address" name="address" class="long1" value="<%=p.getpMapName() %>">
+					<input type="text" id="sample6_address" name="address" class="long1" value="<%=p.getpMapAddress() %>">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="주소찾기"><br>
 					
 

@@ -44,7 +44,6 @@ public class AdminDao {
 				Member m=new Member();
 
 				m.setUserNum(rs.getInt("user_num"));
-
 				m.setUserId(rs.getString("user_id"));
 				m.setPassword(rs.getString("password"));
 				m.setUserName(rs.getString("user_name"));

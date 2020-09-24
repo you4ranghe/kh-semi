@@ -99,7 +99,7 @@ public class UpdateProductEndServlet extends HttpServlet {
 		
 		p.setPrecaution(mr.getParameter("precaution"));
 		String map=mr.getParameter("address");
-		p.setpMapName(map);
+		p.setpMapAddress(map);
 		p.setpMap(mr.getParameter("map"));
 		
 		//filepath는 리네임된 파일명을 가져와야함
@@ -130,7 +130,7 @@ public class UpdateProductEndServlet extends HttpServlet {
 		
 		
 		String route=mr.getFilesystemName("route");
-		p.setSchedule(route);
+		p.setScheduleImgPath(route);
 		
 		
 //		p.setPartnerId(m.getUserId());

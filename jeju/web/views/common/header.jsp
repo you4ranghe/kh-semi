@@ -170,30 +170,7 @@
                                             <li><i class="fas fa-user-circle fa-2x"></i>
 												<ul class="submenu">
 
-
-												
-<%-- 												<%if(logginedMember==null){ %> <!-- 로그인이 안됐을경우 -->
-
-                                                        <li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
-                                                        <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
-	                                         	<%}if(logginedMember!=null){%> 
-	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
-
-	                                         			<li><a href="<%=request.getContextPath()%>/partner/enroll?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
-	                                         			<li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
-	                                         			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
-                                   				<%}if(logginedPartner!=null&&logginedMember.getUserId().equals(logginedPartner.getPartnerId())){ %>
-
-	                                   					<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 페이지</a>
-                                   				<%} %>
-         		
-                                   				<%if(logginedMember!=null&&logginedMember.getUserId().equals("admin")){ %>
-                                   						<li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
-                                   						<li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>
-	                                         	<%} %> --%>
-	                                         	
-	                                         	<!-- =======================테스트영역============================== -->
-	                                         	<!-- 로그인이 안됐을 경우 -->
+											 	<!-- 로그인이 안됐을 경우 -->
 	                                         	<%if(logginedMember==null){%>
 	                                         	  		<li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
                                                         <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
@@ -210,29 +187,19 @@
 	                                         			<li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
                                    						<li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>    
 
-
-	                                         	       
 	                                         	<!-- 로그인후 일반회원중 파트너일경우(단,관리자가 승인을 해줘서 Staus가 'Y'일 경우만) -->
 	                                          	<%if(logginedPartner!=null && logginedPartner.getPartnerStatus().equals("Y")){%>
 	                                         			<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 페이지</a></li>
-	                                         		<%}}} %>	
-                                     <!-- 로그인후 일반회원중 파트너신청을 안한경우 -->
-                          
+	  
+	                                         	<!-- 분기문 마무리하기 -->
+	                                        	<%}  } }%>
+	                                        	
+	                                         	<!-- 로그인후 일반회원중 파트너신청을 안한경우 -->
 	                                         	<%if(logginedMember!=null&& logginedPartner==null){ %>
 	                                         			<li><a href="<%=request.getContextPath()%>/partner/enroll?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
-                                   			<%}%>
+                                  				<!-- 분기문 마무리하기 -->
+                                   				<%}	 %>	       
 	                                         	
-                          
-                     
-	                                         	<!-- 분기문 마무리하기 -->
-	                                        	<%}  %>
-	                                
-	                                         	
-	                                         	
-	                                         	
-	                                         	
-	                                         	
-
                                                 </ul>
 											</li>
                                         </ul>

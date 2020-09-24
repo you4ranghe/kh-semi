@@ -107,12 +107,12 @@ public class AddProductEndServlet extends HttpServlet {
 				p.setRuntime(mr.getParameter("runtime"));
 				
 				String route=mr.getFilesystemName("route");
-				p.setSchedule(route);
+				p.setScheduleImgPath(route);
 				
 				p.setPrecaution(mr.getParameter("precaution"));
 				String map=mr.getParameter("address")+" "+mr.getParameter("detailAddress")+" "+mr.getParameter("extraAddress");
 				
-				p.setpMapName(map);
+				p.setpMapAddress(map);
 				p.setpMap(mr.getParameter("map"));
 //				p.setPartnerId(m.getUserId());
 				
