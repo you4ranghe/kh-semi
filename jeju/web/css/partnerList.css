@@ -93,7 +93,7 @@ div#search-container {
 }
 div#search-userId{display:inline-block;}
 div#search-userName{display:none;}
-/* div#search-gender{display:none;} */
+div#search-gender{display:none;}
 div#numPerpage-container{float:right;}
 form#numperPageFrm{display:inline;}
 #pageBar{

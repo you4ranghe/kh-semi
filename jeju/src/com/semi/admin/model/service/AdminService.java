@@ -66,6 +66,14 @@ public class AdminService {
 		return list;
 	}
 	
+	//검색한 파트너 조회 서비스
+	public int selectPartnerSearchCount(String type, String keyword) {
+		Connection conn=getConnection();
+		int count=dao.selectPartnerSearchCount(conn,type, keyword);
+		close(conn);
+		return count;
+	}
+	
 	//총파트너 인원 가져오는 서비스
 	public int selectPartnerCount() {
 		Connection conn = getConnection();
@@ -86,6 +94,15 @@ public class AdminService {
 	public int deletePartner(String partnerId) {
 		Connection conn = getConnection();
 		int result =dao.deletePartner(conn,partnerId);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		return result;
+	}
+	
+	//파트너 승인 서비스
+	public int acceptPartner(String partnerId) {
+		Connection conn= getConnection();
+		int result=dao.acceptPartner(conn,partnerId);
 		if(result>0) commit(conn);
 		else rollback(conn);
 		return result;

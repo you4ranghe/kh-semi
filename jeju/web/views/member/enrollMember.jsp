@@ -70,23 +70,23 @@
                             	<label for="phone">(-)을 제외하고 입력해주세요</label>
                             </td>
                         </tr>
-                       <tr>
+                <!--        <tr>
                             <th>주소</th>
                             <td class="int-area">
                                 <input type="text" name="address" id="address" autocomplete="off" required>
                                 <label for="address">주소를 입력해주세요</label>
                             </td>
-                        </tr> 
-<!--     			 <tr>
-				<th>주소</th>
-				<td class="int-area">
-					<input  name="address" type="text" id="sample6_postcode" placeholder="우편번호" autocomplete="off" required>
-					<button id="address_btn" type="button" onclick="sample6_execDaumPostcode()">주소검색</button><br>
-					<input name="address" type="text" id="sample6_address" placeholder="주소"><br>
-					<inputname="address" type="text" id="sample6_detailAddress" placeholder="상세주소" autocomplete="off" required>
-					<input  name="address" type="text" id="sample6_extraAddress" placeholder="참고항목" autocomplete="off" required>
-				</td>
-			</tr>  -->
+                        </tr>  -->
+			   			 <tr>
+							<th>주소</th>
+							<td class="int-area">
+								<input  name="address" type="text" id="sample6_postcode" placeholder="우편번호" autocomplete="off" required>
+								<input name="address" type="text" id="sample6_address" placeholder="주소" autocomplete="off" ><br>
+								<input name="address" type="text" id="sample6_detailAddress" placeholder="상세주소" autocomplete="off" required>
+								<input  name="address" type="text" id="sample6_extraAddress" placeholder="참고항목" autocomplete="off" required>
+								<button id="address_btn" type="button" onclick="sample6_execDaumPostcode()">주소검색</button><br>
+							</td>
+						</tr>
                         <tr>
                             <th>성별</th>
                             <td class="gender">

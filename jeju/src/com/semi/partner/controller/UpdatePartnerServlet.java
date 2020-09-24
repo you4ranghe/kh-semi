@@ -46,13 +46,24 @@ public class UpdatePartnerServlet extends HttpServlet {
 		MultipartRequest mr = new MultipartRequest(request, path, MaxSize, encode, new MyFileRename());
 		
 		Partner p  = new Partner();
-		p.setIdCardImgOriginal(mr.getOriginalFileName("idcard"));
-		p.setIdCardImgRename(mr.getFilesystemName("idcard"));
+//		p.setIdCardImgOriginal(mr.getOriginalFileName("idcard"));
+//		p.setIdCardImgRename(mr.getFilesystemName("idcard"));
 		p.setPartnerId(mr.getParameter("partnerId"));
-		p.setPartnerImgOriginal(mr.getOriginalFileName("profile"));
-		p.setPartnerImgRename(mr.getFilesystemName("profile"));
 		p.setPartnerNick(mr.getParameter("partnerNick"));
 		
+		
+		if(mr.getOriginalFileName("profile_original")==null) {
+			p.setPartnerImgOriginal(mr.getParameter("profile_older"));
+			p.setPartnerImgRename(mr.getParameter("profile_older"));
+		}else {
+			p.setPartnerImgOriginal(mr.getOriginalFileName("profile_original"));
+			p.setPartnerImgRename(mr.getFilesystemName("profile_original"));
+
+		}
+		/*
+		 * p.setPartnerImgOriginal(mr.getOriginalFileName("profile"));
+		 * p.setPartnerImgRename(mr.getFilesystemName("profile"));
+		 */
 		int result = new PartnerService().updatePartner(p);
 		
 		String msg="";

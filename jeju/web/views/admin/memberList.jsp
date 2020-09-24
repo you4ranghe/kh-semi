@@ -89,7 +89,7 @@
 			<tr>
 				<td>
 					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
-						<%=m.getUserNum()%></a>
+						<%=m.getUserNum() %></a>
 				</td>
 				<td>
 					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
@@ -143,7 +143,6 @@
 			let value=$(e.target).val();
 			$("#search-"+value).css("display","inline-block");
 		});
-		
 		$("#searchType").change();
 		
 		$("#numPerPage").change(e => {

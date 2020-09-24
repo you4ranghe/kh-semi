@@ -51,7 +51,7 @@ public class AdminPartnerSearchServlet extends HttpServlet {
 		
 		List<Partner> list=new AdminService().selectPartnerSearch(type,keyword,cPage,numPerPage);
 		
-		int totalData=new AdminService().selectMemberSearchCount(type,keyword);
+		int totalData=new AdminService().selectPartnerSearchCount(type,keyword);
 		int totalPage=(int)(Math.ceil((double)totalData/numPerPage));
 		
 		int pageBarSize=5;

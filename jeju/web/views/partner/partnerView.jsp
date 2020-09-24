@@ -22,7 +22,7 @@
 			<tr>
 				<th>아이디</th>
 				<td class="int-area">
-					<input type="text" name="userId" id="userId_" value="<%=p.getPartnerId()%>"readonly>			
+					<input type="text" name="partnerId" id="partnerId" value="<%=p.getPartnerId()%>"readonly>			
 				</td>
 			</tr>
 
@@ -33,27 +33,48 @@
 				</td>
 			</tr>
 			
-			<tr>
+				<!--프로필 이미지가 존재할경우 -->
+				<!--  두개의 name= 'profile' 이 값이 존재하기 때문에 hidden값으로 넘기는걸 다르게 넘긴다--> 
+				<%if(p.getPartnerImgRename()!=null){ %>
+				<tr>
 				<th>프로필사진</th>
-					<td>
-						<img id="Loading"></td>
-					<td>
-			</tr>
-			<tr>
-				<td></td>
-				<td class="file_input">
-				<%if(p.getPartnerImgOriginal()!=null){ %>
-					<a href="javascript:fileDownload('<%=p.getPartnerImgOriginal() %>','<%=p.getPartnerImgRename() %>');">
-						<%=p.getPartnerImgOriginal() %>
-					</a>
+						<td>
+						<!-- 여기는 표현만 해주기 위한부분 -->
+						<img  id="Loading" src="<%=request.getContextPath() %>/upload/partner/<%=p.getPartnerImgRename() %>">
+						</td>
+				</tr>
+				<tr><td></td>		
+						<td class="file_input">
+						<label>사진첨부
+						<pre class="brush.html"><input type="file" id="profile_original" name="profile_original" onchange="LoadImg(this);" ></pre>
+						</label>
+						
+						<input type="hidden" name="profile_older" value="<%=p.getPartnerImgRename() %>" > 	
+						
+						
+						
+					</td>
+				<tr>
+				<!-- 프로필 이미지가 존재하지 않을경우 -->
+				<%}else{%>
+				<tr>	
+				<th>프로필사진</th>
+						<td>
+							<img id="Loading"></td>
+						<td>
+				</tr>
+							
+				<tr>
+					<td></td>
+					<td class="file_input">
+						<label>사진첨부
+							<pre class="brush.html"><input type="file" id="profile" name="profile_original" onchange="LoadImg(this);" ></pre>
+						</label>
+					</td>
+				</tr>
+						
 				<%} %>
-					<label>사진첨부
-						<pre class="brush.html">
-							<input type="file" id="profile" name="profile" onchange="LoadImg(this);">
-						</pre>
-					</label>
-				</td>
-			</tr>
+			
 	
 			<td class="btn-area">
 				<button id="btn2" type="submit"  onclick="return update_validate();">수정</button>
@@ -77,7 +98,6 @@ function fileDownload(oriname,rename){
 }
 
 
-
 //파일업로드시 이미지 출력
 	function LoadImg(value){
 		if(value.files&&value.files[0]){
@@ -88,6 +108,8 @@ function fileDownload(oriname,rename){
 			reader.readAsDataURL(value.files[0]);
 		}
 	}
+	
+	
 //파트너 닉네임 유효성 검사
 function update_validate(){
 	

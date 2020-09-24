@@ -94,6 +94,7 @@
 </section>
 
 <script>
+//이미지출력부분
 function LoadImg(value){
 if(value.files&&value.files[0]){
 	var reader =new FileReader();

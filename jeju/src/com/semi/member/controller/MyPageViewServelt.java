@@ -37,12 +37,18 @@ public class MyPageViewServelt extends HttpServlet {
 		
 		String email=m.getEmail();
 		String phone=m.getPhone();
+		String address=m.getAddress();
+		System.out.println("주소:"+address);
 		
-		System.out.println(email+" : "+phone);
+		System.out.println(email+" : "+ phone);
 		
 		try {
+			System.out.println(email);
+			System.out.println(phone);
 			m.setEmail(AESCrypto.decrypt(email));
 			m.setPhone(AESCrypto.decrypt(phone));
+			System.out.println(m.getEmail());
+			System.out.println(m.getPhone());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

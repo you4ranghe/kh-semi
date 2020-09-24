@@ -17,7 +17,7 @@
 <h5><a href="<%=request.getContextPath()%>/member/logout">&nbsp;로그아웃</a></h5>
 </section>
 <section id="member-viewForm">
-	<form id="MypageFrm" action="<%=request.getContextPath() %>/admin/deletePartner?partnerId=<%=p.getPartnerId() %>" method="post">
+	<form id="MypageFrm" action="<%=request.getContextPath() %>/admin/acceptPartner?partnerId=<%=p.getPartnerId() %>" method="post">
 		<table>
 			<tr>
 				<th>아이디(파트너 아이디)</th>
@@ -84,9 +84,25 @@
 				</td>
 			</tr>
 			
+			<tr>
+				<th>파트너 승인여부</th>
+				<td class="int-area">
+					<input type="text" name="partnerStatus" id="partnerStatus" value="<%=p.getPartnerStatus() %>" readonly>
+				</td>
+			</tr>
+			
 			 <tr>
+			<!-- 	<td class="btn-area">
+					<button id="btn2" type="submit"  onclick="deleteMember();">파트너 제외하기</button>
+				</td> -->
 				<td class="btn-area">
-					<button id="btn2" type="submit"  onclick="deleteMember();">강제탈퇴 시키기</button>
+					<button id="btn2" type="button"  onclick="deleteMember();">파트너 제외하기</button>
+				</td>
+				<td class="btn-area">
+					<button id="btn3" type="submit"  onclick="acceptPartner();">파트너 승인하기</button>
+				</td>
+				<td class="btn-area">
+					<img id="Loading" src="<%=request.getContextPath() %>/upload/partner/<%=p.getPartnerImgRename() %>">
 				</td>
 			</tr> 
 		</table>
@@ -96,9 +112,12 @@
 <script>
 //유효성 검사
 	   function deleteMember(){
-			
 		confirm("해당 회원을 정말로 탈퇴 시키겠습니까?");
+		location.assign('<%=request.getContextPath()%>/admin/deletePartner?partnerId=<%=p.getPartnerId() %>');
 		
+		}
+		function acceptPartner(){
+		confirm("해당 회원을 파트너로 승인하시겠습니까?");
 		}
 </script>
 	

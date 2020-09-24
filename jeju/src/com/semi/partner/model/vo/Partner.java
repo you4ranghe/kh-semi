@@ -12,13 +12,15 @@ public class Partner {
 	private String idCardImgRename;
 	private String partnerNick;
 	private Date pEnrolldate;
+	private String partnerStatus;
 	
 	public Partner() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Partner(int partnerNum, String partnerId, String partnerImgOriginal, String partnerImgRename,
-			String idCardImgOriginal, String idCardImgRename, String partnerNick, Date pEnrolldate) {
+			String idCardImgOriginal, String idCardImgRename, String partnerNick, Date pEnrolldate,
+			String partnerStatus) {
 		super();
 		this.partnerNum = partnerNum;
 		this.partnerId = partnerId;
@@ -28,6 +30,7 @@ public class Partner {
 		this.idCardImgRename = idCardImgRename;
 		this.partnerNick = partnerNick;
 		this.pEnrolldate = pEnrolldate;
+		this.partnerStatus = partnerStatus;
 	}
 
 	public int getPartnerNum() {
@@ -94,14 +97,22 @@ public class Partner {
 		this.pEnrolldate = pEnrolldate;
 	}
 
+	public String getPartnerStatus() {
+		return partnerStatus;
+	}
+
+	public void setPartnerStatus(String partnerStatus) {
+		this.partnerStatus = partnerStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Partner [partnerNum=" + partnerNum + ", partnerId=" + partnerId + ", partnerImgOriginal="
 				+ partnerImgOriginal + ", partnerImgRename=" + partnerImgRename + ", idCardImgOriginal="
 				+ idCardImgOriginal + ", idCardImgRename=" + idCardImgRename + ", partnerNick=" + partnerNick
-				+ ", pEnrolldate=" + pEnrolldate + "]";
+				+ ", pEnrolldate=" + pEnrolldate + ", partnerStatus=" + partnerStatus + "]";
 	}
-	
+
 	
 	
 

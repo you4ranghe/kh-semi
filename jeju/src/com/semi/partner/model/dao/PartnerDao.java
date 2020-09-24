@@ -72,6 +72,7 @@ public class PartnerDao {
 				p.setPartnerNick(rs.getString("partner_nick"));
 				p.setPartnerNum(rs.getInt("partner_num"));
 				p.setpEnrolldate(rs.getDate("p_enrolldate"));
+				p.setPartnerStatus(rs.getString("partner_status"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -90,10 +91,10 @@ public class PartnerDao {
 			pstmt=conn.prepareStatement(prop.getProperty("updatePartner"));
 			pstmt.setString(1, p.getPartnerImgOriginal());
 			pstmt.setString(2, p.getPartnerImgRename());
-			pstmt.setString(3, p.getIdCardImgOriginal());
-			pstmt.setString(4, p.getIdCardImgRename());
-			pstmt.setString(5, p.getPartnerNick());
-			pstmt.setString(6, p.getPartnerId());
+//			pstmt.setString(3, p.getIdCardImgOriginal());
+//			pstmt.setString(4, p.getIdCardImgRename());
+			pstmt.setString(3, p.getPartnerNick());
+			pstmt.setString(4, p.getPartnerId());
 			
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {

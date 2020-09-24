@@ -19,6 +19,7 @@
 	<select  id="searchType">
 		<option value="userId" <%=type!=null && type.equals("partner_id")?"selected":"" %>>아이디</option>
 		<option value="userName" <%=type!=null && type.equals("partner_nick")?"selected":"" %>>닉네임</option>
+		<option value="gender" <%=type!=null && type.equals("partner_status")?"selected":"" %>>승인여부</option>		
 					
 	</select>
 	
@@ -52,7 +53,20 @@
 			<button class="search-btn"  type="submit">검색</button>
 		</form>
 	</div>
-</div>
+	
+		<div id="search-gender">
+			<form action="<%=request.getContextPath()%>/admin/partnerSearch">
+				<input class="search-input" type="hidden" name="searchType" value="partner_status">
+				<label><input type="radio" name="searchkeyword" value="Y"
+				<%=type!=null&&type.equals("partner_status")&&keyword.equals("Y")?"checked":""%>>승인</label>
+				<label><input type="radio" name="searchkeyword" value="N"
+					<%=type!=null&&type.equals("partner_status")&&keyword.equals("N")?"checked":""%>>대기</label>
+					<input type="hidden" name="numPerPage" value='<%=numPerPage==null?"5":numPerPage%>'>
+					<button class="search-btn"  type="submit">검색</button>
+				</form>
+			</div>
+			
+		</div>
 		<section id="memberList-container">
 
 				<div id="tbl-member-container">
@@ -63,6 +77,7 @@
 								<th>파트너 아이디</th>
 								<th>파트너 닉네임</th>
 								<th>파트너 등록일</th>
+								<th>파트너 승인여부</th>
 							</tr>
 		<thead>
 
@@ -85,6 +100,10 @@
 					<a href="<%=request.getContextPath()%>/admin/partnerView?partnerId=<%=p.getPartnerId()  %>">
 						<%=p.getpEnrolldate()%></a>
 				</td>
+						<td>
+					<a href="<%=request.getContextPath()%>/admin/partnerView?partnerId=<%=p.getPartnerId()  %>">
+						<%=p.getPartnerStatus()%></a>
+				</td>
 
 			</tr>
 		<%} %>	
@@ -102,10 +121,12 @@
 		$("#searchType").change(e => {
 			let userId=$("#search-userId");
 			let userName=$("#search-userName");
+			let gender=$("#search-gender");
 			
 			userId.css("display","none");
 			userName.css("display","none");
-
+			gender.css("display","none");
+			
 			let value=$(e.target).val();
 			$("#search-"+value).css("display","inline-block");
 		});

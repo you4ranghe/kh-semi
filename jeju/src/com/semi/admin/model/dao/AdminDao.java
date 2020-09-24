@@ -183,6 +183,7 @@ public class AdminDao {
 				p.setPartnerImgRename(rs.getString("partner_img_rename"));
 				p.setPartnerNick(rs.getString("partner_nick"));
 				p.setpEnrolldate(rs.getDate("p_enrolldate"));
+				p.setPartnerStatus(rs.getString("partner_status"));
 		
 				list.add(p);
 			}
@@ -195,6 +196,29 @@ public class AdminDao {
 		}return list;
 
 	}
+	
+	//키워드로 검색된 회원수 조회 dao
+		public int selectPartnerSearchCount(Connection conn, String type, String keyword) {
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			int count=0;
+			String sql=prop.getProperty("selectPartnerSearchCount");
+			try {
+				/* value.type.replace("_", ""); */
+				pstmt=conn.prepareStatement(sql.replace("$type",type));
+				pstmt.setString(1,"%"+keyword+"%");
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					count=rs.getInt(1);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return count;
+		}
+		
 	
 //총 파트너 인원 조회 dao
 	public int selectPartnerCount(Connection conn) {
@@ -243,6 +267,7 @@ public class AdminDao {
 				p.setPartnerImgRename(rs.getString("partner_img_rename"));
 				p.setPartnerNick(rs.getString("partner_nick"));
 				p.setpEnrolldate(rs.getDate("p_enrolldate"));
+				p.setPartnerStatus(rs.getString("partner_status"));
 		
 				list.add(p);
 			}
@@ -271,6 +296,27 @@ public class AdminDao {
 			close(pstmt);
 		}return result;
 	}
+	
+	//파트너 승인 dao
+	public int acceptPartner(Connection conn,String partnerId) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("acceptPartner"));
+			
+			pstmt.setString(1, "Y");
+			pstmt.setString(2, partnerId);
+			
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 	
 }//클래스
 
