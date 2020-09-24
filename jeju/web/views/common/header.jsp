@@ -194,7 +194,7 @@
                                                         <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
 	                                         	 <%} %>
 	                                         	 <!-- 로그인한후 일반회원일 경우 -->
-	                                         	<%if(logginedMember!=null){%>
+	                                         	<%if(logginedMember!=null&&!logginedMember.getUserId().equals("admin")){%>
 	                          
 	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
 	                                         			<li><a href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId() %>" id="wishSubmit">위시리스트</a></li>
@@ -215,7 +215,7 @@
 	                                        	
 	                                         	<!-- 로그인후 일반회원중 파트너신청을 안한경우 -->
 	                                         	<%if(logginedMember!=null&& logginedPartner==null){ %>
-	                                         			<li><a href="<%=request.getContextPath()%>/partner/enroll?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
+	                                         			<li><a href="<%=request.getContextPath()%>/member/enrollPartner?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
                                   				<!-- 분기문 마무리하기 -->
                                    				<%}	 %>	       
 	                                         	

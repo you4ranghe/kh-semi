@@ -6,6 +6,13 @@
 List<Product> list=(List)request.getAttribute("list");
 
 %>
+<style>
+	.img-div{
+		width: 400px; 
+		height:350px;
+	}
+
+</style>
 	<div class="row">
 		<%for(Product p:list){ %>
 		  <div class="col-sm-6 col-lg-4">

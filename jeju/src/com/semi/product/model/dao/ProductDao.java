@@ -50,6 +50,7 @@ public class ProductDao {
 				p.setpBigNameKor(rs.getString("p_big_name_kor"));
 				p.setpMap(rs.getString("p_map_address"));
 				p.setTitleImgPath(rs.getString("title_img_path"));
+				p.setpPriceC(rs.getInt("p_price_c"));
 				list.add(p);
 			}
 			

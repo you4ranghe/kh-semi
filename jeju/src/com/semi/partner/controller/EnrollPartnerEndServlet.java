@@ -19,7 +19,7 @@ import com.semi.partner.model.vo.Partner;
 /**
  * Servlet implementation class EnrollPartnerEnd
  */
-@WebServlet("/partner/enrollPartnerEnd")
+@WebServlet("/member/enrollPartnerEnd")
 public class EnrollPartnerEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -67,11 +67,11 @@ public class EnrollPartnerEndServlet extends HttpServlet {
 		String loc="/";
 		
 		if(result>0) {
-			msg="파트너가 되신걸 환영합니다 :-)";
+			msg="파트너 신청에 성공하였습니다 :-)";
 		
 		}
 		else {
-			msg="파트너 등록에 실패하였습니다";
+			msg="파트너 신청에 실패하였습니다";
 		
 		}
 		request.setAttribute("msg", msg);
