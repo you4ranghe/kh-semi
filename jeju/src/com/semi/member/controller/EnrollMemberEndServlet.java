@@ -42,7 +42,6 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String phone=request.getParameter("phone");
 		
-		
 		try {
 		m.setEmail(AESCrypto.encrypt(email));
 		m.setPhone(AESCrypto.encrypt(phone));

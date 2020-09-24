@@ -1,6 +1,7 @@
 package com.semi.product.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.payment.model.service.PaymentService;
 import com.semi.payment.model.vo.Payment;
-import com.semi.payment.service.PaymentService;
 
 /**
  * Servlet implementation class ProductGoCartServlet
@@ -34,17 +35,23 @@ public class ProductGoCartServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+
 		
 		String datestart = request.getParameter("pDateStart");
-		String datefinish = request.getParameter("pDateFinish");
-		String counta = request.getParameter("pCountA");
-		String countc = request.getParameter("pCountC");
-		String pTime = request.getParameter("pTime");
-		String totalprice = request.getParameter("totalPrice");
+		Date pds = Date.valueOf(datestart);
 		
-		System.out.println(datestart+datefinish+counta+countc+pTime+totalprice);
+		int totalprice = Integer.parseInt(request.getParameter("totalPrice"));
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		String userId = request.getParameter("userId");
+		int counta = Integer.parseInt(request.getParameter("pCountA")); 
+		int countc = Integer.parseInt(request.getParameter("pCountC"));
+
 		
-		Payment pm = new Payment(null,0,null,null,datestart,datefinish,counta,countc,pTime,totalprice);
+		
+		
+		Payment pm = new Payment (null,null,null,pds,totalprice,pNum,userId,counta,countc);
+		
+		System.out.println(pm);
 		
 		int result = new PaymentService().insertProduct(pm);
 		

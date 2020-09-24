@@ -51,6 +51,7 @@ public class MyPageViewServelt extends HttpServlet {
 		
 		request.setAttribute("member", m);
 		request.getRequestDispatcher("/views/member/MyPageView.jsp").forward(request, response);
+		//request.getRequestDispatcher("/views/member/updatePassword.jsp").forward(request, response);
 		
 		
 		
