@@ -33,14 +33,16 @@ public class PayListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String imageFile=request.getParameter("");
-		int productNum=Integer.parseInt(request.getParameter("productNum"));
-		String productName=request.getParameter("productName");
-		int productPrice=Integer.parseInt(request.getParameter("productPrice"));
-		String productInfo=request.getParameter("productInfo");
-		String dateStart=request.getParameter("dateStart");
-		int chaildNum=Integer.parseInt(request.getParameter("chaildNum"));
-		int adultNum=Integer.parseInt(request.getParameter("adultNum"));
+		String imageFile=request.getParameter("titleImgPath");
+		System.out.println("확인하기");
+		System.out.println(imageFile);
+		int productNum=Integer.parseInt(request.getParameter("pNum"));
+		String productName=request.getParameter("pName");
+		int productPrice=Integer.parseInt(request.getParameter("totalPrice"));
+		String productInfo=request.getParameter("pInfo");
+		String dateStart=request.getParameter("pDateStart");
+		int chaildNum=Integer.parseInt(request.getParameter("pCountC"));
+		int adultNum=Integer.parseInt(request.getParameter("pCountA"));
 		
 		
 		String userId=request.getParameter("userId");
@@ -60,6 +62,7 @@ public class PayListServlet extends HttpServlet {
 		System.out.println(dateStart);
 		System.out.println(chaildNum+"  "+adultNum);
 		
+		request.setAttribute("imageFile", imageFile);
 		request.setAttribute("productNum", productNum);
 		request.setAttribute("productName", productName);
 		request.setAttribute("productPrice", productPrice);

@@ -73,24 +73,24 @@ public class PartnerDao {
 			
 			rs=pstmt.executeQuery();
 			
-			if(rs.next()) {
-				p=new Partner();
-				p.setIdCardImgOriginal(rs.getString("id_card_img_original"));
-				p.setIdCardImgRename(rs.getString("id_card_img_rename"));
-				p.setPartnerId(rs.getString("partner_id"));
-				p.setPartnerImgOriginal(rs.getString("partner_img_original"));
-				p.setPartnerImgRename(rs.getString("partner_img_rename"));
-				p.setPartnerNick(rs.getString("partner_nick"));
-				p.setPartnerNum(rs.getInt("partner_num"));
-				p.setpEnrolldate(rs.getDate("p_enrolldate"));
-				p.setPartnerStatus(rs.getString("partner_status"));
-			}
-			}
-		catch(SQLException e){
+				if(rs.next()) {
+					p=new Partner();
+					p.setIdCardImgOriginal(rs.getString("id_card_img_original"));
+					p.setIdCardImgRename(rs.getString("id_card_img_rename"));
+					p.setPartnerId(rs.getString("partner_id"));
+					p.setPartnerImgOriginal(rs.getString("partner_img_original"));
+					p.setPartnerImgRename(rs.getString("partner_img_rename"));
+					p.setPartnerNick(rs.getString("partner_nick"));
+					p.setPartnerNum(rs.getInt("partner_num"));
+					p.setpEnrolldate(rs.getDate("p_enrolldate"));
+					p.setPartnerStatus(rs.getString("partner_status"));
+				}
+			}catch(SQLException e) {
 				e.printStackTrace();
-				
-    }return p;
-	}
+			}finally {
+				close(pstmt);
+			}return p;
+		}
 
 	public List<Product> selectPartnerProductList(Connection conn,int cPage,int numPerPage,String userId){
 		PreparedStatement pstmt=null;
@@ -212,11 +212,6 @@ public class PartnerDao {
     }return result;
 	}
 	
-
-
-
-		
-	
 	public Product selectProduct(Connection conn,int pNum) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -298,11 +293,9 @@ public class PartnerDao {
 		return result;
 	}
 	
-	
-	
 
-	
-	public int updateProduct(Connection conn,Product p) {
+
+	public int updateProduct(Connection conn, Product p) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
@@ -344,5 +337,9 @@ public class PartnerDao {
 		
 		return result;
 	}
-}
+
+	
+
+}//클래스
+
 
