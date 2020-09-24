@@ -32,8 +32,8 @@
 //	 */
 //	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		// TODO Auto-generated method stub
-//		
-//		List<Product> list = new ProductService().selectProductList();
+//		//파라미터값 받아서 서비스하기
+//		List<Product> list = new ProductService().selectProductList(pNum);
 //		request.setAttribute("list", list);
 //		request.getRequestDispatcher("/views/product/productList.jsp").forward(request, response);
 //	}

@@ -99,13 +99,12 @@ public class UpdateProductEndServlet extends HttpServlet {
 		
 		p.setPrecaution(mr.getParameter("precaution"));
 		String map=mr.getParameter("address");
-		p.setpMapName(map);
+		p.setpMapAddress(map);
 		p.setpMap(mr.getParameter("map"));
 		
 		//filepath는 리네임된 파일명을 가져와야함
 		
 		if(mr.getFilesystemName("slider")!=null) {
-			System.out.println("있는ㄷㅔ 새 파일 이름이거임"+mr.getFilesystemName("slider"));
 			String slider=mr.getFilesystemName("slider");
 			p.setTitleImgPath((slider));
 			//사용자가 전달한 파일명과 동일한 파일을 클라이언트에게 보내줌
@@ -119,19 +118,25 @@ public class UpdateProductEndServlet extends HttpServlet {
 			System.out.println(f.getName());
 			f.delete();
 		}else {
-			System.out.println("없는데새파일이름"+mr.getParameter("slidernew"));
-			System.out.println("없는데원래이름"+mr.getParameter("sliderorigin"));
 			p.setTitleImgPath(mr.getParameter("sliderorigin"));
 		}
 		
+		if(mr.getFilesystemName("main")!=null) {
+			String main=mr.getFilesystemName("main");
+			p.setpImgPath((main));
+			
+		}else {
+			p.setTitleImgPath(mr.getParameter("mainorigin"));
+		}
 		
-		String main=mr.getFilesystemName("main");
-		p.setpImgPath(main);
 		
-		
-		String route=mr.getFilesystemName("route");
-		p.setSchedule(route);
-		
+		if(mr.getFilesystemName("route")!=null) {
+			String route=mr.getFilesystemName("route");
+			p.setScheduleImgPath((route));
+			
+		}else {
+			p.setScheduleImgPath(mr.getParameter("routeorigin"));
+		}	
 		
 //		p.setPartnerId(m.getUserId());
 		
