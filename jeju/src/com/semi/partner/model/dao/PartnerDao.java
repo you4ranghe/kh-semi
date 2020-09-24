@@ -46,6 +46,7 @@ public class PartnerDao {
 				p.setpBigNameKor(rs.getString("p_big_name_kor"));
 				p.setpMap(rs.getString("p_map_address"));
 				p.setTitleImgPath(rs.getString("title_img_path"));
+				p.setpPriceC(rs.getInt("p_price_c"));
 				list.add(p);
 			}
 			
@@ -144,4 +145,84 @@ public class PartnerDao {
 		return p;
 	}
 	
+	public int addProduct(Connection conn, Product p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("addProduct"));
+			pstmt.setString(1, p.getpBigNameEng());
+			pstmt.setString(2, p.getpBigNameKor());
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getpPriceA());
+			pstmt.setInt(5, p.getpPriceC());
+			pstmt.setDate(6, p.getpDateStart());
+			pstmt.setDate(7, p.getpDateFinish());
+			pstmt.setString(8, p.getpTime());
+			pstmt.setString(9, p.getTitleImgPath());
+			pstmt.setString(10, p.getpImgPath());
+			pstmt.setString(11, p.getpInfo());
+			pstmt.setString(12, p.getpPointInfo());
+			pstmt.setString(13, p.getpIntd());
+			pstmt.setString(14, p.getRuntime());
+			pstmt.setString(15, p.getSchedule());
+			pstmt.setString(16, p.getPrecaution());
+			pstmt.setString(17, p.getpMapName());
+			pstmt.setString(18, p.getpMap());
+//			pstmt.setString(19, p.getPartnerId());
+			pstmt.setString(19, "user01");
+			
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int updateProduct(Connection conn,Product p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			
+//			updateProduct=UPDATE PRODUCT SET P_BIG_NAME_ENG=?, p_big_name_kor=?,p_name=?,
+//			p_price_a=?,p_price_c=?,p_date_start=?,p_date_finish=?,p_time=?,
+//			title_img_path=?,p_img_path=?,p_info=?,p_intd=?,p_point_info=?,runtime=?,
+//			SChedule_img_path=?,precaution=?,p_map_address=?,p_map=? WHERE P_NUM=? AND PARTNER_ID=?
+			
+			pstmt=conn.prepareStatement(prop.getProperty("updateProduct"));
+			pstmt.setString(1, p.getpBigNameEng());
+			pstmt.setString(2, p.getpBigNameKor());
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getpPriceA());
+			pstmt.setInt(5, p.getpPriceC());
+			pstmt.setDate(6, p.getpDateStart());
+			pstmt.setDate(7, p.getpDateFinish());
+			pstmt.setString(8, p.getpTime());
+			pstmt.setString(9, p.getTitleImgPath());
+			pstmt.setString(10, p.getpImgPath());
+			pstmt.setString(11, p.getpInfo());
+			pstmt.setString(12, p.getpIntd());
+			pstmt.setString(13, p.getpPointInfo());
+			pstmt.setString(14, p.getRuntime());
+			pstmt.setString(15, p.getSchedule());
+			pstmt.setString(16, p.getPrecaution());
+			pstmt.setString(17, p.getpMapName());
+			pstmt.setString(18, p.getpMap());
+			pstmt.setInt(19, p.getpNum());
+//			pstmt.setString(19, p.getPartnerId());
+			pstmt.setString(20, "user01");
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }

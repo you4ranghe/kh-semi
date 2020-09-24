@@ -17,8 +17,6 @@
 	.img-div{
 		/* 둥글고 좀 여유있게 하기 */
 	
-		
-	
 	}
 	.wish,.wishclick{
 		width:20px;
@@ -110,14 +108,15 @@
 		    <div class="thumbnail img-div" >
 		    
 		    	
-		      <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="320px" height="200px" class="img-rounded"></a>
+		      <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="320px" height="200px" class="img-rounded">
 		      
 		      <div class="caption" >
 		        <h3><%=p.getpName() %></h3>
-		        <p><%=p.getpNum() %></p>
-		        <a href="<%=request.getContextPath()%>/partner/updateProduct?pNum=<%=p.getpNum()%>" onclick="return confirm('정말 삭제하시겠습니까?');"><button type="button" class="btn btn-default btn-sm">수정하기</button></a>
+		        <p><%=p.getpPriceC() %>~</p> </a>
+		        <a href="<%=request.getContextPath()%>/partner/updateProduct?pNum=<%=p.getpNum()%>"><button type="button" class="btn btn-default btn-sm">수정하기</button></a>
 		        <a href="<%=request.getContextPath()%>/partner/deleteProduct?pNum=<%=p.getpNum()%>" onclick="return confirm('정말 삭제하시겠습니까?');"><button type="button" class="btn btn-danger btn-sm" >삭제하기</button></a>
 		        <input type="hidden" name="pNum" value=<%=p.getpNum() %> >
+		       
 		      </div>
 		    </div>
 		  </div>

@@ -294,6 +294,19 @@ public class ProductDao {
 		return result;
 	}
 	
+	public int updateProduct(Connection conn,Product p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updateProduct"));
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	
 }

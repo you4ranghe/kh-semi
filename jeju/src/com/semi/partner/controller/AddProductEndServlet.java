@@ -14,7 +14,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.member.model.vo.Member;
-import com.semi.product.model.service.ProductService;
+import com.semi.partner.model.service.PartnerService;
 import com.semi.product.model.vo.Product;
 
 /**
@@ -118,7 +118,7 @@ public class AddProductEndServlet extends HttpServlet {
 				
 				
 				
-				int result=new ProductService().addProduct(p);
+				int result=new PartnerService().addProduct(p);
 				String msg="";
 				String loc="";
 				if(result>0) {
@@ -126,7 +126,7 @@ public class AddProductEndServlet extends HttpServlet {
 					loc="/partner/partnerProductList";//나중에 바로 상세페이지로 옮겨가기
 				}else {
 					msg="상품 등록에 실패하였습니다.";
-					loc="/"; //나중에 상품등록 페이지가는걸로 바꾸기
+					loc="/partner/addProduct"; //나중에 상품등록 페이지가는걸로 바꾸기
 				}
 				request.setAttribute("msg", msg);
 				request.setAttribute("loc", loc);

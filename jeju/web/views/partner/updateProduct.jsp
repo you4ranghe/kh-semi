@@ -23,6 +23,9 @@
 	input.long{
 	width :900px;
 	}
+	.long1{
+	width:850px;
+	}
 
 </style>
 <section>
@@ -33,7 +36,9 @@
 		<table class="table-bordered" >
 			<tr>
 				<th>상품 이름</th>
-				<td><input type="text" name="name" required class="long" value="<%=p.getpName() %>"></td>
+				<td><input type="hidden" name="partnerId" value="<%=p.getPartnerId()%>">
+				<input type="text" name="pNum" value="<%=p.getpNum()%>">
+				<input type="text" name="name" required class="long" value="<%=p.getpName() %>"></td>
 			
 			</tr>
 			<tr>
@@ -73,12 +78,14 @@
 			</tr>
 			<tr>
 				<th>슬라이더 사진</th>
-				<td><input type="file" name="slider" required></td>
-			
+				<td><input type="file" name="slider" id="slider" >
+				
+				<input type="text" name="sliderorigin" value="<%=p.getTitleImgPath()%>"></td>
 			</tr>
 			<tr>
 				<th>메인 사진</th>
-				<td><input type="file" name="main" required></td>
+				<td><input type="file" name="main" >
+				<input type="hidden" name="mainorigin" value="<%=p.getpImgPath()%>"></td>
 			
 			</tr>
 			<tr>
@@ -104,8 +111,9 @@
 			</tr>
 			<tr>
 				<th>여행 루트 사진</th>
-				<td><input type="file" name="route" required></td>
-			
+				<td><input type="file" name="route" >
+				<input type="hidden" name="routeorigin" value="<%=p.getSchedule()%>"></td>
+					
 			</tr>
 			<tr>
 				<th>유의사항</th>
@@ -113,12 +121,10 @@
 			
 			</tr>
 			<tr>
-				<th>지도 주소</th>
+				<th>주소</th>
 				<td>
-					<input type="text" id="sample6_address" name="address" placeholder="주소">
+					<input type="text" id="sample6_address" name="address" class="long1" value="<%=p.getpMapName() %>">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="주소찾기"><br>
-					<input type="text" id="sample6_detailAddress" name="detailAddress" placeholder="상세주소">
-					<input type="text" id="sample6_extraAddress" name="extraAddress" placeholder="참고항목">
 					
 
 				</td>
@@ -148,6 +154,18 @@
 </div>
 
 <script>
+
+$(function() {
+
+
+	$("#slider").change(function(e){
+	
+	  $("#slidernew").val($("#slider")[0].files[0].name);
+	
+	  });
+	
+	});
+
 	$('#runtime').on('keyup', function() {
 	
 		if($(this).val().length > 160) {
@@ -192,17 +210,15 @@
 	                        extraAddr = ' (' + extraAddr + ')';
 	                    }
 	                    // 조합된 참고항목을 해당 필드에 넣는다.
-	                    document.getElementById("sample6_extraAddress").value = extraAddr;
+	                	document.getElementById("sample6_address").value = addr+extraAddr;
 	                
 	                } else {
-	                    document.getElementById("sample6_extraAddress").value = '';
+	                    document.getElementById("sample6_address").value = addr;
 	                }
 	
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                /* document.getElementById('sample6_postcode').value = data.zonecode; */
-	                document.getElementById("sample6_address").value = addr;
 	                // 커서를 상세주소 필드로 이동한다.
-	                document.getElementById("sample6_detailAddress").focus();
 	            }
 	        }).open();
 	    }
