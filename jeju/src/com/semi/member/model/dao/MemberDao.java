@@ -12,8 +12,6 @@ import java.util.Properties;
 
 import com.semi.member.model.vo.Member;
 
-
-
 public class MemberDao {
 	
 	private Properties prop= new Properties();
@@ -123,6 +121,7 @@ public class MemberDao {
 		}return m;
 
 	}
+
 
 	//회원정보 수정 dao
 	public int updateMember(Connection conn, Member m) {

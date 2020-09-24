@@ -49,6 +49,30 @@ public class EncyptorWrapper extends HttpServletRequestWrapper {
 		return returnValue;
 	}
 	
+	//가입>로그인바로 이루어지도록 할때
+	//가입에서 setAttribute한 값들을 로그인에서 바로 필터링해서
+	//암호화시키기 위한 getAttibute 재정의
+//	@Override
+//	public String getAttribute(String name) {
+//
+//		String returnValue="";
+//		
+//		
+//		if(name.equals("password")) {
+//			String pw=super.getParameter(name);
+//																				System.out.println(pw);
+//			String encPw=getSha512(pw);
+//																				System.out.println(encPw);
+//			returnValue=encPw;
+//		
+//		
+//		}else {
+//			returnValue=super.getParameter(name);
+//		}
+//		return returnValue;
+//	}
+//	
+	
 	//암호화 처리하는 함수만들자
 	private String getSha512(String value) {
 		

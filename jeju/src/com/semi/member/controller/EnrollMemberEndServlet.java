@@ -31,13 +31,22 @@ public class EnrollMemberEndServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		Member m =new Member();
 		m.setPassword(request.getParameter("password"));
-		m.setAddress(request.getParameter("address"));
+		//m.setAddress(request.getParameter("address"));
 		m.setAge(Integer.parseInt(request.getParameter("age")));
 		m.setGender(request.getParameter("gender"));
 		m.setUserId(request.getParameter("userId"));
-		m.setUserName(request.getParameter("userName"));
+		m.setUserName(request.getParameter("userName"));	
+		m.setAddress(String.join(",", request.getParameterValues("address")));
+		//String id=request.getParameter("userId");
+		
+		//필터링을 사용하지않고 패스워드 암호화
+		//String password=request.getParameter("password");
+		//System.out.println(password);
 		
 		String email=request.getParameter("email");
 		String phone=request.getParameter("phone");
@@ -45,6 +54,7 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		try {
 		m.setEmail(AESCrypto.encrypt(email));
 		m.setPhone(AESCrypto.encrypt(phone));
+		//m.setPassword(AESCrypto.encrypt(password));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -69,6 +79,28 @@ public class EnrollMemberEndServlet extends HttpServlet {
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+		
+//			LoginEndServlet les= new LoginEndServlet();
+//			
+//			try {
+//				System.out.println("들어갔니?");
+//				System.out.println(password);
+//			
+//				System.out.println("들어갔다!");
+//				
+//				request.setAttribute("id", id);
+//				System.out.println("getAttribue아이디" + id);
+//				
+//				request.setAttribute("password", password);
+//				System.out.println("getAtrr 비밀번호"+ password);
+//				
+//				les.doGet(request, response);
+//				
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+			
+			
 		}
 
 	/**

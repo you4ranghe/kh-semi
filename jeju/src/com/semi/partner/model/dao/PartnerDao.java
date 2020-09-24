@@ -1,11 +1,18 @@
 package com.semi.partner.model.dao;
 
+
+import static com.semi.common.JDBCTemplate.close;
+
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.semi.partner.model.vo.Partner;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -13,19 +20,74 @@ import static com.semi.common.JDBCTemplate.close;
 import com.semi.product.model.dao.ProductDao;
 import com.semi.product.model.vo.Product;
 
+
 public class PartnerDao {
 	
 	private Properties prop = new Properties();
 	
 	public PartnerDao() {
+
 		try {
 			String path = ProductDao.class.getResource("/sql/partner/partner_sql.properties").getPath();
 			prop.load(new FileReader(path));
+
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+
+	//파트너 가입 서비스 dao
+	public int insertPartner(Connection conn ,Partner p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("inserPartner"));
+			pstmt.setString(1, p.getPartnerId());
+			pstmt.setString(2,p.getPartnerImgOriginal());
+			pstmt.setString(3, p.getPartnerImgRename());
+			pstmt.setString(4, p.getIdCardImgOriginal());
+			pstmt.setString(5, p.getIdCardImgRename());
+			pstmt.setString(6, p.getPartnerNick());
+			
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+		
+	}
+	
+	//파트너 아이디로 조회 dao
+	public Partner selectPartner(Connection conn, String userId) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Partner p=null;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectPartner"));
+			pstmt.setString(1, userId);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				p=new Partner();
+				p.setIdCardImgOriginal(rs.getString("id_card_img_original"));
+				p.setIdCardImgRename(rs.getString("id_card_img_rename"));
+				p.setPartnerId(rs.getString("partner_id"));
+				p.setPartnerImgOriginal(rs.getString("partner_img_original"));
+				p.setPartnerImgRename(rs.getString("partner_img_rename"));
+				p.setPartnerNick(rs.getString("partner_nick"));
+				p.setPartnerNum(rs.getInt("partner_num"));
+				p.setpEnrolldate(rs.getDate("p_enrolldate"));
+				p.setPartnerStatus(rs.getString("partner_status"));
+			}	
+    }return p;
+	}
+
 	public List<Product> selectPartnerProductList(Connection conn,int cPage,int numPerPage,String userId){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -74,33 +136,82 @@ public class PartnerDao {
 				result=rs.getInt(1);
 			}
 			System.out.println("파트너 전체 상품 몇개?"+ result);
+
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rs);
 			close(pstmt);
-		}
+    }
 		
 		return result;
 	}
-	
-	public int deleteProduct(Connection conn, int pNum) {
-		PreparedStatement pstmt=null;
-		int result=0;
+
 		
+	
+
+		
+
+  //파트너 정보 수정 dao
+  public int updatePartner(Connection conn, Partner p) {
+     PreparedStatement pstmt=null;
+		  int result=0;
+  try {
+			pstmt=conn.prepareStatement(prop.getProperty("updatePartner"));
+			pstmt.setString(1, p.getPartnerImgOriginal());
+			pstmt.setString(2, p.getPartnerImgRename());
+//			pstmt.setString(3, p.getIdCardImgOriginal());
+//			pstmt.setString(4, p.getIdCardImgRename());
+			pstmt.setString(3, p.getPartnerNick());
+			pstmt.setString(4, p.getPartnerId());
+    result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+    }finally {
+			close(pstmt);
+		}return result;
+	}
+
+  	public int deleteProduct(Connection conn, int pNum) {
+      PreparedStatement pstmt=null;
+      int result=0;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("deleteProduct"));
 			pstmt.setInt(1, pNum);
-			
-			result=pstmt.executeUpdate();
+      result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally{
+      }finally {
 			close(pstmt);
-		}
-		return result;
-		
+		}return result;
 	}
+
+			
+			
+
+	
+	
+	//회원 탈퇴 dao
+	public int deletePartner(Connection conn, String partnerId) {
+  	PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+      	pstmt=conn.prepareStatement(prop.getProperty("deletePartner"));
+			pstmt.setString(1, partnerId);
+			
+			result=pstmt.executeUpdate();
+      	}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+    }return result;
+	}
+	
+
+}//클래스
+
+		
 	
 	public Product selectProduct(Connection conn,int pNum) {
 		PreparedStatement pstmt=null;
@@ -146,11 +257,11 @@ public class PartnerDao {
 	}
 	
 	public int addProduct(Connection conn, Product p) {
-		PreparedStatement pstmt=null;
+    	PreparedStatement pstmt=null;
 		int result=0;
 		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("addProduct"));
+      		pstmt=conn.prepareStatement(prop.getProperty("addProduct"));
 			pstmt.setString(1, p.getpBigNameEng());
 			pstmt.setString(2, p.getpBigNameKor());
 			pstmt.setString(3, p.getpName());
@@ -174,10 +285,76 @@ public class PartnerDao {
 			
 			
 			result=pstmt.executeUpdate();
+      	}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+      }
+		
+		return result;
+	}
+	
+	public int updateProduct(Connection conn,Product p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			
+//			updateProduct=UPDATE PRODUCT SET P_BIG_NAME_ENG=?, p_big_name_kor=?,p_name=?,
+//			p_price_a=?,p_price_c=?,p_date_start=?,p_date_finish=?,p_time=?,
+//			title_img_path=?,p_img_path=?,p_info=?,p_intd=?,p_point_info=?,runtime=?,
+//			SChedule_img_path=?,precaution=?,p_map_address=?,p_map=? WHERE P_NUM=? AND PARTNER_ID=?
+			
+			pstmt=conn.prepareStatement(prop.getProperty("updateProduct"));
+			pstmt.setString(1, p.getpBigNameEng());
+			pstmt.setString(2, p.getpBigNameKor());
+			pstmt.setString(3, p.getpName());
+			pstmt.setInt(4, p.getpPriceA());
+			pstmt.setInt(5, p.getpPriceC());
+			pstmt.setDate(6, p.getpDateStart());
+			pstmt.setDate(7, p.getpDateFinish());
+			pstmt.setString(8, p.getpTime());
+			pstmt.setString(9, p.getTitleImgPath());
+			pstmt.setString(10, p.getpImgPath());
+			pstmt.setString(11, p.getpInfo());
+			pstmt.setString(12, p.getpIntd());
+			pstmt.setString(13, p.getpPointInfo());
+			pstmt.setString(14, p.getRuntime());
+			pstmt.setString(15, p.getSchedule());
+			pstmt.setString(16, p.getPrecaution());
+			pstmt.setString(17, p.getpMapName());
+			pstmt.setString(18, p.getpMap());
+			pstmt.setInt(19, p.getpNum());
+//			pstmt.setString(19, p.getPartnerId());
+			pstmt.setString(20, "user01");
+			
+			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
+		}
+		
+		return result;
+	}
+}
+
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+
+		}return result;
+	}
+	
+
+}//클래스
+
 		}
 		
 		return result;
@@ -226,3 +403,4 @@ public class PartnerDao {
 		return result;
 	}
 }
+
