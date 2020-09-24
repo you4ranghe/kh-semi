@@ -12,6 +12,7 @@
 	String dateStart=(String)request.getAttribute("dateStart");
 	int chaildNum=(int)request.getAttribute("chaildNum");
 	int adultNum=(int)request.getAttribute("adultNum");
+	String imageFile=(String)request.getAttribute("imageFile");
 	
 	
 %>
@@ -112,7 +113,7 @@
 		<table>
 			<tr>
 				<td rowspan="5">
-					<img alt="" src="" width="200px" height="200px" >
+					<img alt="" src="<%=request.getContextPath() %><%=imageFile%>" width="200px" height="200px" >
 				</td>
 			</tr>
 			<tr>

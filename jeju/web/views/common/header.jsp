@@ -85,7 +85,7 @@
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
 
-                                    <a href="index.html">
+                               
 
 
                                     <a href="<%=request.getContextPath()%>">
@@ -109,7 +109,7 @@
 <!--                                             <li><a class="" href="travel_destination.html">Travel</a></li>
                                             <li><a href="#">Community <i class="ti-angle-down"></i></a> -->
 
-                                            <li><a class="" href="<%=request.getContextPath()%>/productList">Travel</a></li>
+                                            <li><a class="" href="<%=request.getContextPath()%>/product/allProductList">Travel</a></li>
                                             <li><a href="#">Community </a> <!-- <i class="ti-angle-down"></i> -->
                                                 <ul class="submenu">
                                                         <li><a href="destination_details.html">동행구하기</a></li>
@@ -123,12 +123,10 @@
                             </div>
              
                        
-             
-                            <div class="col-xl-3 col-lg-4 d-none d-lg-block">
-                                <div class="social_wrap d-flex align-items-center justify-content-end">
+      
                             <!-- 검색 -->
-							<div class="col-xl-4 col-lg-4">
-								<form action="<%=request.getContextPath()%>/product/selectSearchProductList" >
+                     <div class="col-xl-4 col-lg-4">
+                        <form action="<%=request.getContextPath()%>/product/selectSearchProductList" >
                                 
                                 <div class="card-body row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -145,9 +143,9 @@
                                     <!--end of col-->
                                 </div>
                             </form>
-							
-							
-							</div>
+                     
+                     
+                     </div>
                             <!-- <div class="col-xl-1 col-lg-1 d-none d-lg-block">
                                  <div class="social_wrap d-flex  justify-content-end">
 

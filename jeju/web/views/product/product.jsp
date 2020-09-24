@@ -146,7 +146,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 
-					<form action="<%=request.getContextPath() %>/product/productGoCart"
+					<form action="<%=request.getContextPath() %>/payList"
 						method="post" class="check-form" name="price_exec">
 
 						<h4>Check Option</h4>
@@ -278,9 +278,9 @@
 						<!-- 아이디넘기기 -->
 						<input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>"> 
 						<input type="hidden" name="pNum" value='${p.pNum}'> 
-
-
-
+						<input type="hidden" name="pInfo" value='${p.pInfo}'>
+						<input type="hidden" name="pName" value='${p.pName}'>
+						<input type="hidden" name="titleImgPath" value='${p.titleImgPath}'>
 						<button type="submit" name="submit">buy</button>
 						<script>
 						$(function(){
