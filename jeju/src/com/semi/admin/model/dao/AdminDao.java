@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+
 import com.semi.common.AESCrypto;
 import com.semi.member.model.vo.Member;
 import com.semi.partner.model.vo.Partner;
+
 public class AdminDao {
 	
 	private Properties prop=new Properties();
@@ -28,7 +30,7 @@ public class AdminDao {
 		}
 	}
 	
-	//전체회원 리스트 조회dao
+
 	public List<Member> selectMemberList(Connection conn,int cPage, int numPerPage){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -40,12 +42,15 @@ public class AdminDao {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				Member m=new Member();
+
 				m.setUserNum(rs.getInt("user_num"));
+
 				m.setUserId(rs.getString("user_id"));
 				m.setPassword(rs.getString("password"));
 				m.setUserName(rs.getString("user_name"));
 				m.setAge(rs.getInt("age"));
 				m.setGender(rs.getString("gender"));
+
 				
 				try {
 					m.setEmail(AESCrypto.decrypt(rs.getString("email")));
@@ -58,6 +63,7 @@ public class AdminDao {
 				m.setAddress(rs.getString("address"));	
 				m.setEnrolldate(rs.getDate("enrolldate"));
 				
+
 				//생성된 회원을 List에 넣어주기
 				list.add(m);
 			}
@@ -69,7 +75,7 @@ public class AdminDao {
 		}return list;
 	}
 	
-	//키워드에 따른 검색된 회원 조회 서비스
+
 	public List<Member> selectMemberSearch(Connection conn, String type, 
 			String keyword, int cPage, int numPerpage){
 		PreparedStatement pstmt=null;
@@ -86,7 +92,9 @@ public class AdminDao {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				Member m=new Member();
+
 				m.setUserNum(rs.getInt("user_num"));
+
 				m.setUserId(rs.getString("user_id"));
 				m.setPassword(rs.getString("password"));
 				m.setUserName(rs.getString("user_name"));
@@ -107,7 +115,7 @@ public class AdminDao {
 			close(pstmt);
 		}return list;
 	}
-	//전체회원수 조회 dao
+
 	public int selectMemberCount(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -124,7 +132,7 @@ public class AdminDao {
 		}return count;
 	}
 	
-	//키워드로 검색된 회원수 조회 dao
+
 	public int selectMemberSearchCount(Connection conn, String type, String keyword) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -146,6 +154,7 @@ public class AdminDao {
 		}return count;
 	}
 	
+
 	//강제 회원 탈퇴 dao
 	public int adminDeleteMember(Connection conn, String userId) {
 		PreparedStatement pstmt=null;
@@ -319,6 +328,7 @@ public class AdminDao {
 	
 	
 }//클래스
+
 
 
 

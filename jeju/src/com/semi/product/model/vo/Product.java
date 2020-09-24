@@ -1,6 +1,5 @@
 package com.semi.product.model.vo;
 
-
 import java.sql.Date;
 
 public class Product {
@@ -11,35 +10,32 @@ public class Product {
 	private String pName;
 	private int pPriceA;
 	private int pPriceC;
-	private int pCountA;
-	private int pCountC;
-	private String pPlace;
-	private String pWish;
 	private Date pDateStart;
 	private Date pDateFinish;
 	private String pTime;
-
+	
 	private String titleImgPath;
 	private String pImgPath;
 	private String pInfo;
 	private String pPointInfo;
 	private String pIntd;
 	private String runtime;
-	private String schedule;
+	private String scheduleImgPath;
 	private String precaution;
-	private String pMapName;
+	private String pMapAddress;
 	private String pMap;
 	private int pScore;
+
 	private String partnerId;
-	
+
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Product(int pNum, String pBigNameEng, String pBigNameKor, String pName, int pPriceA, int pPriceC,
-			int pCountA, int pCountC, String pPlace, String pWish, Date pDateStart, Date pDateFinish, String pTime,
-			String titleImgPath, String pImgPath, String pInfo, String pPointInfo, String pIntd, String runtime,
-			String schedule, String precaution, String pMapName, String pMap, int pScore, String partnerId) {
+			Date pDateStart, Date pDateFinish, String pTime, String titleImgPath, String pImgPath, String pInfo,
+			String pPointInfo, String pIntd, String runtime, String scheduleImgPath, String precaution,
+			String pMapAddress, String pMap, int pScore, String partnerId) {
 		super();
 		this.pNum = pNum;
 		this.pBigNameEng = pBigNameEng;
@@ -47,10 +43,6 @@ public class Product {
 		this.pName = pName;
 		this.pPriceA = pPriceA;
 		this.pPriceC = pPriceC;
-		this.pCountA = pCountA;
-		this.pCountC = pCountC;
-		this.pPlace = pPlace;
-		this.pWish = pWish;
 		this.pDateStart = pDateStart;
 		this.pDateFinish = pDateFinish;
 		this.pTime = pTime;
@@ -60,9 +52,9 @@ public class Product {
 		this.pPointInfo = pPointInfo;
 		this.pIntd = pIntd;
 		this.runtime = runtime;
-		this.schedule = schedule;
+		this.scheduleImgPath = scheduleImgPath;
 		this.precaution = precaution;
-		this.pMapName = pMapName;
+		this.pMapAddress = pMapAddress;
 		this.pMap = pMap;
 		this.pScore = pScore;
 		this.partnerId = partnerId;
@@ -114,38 +106,6 @@ public class Product {
 
 	public void setpPriceC(int pPriceC) {
 		this.pPriceC = pPriceC;
-	}
-
-	public int getpCountA() {
-		return pCountA;
-	}
-
-	public void setpCountA(int pCountA) {
-		this.pCountA = pCountA;
-	}
-
-	public int getpCountC() {
-		return pCountC;
-	}
-
-	public void setpCountC(int pCountC) {
-		this.pCountC = pCountC;
-	}
-
-	public String getpPlace() {
-		return pPlace;
-	}
-
-	public void setpPlace(String pPlace) {
-		this.pPlace = pPlace;
-	}
-
-	public String getpWish() {
-		return pWish;
-	}
-
-	public void setpWish(String pWish) {
-		this.pWish = pWish;
 	}
 
 	public Date getpDateStart() {
@@ -220,12 +180,12 @@ public class Product {
 		this.runtime = runtime;
 	}
 
-	public String getSchedule() {
-		return schedule;
+	public String getScheduleImgPath() {
+		return scheduleImgPath;
 	}
 
-	public void setSchedule(String schedule) {
-		this.schedule = schedule;
+	public void setScheduleImgPath(String scheduleImgPath) {
+		this.scheduleImgPath = scheduleImgPath;
 	}
 
 	public String getPrecaution() {
@@ -236,12 +196,12 @@ public class Product {
 		this.precaution = precaution;
 	}
 
-	public String getpMapName() {
-		return pMapName;
+	public String getpMapAddress() {
+		return pMapAddress;
 	}
 
-	public void setpMapName(String pMapName) {
-		this.pMapName = pMapName;
+	public void setpMapAddress(String pMapAddress) {
+		this.pMapAddress = pMapAddress;
 	}
 
 	public String getpMap() {
@@ -268,7 +228,18 @@ public class Product {
 		this.partnerId = partnerId;
 	}
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Product [pNum=" + pNum + ", pBigNameEng=" + pBigNameEng + ", pBigNameKor=" + pBigNameKor + ", pName="
+				+ pName + ", pPriceA=" + pPriceA + ", pPriceC=" + pPriceC + ", pDateStart=" + pDateStart
+				+ ", pDateFinish=" + pDateFinish + ", pTime=" + pTime + ", titleImgPath=" + titleImgPath + ", pImgPath="
+				+ pImgPath + ", pInfo=" + pInfo + ", pPointInfo=" + pPointInfo + ", pIntd=" + pIntd + ", runtime="
+				+ runtime + ", scheduleImgPath=" + scheduleImgPath + ", precaution=" + precaution + ", pMapAddress="
+				+ pMapAddress + ", pMap=" + pMap + ", pScore=" + pScore + ", partnerId=" + partnerId + "]";
 	}
+
+	
+	
+
+	
+}

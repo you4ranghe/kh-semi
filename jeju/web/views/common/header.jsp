@@ -24,7 +24,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <!-- jQuery -->
 	<script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
-
 	<script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
 	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 	
@@ -56,7 +55,6 @@
 
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
     
-
     
     
     <!-- fontawesome에서 아이콘쓸때 -->
@@ -87,10 +85,12 @@
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
 
+                                    <a href="index.html">
+
+
                                     <a href="<%=request.getContextPath()%>">
 
                                         <img src="<%=request.getContextPath() %>/img/logo.png" alt=""><!--이미지로고바꾸면됨-->
-
                                     </a>
                                 </div>
                             </div>
@@ -98,22 +98,21 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-
                                             <li><a class="active" href="<%=request.getContextPath()%>">Home</a></li>
                                             <li><a href="#">About</a>
                                                 <ul class="submenu">
                                                         <li><a href="<%=request.getContextPath()%>/views/introduce/companyIntroduce.jsp">About Us</a></li>
-
                                                         <li><a href="elements.html">About Jeju</a></li>
                                                 </ul>
                                             </li>
                                             
+                                            <li><a class="" href="travel_destination.html">Travel</a></l/li>
+                                            <li><a href="#">Community <i class="ti-angle-down"></i></a>
 
                                             <li><a class="" href="<%=request.getContextPath()%>/productList">Travel</a></li>
                                             <li><a href="#">Community </a> <!-- <i class="ti-angle-down"></i> -->
                                                 <ul class="submenu">
-                                                        <li><a href="<%=request.getContextPath()%>/partnerBoardList">동행구하기</a></li>
-
+                                                        <li><a href="destination_details.html">동행구하기</a></li>
                                                         <li><a href="elements.html">Q&A</a></li>
                                                 </ul>
                                             </li>
@@ -122,6 +121,11 @@
                                     </nav>
                                 </div>
                             </div>
+             
+                       
+             
+                            <div class="col-xl-3 col-lg-4 d-none d-lg-block">
+                                <div class="social_wrap d-flex align-items-center justify-content-end">
                             <!-- 검색 -->
 							<div class="col-xl-4 col-lg-4">
 								<form action="<%=request.getContextPath()%>/product/selectSearchProductList" >
@@ -146,6 +150,7 @@
 							</div>
                             <!-- <div class="col-xl-1 col-lg-1 d-none d-lg-block">
                                  <div class="social_wrap d-flex  justify-content-end">
+
                                     <div class="number">
                                         <p> <i class="fa fa-phone"></i> email주소</p>
                                     </div>
@@ -164,6 +169,7 @@
                                         <ul id="navigation2">
                                             <li><i class="fas fa-user-circle fa-2x"></i>
 												<ul class="submenu">
+
 
 												
 <%-- 												<%if(logginedMember==null){ %> <!-- 로그인이 안됐을경우 -->
@@ -204,6 +210,7 @@
 	                                         			<li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
                                    						<li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>    
 
+
 	                                         	       
 	                                         	<!-- 로그인후 일반회원중 파트너일경우(단,관리자가 승인을 해줘서 Staus가 'Y'일 경우만) -->
 	                                          	<%if(logginedPartner!=null && logginedPartner.getPartnerStatus().equals("Y")){%>
@@ -231,7 +238,9 @@
                                         </ul>
                                     </nav>
 
+
                                	</div>
+
 
                             </div>
                             
@@ -244,14 +253,10 @@
                 </div>
             </div>
         </div>
-    	<script>
-    	
-    	
-    	</script>
-    
     </header>
-	
-
+    
+   
     <!-- header-end -->
+
 
  

@@ -1,4 +1,4 @@
-package com.semi.payment.service;
+package com.semi.payment.model.service;
 
 import static com.semi.common.JDBCTemplate.close;
 import static com.semi.common.JDBCTemplate.commit;

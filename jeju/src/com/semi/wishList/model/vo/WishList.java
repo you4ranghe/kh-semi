@@ -3,12 +3,14 @@ package com.semi.wishList.model.vo;
 public class WishList {
 
 	private String userId;
+
 	private int productNum;
 	private String pageAddress;
 
 	public WishList() {
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public WishList(String userId, int productNum, String pageAddress) {
 		super();
@@ -17,6 +19,7 @@ public class WishList {
 		this.pageAddress = pageAddress;
 	}
 
+
 	public String getUserId() {
 		return userId;
 	}
@@ -24,6 +27,7 @@ public class WishList {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 
 	public int getProductNum() {
 		return productNum;
@@ -45,6 +49,7 @@ public class WishList {
 	public String toString() {
 		return "WishListEnroll [userId=" + userId + ", productNum=" + productNum + ", pageAddress=" + pageAddress + "]";
 	}
+
 
 
 

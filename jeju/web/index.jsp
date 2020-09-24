@@ -5,8 +5,6 @@
 
 <%
 	List<Product> list=(List)request.getAttribute("list");
-
-
 %>
 
 <%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css" type="text/css"/>
@@ -21,7 +19,6 @@
 <!-- 이 페이지 적용할 CSS -->
 <style>
 	/* section */
-
 #localimg{
     padding:0px;
     margin:0px;
@@ -36,7 +33,6 @@
 #localimg>h3{
     padding-left:100px;
 }
-
 /* #categorybtn{
     width:100%;
     height:60px;
@@ -109,7 +105,6 @@ hr{
 .travels>h4{
     text-align: right;
 }
-
 #datepicker{
 	width:100px;
 	float :left;
@@ -125,8 +120,6 @@ button+div{
 .btn{
 	padding: 20px;
 }
-
-
 	.thumbnail{
 		background-color: rgb(244, 244, 244);
 		radius : 10px;
@@ -172,6 +165,7 @@ button+div{
       float:right;
       
       }
+
 </style>
 
 
@@ -357,6 +351,7 @@ button+div{
 </section>
 
 
+
 	<script> 
 	
 	$(".heartspan").on('click','i',function(event){
@@ -425,4 +420,3 @@ button+div{
 	</script>
 	
 <%@ include file="/views/common/footer.jsp" %>
-

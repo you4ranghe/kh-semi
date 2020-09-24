@@ -73,6 +73,7 @@
 						<thead>
 							<tr>
 								<th>회원번호</th>
+
 								<th>아이디</th>
 								<th>이름</th>
 								<th>성별</th>
@@ -81,6 +82,8 @@
 								<th>전화번호</th>
 								<th>주소</th>
 								<th>가입일</th>
+
+
 			</tr>
 		<thead>
 
@@ -88,6 +91,7 @@
 		<%for(Member m : list) {%>
 			<tr>
 				<td>
+
 					<a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
 						<%=m.getUserNum() %></a>
 				</td>
@@ -118,6 +122,7 @@
 				<td><a href="<%=request.getContextPath()%>/admin/memberView?userId=<%=m.getUserId() %>">
 					<%=m.getEnrolldate() %></a>
 				</td>	
+
 			</tr>
 		<%} %>	
 		</tbody>

@@ -122,7 +122,7 @@ public class MemberDao {
 
 	}
 
-	
+
 	//회원정보 수정 dao
 	public int updateMember(Connection conn, Member m) {
 		PreparedStatement pstmt=null;

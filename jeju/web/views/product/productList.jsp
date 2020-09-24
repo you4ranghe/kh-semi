@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
 <%@page import="com.semi.member.model.vo.Member" %>    
@@ -58,4 +58,4 @@
 
 		
 </script>
-<%@ include file="/views/common/footer.jsp" %>
+<%@ include file="/views/common/footer.jsp" %> --%>

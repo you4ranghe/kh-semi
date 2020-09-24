@@ -1,21 +1,40 @@
 package com.semi.product.model.service;
 
-import static com.semi.common.JDBCTemplate.close;
-import static com.semi.common.JDBCTemplate.commit;
-//import static com.semi.common.JDBCTemplate.getConnection;
-import static com.semi.common.JDBCTemplate.getConnection;
-import static com.semi.common.JDBCTemplate.rollback;
-
 import java.sql.Connection;
 import java.util.List;
 
 import com.semi.product.model.dao.ProductDao;
 import com.semi.product.model.vo.Product;
 import com.semi.product.model.vo.Wish;
+import com.semi.review.model.vo.Review;
+
+import static com.semi.common.JDBCTemplate.commit;
+import static com.semi.common.JDBCTemplate.rollback;
+import static com.semi.common.JDBCTemplate.close;
+import static com.semi.common.JDBCTemplate.getConnection;
 
 public class ProductService {
 
-	private ProductDao dao=new ProductDao();
+	private ProductDao dao = new ProductDao();
+	
+
+	public Product selectProductOne(int pNum) {
+		Connection conn=getConnection();
+		Product p =dao.selectProductOne(conn,pNum);
+		
+		
+		close(conn);
+		return p;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// 정연
 	
 	
 	public List<Product> selectAllProductList(int cPage,int numPerPage){
@@ -25,14 +44,15 @@ public class ProductService {
 		return list;
 	}
 	
-	public Product selectProductList(){
+	public List<Product> selectProductList(int pNum){
 		Connection conn = getConnection();
-		Product p = dao.selectProductList(conn);
+		List<Product> list = dao.selectProductList(conn,pNum);
 		close(conn);
-		System.out.println(p.toString());
-		return p;
+		//System.out.println(p.toString());
+		return list;
 	
 	}
+	
 	public List<Product> selectSearchProductList(String search,int cPage,int numPerPage){
 		
 		Connection conn=getConnection();
@@ -102,4 +122,28 @@ public class ProductService {
 	}
 
 	
-}
+	
+	
+	///////////리뷰
+	
+	public int insertReview(Review r) {
+		Connection conn = getConnection();
+		int result = dao.insertReview(conn,r);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	
+	
+	
+	public List<Review> selectReviewList(int pNum){
+		Connection conn = getConnection();
+		List<Review> list = dao.selectReviewList(conn,pNum);
+		close(conn);
+		return list;
+	}
+
+
+	}
