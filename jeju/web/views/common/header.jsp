@@ -108,7 +108,7 @@
                                             <li><a class="" href="<%=request.getContextPath()%>/productList">Travel</a></li>
                                             <li><a href="#">Community </a> <!-- <i class="ti-angle-down"></i> -->
                                                 <ul class="submenu">
-                                                        <li><a href="destination_details.html">동행구하기</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/board">동행구하기</a></li>
                                                         <li><a href="elements.html">Q&A</a></li>
                                                 </ul>
                                             </li>
