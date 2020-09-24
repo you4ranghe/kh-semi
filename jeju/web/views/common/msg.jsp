@@ -6,11 +6,29 @@
 <meta charset="UTF-8">
 <title>메세지</title>
 <%
-
 	String msg=(String)request.getAttribute("msg");
 	String loc=(String)request.getAttribute("loc");
 	String script=(String)request.getAttribute("script");
+
 %>
+</head>
+<body>
+	<script>
+
+<<<<<<< HEAD
+		alert("<%=msg%>");
+		
+		if(<%=script!=null%>){
+			<%=script%>
+		}
+		
+		location.replace('<%=request.getContextPath()%><%=loc%>');
+	</script>
+</body>
+</html>
+
+
+
 </head>
 <body>
 	<script>
@@ -27,3 +45,5 @@
 	</script>
 </body>
 </html>
+</html>
+

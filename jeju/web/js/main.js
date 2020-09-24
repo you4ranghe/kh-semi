@@ -335,9 +335,9 @@ mailChimp();
             $("#search_input_box").slideToggle();
             $("#search_input").focus();
         });
-        $(document).ready(function() {
+        /*$(document).ready(function() {
           $('select').niceSelect();
-        });
+        });*/
 
         // prise slider 
         
