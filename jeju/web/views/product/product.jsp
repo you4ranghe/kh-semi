@@ -642,7 +642,7 @@ ${status.index}
 												<input type="hidden" value="${e.poNum}">
 												<input type="hidden" value="${e.reviewViews}">
 												<input type="hidden" value="${e.pNum}">
-											</div>
+												<input type="hidden" value="${e.userId}">
 										</div>
 									</div> --%>
 								</c:forEach> 
@@ -717,7 +717,7 @@ ${status.index}
  --%>
 
 
-
+<!-- 리뷰지움ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
 
 			<div class="comment-form">
 						<h4>LEAVE A REVIEW</h4>
@@ -729,10 +729,10 @@ ${status.index}
 							<!-- 리뷰번호 -->
 							<!-- <input type="hidden" name="reviewNum"> -->
 							 <input type="hidden" value="${p.pNum}" name="pNum" > 
-							<input type="hidden" value="${r.poNum}" name="poNum">
-							<input type="hidden" name="reviewLevel" value="1">
+						<%-- 	<input type="hidden" value="${.poNum}" name="poNum"> --%>
+<%-- 							<input type="hidden" name="reviewLevel" value="1">
 							<input type="hidden" name="productRef"  value="${p.pNum}">
-							<input type="hidden" name="reviewRef" value="0">
+							<input type="hidden" name="reviewRef" value="0"> --%>
 							
 							<!-- 리뷰제목 -->
 							<div class="col-sm-6">
@@ -751,6 +751,8 @@ ${status.index}
 								</div>
 							</div>
 							
+							<input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>">
+						 
 								
 								<!-- 리뷰내용 -->
 								<div class="col-12">
@@ -794,7 +796,7 @@ ${status.index}
 									<span class="starR">별5</span> 
 								</div>
  -->
-							<input type="hidden" value="{pm.po_num}">
+							
 							<div class="form-group">
 								<button type="submit" class="button button-contactForm btn_1 boxed-btn" 
 								onclick = "function validate();" >
@@ -819,7 +821,7 @@ ${status.index}
 				
 				
 						
-					</div>
+					</div> 
 				</div>
 				
 				<div class="col-lg-4">

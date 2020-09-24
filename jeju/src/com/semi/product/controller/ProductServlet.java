@@ -139,10 +139,10 @@ public class ProductServlet extends HttpServlet {
 		
 		
 		
-		 int pNum = Integer.parseInt(request.getParameter("pNum"));
-		 System.out.println(pNum);
 		
-	
+		  int pNum = Integer.parseInt(request.getParameter("pNum"));
+		  System.out.println(pNum);
+		 
 	
 		Product p = new ProductService().selectProductOne(pNum);
 		request.setAttribute("p", p);
@@ -164,7 +164,9 @@ public class ProductServlet extends HttpServlet {
 		//리뷰
 
 		
+		
 		List<Review> reviewList = new ProductService().selectReviewList(pNum);
+		/* List<Review> reviewList = new ProductService().selectReviewList(pNum); */
 		request.setAttribute("reviewList", reviewList);
 		
 		

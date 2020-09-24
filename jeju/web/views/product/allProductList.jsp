@@ -52,6 +52,7 @@
 		<%for(Product p:list){ %>
 		  <div class="col-sm-6 col-lg-4">
 		    <div class="thumbnail img-div" >
+		 
 		    
 		    	<a href="<%=request.getContextPath() %>/product/productList?pNum=<%=p.getpNum() %>"><img src="<%=request.getContextPath() %><%=p.getTitleImgPath() %>"  alt="..." width="400px" height="200px" class="img-rounded"></a> <!-- 이부분 지선수정 이미지패스 -->
 <%-- 		    	 <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="400px" height="200px" class="img-rounded"></a>

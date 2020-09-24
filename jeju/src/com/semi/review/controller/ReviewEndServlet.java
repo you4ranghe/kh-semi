@@ -43,14 +43,14 @@ public class ReviewEndServlet extends HttpServlet {
 //		Date rd = Date.valueOf(registerDate);
 		//int reviewViews = request.getParameter("reviewViews");
 		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		String userId = request.getParameter("userId");
+//		int reviewLevel = Integer.parseInt(request.getParameter("reviewLevel"));
+//		int productRef = Integer.parseInt(request.getParameter("productRef"));
+//		int reviewRef = Integer.parseInt(request.getParameter("reviewRef"));
 		
-		int reviewLevel = Integer.parseInt(request.getParameter("reviewLevel"));
-		int productRef = Integer.parseInt(request.getParameter("productRef"));
-		int reviewRef = Integer.parseInt(request.getParameter("reviewRef"));
 		
 		
-		
-		Review r = new Review(0,reviewScore,reviewTitle,reviewContents,reviewWriter,poNum,null,0,pNum,reviewLevel,productRef,reviewRef);
+		Review r = new Review(0,reviewScore,reviewTitle,reviewContents,reviewWriter,poNum,null,0,pNum,userId);
 		int result = new ProductService().insertReview(r);
 		
 		
@@ -59,7 +59,7 @@ public class ReviewEndServlet extends HttpServlet {
 		
 		String msg="";
 //		String loc="/review/reviewList";
-		String loc="/product/productList?no="+productRef;
+		String loc="/product/productList?pNum="+pNum;
 		
 		if(result>0) {
 			msg="리뷰 등록 성공!";
