@@ -314,6 +314,7 @@
 					<div class="single-post">
 						<div class="feature-img">
 							<img class="img-fluid"
+								console.log(${p.titleImgPath});
 								src="<%=request.getContextPath() %>${p.titleImgPath}%>"
 								alt="" >
 						</div>
@@ -325,7 +326,7 @@
 								<a class="heart-button"
 									href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId()%>&pNum=${p.pNum}">
 									♥ </a>
-								
+								<!-- FORM으로 값 3개 보내고 경로를 IFRAME써서  -->
 							</h2>
 
 							<!-----♥♥♥♥♥♥♥간단한 상품정보♥♥♥♥♥♥♥----->

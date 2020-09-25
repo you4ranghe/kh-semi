@@ -399,7 +399,7 @@ public class ProductDao {
 			result=pstmt.executeUpdate();
 			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			
 		}finally {
 			close(pstmt);
 		}return result;

@@ -61,6 +61,7 @@ public class ReviewEndServlet extends HttpServlet {
 //		String loc="/review/reviewList";
 		String loc="/product/productList?pNum="+pNum;
 		
+		
 		if(result>0) {
 			msg="리뷰 등록 성공!";
 
