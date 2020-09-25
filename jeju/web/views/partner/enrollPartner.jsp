@@ -8,7 +8,9 @@
 
 
 <section id="member-viewForm">
-	<form id="MypageFrm" action="<%=request.getContextPath() %>/partnerMember/enrollPartnerEnd?userId=<%=m.getUserId() %>" method="post" enctype="multipart/form-data">
+
+	<form id="MypageFrm" action="<%=request.getContextPath() %>/member/enrollPartnerEnd?userId=<%=m.getUserId() %>" method="post" enctype="multipart/form-data">
+
 		<table>
 			<tr>
 				<th>아이디</th>
@@ -81,7 +83,7 @@
 			
 			 <tr>
 			<td class="btn-area">
-				<button id="btn2" type="submit"  onclick="return enroll_partner();">파트너 등록</button>
+				<button id="btn2" type="submit"  onclick="return enroll_partner();">파트너 신청</button>
 			</td>
 			<td>
 				<button id="btn3" type="reset">취소</button>

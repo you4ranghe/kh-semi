@@ -88,6 +88,7 @@ public class PartnerDao {
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}finally {
+				close(pstmt);
 			}return p;
 		}
 
@@ -210,8 +211,6 @@ public class PartnerDao {
 			close(pstmt);
     }return result;
 	}
-	
-		
 	
 	public Product selectProduct(Connection conn,int pNum) {
 		PreparedStatement pstmt=null;
@@ -338,6 +337,9 @@ public class PartnerDao {
 		
 		return result;
 	}
+
 	
+
 }//클래스
+
 

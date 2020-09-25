@@ -85,9 +85,6 @@
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
 
-                               
-
-
                                     <a href="<%=request.getContextPath()%>">
 
                                         <img src="<%=request.getContextPath() %>/img/logo.png" alt=""><!--이미지로고바꾸면됨-->
@@ -105,14 +102,14 @@
                                                         <li><a href="elements.html">About Jeju</a></li>
                                                 </ul>
                                             </li>
-                                            
+ 
 <!--                                             <li><a class="" href="travel_destination.html">Travel</a></li>
                                             <li><a href="#">Community <i class="ti-angle-down"></i></a> -->
 
                                             <li><a class="" href="<%=request.getContextPath()%>/product/allProductList">Travel</a></li>
                                             <li><a href="#">Community </a> <!-- <i class="ti-angle-down"></i> -->
                                                 <ul class="submenu">
-                                                        <li><a href="destination_details.html">동행구하기</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/board">동행구하기</a></li>
                                                         <li><a href="elements.html">Q&A</a></li>
                                                 </ul>
                                             </li>
@@ -123,7 +120,7 @@
                             </div>
              
                        
-      
+             
                             <!-- 검색 -->
                      <div class="col-xl-4 col-lg-4">
                         <form action="<%=request.getContextPath()%>/product/selectSearchProductList" >
@@ -168,37 +165,42 @@
                                             <li><i class="fas fa-user-circle fa-2x"></i>
 												<ul class="submenu">
 
-											 	<!-- 로그인이 안됐을 경우 -->
-	                                         	<%if(logginedMember==null){%>
-	                                         	  		<li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
+												<!-- 로그인이 안됐을 경우 -->
+                                               <%if(logginedMember==null){%>
+                                                       <li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
                                                         <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
-	                                         	 <%} %>
-	                                         	 
-	                                         	 <!-- 로그인한후 일반회원일 경우 -->
-	                                         	<%if(logginedMember!=null){%>
-	                          
-	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
-	                                         			<li><a href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId() %>" id="wishSubmit">위시리스트</a></li>
-	                                         			<li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
-	                                         			<li><a href="<%=request.getContextPath()%>/payReservation?userId=<%=logginedMember.getUserId() %>">예약 조회</a></li>
-	                                         			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
+                                                <%} %>
+                                                
+                                                <!-- 로그인한후 일반회원일 경우 -->
+                                               <%if(logginedMember!=null){%>
+                             
+                                                     <li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
+                                                     <li><a href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId() %>" id="wishSubmit">위시리스트</a></li>
+                                                     <li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
+                                                     <li><a href="<%=request.getContextPath()%>/payReservation?userId=<%=logginedMember.getUserId() %>">예약 조회</a></li>
+                                                     <li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
+                                               
+                                                <!-- 로그인후 회원 아이디가 admin일 경우 -->
+                                              <%if(logginedMember.getUserId().equals("admin")){ %>
+                                                     <li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
+                                                     <li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>    
+                                               <%} } %>
+                                               <!-- 로그인후 일반회원중 파트너신청을 안한경우 -->
+                                               <%if(logginedMember!=null&& logginedPartner==null){ %>
+                                                     <li><a href="<%=request.getContextPath()%>/member/enrollPartner?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
+                                               <%} %>
+                                                 <!-- 로그인후 일반회원중 파트너일경우(단,관리자가 승인을 해줘서 Staus가 'Y'일 경우만) -->
+                                                <%if(logginedPartner!=null && logginedPartner.getPartnerStatus().equals("Y")){%>
+                                                     <li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 페이지</a></li>
+   
+                                              <!-- 분기문 마무리하기 -->
+                                               <%}  %>          
+												
+
+
+
 	                                         	
-                                    	         <!-- 로그인후 회원 아이디가 admin일 경우 -->
-	                                        	<%if(logginedMember.getUserId().equals("admin")){ %>
-	                                         			<li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
-                                   						<li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>    
-	                                         	<%} } %>
-	                                         	<!-- 로그인후 일반회원중 파트너신청을 안한경우 -->
-	                                         	<%if(logginedMember!=null&& logginedPartner==null){ %>
-	                                         			<li><a href="<%=request.getContextPath()%>/partnerMember/enroll?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
-	                                   			<%} %>
-                             	              	<!-- 로그인후 일반회원중 파트너일경우(단,관리자가 승인을 해줘서 Staus가 'Y'일 경우만) -->
-	                                          	<%if(logginedPartner!=null && logginedPartner.getPartnerStatus().equals("Y")){%>
-	                                         			<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 페이지</a></li>
-	
-                                  				<!-- 분기문 마무리하기 -->
-                                   				<%}  %>	       
-	                                         	
+
                                                 </ul>
 											</li>
                                         </ul>
