@@ -182,7 +182,7 @@ button+div{
                             <div class="slider_text text-center">
                                 <h3>서귀포시</h3>
                                 <p></p>
-                                <a href="#" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서귀포시" class="boxed-btn3">상품 보기</a>
                             </div>
                         </div>
                     </div>
@@ -195,7 +195,7 @@ button+div{
                             <div class="slider_text text-center">
                                 <h3>동제주시</h3>
                                 <p></p>
-                                <a href="#" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=동제주시" class="boxed-btn3">상품 보기</a>
                             </div>
                         </div>
                     </div>
@@ -208,7 +208,7 @@ button+div{
                             <div class="slider_text text-center">
                                 <h3>서제주시</h3>
                                 <p></p>
-                                <a href="#" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서제주시" class="boxed-btn3">상품 보기</a>
                             </div>
                         </div>
                     </div>
@@ -221,14 +221,14 @@ button+div{
                             <div class="slider_text text-center">
                                 <h3>제주시</h3>
                                 <p></p>
-                                <a href="#" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=제주시" class="boxed-btn3">상품 보기</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+	
 
     </div>
     <!-- slider_area_end -->
@@ -345,7 +345,7 @@ button+div{
 	
 	</div>
 			
-
+	<a href="<%=request.getContextPath()%>/product/pagingTest"><button>테스트</button></a>
 
 </section>
 
