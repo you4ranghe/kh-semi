@@ -192,33 +192,32 @@
                                                <%if(logginedMember==null){%>
                                                        <li><a href="<%=request.getContextPath()%>/member/enroll">회원가입</a></li>
                                                         <li><a href="<%=request.getContextPath() %>/member/login" >로그인</a></li>
-	                                         	 <%} %>
-	                                         	 <!-- 로그인한후 일반회원일 경우 -->
-	                                         	<%if(logginedMember!=null){%>
-	                          
-	                                         			<li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
-	                                         			<li><a href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId() %>" id="wishSubmit">위시리스트</a></li>
-	                                         			<li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
-	                                         			<li><a href="<%=request.getContextPath()%>/payReservation?userId=<%=logginedMember.getUserId() %>">예약 조회</a></li>
-	                                         			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
-	                                         	
-	                                         	<!-- 로그인후 회원 아이디가 admin일 경우 -->
-	                                        	<%if(logginedMember!=null &&logginedMember.getUserId().equals("admin")){ %>
-	                                         			<li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
-                                   						<li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>    
-	                                         	<!-- 로그인후 일반회원중 파트너일경우(단,관리자가 승인을 해줘서 Staus가 'Y'일 경우만) -->
-	                                          	<%if(logginedPartner!=null && logginedPartner.getPartnerStatus().equals("Y")){%>
-	                                         			<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 페이지</a></li>
-	  
-	                                         	<!-- 분기문 마무리하기 -->
-	                                        	<%}  } }%>
-	                                        	
-	                                         	<!-- 로그인후 일반회원중 파트너신청을 안한경우 -->
-	                                         	<%if(logginedMember!=null&& logginedPartner==null){ %>
-	                                         			<li><a href="<%=request.getContextPath()%>/partner/enroll?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
-                                  				<!-- 분기문 마무리하기 -->
-                                   				<%}	 %>	       
-	                                         	
+                                                <%} %>
+                                                
+                                                <!-- 로그인한후 일반회원일 경우 -->
+                                               <%if(logginedMember!=null){%>
+                             
+                                                     <li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
+                                                     <li><a href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId() %>" id="wishSubmit">위시리스트</a></li>
+                                                     <li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
+                                                     <li><a href="<%=request.getContextPath()%>/payReservation?userId=<%=logginedMember.getUserId() %>">예약 조회</a></li>
+                                                     <li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
+                                               
+                                                <!-- 로그인후 회원 아이디가 admin일 경우 -->
+                                              <%if(logginedMember.getUserId().equals("admin")){ %>
+                                                     <li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
+                                                     <li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>    
+                                               <%} } %>
+                                               <!-- 로그인후 일반회원중 파트너신청을 안한경우 -->
+                                               <%if(logginedMember!=null&& logginedPartner==null){ %>
+                                                     <li><a href="<%=request.getContextPath()%>/partner/enroll?userId=<%=logginedMember.getUserId()%>">파트너 신청</a></li>
+                                               <%} %>
+                                                 <!-- 로그인후 일반회원중 파트너일경우(단,관리자가 승인을 해줘서 Staus가 'Y'일 경우만) -->
+                                                <%if(logginedPartner!=null && logginedPartner.getPartnerStatus().equals("Y")){%>
+                                                     <li><a href="<%=request.getContextPath()%>/partner/partnerProductList">파트너 페이지</a></li>
+   
+                                              <!-- 분기문 마무리하기 -->
+                                               <%}  %>          
                                                 </ul>
 											</li>
                                         </ul>

@@ -38,7 +38,7 @@
 					<tr id="reservetr">
 						<td width="25%" height="300px">
 							
-							<img alt="" src="<%=request.getContextPath()%>/img/instagram/1.png" width="250px" height="250px" style=" border-radius: 50%;" >
+							<img alt="" src="<%=request.getContextPath()%>/img/destination/<%=m.get("pImgPath")%>" width="250px" height="250px" style=" border-radius: 50%;" >
 							<br>
 						</td>
 						<td width="30%">

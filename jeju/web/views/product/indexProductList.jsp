@@ -6,6 +6,13 @@
 List<Product> list=(List)request.getAttribute("list");
 
 %>
+<style>
+	.img-div{
+		width: 400px; 
+		height:350px;
+	}
+
+</style>
 	<div class="row">
 		<%for(Product p:list){ %>
 		  <div class="col-sm-6 col-lg-4">
@@ -28,4 +35,28 @@ List<Product> list=(List)request.getAttribute("list");
 		<%} %>
 	</div>
 
+
+<script>
+	$(".heartspan").on('click','i',function(event){
+		$(event.target).toggleClass("wishclick");
+		console.log($(this).parent().next().children("input").val());
+		$.ajax({
+			
+			url:"<%=request.getContextPath()%>/product/clickHeart.do",
+			 <%-- "userId":<%=logginedMember.getUserId()%>, --%>
+			data:{"productNum":$(this).parent().next().children("input").val()},
+			dataType:"json",
+			success:function(data){
+				
+			},
+			error:function(re,s,e){
+				console.log(s);
+				console.log(e);
+			}
+		});
+	
+		});
+
+
+</script>
 	
