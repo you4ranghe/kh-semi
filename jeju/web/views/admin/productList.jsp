@@ -87,28 +87,27 @@
 		<%for(Product p : list) {%>
 			<tr>
 				<td>
-
-					<a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>">
+					<a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>&partnerId=<%=p.getPartnerId()%>">
 						<%=p.getpNum() %></a>
 				</td>
 				<td>
-					<a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>">
+					<a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>&partnerId=<%=p.getPartnerId()%>">
 					<%=p.getPartnerId()%></a>
 				</td>
 				<td>
-					<a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>">
+					<a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>&partnerId=<%=p.getPartnerId()%>">
 					<%=p.getpBigNameKor()%></a>
 				</td>
-				<td><a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>">
+				<td><a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>&partnerId=<%=p.getPartnerId()%>">
 					<%=p.getpDateStart() %></a>
 				</td>
-				<td><a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>">
+				<td><a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>&partnerId=<%=p.getPartnerId()%>">
 					<%=p.getpDateFinish() %></a>
 				</td>
-				<td><a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>">
+				<td><a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %> &partnerId=<%=p.getPartnerId()%>">
 					<%=p.getpTime()%></a>
 				</td>
-				<td><a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>">
+				<td><a href="<%=request.getContextPath()%>/admin/productView?pNum=<%=p.getpNum() %>&partnerId=<%=p.getPartnerId()%>">
 					<%=p.getpMapAddress() %></a>
 				</td>
 		

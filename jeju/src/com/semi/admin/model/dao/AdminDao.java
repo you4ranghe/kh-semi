@@ -15,6 +15,7 @@ import java.util.Properties;
 import com.semi.common.AESCrypto;
 import com.semi.member.model.vo.Member;
 import com.semi.partner.model.vo.Partner;
+import com.semi.payment.model.vo.Payment;
 import com.semi.product.model.vo.Product;
 
 public class AdminDao {
@@ -29,6 +30,176 @@ public class AdminDao {
 			e.printStackTrace();
 		}
 	}
+	//=================결제내역 dao========================
+	//결제내역 리스트에 담아오고 페이징 처리 dao
+	public List<Payment> selectPaymentList(Connection conn,int cPage, int numPerPage){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Payment> list=new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectPaymentList"));
+			pstmt.setInt(1,(cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Payment p=new Payment();
+				
+				p.setPoNum(rs.getString("po_num"));
+				p.setPoType(rs.getString("po_type"));
+				p.setPoDate(rs.getString("po_date"));
+				p.setTotalPrice(rs.getInt("total_price"));
+				p.setpNum(rs.getInt("p_num"));
+				p.setUserId(rs.getString("user_id"));
+				p.setpCountA(rs.getInt("p_count_a"));
+				p.setpCountC(rs.getInt("p_count_c"));
+				p.setpDateStart(rs.getDate("p_date_start"));
+				p.setPayUserNam(rs.getString("pay_user_name"));
+				p.setPayAddress(rs.getString("pay_address"));
+				p.setPayPhone(rs.getString("pay_phone"));
+				p.setPayPhone(rs.getString("pay_email"));
+				
+				list.add(p);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+	
+	//결제내역 총 데이터객수 조회 dao
+		public int selectPaymentCount(Connection conn) {
+			
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			int count=0;
+			try {
+				pstmt=conn.prepareStatement(prop.getProperty("selectPaymentCount"));
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count=rs.getInt(1);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}return count;
+		}
+		
+		//검색키워드와 타입에 다른 결제내역 객체 리스트에 담아오는 dao
+		public List<Payment> selectPaymentSearch(Connection conn,String type,String keyword,int cPage, int numPerpage){
+			
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			List<Payment> list=new ArrayList();
+			try {
+				String sql=prop.getProperty("selectPaymentSearch");
+				
+				pstmt=conn.prepareStatement(sql.replace("$type",type));
+				pstmt.setString(1, "%"+keyword+"%");
+				pstmt.setInt(2, (cPage-1)*numPerpage+1);
+				pstmt.setInt(3, cPage*numPerpage);
+				
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					
+					Payment p=new Payment();
+					
+					p.setPoNum(rs.getString("po_num"));
+					p.setPoType(rs.getString("po_type"));
+					p.setPoDate(rs.getString("po_date"));
+					p.setTotalPrice(rs.getInt("total_price"));
+					p.setpNum(rs.getInt("p_num"));
+					p.setUserId(rs.getString("user_id"));
+					p.setpCountA(rs.getInt("p_count_a"));
+					p.setpCountC(rs.getInt("p_count_c"));
+					p.setpDateStart(rs.getDate("p_date_start"));
+					p.setPayUserNam(rs.getString("pay_user_name"));
+					p.setPayAddress(rs.getString("pay_address"));
+					p.setPayPhone(rs.getString("pay_phone"));
+					p.setPayPhone(rs.getString("pay_email"));
+					
+					list.add(p);
+				}
+
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return list;
+			
+		}
+		
+		//검색키워드 타입에 다른 결제내역 객체 총 수 조회 dao
+		public int selectPaymentSearchCount(Connection conn, String type, String keyword) {
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			int count=0;
+			String sql=prop.getProperty("selectPaymentSearchCount");
+			try {
+				pstmt=conn.prepareStatement(sql.replace("$type",type));
+				pstmt.setString(1,"%"+keyword+"%");
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count=rs.getInt(1);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return count;
+			
+		}
+		
+	//결제 번호로 결제내역 테이블 가져오기
+	public Payment selectPaymentOne(Connection conn, int poNum) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Payment p =null;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectPaymentOne"));
+			pstmt.setInt(1, poNum);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				p=new Payment();
+				
+				p.setPoNum(rs.getString("po_num"));
+				p.setPoType(rs.getString("po_type"));
+				p.setPoDate(rs.getString("po_date"));
+				p.setTotalPrice(rs.getInt("total_price"));
+				p.setpNum(rs.getInt("p_num"));
+				p.setUserId(rs.getString("user_id"));
+				p.setpCountA(rs.getInt("p_count_a"));
+				p.setpCountC(rs.getInt("p_count_c"));
+				p.setpDateStart(rs.getDate("p_date_start"));
+				p.setPayUserNam(rs.getString("pay_user_name"));
+				p.setPayAddress(rs.getString("pay_address"));
+				p.setPayPhone(rs.getString("pay_phone"));
+				p.setPayPhone(rs.getString("pay_email"));
+
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return p;
+		
+		
+		
+	}
+	
 	//=================상품관리 dao========================
 	//상품객체 리스트에 담아가기 dao
 	public List<Product> selectProductList(Connection conn,int cPage, int numPerPage){

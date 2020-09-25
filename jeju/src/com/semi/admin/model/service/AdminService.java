@@ -11,12 +11,55 @@ import java.util.List;
 import com.semi.admin.model.dao.AdminDao;
 import com.semi.member.model.vo.Member;
 import com.semi.partner.model.vo.Partner;
+import com.semi.payment.model.vo.Payment;
 import com.semi.product.model.vo.Product;
 
 
 public class AdminService {
 
 	private AdminDao dao=new AdminDao();
+	//========결제내역 관리==========
+	//결제내역 리스트에 담아오고 페이징 처리
+	public List<Payment>selectPaymentList(int cPage, int numPerPage){	
+		Connection conn=getConnection();
+		List<Payment> list=dao.selectPaymentList(conn,cPage,numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	//결제내역 총 데이터객수 조회
+	public int selectPaymentCount() {
+		Connection conn=getConnection();
+		int count=dao.selectPaymentCount(conn);
+		close(conn);
+		return count;
+	}
+	
+	//검색키워드와 타입에 다른 결제 내역 객체 리스트에 담아오는 서비스
+	public List<Payment> selectPaymentSearch(String type,String keyword,int cPage, int numPerpage){
+		Connection conn=getConnection();
+		List<Payment> list=dao.selectPaymentSearch(conn,type, keyword,cPage,numPerpage);
+		close(conn);
+		return list;
+	}
+	
+	//검색키워드 타입에 다른 결제 내역 객체 총 수 조회 서비스
+	public int selectPaymentSearchCount(String type, String keyword) {
+		Connection conn=getConnection();
+		int count=dao.selectPaymentSearchCount(conn,type, keyword);
+		close(conn);
+		return count;
+	}
+	
+	//결제 번호로 결제내역 테이블 가져오기
+	public Payment selectPaymentOne(int poNum) {
+		Connection conn = getConnection();
+		Payment p  =dao.selectPaymentOne(conn,poNum);
+		close(conn);
+		return p;
+	}
+	
+	
 	//========상품 관리==========
 	//상품 객체 리스에 담아오기 페이징 처리
 	public List<Product>selectProductList(int cPage, int numPerPage){	
