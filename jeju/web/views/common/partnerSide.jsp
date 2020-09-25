@@ -29,15 +29,16 @@
 		      <!-- <li class="list-group-item list-group-item-action border-0"><a href="#">ECMAScript5</a></li> -->
 		    </ul>
 		</div>
+		<br>
 		  <!-- 패널 타이틀2 -->
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h4 class="panel-title addpadding"></h4>
+		    <h4 class="panel-title addpadding">Profile</h4>
 		  <hr>
 		  </div>
 		    <!-- 사이드바 메뉴목록2 -->
 		      <ul class="list-group">
-		        <li class="list-group-item border-0"><a href="#"></a></li>
+		        <li class="list-group-item border-0"><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 프로필 수정</a></li>
 		        <li class="list-group-item border-0"><a href="#"></a></li>
 		      </ul>
 		</div>      
