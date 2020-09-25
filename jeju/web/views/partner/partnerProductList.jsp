@@ -15,9 +15,8 @@
 		margin:20px;
 	}
 	.img-div{
-		/* 둥글고 좀 여유있게 하기 */
-	width :400px;
-		
+		width:340px;
+		height:150px;
 	
 	}
 	.wish,.wishclick{
@@ -48,9 +47,27 @@
 		color:green;
 	}
 	
+	.more{
+		font-size:15px;
+		margin:10px;
+		margin-left:50px;
+		}
+
+	.paddingadd{
+		box-sizing: content-box;
+	}
+	.prtitle{
+		width:340px;
+		height:90px;
+	
+	}
+   
+	
+	
 </style>
 <section>
 <%@ include file="/views/common/partnerSide.jsp"%>
+<div class="clear-both"></div>
 	<%-- <div class="col-lg-2">
 		<!-- 사이드 바 메뉴-->
 		  <!-- 패널 타이틀1 -->
@@ -90,19 +107,24 @@
 		      </ul>
 		    </div>
 		</div>  --%>
-	<<h3> 내가 등록한 상품 보기</h3>
-	<div class="row">
+	<h3> 내 상품 보기</h3>
+	<div class="row clear-both">
 		<%for(Product p:list){ %>
-		  <div class="col-sm-6 col-lg-4">
+		  <div class="col-sm-6 col-lg-4 paddingadd">
 		    <div class="thumbnail img-div" >
 		    
 		    	
-		      <a href=""><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="400px" height="200px" class="img-rounded"></a>
+		      <a href="<%=request.getContextPath()%>/product/productList?pNum=<%=p.getpNum()%>"><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="340px" height="200px" class="img-rounded"></a>
 		      
 		      <div class="caption" >
+		      <div class>
 		        <h3><%=p.getpName() %></h3>
-		        <p><%=p.getpNum() %></p>
-		        <input type="hidden" name=pNum value=<%=p.getpNum() %> >
+		        <p><%=p.getpPriceC() %>~</p> 
+		       </div>
+		        <a href="<%=request.getContextPath()%>/partner/updateProduct?pNum=<%=p.getpNum()%>"><button type="button" class="btn btn-default btn-sm">수정하기</button></a>
+		        <a href="<%=request.getContextPath()%>/partner/deleteProduct?pNum=<%=p.getpNum()%>" onclick="return confirm('정말 삭제하시겠습니까?');"><button type="button" class="btn btn-danger btn-sm" >삭제하기</button></a>
+		        <input type="hidden" name="pNum" value=<%=p.getpNum() %> >
+		       
 		      </div>
 		    </div>
 		  </div>

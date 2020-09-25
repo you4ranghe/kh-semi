@@ -146,6 +146,26 @@ button+div{
 		color:red;
 	}
 	
+
+	.more{
+		font-size:15px;
+		margin:10px;
+		margin-left:50px;
+		}
+
+
+      h3{
+      	/* margin:10px; */
+      }
+      h5{
+      padding : 10px;
+      float:left;
+      }
+      h4#price{
+      float:right;
+      
+      }
+
 </style>
 
 
@@ -295,7 +315,7 @@ button+div{
     </div>
 </div>
  --%>
- 
+ 	<br>
  	<h3>최근 등록된 상품<a href="<%=request.getContextPath()%>/product/allProductList" class="more">더보기</a></h3>
 	
  	  <%-- <div class="row">
@@ -330,24 +350,7 @@ button+div{
 
 </section>
 
-      <style>
-		.more{
-		font-size:15px;
-		margin:10px;
-		margin-left:50px;
-		}
-      h3{
-      	margin:10px;
-      }
-      h5{
-      padding : 10px;
-      float:left;
-      }
-      h4#price{
-      float:right;
-      
-      }
-	</style>
+
 
 	<script> 
 	

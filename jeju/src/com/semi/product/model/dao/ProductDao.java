@@ -50,6 +50,7 @@ public class ProductDao {
 				p.setpBigNameKor(rs.getString("p_big_name_kor"));
 				p.setpMap(rs.getString("p_map_address"));
 				p.setTitleImgPath(rs.getString("title_img_path"));
+				p.setpPriceC(rs.getInt("p_price_c"));
 				list.add(p);
 			}
 			
@@ -360,10 +361,19 @@ public class ProductDao {
 		return result;
 	}
 	
-	
-	
-	
-	
+	public int updateProduct(Connection conn,Product p) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updateProduct"));
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	/////////리뷰
 	

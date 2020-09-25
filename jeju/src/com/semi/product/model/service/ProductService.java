@@ -114,6 +114,15 @@ public class ProductService {
 		return result;
 	}
 	
+	public int updateProduct(Product p) {
+		Connection conn=getConnection();
+		int result=dao.updateProduct(conn, p);
+		if(result==1) commit(conn);
+		else rollback(conn);
+		close(conn);
+		
+		return result;
+	}
 
 	
 	

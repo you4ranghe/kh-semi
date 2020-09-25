@@ -9,7 +9,7 @@ body{
     display:flex;
     justify-content : center;
     align-items: center;
-    height:100vh;
+    height:100%;
     background : url(../img/enrollback.jpg) no-repeat center;
     background-size : cover;
 }
@@ -20,14 +20,17 @@ body ::before{
     z-index: 1;
     top: 0; right: 0; left: 0; bottom: 0;
     background-color: rgba(0,0,0,.7);
+
 }
+
 
 #memberEnrollFrm{
     position: relative;
     left:600px;
-    top:50px;
+    top:10px;
     /* border :3px solid red;  */
     width:380px;
+    height:100vh;
 
 }
 
@@ -38,7 +41,9 @@ body ::before{
 
     z-index: 2;
     left:140px;
-    top:10px;
+
+    top:5px;
+
     
 }
 .login-form h1{
@@ -66,6 +71,29 @@ th{
     color:yellowgreen;
     font-size:20px;
 }
+.address_td {
+    width: 55%;
+    padding : 20px 10px 10px;
+    background-color: transparent;
+    border:none;
+    border-bottom:1px solid #999;
+    font-size: 18px; color : #fff;
+    outline: none;
+}
+
+#address_btn{
+    font-weight: bolder;
+    height:30px;
+    width:100px;
+    background : yellowgreen;
+    color : #fff;
+    font-size:15px;
+    border:none;
+    border-radius:8px;
+    font-weight: bold;
+    cursor:pointer;
+    margin:0px;
+} 
 
 
 .int-area input{
@@ -125,7 +153,7 @@ th{
 }
 #btn1{
     position: relative;
-    top:100px;
+    top:60px;
     left:990px;
 
     width:80px; height:35px;

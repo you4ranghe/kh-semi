@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page isELIgnored="false" %>
 <%@page import="java.util.List"%>
@@ -14,7 +13,7 @@
 	
 	Payment pm = (Payment)request.getAttribute("payment");
 	
-	WishList wl = (WishList)request.getAttribute("wishlist");
+	WishList we = (WishList)request.getAttribute("we");
 	
 	Review r = (Review)request.getAttribute("review");
 	List<Review> rlist = (List)request.getAttribute("reviewList"); 
@@ -146,7 +145,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 
-					<form action="<%=request.getContextPath() %>/product/productGoCart"
+					<form action="<%=request.getContextPath() %>/payList"
 						method="post" class="check-form" name="price_exec">
 
 						<h4>Check Option</h4>
@@ -278,9 +277,9 @@
 						<!-- 아이디넘기기 -->
 						<input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>"> 
 						<input type="hidden" name="pNum" value='${p.pNum}'> 
-
-
-
+						<input type="hidden" name="pInfo" value='${p.pInfo}'>
+						<input type="hidden" name="pName" value='${p.pName}'>
+						<input type="hidden" name="titleImgPath" value='${p.titleImgPath}'>
 						<button type="submit" name="submit">buy</button>
 						<script>
 						$(function(){
@@ -314,18 +313,26 @@
 					<div class="single-post">
 						<div class="feature-img">
 							<img class="img-fluid"
-								console.log(${p.titleImgPath});
-								src="<%=request.getContextPath() %>${p.titleImgPath}%>"
+								
+								src="<%=request.getContextPath() %>/upload/product/${p.pImgPath}"
 								alt="" >
 						</div>
 
 						<div class="blog_details">
 							<h2>${p.pBigNameKor}
 
+
+
+
+								    
+								   
 								<!-- 위시리스트 넘기기 -->
-								<a class="heart-button"
-									href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId()%>&pNum=${p.pNum}">
-									♥ </a>
+<a class="heart-button"
+	href="<%=request.getContextPath()%>/wishListEnroll?userId=<%=logginedMember.getUserId()%>&productNum=${p.pNum}&pageAddress=<%=request.getRequestURI()%>">
+ <iframe src="#" width="0" height="0" name="pageAddress"></iframe>  
+									♥ </a> 
+						
+						
 								<!-- FORM으로 값 3개 보내고 경로를 IFRAME써서  -->
 							</h2>
 
@@ -424,7 +431,7 @@
 												<li class="time-info-spot">
 
 													<div class="pd-info-img">
-														<img src="${p.scheduleImgPath}">
+														<img src="<%=request.getContextPath() %>/upload/product/${p.scheduleImgPath}">
 														<%--  <img src="<%=request.getContextPath() %>/img/destination/jeju1.jpg" alt=""> --%>
 													</div>
 												</li>
@@ -498,7 +505,7 @@
 
 					<div class="blog-author">
 						<div class="media align-items-center">
-							<img src="img/destination/yoo.jpg" alt="">
+							<img src="<%=request.getContextPath() %>/upload/product/yoo.jpg" alt="">
 							<div class="media-body">
 								<div class="board bg-highlihgt mt-20" id="becareful">
 									<h4 class="info-subtitle mt-0">NOTICE</h4>
@@ -588,35 +595,17 @@
 							<div class="single-comment justify-content-between d-flex">
 								<div class="user justify-content-between d-flex">
 									<div class="thumb">
-										<img src="<%=request.getContextPath() 
-										%>/img/comment/comment_1.png" alt="">
+										<img src="<%=request.getContextPath() %>/upload/product/comment_1.png" alt="">
 									</div>
 									
 
 					
-<%-- 					<input type="hidden" value="${p.pNum}"> --%>		
-
-<%-- 
-<c:forEach var="movie" items="${movieList}" varStatus="status">
-${movie}<br>
-${status.index}
-</c:forEach>
- --%>
 
     
 
 
 					 <c:forEach var="e" items="${reviewList}" >
-					 						
-<%-- 					 						<p>${e.reviewNum}</p>
-					 						<p>${e.reviewScore}</p>
-					 						<p>${e.reviewTitle}</p>
-					 						<p>${e.reviewContents}</p>
-					 						<p>${e.reviewWriter}</p>
-					 						<p>${e.poNum}</p>
-					 						<p>${e.registerDate}</p>
-					 						<p>${e.reviewViews}</p>
-					 						<p>${e.pNum}  </p> --%>
+
 					 				
 							 		<div class="desc">
 										<p class="comment" id="reviewTitle"'>${e.reviewTitle}</p>
@@ -645,7 +634,8 @@ ${status.index}
 												<input type="hidden" value="${e.pNum}">
 												<input type="hidden" value="${e.userId}">
 										</div>
-									</div> --%>
+									</div>
+									</div>
 								</c:forEach> 
 								
 								</div>
@@ -816,7 +806,7 @@ ${status.index}
 								$("[reviewWriter=reviewContents]").focus();
 								return false;
 							}
-						}
+						};
 					
 				</script> 
 				

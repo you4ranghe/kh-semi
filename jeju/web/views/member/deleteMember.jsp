@@ -7,7 +7,9 @@
 	Member m=(Member)request.getAttribute("member");
 %>
 
-<div class="updatepassword_img">
+
+<div class="deleteMember_img">
+
 
 <section id="mypage-bar">
     <h1>Mypage</h1>
