@@ -214,7 +214,7 @@
                                                <%} %>
                                                  <!-- 로그인후 일반회원중 파트너일경우(단,관리자가 승인을 해줘서 Staus가 'Y'일 경우만) -->
                                                 <%if(logginedPartner!=null && logginedPartner.getPartnerStatus().equals("Y")){%>
-                                                     <li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">파트너 페이지</a></li>
+                                                     <li><a href="<%=request.getContextPath()%>/partner/partnerProductList">파트너 페이지</a></li>
    
                                               <!-- 분기문 마무리하기 -->
                                                <%}  %>          

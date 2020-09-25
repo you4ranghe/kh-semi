@@ -315,7 +315,7 @@ button+div{
     </div>
 </div>
  --%>
- 
+ 	<br>
  	<h3>최근 등록된 상품<a href="<%=request.getContextPath()%>/product/allProductList" class="more">더보기</a></h3>
 	
  	  <%-- <div class="row">
