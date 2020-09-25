@@ -279,8 +279,7 @@ public class PartnerDao {
 			pstmt.setString(16, p.getPrecaution());
 			pstmt.setString(17, p.getpMapAddress());
 			pstmt.setString(18, p.getpMap());
-//			pstmt.setString(19, p.getPartnerId());
-			pstmt.setString(19, "user01");
+			pstmt.setString(19, p.getPartnerId());
 			
 			
 			result=pstmt.executeUpdate();

@@ -345,7 +345,6 @@ button+div{
 	
 	</div>
 			
-	<a href="<%=request.getContextPath()%>/partner/partnerProductList"><button class="btn-info">파트너페이지</button></a>
 
 
 </section>
