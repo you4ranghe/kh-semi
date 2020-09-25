@@ -14,7 +14,7 @@ import com.semi.member.model.vo.Member;
 /**
  * Servlet implementation class EnrollPartnerServlet
  */
-@WebServlet("/partner/enroll")
+@WebServlet("/partnerMember/enroll")
 public class EnrollPartnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
