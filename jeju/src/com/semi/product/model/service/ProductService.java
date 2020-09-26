@@ -148,5 +148,16 @@ public class ProductService {
 		return list;
 	}
 
+	
+	public int confirmReview(Review r) {
+		Connection conn = getConnection();
+		int result = dao.confirmReview(conn,r);
+		commit(conn);
+		close(conn);
+		
+		return result;
+	}
+	
+	
 
 	}

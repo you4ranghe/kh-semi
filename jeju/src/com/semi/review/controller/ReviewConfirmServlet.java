@@ -1,6 +1,7 @@
 package com.semi.review.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.product.model.service.ProductService;
+import com.semi.product.model.vo.Product;
 import com.semi.review.model.vo.Review;
 
 /**
- * Servlet implementation class ReviewEndServlet
+ * Servlet implementation class ReviewConfirmServlet
  */
-@WebServlet("/review/reviewEndServlet")
-public class ReviewEndServlet extends HttpServlet {
+@WebServlet("/review/reviewConfirm")
+public class ReviewConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewEndServlet() {
+    public ReviewConfirmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,49 +42,59 @@ public class ReviewEndServlet extends HttpServlet {
 		String poNum = request.getParameter("poNum");
 		int pNum = Integer.parseInt(request.getParameter("pNum"));
 		String userId = request.getParameter("userId");
-
-		
 		
 		Review r = new Review(0,reviewScore,reviewTitle,reviewContents,reviewWriter,poNum,null,0,pNum,userId);
-		//int result = new ProductService().insertReview(r);
+		
+		System.out.println("여기는 서블릿 r="+r);
+		System.out.println("서블릿pNum="+pNum);
+		System.out.println("서블릿userid="+userId);
+		
 
-		int result1 = new ProductService().confirmReview(r);
+	
 		
-		String msg="";
-		String loc="/product/productList?pNum="+pNum;
+		String loc="";
+		String msg = "";
 		
-		if(result1>0) {
+		
+
+		
+		
+		
+		
+		if(result==0) {
 			
-			int result = new ProductService().insertReview(r);
+			result = new ProductService().insertReview(r,pNum,userId);
 			
-					if(result>0) {
-						msg="리뷰 등록 성공!";
-						loc="product/productList?pNum="+pNum;
-					}else {
-						msg="리뷰 등록 실패!";
-						loc="product/productList?pNum="+pNum;
-					}
+			System.out.println("poNum="+poNum);
+			System.out.println("여기는서블릿"+r);
+			System.out.println("result"+result);
 			
+			loc="/product/productList?pNum="+pNum;
 			
-				
-		}else {
-			msg="구매하신 회원만 리뷰 작성이 가능합니다";
-			
-			
+
+			if(result>0) {
+				msg="리뷰 등록 성공!";
+
+			}else {
+				msg="리뷰 등록 실패!";
+
+			}
 			request.setAttribute("msg",msg);
 			request.setAttribute("loc",loc);
 			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			
+		}	else {
+				
+			msg ="상품을 구매하신 분만 리뷰를 작성할 수 있습니다";
+			loc="/product/productList?pNum="+pNum;
+			System.out.println("작성x result="+result);
+			System.out.println("작성xpoNum="+poNum);
+		
+		
+		request.setAttribute("msg",msg);
+		request.setAttribute("loc",loc);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		}
-	
-		
-		
-		
-		
-
-		
-		
-		
-		
 		
 	}
 

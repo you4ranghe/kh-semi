@@ -626,7 +626,13 @@
 									
 											</div>
 											<div class="reply-btn">
-												<a href="#" class="btn-reply text-uppercase">reply</a>
+											
+												<!-- <a href="#" class="btn-reply text-uppercase" >수정</a>
+												<a href="#" class="btn-reply text-uppercase">삭제</a> -->
+												
+												<input type="button" value="리뷰 수정" onclick="open_win('BoardServlet?command=board_check_pass_for&pNum=${p.pNum}','update')">
+												<input type="button" value="리뷰 삭제" onclick="open_win('BoardServlet?command=board_check_pass_for&pNum=${p.pNum}','delete')">
+												
 												<input type="hidden" value="${e.reviewNum}">
 												<input type="hidden" value="${e.reviewScore}">
 												<input type="hidden" value="${e.poNum}">
@@ -789,8 +795,7 @@
  -->
 							
 							<div class="form-group">
-								<button type="submit" class="button button-contactForm btn_1 boxed-btn" 
-								onclick = "function validate();" >
+								<button type="submit" class="button button-contactForm btn_1 boxed-btn" onclick = "function validate();" >
 									Leave Review</button>
 							</div>
 							

@@ -377,6 +377,25 @@ public class ProductDao {
 	
 	/////////리뷰
 	
+	public int confirmReview(Connection conn, Review r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("confirmReview"));
+
+			pstmt.setInt(1, r.getpNum());
+			pstmt.setString(2, r.getUserId());
+			
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	
 	
 	public int insertReview(Connection conn, Review r) {
 		PreparedStatement pstmt = null;
@@ -400,7 +419,7 @@ public class ProductDao {
 			System.out.println(r.getReviewTitle());
 			System.out.println(r.getReviewContents());
 			System.out.println(r.getReviewWriter());
-//			System.out.println(r.getPoNum());
+			System.out.println(r.getPoNum());
 			System.out.println(r.getpNum());
 			System.out.println(r.getUserId());
 			
