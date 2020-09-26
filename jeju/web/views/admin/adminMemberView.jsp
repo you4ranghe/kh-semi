@@ -10,8 +10,12 @@
 <div class="mypage_img"></div>
 <!-- <input id="btn1" type="button" value="중복검사" onclick="id_duplicate();"> -->
 <section id="mypage-bar">
-<h1>회원상세<br>정보보기</h1>
+<h1>회원 정보보기</h1>
 <br>
+<h5><a href="<%=request.getContextPath()%>/admin/memberList">&nbsp;회원 관리</a></h5>
+<h5><a href="<%=request.getContextPath()%>/partner/partnerList">&nbsp;파트너 관리</a></h5>
+<h5><a href="<%=request.getContextPath()%>/admin/productList">&nbsp;상품 관리</a></h5>
+<h5><a href="<%=request.getContextPath()%>/admin/paymentList">&nbsp;결제 관리</a></h5>
 <h5><a href="<%=request.getContextPath()%>/member/logout">&nbsp;로그아웃</a></h5>
 </section>
 <section id="member-viewForm">
@@ -61,8 +65,9 @@
 			</tr>
 			<tr>
 				<th>성별</th>
-				<td class="gender">
-					<%=m.getGender() %>
+				<td class="int-area">
+					<input type="text" value="<%=m.getGender() %>"autocomplete="off" required readonly>
+					
 				</td>
 			</tr>
 			

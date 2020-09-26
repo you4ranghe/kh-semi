@@ -1,6 +1,10 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 * {
     margin: 0; padding:0; box-sizing:border-box;
+    font-family: 'Do Hyeon', sans-serif;
+}
+#pagebar{
+    letter-spacing: 3px;
 }
 
 #title{
@@ -25,7 +29,7 @@
 section#memberList-container {
     text-align:center;
     /* border:1px solid red; */
-    height:80%;
+    height:500px;
     align-items: center;
 }
 #tbl-member-container{
@@ -96,10 +100,19 @@ div#search-container {
 div#search-userId{display:inline-block;}
 div#search-userName{display:none;}
 div#search-gender{display:none;}
-div#numPerpage-container{float:right;}
+div#numPerpage-container{
+    float:right;
+}
 form#numperPageFrm{display:inline;}
 #pageBar{
     padding: 10px;
+}
+
+select#numPerPage{
+    height: 45px;
+    width: 50px;
+    font-size: 17px;
+    border-radius: 5px;
 }
 
 

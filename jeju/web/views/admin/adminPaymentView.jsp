@@ -3,7 +3,7 @@
     ,com.semi.product.model.vo.Product"%>
 <%@ include file="/views/common/header.jsp" %>
 <script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/adminPartnerView.css" type="text/css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/adminPaymentView.css" type="text/css">
 
 <%
 	Partner partner=(Partner)request.getAttribute("PartnerView");
@@ -14,10 +14,13 @@
 
 <div class="mypage_img"></div>
 <section id="mypage-bar">
-<h1>결제 내역<br>상세보기</h1>
+<h2>결제내역 보기</h2>
 <br>
-<h5><a href="<%=request.getContextPath()%>/admin/paymentList">&nbsp;결제 관리 페이지</a></h5>
-<h5><a href="<%=request.getContextPath()%>/member/logout">&nbsp;로그아웃</a></h5>
+<h4><a href="<%=request.getContextPath()%>/admin/memberList">&nbsp;회원 관리</a></h4>
+<h4><a href="<%=request.getContextPath()%>/partner/partnerList">&nbsp;파트너 관리</a></h4>
+<h4><a href="<%=request.getContextPath()%>/admin/productList">&nbsp;상품 관리</a></h4>
+<h4><a href="<%=request.getContextPath()%>/admin/paymentList">&nbsp;결제 관리</a></h4>
+<h4><a href="<%=request.getContextPath()%>/member/logout">&nbsp;로그아웃</a></h4>
 </section>
 <section id="member-viewForm">
 	<form id="MypageFrm" action="" method="post">
@@ -25,48 +28,51 @@
 			<tr>
 				<th>판매자</th>
 				<td class="int-area">
-					<%=payment.getUserId()%>
+					<input type="text" value="<%=payment.getUserId()%>"readonly>
 				</td>
 			</tr>
 			<tr>
 				<th>결제자</th>
 				<td class="int-area">
-					<%=payment.getPayUserNam()%>
+					<input type="text" value="<%=payment.getPayUserNam()%>"readonly>
 				</td>
 			</tr>
 			<tr>
 				<th>결제 총금액</th>
 				<td class="int-area">
-					<%=payment.getTotalPrice() %>
+					<input type="text" value="<%=payment.getTotalPrice() %>"readonly>
 				</td>
 			</tr>
 			<tr>
 				<th>결제일</th>
 				<td class="int-area">
-					<%=payment.getPoDate()%>
+					<input type="text" value="<%=payment.getPoDate()%>"readonly>
 				</td>
 			</tr>
 			<tr>
 				<th>결제방식</th>
 				<td class="int-area">
-					<%=payment.getPoType()%>
+					<input type="text" value="<%=payment.getPoType()%>"readonly>
 				</td>
 			</tr>
 <%-- 			<tr>
 				<th>결제자 연락처</th>
 				<td class="int-area">
+					<input type="text" value="<%=product.getpNum()%>"readonly>
 				<%=product.getpPriceA()%>
 				</td>
 			</tr>
 			<tr>
 				<th>상품가격(어린이)</th>
 				<td class="int-area">
+					<input type="text" value="<%=product.getpNum()%>"readonly>
 				<%=product.getpPriceC()%>
 				</td>
 			</tr>
 			<tr>
 				<th>여행지(출발장소)</th>
 				<td class="int-area">
+					<input type="text" value="<%=product.getpNum()%>"readonly>
 				<%=product.getpMapAddress() %>
 				</td>
 			</tr>
@@ -74,6 +80,7 @@
 			<tr>
 				<th>출발시간</th>
 				<td class="int-area">
+					<input type="text" value="<%=product.getpNum()%>"readonly>
 				<%=product.getpTime() %>
 				</td>
 			</tr> --%>

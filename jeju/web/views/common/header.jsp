@@ -182,10 +182,7 @@
                                                
                                                 <!-- 로그인후 회원 아이디가 admin일 경우 -->
                                               <%if(logginedMember.getUserId().equals("admin")){ %>
-                                                     <li><a href="<%=request.getContextPath()%>/admin/memberList">회원관리</a></li>
-                                                     <li><a href="<%=request.getContextPath() %>/partner/partnerList">파트너관리</a></li>  
-                                                     <li><a href="<%=request.getContextPath() %>/admin/productList">상품관리</a></li>
-                                                     <li><a href="<%=request.getContextPath() %>/admin/paymentList">전체 결제내역</a></li>    
+                                                     <li><a href="<%=request.getContextPath()%>/admin/totalManage">관리자 페이지</a></li>
                                                <%} } %>
                                                <!-- 로그인후 일반회원중 파트너신청을 안한경우 -->
                                                <%if(logginedMember!=null&& logginedPartner==null){ %>
