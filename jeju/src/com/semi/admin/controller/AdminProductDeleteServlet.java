@@ -1,28 +1,25 @@
-package com.semi.partner.controller;
+package com.semi.admin.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.member.model.service.MemberService;
-import com.semi.member.model.vo.Member;
+import com.semi.partner.model.service.PartnerService;
 
 /**
- * Servlet implementation class EnrollPartnerServlet
+ * Servlet implementation class AdminProductDeleteServlet
  */
-
-@WebServlet("/member/enrollPartner")
-public class EnrollPartnerServlet extends HttpServlet {
+@WebServlet("/admin/deleteProduct")
+public class AdminProductDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EnrollPartnerServlet() {
+    public AdminProductDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,17 +29,24 @@ public class EnrollPartnerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId=request.getParameter("userId");
+		int pNum=Integer.parseInt(request.getParameter("pNum"));
 		
-		System.out.println(userId);
+		int result=new PartnerService().deleteProduct(pNum);
 		
-		Member m = new MemberService().selectMemberId(userId);
+		String msg="";
+		String loc="";
 		
-		System.out.println(m);
 		
-		request.setAttribute("members", m);
-		request.getRequestDispatcher("/views/partner/enrollPartner.jsp").forward(request, response);
-		
+		if(result==1) {
+			msg="상품이 삭제되었습니다.";
+			loc="/admin/productList";
+		}else {
+			msg="삭제에 실패하였습니다.";
+			loc="/admin/productList";
+		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		
 		
 	}

@@ -27,11 +27,7 @@ public class ProductService {
 		return p;
 	}
 	
-	
-	
-	
-	
-	
+
 	
 	
 	// 정연
@@ -43,6 +39,11 @@ public class ProductService {
 		close(conn);
 		return list;
 	}
+	
+
+	
+	
+	
 	
 	public List<Product> selectProductList(int pNum){
 		Connection conn = getConnection();
@@ -63,6 +64,7 @@ public class ProductService {
 		return list;
 		
 	}
+
 	
 	public int selectProductCount() {
 		Connection conn=getConnection();

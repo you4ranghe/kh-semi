@@ -8,7 +8,9 @@
 
 
 <section id="member-viewForm">
+
 	<form id="MypageFrm" action="<%=request.getContextPath() %>/member/enrollPartnerEnd?userId=<%=m.getUserId() %>" method="post" enctype="multipart/form-data">
+
 		<table>
 			<tr>
 				<th>아이디</th>

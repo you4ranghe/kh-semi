@@ -13,6 +13,11 @@ public class Payment {
 	private String userId;
 	private int pCountA;
 	private int pCountC;
+	private String payUserNam;
+	private String payAddress;
+	private String payPhone;
+	private String payEmail;
+	
 	
 	
 	public Payment() {
@@ -20,8 +25,9 @@ public class Payment {
 	}
 
 
+
 	public Payment(String poNum, String poType, String poDate, Date pDateStart, int totalPrice, int pNum, String userId,
-			int pCountA, int pCountC) {
+			int pCountA, int pCountC, String payUserNam, String payAddress, String payPhone, String payEmail) {
 		super();
 		this.poNum = poNum;
 		this.poType = poType;
@@ -32,7 +38,12 @@ public class Payment {
 		this.userId = userId;
 		this.pCountA = pCountA;
 		this.pCountC = pCountC;
+		this.payUserNam = payUserNam;
+		this.payAddress = payAddress;
+		this.payPhone = payPhone;
+		this.payEmail = payEmail;
 	}
+
 
 
 	public String getPoNum() {
@@ -40,9 +51,11 @@ public class Payment {
 	}
 
 
+
 	public void setPoNum(String poNum) {
 		this.poNum = poNum;
 	}
+
 
 
 	public String getPoType() {
@@ -50,9 +63,11 @@ public class Payment {
 	}
 
 
+
 	public void setPoType(String poType) {
 		this.poType = poType;
 	}
+
 
 
 	public String getPoDate() {
@@ -60,9 +75,11 @@ public class Payment {
 	}
 
 
+
 	public void setPoDate(String poDate) {
 		this.poDate = poDate;
 	}
+
 
 
 	public Date getpDateStart() {
@@ -70,9 +87,11 @@ public class Payment {
 	}
 
 
+
 	public void setpDateStart(Date pDateStart) {
 		this.pDateStart = pDateStart;
 	}
+
 
 
 	public int getTotalPrice() {
@@ -80,9 +99,11 @@ public class Payment {
 	}
 
 
+
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
 
 
 	public int getpNum() {
@@ -90,9 +111,11 @@ public class Payment {
 	}
 
 
+
 	public void setpNum(int pNum) {
 		this.pNum = pNum;
 	}
+
 
 
 	public String getUserId() {
@@ -100,9 +123,11 @@ public class Payment {
 	}
 
 
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 
 
 	public int getpCountA() {
@@ -110,9 +135,11 @@ public class Payment {
 	}
 
 
+
 	public void setpCountA(int pCountA) {
 		this.pCountA = pCountA;
 	}
+
 
 
 	public int getpCountC() {
@@ -120,19 +147,71 @@ public class Payment {
 	}
 
 
+
 	public void setpCountC(int pCountC) {
 		this.pCountC = pCountC;
 	}
+
+
+
+	public String getPayUserNam() {
+		return payUserNam;
+	}
+
+
+
+	public void setPayUserNam(String payUserNam) {
+		this.payUserNam = payUserNam;
+	}
+
+
+
+	public String getPayAddress() {
+		return payAddress;
+	}
+
+
+
+	public void setPayAddress(String payAddress) {
+		this.payAddress = payAddress;
+	}
+
+
+
+	public String getPayPhone() {
+		return payPhone;
+	}
+
+
+
+	public void setPayPhone(String payPhone) {
+		this.payPhone = payPhone;
+	}
+
+
+
+	public String getPayEmail() {
+		return payEmail;
+	}
+
+
+
+	public void setPayEmail(String payEmail) {
+		this.payEmail = payEmail;
+	}
+
 
 
 	@Override
 	public String toString() {
 		return "Payment [poNum=" + poNum + ", poType=" + poType + ", poDate=" + poDate + ", pDateStart=" + pDateStart
 				+ ", totalPrice=" + totalPrice + ", pNum=" + pNum + ", userId=" + userId + ", pCountA=" + pCountA
-				+ ", pCountC=" + pCountC + "]";
+				+ ", pCountC=" + pCountC + ", payUserNam=" + payUserNam + ", payAddress=" + payAddress + ", payPhone="
+				+ payPhone + ", payEmail=" + payEmail + "]";
 	}
 
 
+	
 	
 	
 	

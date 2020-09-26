@@ -8,7 +8,7 @@
 	String numPerPage=request.getParameter("numPerPage");
 %>    
 <script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberList.css" type="text/css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/adminmemberList.css" type="text/css">
 <%@ include file="/views/common/header.jsp" %>
 
 <div class="memberList_img"></div>

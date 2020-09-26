@@ -49,7 +49,7 @@ public class ProductGoCartServlet extends HttpServlet {
 		
 		
 		
-		Payment pm = new Payment (null,null,null,pds,totalprice,pNum,userId,counta,countc);
+		Payment pm = new Payment (null,null,null,pds,totalprice,pNum,userId,counta,countc,null,null,null,null);
 		
 		System.out.println(pm);
 		

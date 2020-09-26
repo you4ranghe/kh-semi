@@ -71,7 +71,9 @@ div#search-container {
 #searchType{
     font-weight: bold;
     position: relative;
-    left:100px;
+    left:0px;
+    height: 45px;
+    border-radius: 5px;
     
 }
 .search-btn{
