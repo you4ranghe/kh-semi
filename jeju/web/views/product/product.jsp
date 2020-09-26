@@ -164,13 +164,13 @@
 
 
 
-						<div class="room-quantity">
+						<div class="room-selector">
 
-							Total <span id='total_price' name='total_price'>0</span>원 
+							Total <span id='total_price' name='total_price'>0</span>원 <br>
 							<input type=hidden name='total_price' value='${p.pPriceA}'> 
 							<input type=hidden name='total_price2' value='${p.pPriceC}'> 
 							<input type=hidden name='totalPrice' value='0'> Adult 
-							<select name='pCountA' onChange='change_price();'>
+							<select name='pCountA' onChange='change_price();'><br>
 								<option value='0'>0</option>
 								<option value='1'>1</option>
 								<option value='2'>2</option>
@@ -183,7 +183,7 @@
 								<option value='9'>9</option>
 								<option value='10'>10</option>
 								
-							</select> Child <select name='pCountC' onChange='change_price();'>
+							</select> Child <select name='pCountC' onChange='change_price();'><br>
 								<option value='0'>0</option>
 								<option value='1'>1</option>
 								<option value='2'>2</option>
@@ -264,11 +264,18 @@
 
 						<div class="room-selector">
 							<p>Time</p>
+							
 							<select class="suit-select" name="pTime">
 								<option>Check your Time</option>
 								<option value="09:00">09:00</option>
 								<option value="12:00">12:00</option>
-								<option value="15:00">15:00</option>
+								<option value="15:00">15:00</option> 
+
+							
+<%-- 							<c:forEach var="a" items="${p.pTime}">
+							<option value="${a.pTime}"></option>
+							</c:forEach> --%>
+							
 
 							</select>
 						</div>
@@ -281,6 +288,7 @@
 						<input type="hidden" name="pName" value='${p.pName}'>
 						<input type="hidden" name="titleImgPath" value='${p.titleImgPath}'>
 						<button type="submit" name="submit">buy</button>
+						
 						<script>
 						$(function(){
 			    		$("[name=submit]").focus(e => {
@@ -602,8 +610,16 @@
 					
 
     
+<%-- <form id="reviewFrm" action="/" method="post" >
+<input type="text" value="${r.reviewScore}">
+<input type="text" value="${r.reviewTitle}">
+<input type="text" value="${r.reviewContents}">
+<input type="text" value="${r.poNum}">
+<input type="text" value="${r.pNum}">
+<input type="text" value="${r.reviewWriter}">
+<input type="hidden" value="${r.reviewScore}"> --%>
 
-
+	<form>
 					 <c:forEach var="e" items="${reviewList}" >
 
 					 				
@@ -612,7 +628,7 @@
 										<p class="comment">${e.reviewContents }</p>
 										<div class="d-flex justify-content-between">
 											<div class="d-flex align-items-center">
-												<h5>
+											<h5>
 													<a href="#">${e.reviewWriter }</a>
 												</h5>
 												<p class="date">${e.registerDate }</p>
@@ -630,19 +646,66 @@
 												<!-- <a href="#" class="btn-reply text-uppercase" >수정</a>
 												<a href="#" class="btn-reply text-uppercase">삭제</a> -->
 												
-												<input type="button" value="리뷰 수정" onclick="open_win('BoardServlet?command=board_check_pass_for&pNum=${p.pNum}','update')">
-												<input type="button" value="리뷰 삭제" onclick="open_win('BoardServlet?command=board_check_pass_for&pNum=${p.pNum}','delete')">
-												
+								<!-- 				<input type="button" value="리뷰 수정" onclick="fn_update_submit();">
+												<input type="button" value="리뷰 삭제" onclick="fn_delete_member();"> -->
+
 												<input type="hidden" value="${e.reviewNum}">
 												<input type="hidden" value="${e.reviewScore}">
 												<input type="hidden" value="${e.poNum}">
 												<input type="hidden" value="${e.reviewViews}">
 												<input type="hidden" value="${e.pNum}">
 												<input type="hidden" value="${e.userId}">
+						<%-- 														
+							 <input type="button" value="수정"
+							onclick="location.href='<%=request.getContextPath()%>/ReviewModifyViewServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}'">  --%>
+														
+						 <input type="button" value="수정"
+							onclick="showPopup();"> 
+
+
+						<input type="button" value="삭제" 
+						onclick="location.href='<%=request.getContextPath()%>/ReviewDeleteServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}'"> 
+
+
 										</div>
 									</div>
 									</div>
+									
+									
+									
+									
+								
+								 <script language="javascript">
+								  	function showPopup() {
+								  		window.open("<%=request.getContextPath() %>/ReviewModifyViewServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}",
+								  				"a", 
+								  				"width=400, height=300, left=100, top=50"); 
+								  		}
+								  	
+								  </script>
+								  
 								</c:forEach> 
+								</form>
+								 
+								
+								<%-- function fn_delete_member(){
+						 			//id서버에 전송해서 그 id랑 일치하는 회원을 삭제
+						 		if(logginedMember=(logginedMember.getUserId())){
+						 			if(confirm("정말 삭제하시겠습니까?")){
+						 				location.replace('<%=request.getContextPath()%>/ReviewDeleteServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}');
+						 			}
+						 		}
+							} --%>
+						 		<%-- function fn_update_submit(){
+						 			const frm=$("#reviewFrm");
+						 			const url="<%=request.getContextPath()%>/review/reviewModify";
+						 			frm.attr({
+						 				"action":url,
+						 				"method":"post",
+						 			});
+						 			frm.submit();
+						 		} --%>
+								
 								
 								</div>
 							</div>
@@ -802,6 +865,7 @@
 							
 						</form>
 				
+			
 				
 				<script>
 						function validate(){
@@ -814,9 +878,8 @@
 						};
 					
 				</script> 
-				
-				
-						
+	
+			
 					</div> 
 				</div>
 				

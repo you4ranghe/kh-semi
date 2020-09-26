@@ -153,7 +153,7 @@ public class ProductServlet extends HttpServlet {
 		
 		//System.out.println(p.toString());
 		
-		System.out.println(p);
+
 		
 		
 		

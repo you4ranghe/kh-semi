@@ -1,7 +1,6 @@
 package com.semi.review.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.product.model.service.ProductService;
-import com.semi.review.model.vo.Review;
-
 
 /**
- * Servlet implementation class ReviewListServlet
+ * Servlet implementation class ReviewDeleteServlet
  */
-@WebServlet("/review/reviewList")
-public class ReviewListServlet extends HttpServlet {
+@WebServlet("/ReviewDeleteServlet")
+public class ReviewDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewListServlet() {
+    public ReviewDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,18 +30,28 @@ public class ReviewListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		
-		int pNum = Integer.parseInt(request.getParameter("pNum"));
-
-		List<Review> reviewList = new ProductService().selectReviewList(pNum);
-		request.setAttribute("reviewList", reviewList);
+		String userId = request.getParameter("userId");
+		int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
 		
+		int result = new ProductService().deleteReview(userId,reviewNum);
+		String msg="";
+		String loc="";
 		
+		if(result>0) {
+			msg="정상적으로 삭제되었습니다!";
+			loc="/";
+		}else {
+			msg="작성한 회원만 삭제할 수 있습니다!";
+			loc="/";	
+		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
 		
-		request.getRequestDispatcher("/views/product/product.jsp").forward(request,response);
+		request.getRequestDispatcher("/views/common/msg.jsp")
+		.forward(request, response);		
+	
 		
-		System.out.println("리뷰리스트="+reviewList);
 	}
 
 	/**

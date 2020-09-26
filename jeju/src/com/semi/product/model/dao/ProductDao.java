@@ -446,7 +446,7 @@ public class ProductDao {
 			pstmt. setInt(1,pNum);
 
 			rs = pstmt.executeQuery();
-			
+	
 			while(rs.next()) {
 				Review r = new Review();
 				r.setReviewNum(rs.getInt(1));
@@ -462,7 +462,7 @@ public class ProductDao {
 				
 
 				list.add(r);
-				
+				System.out.println("리스트dao="+list);
 				}
 			}catch(SQLException e) {
 				e.printStackTrace();
@@ -472,6 +472,92 @@ public class ProductDao {
 			}return list;
 	}
 	
+	
+	
+	public int reviewModify(Connection conn, Review r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("reviewModify"));
+
+			pstmt.setInt(1,r.getReviewScore());
+			pstmt.setString(2, r.getReviewTitle());
+			pstmt.setString(3, r.getReviewContents());
+			pstmt.setString(4, r.getReviewWriter());
+			pstmt.setString(5, r.getPoNum());
+			pstmt.setInt(6, r.getpNum());
+			pstmt.setString(7, r.getUserId());
+			
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	
+	}
+	
+	
+	
+	public List<Review> selectReviewModifyList(Connection conn, String userId, int reviewNum){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Review> list = new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectReviewModifyList"));
+			pstmt. setString(1,userId);
+			pstmt.setInt(2, reviewNum);
+
+			rs = pstmt.executeQuery();
+	
+			while(rs.next()) {
+				Review r = new Review();
+				r.setReviewNum(rs.getInt(1));
+				r.setReviewScore(rs.getInt(2));
+				r.setReviewTitle(rs.getString(3));
+				r.setReviewContents(rs.getString(4));
+				r.setReviewWriter(rs.getString(5));
+				r.setPoNum(rs.getString(6));
+				r.setRegisterDate(rs.getDate(7));
+				r.setReviewViews(rs.getInt(8));
+				r.setpNum(rs.getInt(9));
+				r.setUserId(rs.getString(10));
+				
+
+				list.add(r);
+				System.out.println("모디파이리스트dao="+list);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return list;
+	}
+	
+	
+	
+	
+	
+	public int deleteReview(Connection conn, String userId, int reviewNum) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("deleteReview"));
+			pstmt.setNString(1, userId);
+			pstmt.setInt(2, reviewNum);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+				
+	}
 	
 	
 }
