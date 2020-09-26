@@ -131,5 +131,19 @@ public class PartnerService {
 		return count;
 		
 	}
+	
+	public payEnd selectOrder(int poNum) {
+		Connection conn=getConnection();
+		payEnd pe=dao.selectOrder(conn,poNum);
+		Product p=dao.titlePath(conn, pe.getProductNum());
+		pe.setTitleImgPath(p.getTitleImgPath());
+		pe.setProductName(p.getpName());
+		close(conn);
+		
+		return pe;
+		
+		
+	}
+	
 
 }

@@ -238,8 +238,8 @@
 
 	<h3 class="menut"> 내 상품 보기</h3>
 	
-	 <div>
-	<div id="sidebar"  class="col-lg-2">
+	 <div class="row">
+	<%-- <div id="sidebar"  class="col-lg-2">
 		<!-- 사이드 바 메뉴-->
 		  <!-- 패널 타이틀1 -->
 		<div class="sidebarmy panel panel-info ">
@@ -278,42 +278,56 @@
 		        <li class="list-group-item border-0"><a href="#"></a></li>
 		      </ul>
 		    </div>
+		</div>  --%>
+		<style>
+			.collong{
+				height:1000px;
+				float:left;
+			}
+		</style>
+		<div class="col-lg-3 collong">
+<!-- 사이드 바 메뉴-->
+  <!-- 패널 타이틀1 -->
+		<div class="panel panel-info">
+		    <div class="panel-heading">
+		      <h3 class="panel-title">Panel Title</h3>
+		    </div>
+		    <!-- 사이드바 메뉴목록1 -->
+		    <ul class="list-group">
+		      <li class="list-group-item"><a href="#">HTML</a></li>
+		      <li class="list-group-item"><a href="#">CSS</a></li>
+		      <li class="list-group-item"><a href="#">ECMAScript5</a></li>
+		    </ul>
+		</div>
+		  <!-- 패널 타이틀2 -->
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Panel Title</h3>
+		  </div>
+		    <!-- 사이드바 메뉴목록2 -->
+		      <ul class="list-group">
+		        <li class="list-group-item"><a href="#">jQuery</a></li>
+		        <li class="list-group-item"><a href="#">BootStrap</a></li>
+		      </ul>
+		</div>      
+		  <!-- 패널 타이틀3 -->
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Panel Title</h3>
+		  </div>
+		      <!-- 사이드바 메뉴목록3 -->
+		      <ul class="list-group">
+		        <li class="list-group-item"><a href="#">About</a></li>
+		        <li class="list-group-item"><a href="#">Help</a></li>
+		      </ul>
+		    </div>
 		</div> 
 		
-		<!-- <div class="clearboth"></div> -->
-		<!-- 2번 사이드바 -->
-		<!-- <div id="sidebar-wrapper">
-            <nav id="spy">
-                <ul class="sidebar-nav nav">
-                    <li class="sidebar-brand">
-                        <a href="#home"><span class="fa fa-home solo">Home</span></a>
-                    </li>
-                    <li>
-                        <a href="#anch1" data-scroll>
-                            <span class="fa fa-anchor solo">Anchor 1</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#anch2" data-scroll>
-                            <span class="fa fa-anchor solo">Anchor 2</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#anch3" data-scroll>
-                            <span class="fa fa-anchor solo">Anchor 3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#anch4" data-scroll>
-                            <span class="fa fa-anchor solo">Anchor 4</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div> -->
-		<div class="row">
+		
+		<!-- <div class="row"> -->
+		<div class="col-lg-9">
 		<%for(Product p:list){ %>
-		  <div class="col-sm-6 col-lg-3 paddingadd">
+		  <div class="col-sm-6 col-lg-3">
 		    <div class="thumbnail img-div">
 		    
 		    	
@@ -331,8 +345,8 @@
 		      </div>
 		    </div>
 	<%} %>
-		  </div>
-		
+		  <!-- </div> -->
+		</div>
 	</div>
 			
 	<div id="pageBar" class="col-lg-12 text-center">

@@ -17,7 +17,7 @@ import com.semi.payend.model.vo.payEnd;
 /**
  * Servlet implementation class PartnerOrderListServlet
  */
-@WebServlet("/partnerOrderList")
+@WebServlet("/partner/partnerOrderList")
 public class PartnerOrderListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

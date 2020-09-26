@@ -426,8 +426,45 @@ public class PartnerDao {
 		}
 		return p;
 		
-		
 	}
+	
+	public payEnd selectOrder(Connection conn,int poNum) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		payEnd pe=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectOrder"));
+			pstmt.setInt(1, poNum);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				pe=new payEnd();
+				pe.setPayNum(rs.getInt("po_num"));
+				pe.setPayType(rs.getString("po_type"));
+				pe.setPayDate(rs.getDate("po_date"));
+				pe.setTotalPrice(rs.getInt("total_price"));
+				pe.setProductNum(rs.getInt("p_num"));
+				pe.setUserId(rs.getString("user_id"));
+				pe.setChildNum(rs.getInt("p_count_c"));
+				pe.setAdultNum(rs.getInt("p_count_a"));
+				pe.setDateStart(rs.getString("p_date_start"));
+				pe.setPayName(rs.getString("pay_user_name"));
+				pe.setPayAddress(rs.getString("pay_address"));
+				pe.setPayPhone(rs.getString("pay_phone"));
+				pe.setPayEmail(rs.getString("pay_email"));
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return pe;
+	}
+	
+	
 
 }//클래스
 
