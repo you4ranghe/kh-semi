@@ -78,7 +78,7 @@
    
     .sidebarmy{
     	float:left;
-    	width:215px;
+    
     	height:1000px;
     }
     .panel-last{
@@ -238,7 +238,7 @@
 
 	<h3 class="menut"> 내 상품 보기</h3>
 	
-	 
+	 <div>
 	<div id="sidebar"  class="col-lg-2">
 		<!-- 사이드 바 메뉴-->
 		  <!-- 패널 타이틀1 -->
@@ -279,6 +279,7 @@
 		      </ul>
 		    </div>
 		</div> 
+		
 		<!-- <div class="clearboth"></div> -->
 		<!-- 2번 사이드바 -->
 		<!-- <div id="sidebar-wrapper">
@@ -332,7 +333,7 @@
 	<%} %>
 		  </div>
 		
-	
+	</div>
 			
 	<div id="pageBar" class="col-lg-12 text-center">
 		<%=request.getAttribute("pageBar") %>

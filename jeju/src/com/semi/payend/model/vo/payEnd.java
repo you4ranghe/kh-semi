@@ -16,8 +16,10 @@ public class payEnd {
 	private String payAddress;
 	private String payPhone;
 	private String payEmail;
-	
-	
+	//내역에 사진,상품이름넣으려고 추가
+	private String titleImgPath;
+	private String productName;
+
 	public payEnd() {
 		// TODO Auto-generated constructor stub
 	}
@@ -169,6 +171,25 @@ public class payEnd {
 
 	public void setPayEmail(String payEmail) {
 		this.payEmail = payEmail;
+	}
+
+	public String getTitleImgPath() {
+		return titleImgPath;
+	}
+
+
+	public void setTitleImgPath(String titleImgPath) {
+		this.titleImgPath = titleImgPath;
+	}
+
+	
+	public String getProductName() {
+		return productName;
+	}
+
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 

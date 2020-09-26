@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.semi.member.model.vo.Member;
 import com.semi.partner.model.service.PartnerService;
+import com.semi.partner.model.vo.Partner;
 import com.semi.product.model.vo.Product;
 
 /**
@@ -34,10 +34,9 @@ public class PartnerProductListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		//아직 파트너가 없어서 멤버로 ..
-		//session.getAttribute("logginedPartner");
 		
-		Member m=(Member)session.getAttribute("logginedMember");
+		
+		Partner m=(Partner)session.getAttribute("logginedPartner"); 
 		
 		int cPage;
 		try {
@@ -49,9 +48,9 @@ public class PartnerProductListServlet extends HttpServlet {
 		
 		int numPerPage=6; //한페이지 당 데이터수
 		
-		List<Product> list=new PartnerService().selectPartnerProductList(cPage,numPerPage,m.getUserId());
+		List<Product> list=new PartnerService().selectPartnerProductList(cPage,numPerPage,m.getPartnerId());
 		
-		int totalData=new PartnerService().selectPartnerProductCount(m.getUserId());
+		int totalData=new PartnerService().selectPartnerProductCount(m.getPartnerId());
 		int totalPage=(int)(Math.ceil((double)totalData/numPerPage));
 		
 		int pageBarSize=5;
@@ -87,7 +86,7 @@ public class PartnerProductListServlet extends HttpServlet {
 	
 		request.setAttribute("list", list);
 		request.setAttribute("pageBar", pageBar);
-		request.getRequestDispatcher("/views/partner/partnerProductList.jsp").forward(request, response);;
+		request.getRequestDispatcher("/views/partner/partnerProductList.jsp").forward(request, response);
 	
 	}
 
