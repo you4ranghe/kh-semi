@@ -1,16 +1,38 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 * {
     margin: 0; padding:0; box-sizing:border-box;
+    font-family: 'Do Hyeon', sans-serif;
+}
+#pagebar{
+    letter-spacing: 3px;
 }
 
 #title{
     height:50px;
     font-weight: bold; 
 }
+/* 리스트 영역 */
 #h2{
     position: relative;
-    top:10px;
+    top:20px;
     left:30px;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+.box { 
+    margin-bottom: 50px;
+}
+
+.box ul li { 
+    float: left;
+    font-size:23px;
+    position: relative;
+    left:200px;
+    color:gray;
+    font-weight: bold;
+    
 }
 
 .memberList_img{
@@ -25,7 +47,7 @@
 section#memberList-container {
     text-align:center;
     /* border:1px solid red; */
-    height:80%;
+    height:500px;
     align-items: center;
 }
 #tbl-member-container{
@@ -64,19 +86,21 @@ div#search-container {
     /* background-color: rgba(0, 188, 212, 0.3); */
     width:100%;
     height:60px;    
-    padding-left: 20px;
+    padding-left: -50px;
     padding:10px;
 }
 
 #searchType{
     font-weight: bold;
     position: relative;
-    left:0px;
+    left:-280px;
     height: 45px;
     border-radius: 5px;
     
 }
 .search-btn{
+    position: relative;
+    left:-280px;
     border-radius: 3px;
     font-weight: bold;
     height:43px;
@@ -86,7 +110,18 @@ div#search-container {
     border:none;
 } 
 
+select#numPerPage{
+    height: 45px;
+    width: 50px;
+    font-size: 17px;
+    border-radius: 5px;
+    position: relative;
+    right:42px;
+
+}
 .search-input{
+    position: relative;
+    left:-280px;
     border-radius: 5px;
     border:1px gray solid;
     height:43px;
@@ -96,11 +131,14 @@ div#search-container {
 div#search-userId{display:inline-block;}
 div#search-userName{display:none;}
 div#search-gender{display:none;}
-div#numPerpage-container{float:right;}
+div#numPerpage-container{
+    float:right;
+}
 form#numperPageFrm{display:inline;}
 #pageBar{
     padding: 10px;
 }
+
 
 
 

@@ -11,16 +11,19 @@
 
 <div class="mypage_img"></div>
 <section id="mypage-bar">
-<h1>파트너 상세<br>정보보기</h1>
+<h2>파트너 정보보기</h2>
 <br>
-<h5><a href="<%=request.getContextPath()%>/partner/partnerList">&nbsp;파트너 관리페이지</a></h5>
+<h5><a href="<%=request.getContextPath()%>/admin/memberList">&nbsp;회원 관리</a></h5>
+<h5><a href="<%=request.getContextPath()%>/partner/partnerList">&nbsp;파트너 관리</a></h5>
+<h5><a href="<%=request.getContextPath()%>/admin/productList">&nbsp;상품 관리</a></h5>
+<h5><a href="<%=request.getContextPath()%>/admin/paymentList">&nbsp;결제 관리</a></h5>
 <h5><a href="<%=request.getContextPath()%>/member/logout">&nbsp;로그아웃</a></h5>
 </section>
 <section id="member-viewForm">
 	<form id="MypageFrm" action="<%=request.getContextPath() %>/admin/acceptPartner?partnerId=<%=p.getPartnerId() %>" method="post">
 		<table>
 			<tr>
-				<th>아이디(파트너 아이디)</th>
+				<th>아이디</th>
 				<td class="int-area">
 					<input type="text" name="userId" id="userId_" value="<%=m.getUserId()%>"readonly>
 				</td>
@@ -57,8 +60,8 @@
 			</tr>
 			<tr>
 				<th>성별</th>
-				<td class="gender">
-					<%=m.getGender() %>
+				<td class="int-area">
+					<input type="text" value="<%=m.getGender() %>"autocomplete="off" required readonly>
 				</td>
 			</tr>
 			
@@ -85,24 +88,21 @@
 			</tr>
 			
 			<tr>
-				<th>파트너 승인여부</th>
+				<th>승인여부</th>
 				<td class="int-area">
 					<input type="text" name="partnerStatus" id="partnerStatus" value="<%=p.getPartnerStatus() %>" readonly>
 				</td>
 			</tr>
 			
 			 <tr>
-			<!-- 	<td class="btn-area">
-					<button id="btn2" type="submit"  onclick="deleteMember();">파트너 제외하기</button>
-				</td> -->
-				<td class="btn-area">
-					<button id="btn2" type="button"  onclick="deleteMember();">파트너 제외하기</button>
-				</td>
+				<th>
+					<img id="Loading" src="<%=request.getContextPath() %>/upload/partner/<%=p.getPartnerImgRename() %>">
+				</th>
 				<td class="btn-area">
 					<button id="btn3" type="submit"  onclick="acceptPartner();">파트너 승인하기</button>
 				</td>
 				<td class="btn-area">
-					<img id="Loading" src="<%=request.getContextPath() %>/upload/partner/<%=p.getPartnerImgRename() %>">
+					<button id="btn2" type="button"  onclick="deleteMember();">파트너 제외하기</button>
 				</td>
 			</tr> 
 		</table>
@@ -112,13 +112,13 @@
 <script>
 //유효성 검사
 	   function deleteMember(){
-		confirm("해당 회원을 정말로 탈퇴 시키겠습니까?");
-		location.assign('<%=request.getContextPath()%>/admin/deletePartner?partnerId=<%=p.getPartnerId() %>');
+		if(
+			confirm("해당 회원을 정말로 탈퇴 시키겠습니까?"))
+			location.assign('<%=request.getContextPath()%>/admin/deletePartner?partnerId=<%=p.getPartnerId() %>');
 		
 		}
-		function acceptPartner(){
-		confirm("해당 회원을 파트너로 승인하시겠습니까?");
-		}
+		
+		
 </script>
 	
 	

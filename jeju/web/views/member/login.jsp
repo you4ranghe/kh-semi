@@ -36,9 +36,7 @@
                         <button id="btn2" type="button" onclick="location.assign('<%=request.getContextPath()%>/member/enroll');">JOIN US</button>
 
                     </div>
-                    <div class="caption">
-                        <a href=""></a>
-                    </div>
+    
                 </form>
 
         </section>

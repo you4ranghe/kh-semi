@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 * {
+    font-family: 'Do Hyeon', sans-serif;
     margin: 0; padding:0; box-sizing:border-box;
 }
 
@@ -25,7 +27,7 @@
 section#memberList-container {
     text-align:center;
     /* border:1px solid red; */
-    height:80%;
+    height:500px;
     align-items: center;
 }
 #tbl-member-container{
@@ -39,6 +41,10 @@ section#memberList-container {
     border-collapse: collapse;
     /* border:1px solid blue; */
 
+}
+
+#pagebar{
+    letter-spacing: 3px;
 }
 
 thead,th,td{
@@ -67,13 +73,46 @@ div#search-container {
     padding-left: 20px;
     padding:10px;
 }
+select#numPerPage{
+    height: 45px;
+    width: 50px;
+    font-size: 17px;
+    border-radius: 5px;
+    position: relative;
+    right:42px;
+}
+
+
 
 #searchType{
     font-weight: bold;
     position: relative;
-    left:0px;
+    left:-280px;
     height: 45px;
     border-radius: 5px;
+    
+}
+
+#h2{
+    position: relative;
+    top:20px;
+    left:30px;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+.box { 
+    margin-bottom: 50px;
+}
+
+.box ul li { 
+    float: left;
+    font-size:23px;
+    position: relative;
+    left:200px;
+    color:gray;
+    font-weight: bold;
     
 }
 .search-btn{
@@ -84,6 +123,8 @@ div#search-container {
     background-color: slategrey;
     color:white;
     border:none;
+    position: relative;
+    left:-280px;
 } 
 
 .search-input{
@@ -91,6 +132,8 @@ div#search-container {
     border:1px gray solid;
     height:43px;
     padding-left: 13px;
+    position: relative;
+    left:-280px;
     
 }
 div#search-userId{display:inline-block;}
