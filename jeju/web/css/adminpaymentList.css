@@ -4,6 +4,28 @@
     margin: 0; padding:0; box-sizing:border-box;
     font-family: 'Do Hyeon', sans-serif;
 }
+#h2{
+    position: relative;
+    top:20px;
+    left:30px;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+.box { 
+    margin-bottom: 50px;
+}
+
+.box ul li { 
+    float: left;
+    font-size:23px;
+    position: relative;
+    left:200px;
+    color:gray;
+    font-weight: bold;
+    
+}
 
 #title{
     height:50px;
@@ -30,6 +52,8 @@ select#numPerPage{
     width: 50px;
     font-size: 17px;
     border-radius: 5px;
+    position: relative;
+    right:42px;
 }
 
 section#memberList-container {
@@ -85,7 +109,7 @@ div#search-container {
 #searchType{
     font-weight: bold;
     position: relative;
-    left:0px;
+    left:-280px;
     height: 45px;
     border-radius: 5px;
     
@@ -98,6 +122,8 @@ div#search-container {
     background-color: slategrey;
     color:white;
     border:none;
+    position: relative;
+    left:-280px;
 } 
 
 .search-input{
@@ -105,6 +131,8 @@ div#search-container {
     border:1px gray solid;
     height:43px;
     padding-left: 13px;
+    position: relative;
+    left:-280px;
     
 }
 div#search-userId{display:inline-block;}
