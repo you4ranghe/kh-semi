@@ -1,6 +1,7 @@
 package com.semi.review.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,7 +50,7 @@ public class ReviewEndServlet extends HttpServlet {
 		int result1 = new ProductService().confirmReview(r);
 		
 		String msg="";
-		String loc="/product/productList?pNum="+pNum;
+		String loc="";
 		
 		if(result1>0) {
 			
@@ -58,6 +59,13 @@ public class ReviewEndServlet extends HttpServlet {
 					if(result>0) {
 						msg="리뷰 등록 성공!";
 						loc="product/productList?pNum="+pNum;
+						
+						response.setContentType("text/html; charset=UTF-8"); 
+						PrintWriter writer = response.getWriter();
+						writer.println("<script>alert('리뷰 등록 성공!');</script>"); 
+						writer.close();
+
+							
 					}else {
 						msg="리뷰 등록 실패!";
 						loc="product/productList?pNum="+pNum;

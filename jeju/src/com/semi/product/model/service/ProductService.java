@@ -166,28 +166,6 @@ public class ProductService {
 		return result;
 	}
 	
-	public int reviewModify(Review r) {
-		Connection conn=getConnection();
-		int result=dao.reviewModify(conn,r);
-		if(result>0) commit(conn);
-		else rollback(conn);
-		close(conn);
-		return result;
-	}
-
 	
-	public List<Review> selectReviewModifyList(String userId, int reviewNum){
-		Connection conn = getConnection();
-		List<Review> list = dao.selectReviewModifyList(conn,userId, reviewNum);
-		close(conn);
-		return list;
-	}
-	
-//	public List<Review> selectReviewModifyList(){
-//		Connection conn = getConnection();
-//		List<Review> list = dao.selectReviewModifyList();
-//		close(conn);
-//		return list;
-//	}
 	
 	}

@@ -87,9 +87,10 @@
 
 <%-- <c:forEach var="p" items="${productList}" > --%>
 
-<div class="destination_banner_wrap overlay">
+
+<!--  <div class="destination_banner_wrap overlay" background-image: url(../img/banner/destination.png);>
+ --><div class="destination_banner_wrap overlay">
 	<div class="destination_text text-center">
-		<%-- ${p.pBigNameEng} --%>
 		<h3>${p.pBigNameEng}</h3>
 		<p>${p.pBigNameKor}</p>
 	</div>
@@ -109,6 +110,8 @@
 <section class="search-filter">
 	<div class="container">
 		<div class="row">
+		
+
 			<div class="col-lg-12">
 
 				<form action="<%=request.getContextPath() %>/payList" method="post"
@@ -239,20 +242,25 @@
 					<div class="room-selector">
 						<p>Time</p>
 
-						<select class="suit-select" name="pTime">
+					<select class="suit-select" name="pTime">
 							<option>Check your Time</option>
 							<option value="09:00">09:00</option>
 							<option value="12:00">12:00</option>
 							<option value="15:00">15:00</option>
+							 
+						
+
+
+
 
 							<!-- 						<select id="vmMnDataSize" name="dataVolumn">
 						    <option id="selectDataSize" value="">선택</option> -->
 
-							<%-- 												<select id="doolySelect" title="클릭하여 선택해주세요.">
+<%-- 								<select id="timeSelect" title="클릭하여 선택해주세요.">
 												
-											   <option value="dooly" <c:if test="${pTime}">selected</c:if>>둘리</option>
+											   <option value="${p.pTime}" <c:if test="${pTime}">selected</c:if>>시간선택</option>
 												
-												</select> --%>
+								</select>  --%>
 
 
 							<%-- 				<c:forEach var="i" items="${p.pTime}">
@@ -319,6 +327,64 @@
 
 <!--================Blog Area =================-->
 <section class="blog_area single-post-area section-padding">
+
+				<div class="col-lg-44"
+					style="float: left; width: 33%; padding: 10px;">
+					<div class="blog_right_sidebar">
+						<aside class="single_sidebar_widget search_widget">
+							<!-- <form action="#">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder='Search Keyword'
+                                                onfocus="this.placeholder = ''"
+                                                onblur="this.placeholder = 'Search Keyword'">
+                                            <div class="input-group-append">
+                                                <button class="btn" type="button">
+                                                    <i class="ti-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Search</button>
+                                </form> -->
+						 	<div id="product-price-box">
+								<li><a href="#" class="d-flex">
+										<p>ADULT &nbsp;</p>
+										<p>${p.pPriceA}</p>
+								</a></li>
+								<li><a href="#" class="d-flex">
+										<p>CHILDREN &nbsp;</p>
+										<p>${p.pPriceC}</p>
+								</a></li>
+							</div> 
+
+
+							<!--  원래가격 : <span id='total_price'>0</span>원
+                                <form name='price_exec' method='get' onSubmit='submit_value();'> -->
+							<!--  금액 : <input type="text" name="sum" size="11" readonly> 원 -->
+						</aside>
+
+
+						<div class="review-score">
+							<div class="review-badge">${p.pScore }</div>
+							<div class="product-star text-sm">
+								<p class="star_rating">
+									<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
+										href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
+								</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+				
+				
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 posts-list">
@@ -620,15 +686,6 @@
 
 
 
-								<%-- <form id="reviewFrm" action="/" method="post" >
-<input type="text" value="${r.reviewScore}">
-<input type="text" value="${r.reviewTitle}">
-<input type="text" value="${r.reviewContents}">
-<input type="text" value="${r.poNum}">
-<input type="text" value="${r.pNum}">
-<input type="text" value="${r.reviewWriter}">
-<input type="hidden" value="${r.reviewScore}"> --%>
-
 								<form>
 									<c:forEach var="e" items="${reviewList}">
 
@@ -653,11 +710,7 @@
 												</div>
 												<div class="reply-btn">
 
-													<!-- <a href="#" class="btn-reply text-uppercase" >수정</a>
-												<a href="#" class="btn-reply text-uppercase">삭제</a> -->
-
-													<!-- 				<input type="button" value="리뷰 수정" onclick="fn_update_submit();">
-												<input type="button" value="리뷰 삭제" onclick="fn_delete_member();"> -->
+											
 
 													<input type="hidden" value="${e.reviewNum}"> <input
 														type="hidden" value="${e.reviewScore}"> <input
@@ -665,20 +718,19 @@
 														type="hidden" value="${e.reviewViews}"> <input
 														type="hidden" value="${e.pNum}"> <input
 														type="hidden" value="${e.userId}">
-													<%-- 														
-							 <input type="button" value="수정"
-							onclick="location.href='<%=request.getContextPath()%>/ReviewModifyViewServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}'">  --%>
+												
 
-													<input type="button" value="수정"
-														class="btn-sm genric-btn2 info radius"
-														onclick="showPopup();"> <input type="button"
+													 <input type="button"
 														value="삭제" class="btn-sm genric-btn2 info radius"
 														onclick="location.href='<%=request.getContextPath()%>/ReviewDeleteServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}'">
 
-
+												
+													
 												</div>
 											</div>
 										</div>
+										
+										
 
 
 
@@ -691,7 +743,7 @@
 								  				"width=400, height=300, left=100, top=50"); 
 								  		}
 								  	
-								  </script>
+								 		 </script>
 
 									</c:forEach>
 								</form>
@@ -900,7 +952,7 @@
 
 				</div>
 
-				<div class="col-lg-4"
+		<%-- 		<div class="col-lg-4 jisun"
 					style="float: left; width: 33%; padding: 10px;">
 					<div class="blog_right_sidebar">
 						<aside class="single_sidebar_widget search_widget">
@@ -924,7 +976,7 @@
                                         class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Search</button>
                                 </form> -->
-							<div id="product-price-box">
+						 	<div id="product-price-box">
 								<li><a href="#" class="d-flex">
 										<p>ADULT &nbsp;</p>
 										<p>${p.pPriceA}</p>
@@ -933,7 +985,7 @@
 										<p>CHILDREN &nbsp;</p>
 										<p>${p.pPriceC}</p>
 								</a></li>
-							</div>
+							</div> 
 
 
 							<!--  원래가격 : <span id='total_price'>0</span>원
@@ -953,7 +1005,7 @@
 						</div>
 
 					</div>
-				</div>
+				</div> --%>
 </section>
 
 
