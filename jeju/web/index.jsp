@@ -183,9 +183,9 @@ button+div{
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>서귀포시</h3>
+                                <h3>Seogwipo-si</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서귀포시" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서귀포시" class="boxed-btn3">explore Jeju</a>
                             </div>
                         </div>
                     </div>
@@ -196,9 +196,9 @@ button+div{
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>동제주시</h3>
+                                <h3>east-Jeju-si</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=동제주시" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=동제주시" class="boxed-btn3">Do right now</a>
                             </div>
                         </div>
                     </div>
@@ -209,22 +209,22 @@ button+div{
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>서제주시</h3>
+                                <h3>west-Jeju-si</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서제주시" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서제주시" class="boxed-btn3">Together</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_3 overlay">
+            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>제주시</h3>
+                                <h3>Jesu-si</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=제주시" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=제주시" class="boxed-btn3">Enjoy Jeju</a>
                             </div>
                         </div>
                     </div>
