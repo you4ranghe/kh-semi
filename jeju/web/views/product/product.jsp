@@ -400,10 +400,18 @@
 								</p>
 							</div>
 						</div>
+					</div>
+					</div>
+
+
+
+
+
 
 						<div class="blog_details">
-
-							<h2>${p.pBigNameKor}<button  id="wishbtn">위시리스트 추가</button>
+							
+							<img src="<%=request.getContextPath() %>/upload/product/${p.pImgPath}" width="640px" height="420px" class="pImgPath">
+							<h2>${p.pBigNameKor}<button  id="wishbtn">ADD WISHLIST</button>
 
 								<!-- 위시리스트 넘기기 -->
 								<%-- <a class="heart-button"
@@ -434,7 +442,7 @@
 
 
 							<!-----♥♥♥♥♥♥♥간단한 상품정보♥♥♥♥♥♥♥----->
-							<div class="product-benefit">
+<%-- 							<div class="product-benefit">
 								<hr>
 								<!---->
 								<div class="critical-info">
@@ -442,15 +450,15 @@
 									<span>
 										<p style="white-space: pre-line;">${p.pPointInfo}</p>
 									</span>
-								</div>
+								</div> --%>
 
 
 							<!-- 위시리스트 넘기기 -->
-							<a class="heart-button"
+<%-- 							<a class="heart-button"
 								href="<%=request.getContextPath()%>/wishListEnroll?userId=<%=logginedMember.getUserId()%>&productNum=${p.pNum}&pageAddress=<%=request.getRequestURI()%>">
 								<iframe src="#" width="0" height="0" name="pageAddress"></iframe>
 								♥
-							</a>
+							</a> --%>
 
 
 							<!-- FORM으로 값 3개 보내고 경로를 IFRAME써서  -->
@@ -467,16 +475,6 @@
 								</span>
 							</div>
 
-							<!--  <div class="critical-info">
-                                        <i class="fab fa-glide"></i>
-                                        <span>
-                                            한국어,영어 가이드</span>
-                                    </div>
-
-                                    <div class="critical-info">
-                                        <i class="fas fa-ticket-alt"></i>
-                                        <span>현장에서 전자바우처를 제시해주세요.</span>
-                                    </div> -->
 
 							<hr>
 						</div>
@@ -582,6 +580,13 @@
 					</div>
 
 				</div>
+				
+				
+				
+				
+				
+				
+				
 				<!-- 일정소개사진 끝 -->
 
 
@@ -718,20 +723,20 @@
 						<div class="single-comment justify-content-between d-flex">
 							<div class="user justify-content-between d-flex">
 								<div class="thumb">
-									<img
+									<%-- <img
 										src="<%=request.getContextPath() %>/upload/product/comment_1.png"
-										alt="">
+										alt=""> --%>
 								</div>
-
-
-
 
 
 								<form>
 									<c:forEach var="e" items="${reviewList}">
-
-
-										<div class="desc">
+<%-- 							<div class="personImg">
+							<img
+								src="<%=request.getContextPath()%>/upload/product/person.png"
+								alt="">
+</div>	 --%>
+							<div class="desc">
 											<p class="comment" id="reviewTitle"'>${e.reviewTitle}</p>
 											<p class="comment">${e.reviewContents }</p>
 											<div class="d-flex justify-content-between">
@@ -740,6 +745,7 @@
 														<a href="#">${e.reviewWriter }</a>
 													</h5>
 													<p class="date">${e.registerDate }</p>
+													
 
 													<%-- 									<!-- 글작성자.관리자 수정삭제 -->
 									<%if(logginedMember!=null&&(logginedMember.getUserId().equals(r.getReviewWriter())
@@ -770,6 +776,7 @@
 												</div>
 											</div>
 										</div>
+										<hr>
 										
 										
 

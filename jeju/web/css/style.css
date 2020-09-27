@@ -300,6 +300,11 @@ h3 {
 .section-padding {
   padding-top: 120px;
   padding-bottom: 120px;
+  
+  /*지선 패딩 수정*/
+  padding-right : 25%;
+  padding-left:25%;
+  
 }
 
 /* line 215, ../../Arafath/CL/December/231. Travel-02/HTML/scss/theme-default.scss */
@@ -3613,6 +3618,7 @@ h3 {
   padding-left: 18px;
   font-size: 13px;
   background: transparent;
+
 }
 
 /* line 69, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_contact.scss */
@@ -6266,6 +6272,7 @@ h6 {
   /* line 1362, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
   .comments-area .comment-list .single-comment .comment {
     font-size: 10px;
+
   }
 }
 
@@ -6293,6 +6300,7 @@ h6 {
   margin-bottom: 10px;
   color: #777777;
   font-size: 15px;
+
 }
 
 /* line 1391, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
@@ -6303,6 +6311,7 @@ h6 {
   font-size: 14px;
   display: block;
   font-weight: 400;
+  
 }
 
 /* line 1408, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
@@ -6358,6 +6367,7 @@ h6 {
   padding-left: 18px;
   font-size: 13px;
   background: transparent;
+  
 }
 
 /* line 1453, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
@@ -6736,11 +6746,26 @@ h6 {
 }
 
 .col-lg-44{
-	margin-top:500px;
+	margin-top:6%;
     float: right;
     width:30%;
     box-sizing: border-box;
     position:absolute ; right:0;
     
     /*페이지 옆에 사이드*/
+}
+
+.personImg{
+	  position:absolute ; 
+	  left:25%;
+}
+
+.col-12{
+	/*리뷰쓰는창 날짜 띄우기*/
+	padding-bottom:20px;
+}
+
+.pImgPath{
+	/*제목위에pimgpath*/
+	padding-bottom:20px;
 }
