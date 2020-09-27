@@ -99,7 +99,7 @@
                                             <li><a href="#">About</a>
                                                 <ul class="submenu">
                                                         <li><a href="<%=request.getContextPath()%>/views/introduce/companyIntroduce.jsp">About Us</a></li>
-                                                        <li><a href="elements.html">About Jeju</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/views/introduce/jejuIntroduce.jsp">About Jeju</a></li>
                                                 </ul>
                                             </li>
  
