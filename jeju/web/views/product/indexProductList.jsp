@@ -31,6 +31,7 @@ List<Product> list=(List)request.getAttribute("list");
 		      <%-- <a href="" onclick="clickheart();"><img src="<%=request.getContextPath()%>/img/product/transheart.png" class="wish"></a> --%>
 		      <!-- <span class="heartspan"><i class="fas fa-heart wish" onclick="javascript:clickheart();"></i></span> -->
 		      <div class="caption" >
+		      <br>
 		        <div class="pname"><h3><%=p.getpName() %></h3></div>
 		        <p><%=p.getpPriceC() %>₩~</p>
 		        <input type="hidden" name=pNum value=<%=p.getpNum() %> >

@@ -50,6 +50,7 @@
 		      <%-- <a href="" onclick="clickheart();"><img src="<%=request.getContextPath()%>/img/product/transheart.png" class="wish"></a> --%>
 		      <!-- <span class="heartspan"><i class="fas fa-heart wish" onclick="javascript:clickheart();"></i></span> -->
 		      <div class="caption" >
+		      <br>
 		        <h3><%=p.getpName() %></h3>
 		        <p><%=p.getpNum() %></p>
 		        <input type="hidden" name=pNum value=<%=p.getpNum() %> >

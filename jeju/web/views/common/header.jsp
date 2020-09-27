@@ -70,7 +70,9 @@
 		margin-left:10px;
 							
 	}
-							
+	.header-fontsize>li>a{
+	font-size:200px;
+	}				
 	</style>
 							
 
@@ -91,10 +93,11 @@
                                     </a>
                                 </div>
                             </div>
+                            
                             <div class="col-xl-4 col-lg-4">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
-                                        <ul id="navigation">
+                                        <ul id="navigation" class="header-fontsize">
                                             <li><a class="active" href="<%=request.getContextPath()%>">Home</a></li>
                                             <li><a href="#">About</a>
                                                 <ul class="submenu">
