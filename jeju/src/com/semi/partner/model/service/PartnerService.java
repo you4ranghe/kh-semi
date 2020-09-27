@@ -131,6 +131,8 @@ public class PartnerService {
 		return count;
 		
 	}
+
+
 	
 	public payEnd selectOrder(int poNum) {
 		Connection conn=getConnection();
@@ -145,5 +147,6 @@ public class PartnerService {
 		
 	}
 	
+
 
 }

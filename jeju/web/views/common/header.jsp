@@ -175,9 +175,13 @@
                                                <%if(logginedMember!=null){%>
                              
                                                      <li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
+                                                     <%if(!logginedMember.getUserId().equals("admin")){ %>
                                                      <li><a href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId() %>" id="wishSubmit">위시리스트</a></li>
-                                                     <li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
                                                      <li><a href="<%=request.getContextPath()%>/payReservation?userId=<%=logginedMember.getUserId() %>">예약 조회</a></li>
+                                                     <%} %>
+                                                     <li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
+                                                
+                                                     
                                                      <li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
                                                
                                                 <!-- 로그인후 회원 아이디가 admin일 경우 -->

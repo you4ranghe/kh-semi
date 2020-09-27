@@ -20,11 +20,25 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <style>
-	input{
+#payFrm{
+position : relative;
+left:150px;
+top:-100px;
+}
+
+
+
+input{
 		margin:10px;
-		border-radius: 5px;
+
 		text-align:center;
 		/* height:25px; */
+		background-color: transparent;
+  		border:none;
+   		border-bottom:1px solid #999;
+   		font-weight: bold;
+  		font-size: 15px; color:dodgerblue;
+   		outline: none;
 	}
 	input:focus{
 		border: 1px solid #0af; 
@@ -34,7 +48,7 @@
 		box-shadow: 0px 0px 15px rgba(0, 170, 255,.5);
 	}
 	#payContent div{
-		border:2px solid gray;
+		border:1opx solid gray;
 		margin-bottom:50px;
 		box-shadow: 30px 30px 70px rgba(0,0,0,0.2);
 		border-radius:10px;
@@ -44,7 +58,27 @@
 		color:gray;
 		font-family: 돋움체;
 
+
 	}
+	th{
+    color:yellowgreen;
+    font-size:15px;
+    font-weight: bold;
+	}
+
+
+	.int-area input{
+    width: 100%;
+    padding : 20px 10px 10px;
+    background-color: transparent;
+    border:none;
+    border-bottom:1px solid #999;
+    font-weight: bold;
+    font-size: 15px; color:dodgerblue;
+    outline: none;
+
+	}
+	
 	form #productContent{
 		width:800px;
 		height:500px;
@@ -66,7 +100,7 @@
 	
 	
 	#payContent{
-		margin-left:600px;
+		margin-left:200px;
 		
 		margin-top:100px;
 	}
@@ -90,7 +124,7 @@
 		font-size:20px;
 	}
 	#paybtn{
-		margin-left:200px; 
+		margin-left:200px;
 		margin-top:20px; 
 		margin-bottom:50px;
 		width:100px;
@@ -98,11 +132,29 @@
 		border-radius:10px;
 	}
 	#payreset{
-		margin-left:200px;
+		margin-left:50px;
 	 	width:100px;
 	 	height:50px;
 	 	border-radius:10px;
 	}
+
+	button{
+		
+    
+    left:110px;
+    top:10px;
+    width:100px ;height:50px;
+    background : darkgray;
+    color : #fff;
+    font-size:15px;
+    border:none;
+    border-radius:10px;
+    font-weight: bold;
+    cursor:pointer;
+    margin:5px;
+
+	}
+
 </style>
 
 <section id="payContent" style="width:1250px;">
@@ -154,7 +206,9 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<textarea rows="7" cols="70" style="margin-top:15px;  resize: none;" readonly> <%=productInfo %>
+
+					<textarea rows="7" cols="70" style="margin-top:15px;  resize: none;  font-weight: bold; color:gray" readonly> <%=productInfo %>
+
 				
 					</textarea>
 				</td>
@@ -254,7 +308,8 @@
 	<div id="paytype">
 		<label><input type="radio" name="payType"checked value="card" style="margin-top:50px;">신용카드</label> <label><input type="radio" onclick="return(false);">나머지 결제방식은 수리중에 있습니다</label>
 	</div>
-	<input type="submit" value="결제하기"> 
+	<input type="submit" value="결제하기"> <br>
+<button id="paybtn" type="button">결제하기</button> <button id="payreset"  onclick="location.href='<%=request.getContextPath()%>/' ">취소</button> 
 </form>
 <script>
 
@@ -277,7 +332,8 @@
 
 
 </script>
-<button id="paybtn" type="button">결제하기</button> <button id="payreset">취소</button> 
+
+
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- <script>
     function sample6_execDaumPostcode() {

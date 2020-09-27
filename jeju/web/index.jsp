@@ -11,7 +11,7 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script> --%>
-
+<!-- 추가한거 -->
 <!-- Include the plugin's CSS and JS: -->
 <%-- <script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-multiselect.css" type="text/css"/>
@@ -75,7 +75,6 @@
 .catediv:hover .cate-content {
     display: block;
     clear:both;
-   
    
   }
 #categorybtn>div{
@@ -351,8 +350,6 @@ button+div{
 			
 
 </section>
-
-
 
 	<script> 
 	

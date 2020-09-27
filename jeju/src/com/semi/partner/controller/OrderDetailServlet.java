@@ -1,12 +1,14 @@
 package com.semi.partner.controller;
 
 import java.io.IOException;
+
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.common.AESCrypto;
+
 import com.semi.member.model.service.MemberService;
 import com.semi.member.model.vo.Member;
 import com.semi.partner.model.service.PartnerService;
@@ -45,6 +48,7 @@ public class OrderDetailServlet extends HttpServlet {
 		 */
 		payEnd pe=new PartnerService().selectOrder(payNum);
 		Member m=new MemberService().selectMemberId(pe.getUserId());
+
 		String phone=m.getPhone();
 		String phonep=pe.getPayPhone();
 		try {
@@ -67,6 +71,7 @@ public class OrderDetailServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+
 		request.setAttribute("m", m);
 		request.setAttribute("pe", pe);
 		request.getRequestDispatcher("/views/partner/orderDetail.jsp").forward(request, response);
