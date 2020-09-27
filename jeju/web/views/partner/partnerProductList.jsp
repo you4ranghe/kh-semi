@@ -17,7 +17,10 @@
 	.img-div{
 		width:320px;
 		height:350px;
-	
+		
+	}
+	.prmar{
+		margin:20px;
 	}
 	.wish,.wishclick{
 		width:20px;
@@ -55,19 +58,13 @@
 		margin-left:50px;
 		}
 
-	.paddingadd{
-		
-	}
 	.prtitle{
 		width:340px;
 		height:90px;
 	
 	}
    
-	h3.menut{
-		padding:150px;
-		
-	}
+	
 	
 	.addpadding{
     		padding-bottom:10px;
@@ -84,159 +81,15 @@
     .panel-last{
     height:500px
     }
-	/* 슬라이더 스타일  */
-		#wrapper {
-  padding-left: 250px;
-  transition: all 0.4s ease 0s;
+.part-title{
+		margin:20px;
+	
 	}
-	
-	#sidebar-wrapper {
-	  margin-left: -250px;
-	  left: 250px;
-	  width: 250px;
-	  
-	  position: fixed;
-	  height: 100%;
-	  overflow-y: auto;
-	  z-index: 1000;
-	  transition: all 0.4s ease 0s;
-	}
-	
-	#wrapper.active {
-	  padding-left: 0;
-	}
-	
-	#wrapper.active #sidebar-wrapper {
-	  left: 0;
-	}
-	
-	#page-content-wrapper {
-	  width: 100%;
-	}
-	
-	
-	
-	.sidebar-nav {
-	  position: absolute;
-	  top: 0;
-	  width: 250px;
-	  list-style: none;
-	  margin: 0;
-	  padding: 0;
-	}
-	
-	.sidebar-nav li {
-	  line-height: 40px;
-	  text-indent: 20px;
-	}
-	
-	.sidebar-nav li a {
-	  color: #999999;
-	  display: block;
-	  text-decoration: none;
-	  padding-left: 60px;
-	}
-	
-	.sidebar-nav li a span:before {
-	  position: absolute;
-	  left: 0;
-	  color: #41484c;
-	  text-align: center;
-	  width: 20px;
-	  line-height: 18px;
-	}
-	
-	.sidebar-nav li a:hover,
-	.sidebar-nav li.active {
-	  color: #fff;
-	  background: rgba(255,255,255,0.2);
-	  text-decoration: none;
-	}
-	
-	.sidebar-nav li a:active,
-	.sidebar-nav li a:focus {
-	  text-decoration: none;
-	}
-	
-	.sidebar-nav > .sidebar-brand {
-	  height: 65px;
-	  line-height: 60px;
-	  font-size: 18px;
-	}
-	
-	.sidebar-nav > .sidebar-brand a {
-	  color: #999999;
-	}
-	
-	.sidebar-nav > .sidebar-brand a:hover {
-	  color: #fff;
-	  background: none;
-	}
-	
-	
-	
-	.content-header {
-	  height: 65px;
-	  line-height: 65px;
-	}
-	
-	.content-header h1 {
-	  margin: 0;
-	  margin-left: 20px;
-	  line-height: 65px;
-	  display: inline-block;
-	}
-	
-	#menu-toggle {
-	    text-decoration: none;
-	}
-	
-	.btn-menu {
-	  color: #000;
-	} 
-	
-	.inset {
-	  padding: 20px;
-	}
-	
-	@media (max-width:767px) {
-	
-	#wrapper {
-	  padding-left: 0;
-	}
-	
-	#sidebar-wrapper {
-	  left: 0;
-	}
-	
-	#wrapper.active {
-	  position: relative;
-	  left: 250px;
-	}
-	
-	#wrapper.active #sidebar-wrapper {
-	  left: 250px;
-	  width: 250px;
-	  transition: all 0.4s ease 0s;
-	}
-	
-	#menu-toggle {
-	  display: inline-block;
-	}
-	
-	.inset {
-	  padding: 15px;
-	}
-
-	#sidebar{
-	float:left;
-	}
-	
 
 </style>
 <section>
 
-	<h3 class="menut"> 내 상품 보기</h3>
+	<h3 class="part-title">&nbsp&nbsp&nbsp&nbsp내 상품 보기</h3>
 	
 	 <div class="row">
 	<%-- <div id="sidebar"  class="col-lg-2">
@@ -280,54 +133,31 @@
 		    </div>
 		</div>  --%>
 		<style>
-			.collong{
-				height:1000px;
-				float:left;
+			.partner-navi>ul>li{
+			float:left;
+			padding:5px;
 			}
 		</style>
-		<div class="col-lg-3 collong">
-<!-- 사이드 바 메뉴-->
-  <!-- 패널 타이틀1 -->
-		<div class="panel panel-info">
-		    <div class="panel-heading">
-		      <h3 class="panel-title">Panel Title</h3>
-		    </div>
-		    <!-- 사이드바 메뉴목록1 -->
-		    <ul class="list-group">
-		      <li class="list-group-item"><a href="#">HTML</a></li>
-		      <li class="list-group-item"><a href="#">CSS</a></li>
-		      <li class="list-group-item"><a href="#">ECMAScript5</a></li>
-		    </ul>
+
+		<div class="container">
+		<div class="row">
+		<div class="col-lg-12 text-center">
+			<div class="partner-navi text-center" >
+				<ul>
+					<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">  ♥ 파트너 프로필</a><li>
+					<li><a href="<%=request.getContextPath()%>/partner/partnerProductList">  ♥ 내 상품 보기</a><li>
+					<li><a href="<%=request.getContextPath()%>/partner/partnerOrderList">  ♥ 판매 내역 조회하기</a></li>
+					<li><a href="<%=request.getContextPath()%>/partner/addProduct">  ♥ 상품 등록하기</a></li>
+				</ul>
+			</div>
+			</div>
+			</div>
 		</div>
-		  <!-- 패널 타이틀2 -->
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Panel Title</h3>
-		  </div>
-		    <!-- 사이드바 메뉴목록2 -->
-		      <ul class="list-group">
-		        <li class="list-group-item"><a href="#">jQuery</a></li>
-		        <li class="list-group-item"><a href="#">BootStrap</a></li>
-		      </ul>
-		</div>      
-		  <!-- 패널 타이틀3 -->
-		<div class="panel panel-info">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Panel Title</h3>
-		  </div>
-		      <!-- 사이드바 메뉴목록3 -->
-		      <ul class="list-group">
-		        <li class="list-group-item"><a href="#">About</a></li>
-		        <li class="list-group-item"><a href="#">Help</a></li>
-		      </ul>
-		    </div>
-		</div> 
-		
-		
-		<!-- <div class="row"> -->
-		<div class="col-lg-9">
+		<div class="container">
+		<div class="row"> 
+		<!-- <div class="col-lg-10"> -->
 		<%for(Product p:list){ %>
-		  <div class="col-sm-6 col-lg-3">
+		  <div class="col-sm-6 col-lg-3 prmar">
 		    <div class="thumbnail img-div">
 		    
 		    	
@@ -345,14 +175,18 @@
 		      </div>
 		    </div>
 	<%} %>
-		  <!-- </div> -->
+		  </div>
+		</div> 
 		</div>
-	</div>
-			
-	<div id="pageBar" class="col-lg-12 text-center">
+	<nav aria-label="Page navigation example text-center" style="margin-bottom: 20px;">
+                <ul id="pageNavUl" class="pagination justify-content-center text-center">
+                    <%=request.getAttribute("pageBar") %>
+                </ul>
+            </nav>
+	<%-- <div id="pageBar" class="col-lg-12 text-center">
 		<%=request.getAttribute("pageBar") %>
 	
-	</div> 
+	</div>  --%>
 	
 	
 	

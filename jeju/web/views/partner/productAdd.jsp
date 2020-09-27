@@ -26,12 +26,32 @@
 	input.long{
 	width :900px;
 	}
-
+.partner-navi>ul>li{
+			float:left;
+			padding:5px;
+			}
+	.part-title{
+		margin:20px;
+	
+	}
 </style>
 <section>
-<%@ include file="/views/common/partnerSide.jsp"%>
-<div id="container">
-
+<h3 class="part-title">&nbsp&nbsp상품 등록하기</h3>
+<div class="container">
+		<div class="row">
+		<div class="col-lg-12 text-center">
+			<div class="partner-navi text-center" >
+				<ul>
+					<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">  ♥ 파트너 프로필</a><li>
+					<li><a href="<%=request.getContextPath()%>/partner/partnerProductList">  ♥ 내 상품 보기</a><li>
+					<li><a href="<%=request.getContextPath()%>/partner/partnerOrderList">  ♥ 판매 내역 조회하기</a></li>
+					<li><a href="<%=request.getContextPath()%>/partner/addProduct">  ♥ 상품 등록하기</a></li>
+				</ul>
+			</div>
+			</div>
+			</div>
+		</div>
+<div class="container">
 	<form action="<%=request.getContextPath() %>/partner/addProductEnd" method="post" enctype="multipart/form-data" onsubmit="return checkDate();">
 		<table class="table-bordered" >
 			<tr>
