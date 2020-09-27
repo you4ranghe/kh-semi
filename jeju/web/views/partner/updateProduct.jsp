@@ -29,9 +29,8 @@
 
 </style>
 <section>
-<%@ include file="/views/common/partnerSide.jsp"%>
 <div id="container">
-	<h3>상품 수정</h3>
+	<h3>&nbsp&nbsp상품 수정</h3>
 	<form action="<%=request.getContextPath() %>/partner/updateProductEnd" method="post" enctype="multipart/form-data">
 		<table class="table-bordered" >
 			<tr>

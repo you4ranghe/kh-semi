@@ -84,10 +84,17 @@
 	<%} %>
 			</div>
 			
-	<div id="pageBar" class="col-lg-12 text-center">
+	<%-- <div id="pageBar" class="col-lg-12 text-center">
 		<%=request.getAttribute("pageBar") %>
 	
-	</div>
+	</div> --%>
+	
+	<nav aria-label="Page navigation example text-center" style="margin-bottom: 20px;">
+                <ul id="pageNavUl" class="pagination justify-content-center text-center">
+                    <%=request.getAttribute("pageBar") %>
+                </ul>
+            </nav>
+	
 </section>
 <script>
 <%-- $("#memberList").click(e=>{

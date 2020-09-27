@@ -17,7 +17,12 @@
 	.img-div{
 		width:320px;
 		height:350px;
-	
+
+		
+	}
+	.prmar{
+		margin:20px;
+
 	}
 	.wish,.wishclick{
 		width:20px;
@@ -55,9 +60,6 @@
 		margin-left:50px;
 		}
 
-	.paddingadd{
-		
-	}
 	.prtitle{
 		width:340px;
 		height:90px;
@@ -224,21 +226,34 @@
 	  display: inline-block;
 	}
 	
-	.inset {
-	  padding: 15px;
+
+	.addpadding{
+    		padding-bottom:10px;
+    	}
+    .clearboth{
+    	/* clear:both; */
+    }
+   
+    .sidebarmy{
+    	float:left;
+    
+    	height:1000px;
+    }
+    .panel-last{
+    height:500px
+    }
+.part-title{
+		margin:20px;
+	
 	}
 
-	#sidebar{
-	float:left;
-	}
-	
 
 </style>
 <section>
 
-	<h3 class="menut"> 내 상품 보기</h3>
-	
 
+	<h3 class="part-title">&nbsp&nbsp&nbsp&nbsp내 상품 보기</h3>
+	
 	 <div class="row">
 	<%-- <div id="sidebar"  class="col-lg-2">
 
@@ -283,54 +298,32 @@
 
 		</div>  --%>
 		<style>
-			.collong{
-				height:1000px;
-				float:left;
+
+			.partner-navi>ul>li{
+			float:left;
+			padding:5px;
 			}
 		</style>
-		<div class="col-lg-3 collong">
-<!-- 사이드 바 메뉴-->
-  <!-- 패널 타이틀1 -->
-		<div class="panel panel-info">
-		    <div class="panel-heading">
-		      <h3 class="panel-title">Panel Title</h3>
-		    </div>
-		    <!-- 사이드바 메뉴목록1 -->
-		    <ul class="list-group">
-		      <li class="list-group-item"><a href="#">HTML</a></li>
-		      <li class="list-group-item"><a href="#">CSS</a></li>
-		      <li class="list-group-item"><a href="#">ECMAScript5</a></li>
-		    </ul>
+
+		<div class="container">
+		<div class="row">
+		<div class="col-lg-12 text-center">
+			<div class="partner-navi text-center" >
+				<ul>
+					<li><a href="<%=request.getContextPath() %>/partner/partnerView?partnerId=<%=logginedPartner.getPartnerId() %>">  ♥ 파트너 프로필</a><li>
+					<li><a href="<%=request.getContextPath()%>/partner/partnerProductList">  ♥ 내 상품 보기</a><li>
+					<li><a href="<%=request.getContextPath()%>/partner/partnerOrderList">  ♥ 판매 내역 조회하기</a></li>
+					<li><a href="<%=request.getContextPath()%>/partner/addProduct">  ♥ 상품 등록하기</a></li>
+				</ul>
+			</div>
+			</div>
+			</div>
 		</div>
-		  <!-- 패널 타이틀2 -->
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Panel Title</h3>
-		  </div>
-		    <!-- 사이드바 메뉴목록2 -->
-		      <ul class="list-group">
-		        <li class="list-group-item"><a href="#">jQuery</a></li>
-		        <li class="list-group-item"><a href="#">BootStrap</a></li>
-		      </ul>
-		</div>      
-		  <!-- 패널 타이틀3 -->
-		<div class="panel panel-info">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Panel Title</h3>
-		  </div>
-		      <!-- 사이드바 메뉴목록3 -->
-		      <ul class="list-group">
-		        <li class="list-group-item"><a href="#">About</a></li>
-		        <li class="list-group-item"><a href="#">Help</a></li>
-		      </ul>
-		    </div>
-		</div> 
-		
-		
-		<!-- <div class="row"> -->
-		<div class="col-lg-9">
+		<div class="container">
+		<div class="row"> 
+		<!-- <div class="col-lg-10"> -->
 		<%for(Product p:list){ %>
-		  <div class="col-sm-6 col-lg-3">
+		  <div class="col-sm-6 col-lg-3 prmar">
 
 		    <div class="thumbnail img-div">
 		    
@@ -350,15 +343,19 @@
 		    </div>
 	<%} %>
 
-		  <!-- </div> -->
+		  </div>
+		</div> 
 		</div>
+	<nav aria-label="Page navigation example text-center" style="margin-bottom: 20px;">
+                <ul id="pageNavUl" class="pagination justify-content-center text-center">
+                    <%=request.getAttribute("pageBar") %>
+                </ul>
+            </nav>
+	<%-- <div id="pageBar" class="col-lg-12 text-center">
 
-	</div>
-			
-	<div id="pageBar" class="col-lg-12 text-center">
 		<%=request.getAttribute("pageBar") %>
 	
-	</div> 
+	</div>  --%>
 	
 	
 	
