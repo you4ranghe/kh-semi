@@ -142,18 +142,7 @@
 		});
 	
 		
-	<%-- $(function(){
-		});
 
-	 function clickheart(){
-		
-		$.ajax({
-			url:"<%=request.getContextPath()%>/product/clickheart.do",
-			data: "userId":<%=logginedMember.getUserId()%>, "productNum":$(this).next().children("input").val()
-		
-		});
-		};
-	 --%>
 	 
 
 </script>
