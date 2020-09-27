@@ -18,7 +18,28 @@
 	Review r = (Review)request.getAttribute("review");
 	List<Review> rlist = (List)request.getAttribute("reviewList"); 
 
+	Member logginedMember2 = (Member)session.getAttribute("logginedMember");
+
 %>
+<style>
+	#wishbtn{
+		
+    float:right;
+    left:110px;
+    top:10px;
+    width:150px ;height:50px;
+    background : darkgray;
+    color : #fff;
+    font-size:15px;
+    border:none;
+    border-radius:10px;
+    font-weight: bold;
+    cursor:pointer;
+    margin:5px;
+
+	}
+</style>
+
 
 <%@ include file="/views/common/header.jsp"%>
 
@@ -318,14 +339,36 @@
 						</div>
 
 						<div class="blog_details">
-							<h2>${p.pBigNameKor}
+
+							<h2>${p.pBigNameKor}<button  id="wishbtn">위시리스트 추가</button>
 
 								<!-- 위시리스트 넘기기 -->
-								<a class="heart-button"
+								<%-- <a class="heart-button"
 									href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId()%>&pNum=${p.pNum}">
-									♥ </a>
+									♥ </a> --%>
+							<form action="<%=request.getContextPath() %>/wishListEnroll" id="wishFrm" target="iframe" >
+
+								<input type="hidden" name="userId" value="<%=logginedMember2.getUserId()%>">
+								<input type="hidden" name="productNum" value='${p.pNum}'>
+								<input type="hidden" id="pageAddress" name="pageAddress" value="">
+							</form>
+	
+							<iframe src="#" name="iframe" style="width:1px; height:1px; border:0; visibility:hidden;"></iframe>		
+							
 								
 							</h2>
+							<script>
+							$("#wishbtn").click(e=>{
+								
+									var link = document.location.href; 
+									console.log(link);
+									$("#pageAddress").val(link);
+
+									$("#wishFrm").submit();
+									
+							})
+							</script>
+
 
 							<!-----♥♥♥♥♥♥♥간단한 상품정보♥♥♥♥♥♥♥----->
 							<div class="product-benefit">

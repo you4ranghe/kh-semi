@@ -9,6 +9,10 @@
 	Member logginedMember2 = (Member)session.getAttribute("logginedMember");
 	ArrayList<Map<String, Object>> reserveList =(ArrayList<Map<String, Object>>)request.getAttribute("reserveList");
 	int count=0;
+
+	String date="";
+	String info="";
+
 %>
 <style>
 	#reserve_content{
@@ -24,6 +28,21 @@
 		margin-left:200px;
 
 	}
+
+	th{
+		text-align:center;
+
+		
+	}
+	td{
+		text-align:center;
+		color:rgb(72, 71, 78);
+	}
+	 a:link { color:rgb(72, 71, 78); text-decoration: none;}
+
+	div#pageBar{margin-top:10px; text-align:center; margin-bottom:50px;}
+	div#pageBar span.cPage{color: #0066ff;}
+
 </style>
 <section>
 <%for(Map<String,Object>m:reserveList){ 
@@ -34,32 +53,65 @@
 		<div id="reserveTitle"><strong><%=logginedMember2.getUserId() %>님의 예약 내역<hr></strong></div>	
 				<table id="reserveTable">
 				<%if(count!=0){ %>
+
+					<tr>
+						<th>
+						
+						</th>
+						
+						<th>
+						 상품 설명
+						</th>						
+						
+						<th>
+						 상품 날짜
+						</th>
+						
+						<th>
+						 총 가격
+						</th>
+						
+						<th>
+						 구매 일시
+						</th>
+						
+			
+					</tr>
+						
 			 	<%for(Map<String,Object>m:reserveList){ %>
 					<tr id="reservetr">
-						<td width="25%" height="300px">
+						<td width="20%" height="300px">
 							
-							<img alt="" src="<%=request.getContextPath()%>/img/destination/<%=m.get("pImgPath")%>" width="250px" height="250px" style=" border-radius: 50%;" >
+							<img alt="" src="<%=request.getContextPath()%>/img/banner/<%=m.get("imag")%>" width="225px" height="225px"  >
 							<br>
 						</td>
-						<td width="30%">
-		
-							<%=m.get("pInfo") %>
+						<td width="50%" style="font-size:15px;font-weight: bolder;">
+							<a href="<%=request.getContextPath()%>/detailReserve?poNum=<%=m.get("poNum") %>&userId=<%=logginedMember2.getUserId() %>">
+								<%info=((String)m.get("pInfo")).substring(0,230)+"...."; %>
+								<%=info%>
+							
 						</td>
-						<td width="15%">
-							<%=m.get("pDateStart") %>
+						<td width="10%">
+						<p style="margin-left:20px;">
+							<%date=(String)m.get("pDateStart"); %>
+							 <%=date.substring(0, 10) %> 
+						</p>
+						 <%-- 	<%=m.get("pDateStart") %>  --%>
 						</td>
-						<td width="20%">
+						<td width="10%">
 							<%=m.get("price") %>
 						</td>
-						<td width="15%">
+						<td width="10%">
+
 							<%=m.get("payOrderDate") %>
 						</td>
 					</tr>
 		 	<%} %>
 			<%}else{ %>
-				<div style="margin-left:400px; margin-top:200px;" id="elseDiv">
-					<h3>예약내역이 존재하지 않습니다.마음에 드는 상품들을 위시리스트에 추가해보세요</h3>
-					
+
+				<div style="margin-left:700px; margin-top:300px;height:300px;" id="elseDiv">
+					<p style="font-size:25px;font-weight:bolder">예약내역이 존재하지 않습니다.</p>
+
 				
 				</div>
 			<%} %>
@@ -71,6 +123,11 @@
 			</table>
 		
 	</div>
+
+		<div id="pageBar">
+			<%=request.getAttribute("pageBar") %>
+		</div>
+
 	
 </section>
 <%@ include file="/views/common/footer.jsp" %>

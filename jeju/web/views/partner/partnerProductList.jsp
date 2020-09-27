@@ -238,8 +238,10 @@
 
 	<h3 class="menut"> 내 상품 보기</h3>
 	
+
 	 <div class="row">
 	<%-- <div id="sidebar"  class="col-lg-2">
+
 		<!-- 사이드 바 메뉴-->
 		  <!-- 패널 타이틀1 -->
 		<div class="sidebarmy panel panel-info ">
@@ -278,6 +280,7 @@
 		        <li class="list-group-item border-0"><a href="#"></a></li>
 		      </ul>
 		    </div>
+
 		</div>  --%>
 		<style>
 			.collong{
@@ -328,6 +331,7 @@
 		<div class="col-lg-9">
 		<%for(Product p:list){ %>
 		  <div class="col-sm-6 col-lg-3">
+
 		    <div class="thumbnail img-div">
 		    
 		    	
@@ -345,8 +349,10 @@
 		      </div>
 		    </div>
 	<%} %>
+
 		  <!-- </div> -->
 		</div>
+
 	</div>
 			
 	<div id="pageBar" class="col-lg-12 text-center">

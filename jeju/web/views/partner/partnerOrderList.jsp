@@ -21,7 +21,9 @@
 <section>
 	<h3> 예약 관리 </h3>
 	<div class="row">
+
 	<div class="col-md-2">
+
 <!-- 사이드 바 메뉴-->
   <!-- 패널 타이틀1 -->
 		<div class="panel panel-info">
@@ -62,15 +64,18 @@
 	<div id="table-container" class="col-md-9">
 	<table class="table table-hover table-bordered">
 		<tr>
+
 			<th style="width: 14%">예약일자<br>[예약번호]</th>
 			<th style="width: 13%">이미지</th>
 			<th style="width: 49%">상품 정보</th>
 			<th style="width: 12%">인원</th>
 			<th style="width: 12%">결제 금액<br>[결제수단]</th>
+
 			
 		</tr>
 		<%for(payEnd pe:list){ %>
 		<tr>
+
 			<td><a href="<%=request.getContextPath()%>/partner/orderDetail?pe=<%=pe.getPayNum()%>"><%=pe.getPayDate() %><br>[<%=pe.getPayNum() %>]</a></td>
 			<td><a href="<%=request.getContextPath()%>/partner/orderDetail?pe=<%=pe.getPayNum()%>"><img src="<%=request.getContextPath()%>/upload/product/<%=pe.getTitleImgPath()%>" width="100px" height="100px"></a></td>
 			<td><a href="<%=request.getContextPath()%>/partner/orderDetail?pe=<%=pe.getPayNum()%>">
@@ -82,6 +87,7 @@
 				<p>어린이 : <%=pe.getChildNum() %></p></a>
 			</td>
 			<td><a href="<%=request.getContextPath()%>/partner/orderDetail?pe=<%=pe.getPayNum()%>"><%=pe.getTotalPrice() %> [<%=pe.getPayType() %>]</a></td>
+
 		</tr>
 		<%} %>
 	

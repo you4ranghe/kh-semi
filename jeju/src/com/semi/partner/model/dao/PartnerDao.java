@@ -426,6 +426,7 @@ public class PartnerDao {
 		}
 		return p;
 		
+
 	}
 	
 	public payEnd selectOrder(Connection conn,int poNum) {
@@ -465,6 +466,7 @@ public class PartnerDao {
 	}
 	
 	
+
 
 }//클래스
 

@@ -1,12 +1,8 @@
-package com.semi.wishList.controller;
+package com.semi.payend.controller;
 
 import java.io.IOException;
-
-import java.io.PrintWriter;
-
 import java.util.ArrayList;
 import java.util.Map;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,22 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.wishList.model.service.WishListService;
-
-import com.semi.wishList.model.vo.WishList;
-
+import com.semi.payend.model.service.PayService;
 
 /**
- * Servlet implementation class WishListServlet
+ * Servlet implementation class PayDetailReserve
  */
-@WebServlet("/wishList")
-public class WishListServlet extends HttpServlet {
+@WebServlet("/detailReserve")
+public class PayDetailReserveServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WishListServlet() {
+    public PayDetailReserveServelt() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,16 +32,17 @@ public class WishListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String poNum=request.getParameter("poNum");
 		String userId=request.getParameter("userId");
-		System.out.println("들어오나 확인"+userId);
-	
-		ArrayList<Map<String, Object>> list = new WishListService().selectWish(userId);
-
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/wishlist/wishListView.jsp").forward(request, response);
+		
+		System.out.println(poNum+userId);
+		
+		ArrayList<Map<String, Object>> detailList = new PayService().selectDetail(poNum);
+		
+		request.setAttribute("detailList", detailList);
+		request.getRequestDispatcher("/views/pay/payDetailReserve.jsp").forward(request, response);
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

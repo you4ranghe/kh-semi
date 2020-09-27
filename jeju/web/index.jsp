@@ -345,7 +345,9 @@ button+div{
 	
 	</div>
 			
+
 	<a href="<%=request.getContextPath()%>/partner/partnerOrderList"><button>테스트</button></a>
+
 
 </section>
 
