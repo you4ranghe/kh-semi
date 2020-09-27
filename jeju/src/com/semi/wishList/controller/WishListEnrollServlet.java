@@ -35,7 +35,7 @@ public class WishListEnrollServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		
+	
 		 WishList we=new WishList();
 		  
 		 we.setUserId(request.getParameter("userId"));
@@ -49,14 +49,14 @@ public class WishListEnrollServlet extends HttpServlet {
 
 		 
 		 String msg="";
-		 String loc="/";
+		 String loc="";
 		 if(result>0) {
 			msg="등록 성공";
-			loc="/productList";
+			loc="/";
 		 }else {
 			msg="등록실패";
-			loc="/productList";
-		}
+			loc="/";
+		 }
 			request.setAttribute("msg",msg);
 			request.setAttribute("loc", loc);
 

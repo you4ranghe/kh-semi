@@ -115,7 +115,9 @@ public class ProductDao {
 	               
 	           list.add(p);
 	           
-	    
+	           
+               System.out.println("select="+p);
+
 			}
 		
 		}catch(SQLException e) {
@@ -167,6 +169,8 @@ public class ProductDao {
                p.setpMap(rs.getString("p_map"));
                p.setpScore(rs.getInt("p_score"));
                p.setPartnerId(rs.getString("partner_id"));
+               
+               System.out.println("selectone="+p);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
