@@ -114,17 +114,10 @@ public class UpdateProductEndServlet extends HttpServlet {
 		p.setpMap(mr.getParameter("map"));
 		
 		//filepath는 리네임된 파일명을 가져와야함
-		
-		
-		System.out.println("slider:"+mr.getFilesystemName("slider"));
-		System.out.println("main:"+mr.getFilesystemName("main"));
-		System.out.println("route:"+mr.getFilesystemName("route"));
-		
-		
-		
-		
+
 		if(mr.getFilesystemName("slider")!=null) {
 			String slider=mr.getFilesystemName("slider");
+
 			p.setTitleImgPath((slider));
 //			//사용자가 전달한 파일명과 동일한 파일을 클라이언트에게 보내줌
 //			//1. 전송할 파일에 대한 경로를 가져옴
@@ -142,7 +135,7 @@ public class UpdateProductEndServlet extends HttpServlet {
 		
 		if(mr.getFilesystemName("main")!=null) {
 			String main=mr.getFilesystemName("main");
-			p.setpImgPath((main));
+			p.setpImgPath(main);
 			
 		}else {
 			p.setpImgPath(mr.getParameter("mainorigin"));
@@ -151,7 +144,7 @@ public class UpdateProductEndServlet extends HttpServlet {
 		
 		if(mr.getFilesystemName("route")!=null) {
 			String route=mr.getFilesystemName("route");
-			p.setScheduleImgPath((route));
+			p.setScheduleImgPath(route);
 			
 		}else {
 			p.setScheduleImgPath(mr.getParameter("routeorigin"));
