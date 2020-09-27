@@ -17,7 +17,9 @@ import com.semi.payend.model.vo.payEnd;
 /**
  * Servlet implementation class PartnerOrderListServlet
  */
+
 @WebServlet("/partner/partnerOrderList")
+
 public class PartnerOrderListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -80,7 +82,9 @@ public class PartnerOrderListServlet extends HttpServlet {
 					+ "</li>";
 		} else {
 			pageBar = "<li class='page-item'>" + "<a class='page-link text-dark' href='" + request.getContextPath()
+
 					+ "/partner/partnerOrderList?cPage=" + (pageNo - 1) + "' aria-label='Previous'>"
+
 					+ "<span aria-hidden='true'>&laquo;</span>" + "<span class='sr-only'>Previous</span>" + "</a>"
 					+ "</li>";
 		}
@@ -91,7 +95,9 @@ public class PartnerOrderListServlet extends HttpServlet {
 				pageBar += "<li class='page-item active'><a class='page-link text-dark'>" + pageNo + "</a></li>";
 			} else {
 				pageBar += "<li class='page-item'><a class='page-link text-dark' href='" + request.getContextPath()
+
 						+ "/partner/partnerOrderList?cPage=" + pageNo + "'>" + pageNo + "</a></li>";
+
 			}
 			pageNo++;
 		}
@@ -101,7 +107,9 @@ public class PartnerOrderListServlet extends HttpServlet {
 					+ "</li>";
 		} else {
 			pageBar += "<li class='page-item'>" + "<a class='page-link text-dark' href='" + request.getContextPath()
+
 					+ "/partner/partnerOrderList?cPage=" + pageNo + "' aria-label='Next'>" + "<span aria-hidden='true'>&raquo;</span>"
+
 					+ "<span class='sr-only'>Next</span>" + "</a>" + "</li>";
 		}
 	

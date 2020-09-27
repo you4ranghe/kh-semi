@@ -76,7 +76,6 @@
     display: block;
     clear:both;
    
-   
   }
 #categorybtn>div{
    /*  float: left; */
@@ -351,8 +350,6 @@ button+div{
 			
 
 </section>
-
-
 
 	<script> 
 	
