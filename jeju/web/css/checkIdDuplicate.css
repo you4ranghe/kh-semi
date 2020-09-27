@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+
+* {
+    margin: 0; padding:0; box-sizing:border-box;
+}
+div#checkId-container{text-align:center;padding-top:50px;}
+span#duplicated{color:red;font-weight:bolder;}
+
+#userid{
+    border-radius: 7px;
+    width: 70px;
+    height:30px;
+}
+
+#submit_btn{
+    background-color: gary;
+}

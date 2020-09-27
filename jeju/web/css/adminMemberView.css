@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 * {
+    font-family: 'Do Hyeon', sans-serif;
     margin: 0; padding:0; box-sizing:border-box;
 }
 
@@ -35,6 +36,9 @@ body ::before{
     height:200px;
 
 
+}
+h1{
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 #mypage-bar{

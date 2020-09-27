@@ -10,6 +10,13 @@ List<Product> list=(List)request.getAttribute("list");
 	.img-div{
 		width: 400px; 
 		height:350px;
+		margin-bottom:20px;
+		margin-left:10px
+	}
+	div.pname{
+		widh:390px;
+		height:80px;
+	
 	}
 
 </style>
@@ -24,8 +31,8 @@ List<Product> list=(List)request.getAttribute("list");
 		      <%-- <a href="" onclick="clickheart();"><img src="<%=request.getContextPath()%>/img/product/transheart.png" class="wish"></a> --%>
 		      <span class="heartspan"><i class="fas fa-heart wish" onclick="javascript:clickheart();"></i></span>
 		      <div class="caption" >
-		        <h3><%=p.getpName() %></h3>
-		        <p><%=p.getpNum() %></p>
+		        <div class="pname"><h3><%=p.getpName() %></h3></div>
+		        <p><%=p.getpPriceC() %>₩~</p>
 		        <input type="hidden" name=pNum value=<%=p.getpNum() %> >
 		      </div>
 		    </div>

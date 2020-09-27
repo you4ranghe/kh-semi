@@ -1,6 +1,9 @@
 package com.semi.wishList.controller;
 
 import java.io.IOException;
+
+import java.io.PrintWriter;
+
 import java.sql.Date;
 
 import javax.servlet.ServletException;
@@ -35,7 +38,7 @@ public class WishListEnrollServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-	
+
 		 WishList we=new WishList();
 		  
 		 we.setUserId(request.getParameter("userId"));
@@ -45,20 +48,18 @@ public class WishListEnrollServlet extends HttpServlet {
 		 System.out.println(request.getParameter("pageAddress"));
 		 
 		 int result=new WishListService().insertWish(we);
-		 request.setAttribute("we", we);
 
-		 
-		 String msg="";
-		 String loc="";
-		 if(result>0) {
-			msg="등록 성공";
-			loc="/";
-		 }else {
-			msg="등록실패";
-			loc="/";
-		 }
-			request.setAttribute("msg",msg);
-			request.setAttribute("loc", loc);
+		 response.setContentType("text/html; charset=UTF-8"); 
+		 PrintWriter writer = response.getWriter(); 
+		if(result>0) {
+		 writer.println("<script>alert('위시리스트 등록')</script>"); 
+		}else {
+		 writer.println("<script>alert('이미 등록된 상품입니다.')</script>"); 
+		}
+		
+		 writer.close();
+
+
 
 		
 

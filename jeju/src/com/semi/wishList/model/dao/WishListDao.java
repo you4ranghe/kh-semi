@@ -57,12 +57,13 @@ public class WishListDao {
 
 		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
-			
+
 			pstmt=conn.prepareStatement(prop.getProperty("selectWish"));
 			pstmt.setString(1, userId);
 			System.out.println(userId);
 			rs=pstmt.executeQuery();
 			
+
 			System.out.println("여기는 트라이 안");
 			
 			while(rs.next()) {
@@ -76,6 +77,10 @@ public class WishListDao {
 				map.put("pImgPath",rs.getString("P_IMG_PATH"));
 				map.put("runTime",rs.getString("RUNTIME"));
 				map.put("pageAddress",rs.getString("PAGEADDRESS"));
+
+				map.put("imag",rs.getString("TITLE_IMG_PATH"));
+				
+
 				list.add(map);
 			
 				

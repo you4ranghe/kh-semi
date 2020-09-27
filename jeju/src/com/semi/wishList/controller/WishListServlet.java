@@ -44,9 +44,7 @@ public class WishListServlet extends HttpServlet {
 		System.out.println("들어오나 확인"+userId);
 	
 		ArrayList<Map<String, Object>> list = new WishListService().selectWish(userId);
-	
-			
-		
+
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/views/wishlist/wishListView.jsp").forward(request, response);
 	}

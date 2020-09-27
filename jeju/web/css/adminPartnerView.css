@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 * {
+    font-family: 'Do Hyeon', sans-serif;
     margin: 0; padding:0; box-sizing:border-box;
 }
 
@@ -34,7 +35,7 @@ body ::before{
 	height:80px;
     border-radius:40px;
     position: relative;
-    left:110px;
+    left:0px
     
 }
 
@@ -45,6 +46,10 @@ body ::before{
     height:200px;
 
 
+}
+
+h2{
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 #mypage-bar{
@@ -64,7 +69,7 @@ body ::before{
     left:110px;
     top:10px;
     width:400px;
-    height:800px;
+    height:690px;
     display: inline-block;
     
 
@@ -73,10 +78,10 @@ body ::before{
     position : relative; 
     left:460px;
     z-index: 2;
-    top:50px;
+    top:10px;
     width:530px;
-    height:100%;
-    /* margin-bottom: 50px; */
+    height:710px;
+    /* margin-bottom: 30px; */
     /* border :3px solid red; */
 
 }
@@ -99,12 +104,14 @@ margin-top:20px}
 th{
     color:yellowgreen;
     font-size:15px;
-    font-weight: bold;
+    
+    width: 200px;
+    padding-right: 10px;
 }
 
 
 .int-area input{
-    width: 100%;
+    width: 300px;
     padding : 20px 10px 10px;
     background-color: transparent;
     border:none;
@@ -112,6 +119,7 @@ th{
     font-weight: bold;
     font-size: 15px; color:dodgerblue;
     outline: none;
+    text-align: left;
 }
 
 .int-area label{
@@ -160,7 +168,7 @@ th{
 #btn1{
     position: relative;
     top:70px;
-    left:1000px;
+    left:10px;
     width:80px; height:35px;
     background : yellowgreen;
     color : #fff;
@@ -175,7 +183,7 @@ th{
 #btn2{
     position: relative;
     top:10px;
-    left:85px;
+    left:-145px;
     width:150px; height:50px;
     background :orangered;
     color : #fff;
@@ -188,7 +196,7 @@ th{
 }
 #btn3{
     position: relative;
-    left:85px;
+    left:0px;
     top:10px;
     width:150px ;height:50px;
     background : yellowgreen;

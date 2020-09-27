@@ -20,7 +20,8 @@
 	.img-div{
 		width: 400px; 
 		height:350px;
-		
+		margin-bottom:20px;
+		margin-left:10px;
 	
 	}
 	.wish,.wishclick{
@@ -37,8 +38,9 @@
 	.wishclick{
 		color:red;
 	}
-	 h3.pname{
-     	margin:10px;
+	 div.pname{
+     	width:390px;
+     	height:80px;
       }
       h5{
      padding : 10px;
@@ -49,17 +51,18 @@
 	
 	paddingadd{
 		
+		margin:50px;
 	}
 	
 	
 </style>
 <section>
-
-	<h3> 전체 상품 보기</h3>
+	<div class="mar">
+	<h3 >&nbsp;&nbsp;&nbsp;&nbsp;전체 상품 보기</h3></div>
 	<div class="row">
 		
 		<%for(Product p:list){ %>
-		  <div class="col-sm-6 col-lg-4 border paddingadd">
+		  <div class="col-sm-6 col-lg-4 paddingadd">
 		    <div class="thumbnail img-div">
 		    
 
@@ -69,7 +72,7 @@
 
 		      <span class="heartspan"><i class="fas fa-heart wish" onclick="javascript:clickheart();"></i></span>
 		      <div class="caption" >
-		        <h3 class="pname"><%=p.getpName() %></h3>
+		        <div class="pname"><h3><%=p.getpName() %></h3></div>
 		        <p><%=p.getpPriceC() %>₩~</p>
 		        <input type="hidden" name=pNum value=<%=p.getpNum() %> >
 		      </div>

@@ -15,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.member.model.vo.Member;
 import com.semi.partner.model.service.PartnerService;
+import com.semi.partner.model.vo.Partner;
 import com.semi.product.model.vo.Product;
 
 /**
@@ -78,7 +79,8 @@ public class AddProductEndServlet extends HttpServlet {
 				Product p=new Product();
 				HttpSession session=request.getSession();
 				Member m=(Member)session.getAttribute("logginedMember");
-//		p.setPartnerId(m.getUserId());
+				Partner t=(Partner)session.getAttribute("logginedPartner");
+				
 				p.setpName(mr.getParameter("name"));
 				p.setpBigNameEng(mr.getParameter("engName"));
 				p.setpBigNameKor(mr.getParameter("korName"));
@@ -114,7 +116,7 @@ public class AddProductEndServlet extends HttpServlet {
 				
 				p.setpMapAddress(map);
 				p.setpMap(mr.getParameter("map"));
-//				p.setPartnerId(m.getUserId());
+				p.setPartnerId(t.getPartnerId());
 				
 				
 				

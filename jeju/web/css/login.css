@@ -22,11 +22,22 @@ body ::before{
     background-color: rgba(0,0,0,.7);
 }
 
-.login-form{position : relative; z-index: 2;}
+.login-form{
+ 
+    position : relative;
+     z-index: 2;
+    height:300px;
+    }
+
+#loginFrm{
+    height:100%;
+}
+
 .login-form h1{
     font-size:32px;color:#fff;
     text-align: center;
     margin-bottom: 60px;
+    letter-spacing: 1px;
 }
 
 .int-area{width: 400px; position: relative;
@@ -45,6 +56,7 @@ margin-top:20px}
     font-size: 18px; color : #fff;
     outline: none;
     font-weight: bold;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 .int-area label{
@@ -82,9 +94,10 @@ margin-top:20px}
 }
 
 .btn-area button{
+    font-family: 'Do Hyeon', sans-serif;
     position: relative;
-    left:50px;
-    width:70%; height:50px;
+    left:77px;
+    width:55%; height:50px;
     background : #166cea;
     color : #fff;
     font-size:20px;
@@ -93,12 +106,15 @@ margin-top:20px}
     font-weight: bold;
     cursor:pointer;
     margin:5px;
-    font-weight: bold;
+    font-weight : bold;
+    letter-spacing: 1px;
 }
 #btn2{
+    letter-spacing: 1px;
+    font-family: 'Do Hyeon', sans-serif;
     position: relative;
-    left:50px;
-    width:70%; height:50px;
+    left:77px;
+    width:55%; height:50px;
     background : yellowgreen;
     color : #fff;
     font-size:20px;

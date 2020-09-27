@@ -13,6 +13,8 @@
     	.clearboth{
     		/* clear:both; */
     	}
+    	
+    	/* t */
     </style>
     
 <div id="sidebar" class="col-lg-2">

@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/views/common/header.jsp" %>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+<%@ include file="/views/common/header.jsp"%>
+<%@ page import="java.util.Date,java.text.SimpleDateFormat,java.text.DateFormat" %>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<%
+	Date today=new Date();
+	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	String day=format.format(today);
+
+%>
 <style>
 	textarea{
 		resize:none;
@@ -24,7 +32,7 @@
 <%@ include file="/views/common/partnerSide.jsp"%>
 <div id="container">
 
-	<form action="<%=request.getContextPath() %>/partner/addProductEnd" method="post" enctype="multipart/form-data">
+	<form action="<%=request.getContextPath() %>/partner/addProductEnd" method="post" enctype="multipart/form-data" onsubmit="return checkDate();">
 		<table class="table-bordered" >
 			<tr>
 				<th>상품 이름</th>
@@ -53,12 +61,11 @@
 			</tr>
 			<tr>
 				<th>판매 시작 날짜</th>
-				<td><input type="date" name="dateStart" required></td>
-			
+				<td><input type="date" id="dateStart" name="dateStart" value="<%=day %>" min="<%=day %>" max="2020-10-31" required ></td>
 			</tr>
 			<tr>
 				<th>판매 종료 날짜</th>
-				<td><input type="date" name="dateFinish" required></td>
+				<td><input type="date" id="dateFinish" name="dateFinish" required  min="<%=day %>" max="2020-12-31"></td>
 			
 			</tr>
 			<tr>
@@ -143,6 +150,36 @@
 </div>
 
 <script>
+	
+	function checkDate()
+		{
+		    var sdd = document.getElementById("dateStart").value;
+		    var edd = document.getElementById("dateFinish").value;
+		    var ar1 = sdd.split('-');
+		    var ar2 = edd.split('-');
+		    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+		    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+		    var dif = da2 - da1;
+		    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+		    var cMonth = cDay * 30;// 월 만듬
+		    var cYear = cMonth * 12; // 년 만듬
+		    var period=parseInt(dif/cDay);
+		    if (period<1){
+		    	alert("날짜 선택이 잘못되었습니다 !");
+		    	return false;
+		    }
+		    
+		/*  if(sdd && edd){
+		    document.getElementById('years').value = parseInt(dif/cYear)
+		    document.getElementById('months').value = parseInt(dif/cMonth)
+		    document.getElementById('days').value = parseInt(dif/cDay)
+		 } */
+		}
+
+
+
+	document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+
 	$('#runtime').on('keyup', function() {
 	
 		if($(this).val().length > 160) {

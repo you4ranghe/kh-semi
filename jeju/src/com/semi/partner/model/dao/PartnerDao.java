@@ -3,20 +3,19 @@ package com.semi.partner.model.dao;
 
 import static com.semi.common.JDBCTemplate.close;
 
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.semi.partner.model.vo.Partner;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import static com.semi.common.JDBCTemplate.close;
+
+import com.semi.partner.model.vo.Partner;
+import com.semi.payend.model.vo.payEnd;
 import com.semi.product.model.dao.ProductDao;
 import com.semi.product.model.vo.Product;
 
@@ -279,8 +278,7 @@ public class PartnerDao {
 			pstmt.setString(16, p.getPrecaution());
 			pstmt.setString(17, p.getpMapAddress());
 			pstmt.setString(18, p.getpMap());
-//			pstmt.setString(19, p.getPartnerId());
-			pstmt.setString(19, "user01");
+			pstmt.setString(19, p.getPartnerId());
 			
 			
 			result=pstmt.executeUpdate();
@@ -338,7 +336,137 @@ public class PartnerDao {
 		return result;
 	}
 
+	public List<payEnd> SelectPartnerOrderList(Connection conn,int cPage, int numPerPage,String partnerId){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<payEnd> list=new ArrayList();
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectPartnerOrderList"));
+			pstmt.setString(1, partnerId);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
+			rs=pstmt.executeQuery();
+			/*
+			 * PO_NUM PO_TYPE PO_DATE TOTAL_PRICE P_NUM USER_ID P_COUNT_A P_COUNT_C
+			 * P_DATE_START PAY_USER_NAME PAY_ADDRESS PAY_PHONE PAY_EMAIL
+			 */
+			while(rs.next()) {
+				payEnd pe=new payEnd();
+				pe.setPayNum(rs.getInt("po_num"));
+				pe.setPayType(rs.getString("po_type"));
+				pe.setPayDate(rs.getDate("po_date"));
+				pe.setTotalPrice(rs.getInt("total_price"));
+				pe.setProductNum(rs.getInt("p_num"));
+				pe.setUserId(rs.getString("user_id"));
+				pe.setChildNum(rs.getInt("p_count_c"));
+				pe.setAdultNum(rs.getInt("p_count_a"));
+				pe.setDateStart(rs.getString("p_date_start"));
+				pe.setPayName(rs.getString("pay_user_name"));
+				pe.setPayAddress(rs.getString("pay_address"));
+				pe.setPayPhone(rs.getString("pay_phone"));
+				pe.setPayEmail(rs.getString("pay_email"));
+				
+				list.add(pe);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 	
+	public int selectPartnerOrderListCount(Connection conn, String partnerId) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int count=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectPartnerOrderListCount"));
+			pstmt.setString(1, partnerId);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count=rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return count;
+		
+	}
+
+	public Product titlePath(Connection conn,int num) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Product p=null;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("titlePath"));
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				p=new Product();
+				p.setTitleImgPath(rs.getString(1));
+				p.setpName(rs.getString(2));
+					
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return p;
+		
+
+	}
+	
+	public payEnd selectOrder(Connection conn,int poNum) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		payEnd pe=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectOrder"));
+			pstmt.setInt(1, poNum);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				pe=new payEnd();
+				pe.setPayNum(rs.getInt("po_num"));
+				pe.setPayType(rs.getString("po_type"));
+				pe.setPayDate(rs.getDate("po_date"));
+				pe.setTotalPrice(rs.getInt("total_price"));
+				pe.setProductNum(rs.getInt("p_num"));
+				pe.setUserId(rs.getString("user_id"));
+				pe.setChildNum(rs.getInt("p_count_c"));
+				pe.setAdultNum(rs.getInt("p_count_a"));
+				pe.setDateStart(rs.getString("p_date_start"));
+				pe.setPayName(rs.getString("pay_user_name"));
+				pe.setPayAddress(rs.getString("pay_address"));
+				pe.setPayPhone(rs.getString("pay_phone"));
+				pe.setPayEmail(rs.getString("pay_email"));
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return pe;
+	}
+	
+	
+
 
 }//클래스
 

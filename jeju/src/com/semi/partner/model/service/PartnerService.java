@@ -2,16 +2,15 @@ package com.semi.partner.model.service;
 
 import static com.semi.common.JDBCTemplate.close;
 import static com.semi.common.JDBCTemplate.commit;
-
-import com.semi.partner.model.vo.Partner;
-
-import static com.semi.common.JDBCTemplate.rollback;
 import static com.semi.common.JDBCTemplate.getConnection;
+import static com.semi.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
 
 import com.semi.partner.model.dao.PartnerDao;
+import com.semi.partner.model.vo.Partner;
+import com.semi.payend.model.vo.payEnd;
 import com.semi.product.model.vo.Product;
 
 
@@ -112,6 +111,41 @@ public class PartnerService {
 		return result;
 	}
 
+	public List<payEnd> selectPartnerOrderList(int cPage,int numPerPage, String partnerId){
+		Connection conn=getConnection();
+		List<payEnd> list=dao.SelectPartnerOrderList(conn,cPage,numPerPage,partnerId);
+		for(payEnd pe:list) {
+			Product p=dao.titlePath(conn,pe.getProductNum());
+			pe.setTitleImgPath(p.getTitleImgPath());
+			pe.setProductName(p.getpName());
+		}
+		close(conn);
+		return list;
+		
+		
+	}
+	public int selectPartnerOrderListCount(String partnerId) {
+		Connection conn=getConnection();
+		int count=dao.selectPartnerOrderListCount(conn,partnerId);
+		close(conn);
+		return count;
+		
+	}
+
 	
+	public payEnd selectOrder(int poNum) {
+		Connection conn=getConnection();
+		payEnd pe=dao.selectOrder(conn,poNum);
+		Product p=dao.titlePath(conn, pe.getProductNum());
+		pe.setTitleImgPath(p.getTitleImgPath());
+		pe.setProductName(p.getpName());
+		close(conn);
+		
+		return pe;
+		
+		
+	}
+	
+
 
 }

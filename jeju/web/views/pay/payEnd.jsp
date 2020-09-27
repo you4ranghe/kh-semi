@@ -8,9 +8,13 @@
 
 <section style="width:1200px;height:500px;">
 	<div style="margin-left:700px;margin-top:300px;width:100%">
-		<h2><%=logginedMember2.getUserId() %>님의 예약이 완료되었습니다.</h2>
+
+		
+		<p style="font-size:40px;font-weight:bolder"><%=logginedMember2.getUserId() %>님의 예약이 완료되었습니다.</p>
 	
 	</div>
+
+
 </section>
 
 <%@ include file="/views/common/footer.jsp" %>
