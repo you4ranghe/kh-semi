@@ -1,6 +1,6 @@
 package com.semi.review.model.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Review {
 
@@ -13,9 +13,7 @@ public class Review {
 	private Date registerDate;
 	private int reviewViews;
 	private int pNum;
-	private int reviewLevel;
-	private int productRef;
-	private int reviewRef;
+	private String userId;
 	
 	
 	public Review() {
@@ -24,8 +22,7 @@ public class Review {
 
 
 	public Review(int reviewNum, int reviewScore, String reviewTitle, String reviewContents, String reviewWriter,
-			String poNum, Date registerDate, int reviewViews, int pNum, int reviewLevel, int productRef,
-			int reviewRef) {
+			String poNum, Date registerDate, int reviewViews, int pNum, String userId) {
 		super();
 		this.reviewNum = reviewNum;
 		this.reviewScore = reviewScore;
@@ -36,9 +33,7 @@ public class Review {
 		this.registerDate = registerDate;
 		this.reviewViews = reviewViews;
 		this.pNum = pNum;
-		this.reviewLevel = reviewLevel;
-		this.productRef = productRef;
-		this.reviewRef = reviewRef;
+		this.userId = userId;
 	}
 
 
@@ -132,33 +127,13 @@ public class Review {
 	}
 
 
-	public int getReviewLevel() {
-		return reviewLevel;
+	public String getUserId() {
+		return userId;
 	}
 
 
-	public void setReviewLevel(int reviewLevel) {
-		this.reviewLevel = reviewLevel;
-	}
-
-
-	public int getProductRef() {
-		return productRef;
-	}
-
-
-	public void setProductRef(int productRef) {
-		this.productRef = productRef;
-	}
-
-
-	public int getReviewRef() {
-		return reviewRef;
-	}
-
-
-	public void setReviewRef(int reviewRef) {
-		this.reviewRef = reviewRef;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 
@@ -166,12 +141,12 @@ public class Review {
 	public String toString() {
 		return "Review [reviewNum=" + reviewNum + ", reviewScore=" + reviewScore + ", reviewTitle=" + reviewTitle
 				+ ", reviewContents=" + reviewContents + ", reviewWriter=" + reviewWriter + ", poNum=" + poNum
-				+ ", registerDate=" + registerDate + ", reviewViews=" + reviewViews + ", pNum=" + pNum
-				+ ", reviewLevel=" + reviewLevel + ", productRef=" + productRef + ", reviewRef=" + reviewRef + "]";
+				+ ", registerDate=" + registerDate + ", reviewViews=" + reviewViews + ", pNum=" + pNum + ", userId="
+				+ userId + "]";
 	}
 
 
-	
+
 	
 	
 	

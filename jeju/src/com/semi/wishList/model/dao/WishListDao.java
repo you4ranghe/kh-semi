@@ -41,6 +41,8 @@ public class WishListDao {
 			pstmt.setInt(2, w.getProductNum());
 			pstmt.setString(3, w.getPageAddress());
 			result=pstmt.executeUpdate();
+			
+			System.out.println(w.getPageAddress());
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {

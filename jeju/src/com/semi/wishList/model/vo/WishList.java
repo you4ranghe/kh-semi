@@ -3,7 +3,6 @@ package com.semi.wishList.model.vo;
 public class WishList {
 
 	private String userId;
-
 	private int productNum;
 	private String pageAddress;
 
