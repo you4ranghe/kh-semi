@@ -8,9 +8,11 @@
 
 	ArrayList<Map<String, Object>> wishList =(ArrayList<Map<String, Object>>)request.getAttribute("list");
 	int count=0;
+
 	String startDate="";
 	String endDate="";
 	String info="";
+
 %>
 <%@ include file="/views/common/header.jsp" %>
 <style>
@@ -26,6 +28,7 @@
 	#wishTable{
 		margin-top:40px;
 		margin-left:200px;
+
 
 	}
 	#elseDiv{
@@ -46,6 +49,7 @@
     cursor:pointer;
     margin:5px;
 
+
 	}
 
 </style>
@@ -61,6 +65,7 @@
 				<%if(count!=0){ %>
 			 	<%for(Map<String,Object>m:wishList){ %>
 					<tr id="wishtr">
+
 						<td width="20%" height="300px">
 							
 							<img alt="" src="<%=request.getContextPath()%>/img/banner/<%=m.get("imag")%>" width="250px" height="250px" style=" border-radius: 50%;" >
@@ -89,6 +94,7 @@
 						<td width="20%">
 							<form action="<%=request.getContextPath()%>/wishListDelete">
 								<button >삭제하기</button>
+
 								<input type="hidden" name="userId" value="<%=logginedMember2.getUserId()%>">
 								<input type="hidden" name="pName" value="<%=m.get("pName")%>">
 							</form>
@@ -97,9 +103,11 @@
 					</tr>
 		 	<%} %>
 
+
 			<%}else{ %>
 				<div style="margin-left:700px; margin-top:300px;" id="elseDiv">
 					<p style="font-size:20px;font-weight:bolder">위시리스트가 존재하지 않습니다. 마음에 드는 상품들을 위시리스트에 추가해보세요</p>
+
 					
 				
 				</div>

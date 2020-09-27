@@ -1,7 +1,9 @@
 package com.semi.wishList.controller;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
+
 import java.sql.Date;
 
 import javax.servlet.ServletException;
@@ -35,9 +37,8 @@ public class WishListEnrollServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.out.println("나 나오냐?????");
-		
+
+
 		 WishList we=new WishList();
 		  
 		 we.setUserId(request.getParameter("userId"));
@@ -45,7 +46,7 @@ public class WishListEnrollServlet extends HttpServlet {
 		 we.setPageAddress(request.getParameter("pageAddress"));
 		  
 		 int result=new WishListService().insertWish(we);
-		 
+
 		 response.setContentType("text/html; charset=UTF-8"); 
 		 PrintWriter writer = response.getWriter(); 
 		if(result>0) {

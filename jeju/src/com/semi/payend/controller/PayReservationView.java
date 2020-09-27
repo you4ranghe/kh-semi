@@ -2,7 +2,9 @@ package com.semi.payend.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import java.util.List;
+
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -34,6 +36,7 @@ public class PayReservationView extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 //		String userId=request.getParameter("userId");
 //		
 //		ArrayList<Map<String, Object>> reserveList = new PayService().selectPay(userId);
@@ -84,6 +87,7 @@ public class PayReservationView extends HttpServlet {
 		
 		
 		
+
 	}
 
 	/**

@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-
 import static com.semi.common.JDBCTemplate.close;
 import com.semi.payend.model.vo.payEnd;
 
@@ -54,7 +53,7 @@ public class PayDao {
 			close(pstmt);
 		}return result;
 	}
-	
+
 //	public ArrayList<Map<String, Object>> selectPay(Connection conn,String userId){
 //		PreparedStatement pstmt=null;
 //		ResultSet rs=null;
@@ -105,11 +104,13 @@ public class PayDao {
 //	
 	
 	public ArrayList<Map<String, Object>> selectPay(Connection conn,String userId,int cPage, int numPerPage){
+
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 
 		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
+
 			pstmt=conn.prepareStatement(prop.getProperty("selectPay"));
 
 			pstmt.setString(1, userId);
@@ -119,6 +120,7 @@ public class PayDao {
 			rs=pstmt.executeQuery();
 			
 			System.out.println(rs);
+
 		
 			while(rs.next()) {
 			
@@ -129,9 +131,10 @@ public class PayDao {
 				map.put("pInfo",rs.getString("p_info"));
 				map.put("pImgPath",rs.getString("p_img_path"));
 				map.put("price",rs.getString("TOTAL_PRICE"));
+
 				map.put("poNum",rs.getString("PO_NUM"));
 				map.put("imag",rs.getString("TITLE_IMG_PATH"));
-				
+
 				list.add(map);
 			
 				
@@ -157,6 +160,7 @@ public class PayDao {
 		
 	}
 	
+
 	public int selectPayCount(Connection conn, String userId) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -235,4 +239,5 @@ public class PayDao {
 		return list;	
 		
 	}
+
 }

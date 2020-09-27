@@ -17,6 +17,7 @@
 	
 	Review r = (Review)request.getAttribute("review");
 	List<Review> rlist = (List)request.getAttribute("reviewList"); 
+
 	Member logginedMember2 = (Member)session.getAttribute("logginedMember");
 
 %>
@@ -38,6 +39,7 @@
 
 	}
 </style>
+
 
 <%@ include file="/views/common/header.jsp"%>
 
@@ -337,6 +339,7 @@
 						</div>
 
 						<div class="blog_details">
+
 							<h2>${p.pBigNameKor}<button  id="wishbtn">위시리스트 추가</button>
 
 								<!-- 위시리스트 넘기기 -->
@@ -365,6 +368,7 @@
 									
 							})
 							</script>
+
 
 							<!-----♥♥♥♥♥♥♥간단한 상품정보♥♥♥♥♥♥♥----->
 							<div class="product-benefit">

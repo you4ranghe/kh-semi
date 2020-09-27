@@ -9,8 +9,10 @@
 	Member logginedMember2 = (Member)session.getAttribute("logginedMember");
 	ArrayList<Map<String, Object>> reserveList =(ArrayList<Map<String, Object>>)request.getAttribute("reserveList");
 	int count=0;
+
 	String date="";
 	String info="";
+
 %>
 <style>
 	#reserve_content{
@@ -26,6 +28,7 @@
 		margin-left:200px;
 
 	}
+
 	th{
 		text-align:center;
 
@@ -39,6 +42,7 @@
 
 	div#pageBar{margin-top:10px; text-align:center; margin-bottom:50px;}
 	div#pageBar span.cPage{color: #0066ff;}
+
 </style>
 <section>
 <%for(Map<String,Object>m:reserveList){ 
@@ -49,6 +53,7 @@
 		<div id="reserveTitle"><strong><%=logginedMember2.getUserId() %>님의 예약 내역<hr></strong></div>	
 				<table id="reserveTable">
 				<%if(count!=0){ %>
+
 					<tr>
 						<th>
 						
@@ -97,13 +102,16 @@
 							<%=m.get("price") %>
 						</td>
 						<td width="10%">
+
 							<%=m.get("payOrderDate") %>
 						</td>
 					</tr>
 		 	<%} %>
 			<%}else{ %>
+
 				<div style="margin-left:700px; margin-top:300px;height:300px;" id="elseDiv">
 					<p style="font-size:25px;font-weight:bolder">예약내역이 존재하지 않습니다.</p>
+
 				
 				</div>
 			<%} %>
@@ -115,9 +123,11 @@
 			</table>
 		
 	</div>
+
 		<div id="pageBar">
 			<%=request.getAttribute("pageBar") %>
 		</div>
+
 	
 </section>
 <%@ include file="/views/common/footer.jsp" %>

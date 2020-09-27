@@ -24,6 +24,7 @@ public class PayService {
 		return result;
 		
 	}
+
 //	  public ArrayList<Map<String, Object>> selectPay(String userId){
 //		  Connection conn=getConnection();
 //		  ArrayList<Map<String, Object>> list = dao.selectPay(conn,userId);
@@ -34,10 +35,12 @@ public class PayService {
 	  public ArrayList<Map<String, Object>> selectPay(String userId,int cPage, int numPerPage){
 		  Connection conn=getConnection();
 		  ArrayList<Map<String, Object>> list = dao.selectPay(conn,userId,cPage, numPerPage);
+
 		  close(conn);
 		  return list;
 	  }
 	  
+
 		public int selectPayCount(String userId) {
 			Connection conn=getConnection();
 			int count=dao.selectPayCount(conn,userId);
@@ -50,4 +53,5 @@ public class PayService {
 			  close(conn);
 			  return list;
 		  }
+
 }

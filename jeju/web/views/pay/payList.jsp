@@ -22,7 +22,7 @@
 <style>
 input{
 		margin:10px;
-		
+
 		text-align:center;
 		/* height:25px; */
 		background-color: transparent;
@@ -50,6 +50,7 @@ input{
 		color:gray;
 		font-family: 돋움체;
 
+
 	}
 	th{
     color:yellowgreen;
@@ -67,6 +68,7 @@ input{
     font-weight: bold;
     font-size: 15px; color:dodgerblue;
     outline: none;
+
 	}
 	
 	form #productContent{
@@ -127,6 +129,7 @@ input{
 	 	height:50px;
 	 	border-radius:10px;
 	}
+
 	button{
 		
     
@@ -143,6 +146,7 @@ input{
     margin:5px;
 
 	}
+
 </style>
 
 <section id="payContent" style="width:1250px;">
@@ -194,7 +198,9 @@ input{
 			</tr>
 			<tr>
 				<td colspan="3">
+
 					<textarea rows="7" cols="70" style="margin-top:15px;  resize: none;  font-weight: bold; color:gray" readonly> <%=productInfo %>
+
 				
 					</textarea>
 				</td>
@@ -317,7 +323,9 @@ input{
 
 
 </script>
+
 <button id="paybtn" type="button">결제하기</button> <button id="payreset"  onclick="location.href='<%=request.getContextPath()%>/' ">취소</button> 
+
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- <script>
     function sample6_execDaumPostcode() {
