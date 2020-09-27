@@ -2057,12 +2057,12 @@ h3 {
 
 /* line 7, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
 .bradcam_bg_3 {
-  background-image: url(../img/banner/bradcam3.png);
+  background-image: url("<%=request.getContextPath()%>/img/banner/bradcam3.jpg");
 }
 
 /* line 10, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
 .bradcam_bg_4 {
-  background-image: url(../img/banner/bradcam4.png);
+  background-image: url("<%=request.getContextPath()%>/img/banner/bradcam4.png");
 }
 
 /* line 13, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
@@ -2804,7 +2804,7 @@ h3 {
 
 /* line 80, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_destination.scss */
 .destination_banner_wrap {
-  background-image: url(../img/banner/destination.png);
+	background-image: url(../img/banner/destination.png);
   padding: 340px 0;
   background-size: cover;
   background-position: center center;
@@ -6681,4 +6681,37 @@ h6 {
   font-size: 12px;
 }
 
-/*# sourceMappingURL=style.css.map */
+
+
+
+
+
+
+
+
+
+/*지선 CSS추가*/
+.heart-button{
+  cursor: pointer;
+ 
+}
+
+
+.review-score .review-badge {
+    font-size: 2.4rem;
+    color: #fff;
+    background: linear-gradient(45deg,rgb(178, 236, 241),rgb(111, 171, 221) 50%);
+    border-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    /* padding: -20%; */
+    float: left;
+
+}
+
+
+
+
+

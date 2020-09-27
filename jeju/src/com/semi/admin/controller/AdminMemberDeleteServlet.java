@@ -34,12 +34,14 @@ public class AdminMemberDeleteServlet extends HttpServlet {
 		int result =new AdminService().adminDeleteMember(userId);
 		
 		String msg="";
-		String loc="";
+		String loc="/";
 		
 		if(result>0) {
 			msg="강제 회원탈퇴에 성공하였습니다";
+			loc="/admin/memberList";
 		}else {
 			msg="강제 회원탈퇴에 실패하였습니다";
+			loc="/admin/memberList";
 		}
 		
 		request.setAttribute("msg", msg);

@@ -135,8 +135,8 @@ a{
     justify-content : space-between;
     align-items:center;
     /* padding :8px 12px; */
-    background-image: url("https://blog.hmgjournal.com/images/contents/article/20161208-Reissue-jejuhaevichi-winter-01.jpg")
-    ;
+    /* background-image: url("https://blog.hmgjournal.com/images/contents/article/20161208-Reissue-jejuhaevichi-winter-01.jpg")
+    ; */
    background-repeat: no-repeat;
    background-size: cover;
    z-index: 1;

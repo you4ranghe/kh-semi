@@ -4,13 +4,15 @@
 <%@page import="com.semi.member.model.vo.Member" %>    
 <%@page import="java.sql.Date" %> 
 <%
-	Member logginedMember2 = (Member)session.getAttribute("logginedMember");
+	Member m=(Member)request.getAttribute("member");
+	int productNum=(int)request.getAttribute("productNum");
 	String productName=(String)request.getAttribute("productName");
-	String productPrice=(String)request.getAttribute("productPrice");
+	int totalPrice=(int)request.getAttribute("productPrice");
 	String productInfo=(String)request.getAttribute("productInfo");
-	String date=(String)request.getAttribute("date");
+	String dateStart=(String)request.getAttribute("dateStart");
 	int chaildNum=(int)request.getAttribute("chaildNum");
 	int adultNum=(int)request.getAttribute("adultNum");
+	String imageFile=(String)request.getAttribute("imageFile");
 	
 	
 %>
@@ -49,12 +51,12 @@
 	}
 	form #orderContent{
 		width:800px;
-		height:500px;
+		height:300px;
 	}
 	
 	form #reservation{
 		width:800px;
-		height:500px;
+		height:300px;
 	}
 	
 	form #paytype{
@@ -64,26 +66,54 @@
 	
 	
 	#payContent{
-		margin-left:500px;
+		margin-left:600px;
 		
 		margin-top:100px;
 	}
 	#payContent div table{
-		margin-left:30px;
+		margin-left:50px;
 		
 	}
+	#productContent {
+		
 	
+	}
+	#orderContent input{
+		width:350px;
+		margin-left:100px;
+	}
+	#reservation input{
+		width:350px;
+		margin-left:100px;
+	}
+	strong{
+		font-size:20px;
+	}
+	#paybtn{
+		margin-left:200px; 
+		margin-top:20px; 
+		margin-bottom:50px;
+		width:100px;
+		height:50px;
+		border-radius:10px;
+	}
+	#payreset{
+		margin-left:200px;
+	 	width:100px;
+	 	height:50px;
+	 	border-radius:10px;
+	}
 </style>
 
-<section id="payContent">
+<section id="payContent" style="width:1250px;">
 <form action="<%=request.getContextPath()%>/payEnd" id="payFrm">
-
+	<input type="hidden" value="<%=m.getUserId()%>" name="userId">
 	<strong>상품정보</strong>
 	<div id="productContent">
 		<table>
 			<tr>
 				<td rowspan="5">
-					<img alt="" src="" width="200px" height="200px">
+					<img alt="" src="<%=request.getContextPath() %>/img/banner/<%=imageFile%>" width="200px" height="200px" >
 				</td>
 			</tr>
 			<tr>
@@ -91,7 +121,7 @@
 					상품번호
 				</td>
 				<td>
-					<input type="text">
+					<input type="text" readonly value="<%=productNum%>" name="productNum"> 
 				</td>
 			</tr>
 			<tr>
@@ -99,7 +129,7 @@
 					상품명
 				</td>
 				<td>
-					<input type="text" value="<%=productName%>">
+					<input type="text" value="<%=productName%>" readonly>
 				</td>
 				
 			</tr>
@@ -108,7 +138,7 @@
 					인원수 
 				</td>
 				<td>
-					어린이 : <input type="text" value="<%=chaildNum%>"style="width:30px;"> 어른 : <input type="text" value="<%=adultNum %>"style="width:30px;">
+					어린이 : <input type="text" name="chaildNum" value="<%=chaildNum%>"style="width:30px;" readonly> 어른 : <input type="text" name="adultNum"value="<%=adultNum %>"style="width:30px;" readonly>
 				</td>
 				
 			</tr>
@@ -116,26 +146,28 @@
 				<td>
 					일정
 				</td>
-				<td>
-					<%=date %>
+				<td>	
+					
+					<%=dateStart %><input type="hidden" value="<%=dateStart%>" name="dateStart">
 				</td>
 				
 			</tr>
 			<tr>
 				<td colspan="3">
-					<textarea rows="7" cols="70"> <%=productInfo %>
+					<textarea rows="7" cols="70" style="margin-top:15px;  resize: none;" readonly> <%=productInfo %>
 				
 					</textarea>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<strong>총가격</strong> : <%=productPrice %> 				
+					<p style="float:right;">총가격 : <%=totalPrice %></p> <input type="hidden" name="totalPrice" value="<%=totalPrice%>">			
 				</td>
 			</tr>
 		</table>
 		
 	</div>
+	
 	<strong>주문자 정보</strong>
 	<div id="orderContent">
 		<table>
@@ -144,7 +176,7 @@
 					주문자 성명
 				</td>
 				<td>
-					<input type="text" value="<%=logginedMember2.getUserName()%>">
+					<input type="text" value="<%=m.getUserName()%>"  readonly>
 				</td>	
 			</tr>
 			<tr>
@@ -152,7 +184,7 @@
 					주문자 주소
 				</td>
 				<td>
-					<input type="text" value="<%=logginedMember2.getAddress()%>">
+					<input type="text" value="<%=m.getAddress()%>" readonly>
 				</td>
 			</tr>
 			<tr>
@@ -160,7 +192,7 @@
 					주문자 전화번호
 				</td>
 				<td>
-					<input type="text" value="<%=logginedMember2.getPhone()%>">
+					<input type="text" value="<%=m.getPhone()%>" readonly>
 				</td>
 			</tr>
 			<tr>
@@ -168,7 +200,7 @@
 					이메일
 				</td>
 				<td>
-					<input type="text" value="<%=logginedMember2.getEmail()%>">
+					<input type="text" value="<%=m.getEmail()%>" readonly>
 				</td>
 			</tr>
 		</table>
@@ -182,7 +214,7 @@
 					예약인 성명
 				</td>
 				<td>
-					<input type="text" value="" id="payuser">
+					<input type="text" value="" id="payuser" name="payuser" required>
 				</td>	
 			</tr>
 			<tr>
@@ -190,11 +222,12 @@
 					예약인 주소
 				</td>
 				<td>
-					<input type="text" id="sample6_postcode" placeholder="우편번호" style="">
+					<input type="text" id="payaddress" value="" name="payaddress"required>
+				<!-- 	<input type="text" id="sample6_postcode" placeholder="우편번호" style="">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" id="sample6_address" placeholder="주소"><br>
 					<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+					<input type="text" id="sample6_extraAddress" placeholder="참고항목"> -->
 				</td>
 			</tr>
 			<tr>
@@ -202,7 +235,7 @@
 					예약인 전화번호
 				</td>
 				<td>
-					<input type="text" id="payphone" value="">
+					<input type="text" id="payphone" name="payphone"value="" required>
 				</td>
 			</tr>
 			<tr>
@@ -210,7 +243,7 @@
 					이메일
 				</td>
 				<td>
-					<input type="text" id="payemail" value="">
+					<input type="text" id="payemail" name="payemail" required>
 				</td>
 			</tr>
 		</table>
@@ -219,21 +252,24 @@
 	</div>
 		<strong>결제 방법</strong>
 	<div id="paytype">
+		<label><input type="radio" name="payType"checked value="card" style="margin-top:50px;">신용카드</label> <label><input type="radio" onclick="return(false);">나머지 결제방식은 수리중에 있습니다</label>
 	</div>
-	<!-- <input type="submit" value="결제하기"> -->
+	<input type="submit" value="결제하기"> 
 </form>
 <script>
 
 
     $("#paycheck").change(function(){
         if($("#paycheck").is(":checked")){
-            $("#payuser").val("<%=logginedMember2.getUserName()%>");
-          	$("#payphone").val("<%=logginedMember2.getPhone()%>");
-          	$("#payemail").val("<%=logginedMember2.getEmail()%>");
+            $("#payuser").val("<%=m.getUserName()%>");
+          	$("#payphone").val("<%=m.getPhone()%>");
+          	$("#payemail").val("<%=m.getEmail()%>");
+          	$("#payaddress").val("<%=m.getAddress()%>");
         }else{
             $("#payuser").val(null);
             $("#payphone").val(null);
             $("#payemail").val(null);
+     		$("#payaddress").val(null);
          
         }
     });
@@ -241,10 +277,9 @@
 
 
 </script>
- 
-<button id="check_module" type="button">결제하기</button> <button>취소</button> 
+<button id="paybtn" type="button">결제하기</button> <button id="payreset">취소</button> 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
+<!-- <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -292,10 +327,14 @@
             }
         }).open();
     }
-</script>
+</script> -->
 
 <script>
-$("#check_module").click(function () {
+$("#paybtn").click(function () {
+/* if(!$("#payemail").val()){
+	alert("입력핫")
+}
+	 */
 var IMP = window.IMP; // 생략가능
 IMP.init('imp51030201');
 // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -329,12 +368,13 @@ https://docs.iamport.kr/implementation/payment
 참고하세요.
 나중에 포스팅 해볼게요.
 */
+
 name: '주문명:결제테스트',
 //결제창에서 보여질 이름
-amount: 100,
+amount: <%=totalPrice%>,
 //가격
 buyer_email: 'iamport@siot.do',
-buyer_name: '<%=logginedMember2.getUserName()%>',
+buyer_name: '<%=m.getUserName()%>',
 buyer_tel: '010-1234-5678',
 buyer_addr: '서울특별시 강남구 삼성동',
 buyer_postcode: '123-456',
