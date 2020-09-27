@@ -103,36 +103,37 @@ public class UpdateProductEndServlet extends HttpServlet {
 		p.setpMap(mr.getParameter("map"));
 		
 		//filepath는 리네임된 파일명을 가져와야함
-		
+		System.out.println(mr.getFilesystemName("slider"));
 		if(mr.getFilesystemName("slider")!=null) {
 			String slider=mr.getFilesystemName("slider");
-			p.setTitleImgPath((slider));
+			p.setTitleImgPath(slider);
+			System.out.println(p.getTitleImgPath());
 			//사용자가 전달한 파일명과 동일한 파일을 클라이언트에게 보내줌
 			//1. 전송할 파일에 대한 경로를 가져옴
-			String filepath=getServletContext().getRealPath("/upload/product");
-			String file=request.getParameter("sliderorigin");
-			
+//			String filepath=getServletContext().getRealPath("/upload/product");
+//			String file=request.getParameter("sliderorigin");
+//			
 			//파일 입출력을 위한 스트림열기
 			//1.hard에 있는 파일을 RAM으로 가져옴.
-			File f=new File(filepath+"/"+file);
-			System.out.println(f.getName());
-			f.delete();
+//			File f=new File(filepath+"/"+file);
+//			System.out.println("f.getname : "+f.getName());
+//			f.delete();
 		}else {
 			p.setTitleImgPath(mr.getParameter("sliderorigin"));
 		}
 		
 		if(mr.getFilesystemName("main")!=null) {
 			String main=mr.getFilesystemName("main");
-			p.setpImgPath((main));
+			p.setpImgPath(main);
 			
 		}else {
-			p.setTitleImgPath(mr.getParameter("mainorigin"));
+			p.setpImgPath(mr.getParameter("mainorigin"));
 		}
 		
 		
 		if(mr.getFilesystemName("route")!=null) {
 			String route=mr.getFilesystemName("route");
-			p.setScheduleImgPath((route));
+			p.setScheduleImgPath(route);
 			
 		}else {
 			p.setScheduleImgPath(mr.getParameter("routeorigin"));
