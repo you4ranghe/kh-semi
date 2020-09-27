@@ -120,6 +120,13 @@ function update_validate(){
         nickname.focus();
         return false;
  		}
+var profile = document.getElementById('profile').value;
+ 	
+ 	if (profile == null || profile == "") {
+ 		alert("프로필 첨부 파일은 필수 입니다.");
+        return false;
+ 		}
+ 	
 }
 </script>
 <%@ include file="/views/common/footer.jsp" %>
