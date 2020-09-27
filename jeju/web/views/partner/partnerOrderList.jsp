@@ -6,7 +6,10 @@
 <%
 	List<payEnd> list=(List)request.getAttribute("list");
 	SimpleDateFormat fr = new SimpleDateFormat("yyyy-MM-dd");
-
+	int count=0;
+	for(payEnd pe:list){
+		count++;
+	}
 %>
 
 
@@ -95,7 +98,8 @@
 			<th style="width: 12%">결제 금액<br>[결제수단]</th>
 			
 		</tr>
-		<%for(payEnd pe:list){ %>
+		<%	if(count!=0){
+				for(payEnd pe:list){ %>
 		<tr>
 			<td><a href="<%=request.getContextPath()%>/partner/orderDetail?pe=<%=pe.getPayNum()%>"><%=pe.getPayDate() %><br>[<%=pe.getPayNum() %>]</a></td>
 			<td><a href="<%=request.getContextPath()%>/partner/orderDetail?pe=<%=pe.getPayNum()%>"><img src="<%=request.getContextPath()%>/upload/product/<%=pe.getTitleImgPath()%>" width="100px" height="100px"></a></td>
@@ -109,7 +113,12 @@
 			</td>
 			<td><a href="<%=request.getContextPath()%>/partner/orderDetail?pe=<%=pe.getPayNum()%>"><%=pe.getTotalPrice() %> [<%=pe.getPayType() %>]</a></td>
 		</tr>
-		<%} %>
+		<%		}	
+			}else{%>
+			
+			<td colspan="5">조회된 판매내역이 없습니다 !</td>
+			
+			<%} %>
 	
 	</table>
 	

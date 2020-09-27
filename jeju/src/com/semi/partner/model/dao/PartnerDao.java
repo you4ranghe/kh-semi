@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -324,7 +323,7 @@ public class PartnerDao {
 			pstmt.setString(18, p.getpMap());
 			pstmt.setInt(19, p.getpNum());
 //			pstmt.setString(19, p.getPartnerId());
-			pstmt.setString(20, "user01");
+			pstmt.setString(20, p.getPartnerId());
 			
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {

@@ -47,7 +47,9 @@ public class PartnerOrderListServlet extends HttpServlet {
 		int numPerPage=5; //한페이지 당 데이터수
 		
 		List<payEnd> list=new PartnerService().selectPartnerOrderList(cPage,numPerPage,p.getPartnerId());
-		
+		for(payEnd pe:list) {
+			System.out.println("pe"+pe.getPayName());
+		}
 		int totalData=new PartnerService().selectPartnerOrderListCount(p.getPartnerId());
 		
 		int totalPage=(int)(Math.ceil((double)totalData/numPerPage));

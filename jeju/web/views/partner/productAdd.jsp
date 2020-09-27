@@ -121,7 +121,7 @@
 			
 			<tr>
 				<th>소요시간 설명</th>
-				<td><textarea name="runtime" id="runtime" required cols="100" rows="5">??</textarea></td>
+				<td><textarea name="runtime" id="runtime" required cols="100" rows="5"></textarea></td>
 			
 			</tr>
 			<tr>
