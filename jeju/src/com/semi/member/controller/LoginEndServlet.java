@@ -63,7 +63,7 @@ public class LoginEndServlet extends HttpServlet {
 
 			session.setAttribute("logginedMember",m);	
 			
-		if(p!=null) {
+		if(p!=null && p.getPartnerStatus().equals("Y")) {
 			session.setAttribute("logginedPartner", p);
 			
 		}
