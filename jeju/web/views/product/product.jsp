@@ -391,14 +391,42 @@
 						</aside>
 
 
-						<div class="review-score">
-							<div class="review-badge">${p.pScore }</div>
-							<div class="product-star text-sm">
-								<p class="star_rating">
+						
+							
+							
+							<div class="review-score">
+							<div class="review-badge">
+							
+							<c:set var="s" value="${p.pScore}" />
+
+							<c:choose>
+							    <c:when test="${s == '5'}">
+							        ★★★★★
+							    </c:when>
+							    <c:when test="${s == '4'}">
+							        ★★★★
+							    </c:when>
+							    <c:when test="${s == '3'}">
+							        ★★★
+							    </c:when>
+							    <c:when test="${s == '2'}">
+							        ★★
+							    </c:when>
+							    <c:otherwise>
+							        ★
+							    </c:otherwise>
+							</c:choose>
+							</div>
+							</div>						
+
+							</div>
+						
+							<!-- <div class="product-star text-sm">
+<								<p class="star_rating">
 									<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
 										href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
-								</p>
-							</div>
+								</p> 
+							</div> -->
 						</div>
 					</div>
 					</div>

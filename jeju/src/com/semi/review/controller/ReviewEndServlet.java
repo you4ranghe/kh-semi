@@ -3,6 +3,7 @@ package com.semi.review.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,38 +50,48 @@ public class ReviewEndServlet extends HttpServlet {
 
 		int result1 = new ProductService().confirmReview(r);
 		
+
+		
 		String msg="";
 		String loc="";
 		
 		if(result1>0) {
 			
 			int result = new ProductService().insertReview(r);
+		
 			
 					if(result>0) {
+						
 						msg="리뷰 등록 성공!";
-						loc="product/productList?pNum="+pNum;
+						loc="/product/productList?pNum="+pNum;
 						
 						response.setContentType("text/html; charset=UTF-8"); 
 						PrintWriter writer = response.getWriter();
-						writer.println("<script>alert('리뷰 등록 성공!');</script>"); 
+						writer.println("<script>alert('리뷰 등록 성공!'); location.href='product/productList?pNum='+pNum</script>");
 						writer.close();
+						
 
-							
+
 					}else {
+						
+						
 						msg="리뷰 등록 실패!";
-						loc="product/productList?pNum="+pNum;
+						loc="/product/productList?pNum="+pNum;
+						
+						
 					}
 			
-			
-				
+					
 		}else {
 			msg="구매하신 회원만 리뷰 작성이 가능합니다";
-			
+			loc="/product/productList?pNum="+pNum;
 			
 			request.setAttribute("msg",msg);
 			request.setAttribute("loc",loc);
 			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		}
+		
+
 	
 		
 		
