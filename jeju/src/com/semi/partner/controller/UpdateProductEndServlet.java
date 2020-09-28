@@ -1,6 +1,5 @@
 package com.semi.partner.controller;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -16,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.member.model.vo.Member;
 import com.semi.partner.model.service.PartnerService;
+import com.semi.partner.model.vo.Partner;
 import com.semi.product.model.vo.Product;
 
 /**
@@ -40,7 +40,7 @@ public class UpdateProductEndServlet extends HttpServlet {
 		//1. type multipart/formdata방식으로 왔는지 확인
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			//잘못된 요청이기때문에 중단됨 
-			request.setAttribute("msg", "상품등록 오류[form:enctype] 관리자에게 문의하세요." );
+			request.setAttribute("msg", "상품수정 오류[form:enctype] 관리자에게 문의하세요." );
 			request.setAttribute("loc", "/");
 			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 			return;
@@ -75,8 +75,19 @@ public class UpdateProductEndServlet extends HttpServlet {
 		
 		Product p=new Product();
 		HttpSession session=request.getSession();
+		Partner pt=(Partner)session.getAttribute("logginedPartner");
 		Member m=(Member)session.getAttribute("logginedMember");
-		//p.setPartnerId(m.getUserId());
+		String msg="";
+		String loc="";
+		if(!mr.getParameter("partnerId").equals(pt.getPartnerId())) {
+			request.setAttribute("msg", "이 상품의 수정권한이 없습니다 !" );
+			request.setAttribute("loc", "/");
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			return;
+		}
+		
+		
+		p.setPartnerId(pt.getPartnerId());
 		p.setpNum(Integer.parseInt(mr.getParameter("pNum")));
 		p.setpName(mr.getParameter("name"));
 		p.setpBigNameEng(mr.getParameter("engName"));
@@ -103,20 +114,20 @@ public class UpdateProductEndServlet extends HttpServlet {
 		p.setpMap(mr.getParameter("map"));
 		
 		//filepath는 리네임된 파일명을 가져와야함
-		System.out.println(mr.getFilesystemName("slider"));
+
 		if(mr.getFilesystemName("slider")!=null) {
 			String slider=mr.getFilesystemName("slider");
-			p.setTitleImgPath(slider);
-			System.out.println(p.getTitleImgPath());
-			//사용자가 전달한 파일명과 동일한 파일을 클라이언트에게 보내줌
-			//1. 전송할 파일에 대한 경로를 가져옴
+
+			p.setTitleImgPath((slider));
+//			//사용자가 전달한 파일명과 동일한 파일을 클라이언트에게 보내줌
+//			//1. 전송할 파일에 대한 경로를 가져옴
 //			String filepath=getServletContext().getRealPath("/upload/product");
 //			String file=request.getParameter("sliderorigin");
 //			
-			//파일 입출력을 위한 스트림열기
-			//1.hard에 있는 파일을 RAM으로 가져옴.
+//			//파일 입출력을 위한 스트림열기
+//			//1.hard에 있는 파일을 RAM으로 가져옴.
 //			File f=new File(filepath+"/"+file);
-//			System.out.println("f.getname : "+f.getName());
+//			System.out.println(f.getName());
 //			f.delete();
 		}else {
 			p.setTitleImgPath(mr.getParameter("sliderorigin"));
@@ -139,12 +150,10 @@ public class UpdateProductEndServlet extends HttpServlet {
 			p.setScheduleImgPath(mr.getParameter("routeorigin"));
 		}	
 		
-//		p.setPartnerId(m.getUserId());
-		
+		System.out.println(p.getTitleImgPath()+" , "+p.getpImgPath()+" , "+p.getScheduleImgPath());
 		
 		int result=new PartnerService().updateProduct(p);
-		String msg="";
-		String loc="";
+		
 		if(result>0) {
 			msg="상품이 수정되었습니다!";
 			loc="/partner/partnerProductList";//나중에 바로 상세페이지로 옮겨가기

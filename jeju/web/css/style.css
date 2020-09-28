@@ -220,13 +220,15 @@ h3 {
 .overlay::before {
   position: absolute;
   content: "";
-  background-color: #040E27;
+ background-color: #040E27;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
   opacity: .1;
+ 
+  
 }
 
 /* line 158, ../../Arafath/CL/December/231. Travel-02/HTML/scss/theme-default.scss */
@@ -298,6 +300,11 @@ h3 {
 .section-padding {
   padding-top: 120px;
   padding-bottom: 120px;
+  
+  /*지선 패딩 수정*/
+  padding-right : 25%;
+  padding-left:25%;
+  
 }
 
 /* line 215, ../../Arafath/CL/December/231. Travel-02/HTML/scss/theme-default.scss */
@@ -941,12 +948,10 @@ h3 {
   padding: 12px 0;
   position: relative;
 
-  left:100px;
-  
-}
 .card-body row no-gutters align-items-center{
 	positon:relative;
 	left:50px;
+
 }
 
 /* line 75, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
@@ -1106,7 +1111,9 @@ h3 {
 /* line 204, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li:first-child a {
   padding-left: 0;
-  font-size:30px;
+
+  font-size:25px;
+
 }
 
 /* line 210, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
@@ -2815,11 +2822,11 @@ h3 {
 
 /* line 80, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_destination.scss */
 .destination_banner_wrap {
-	background-image: url(../img/banner/destination.png);
-  padding: 340px 0;
+	background-image: url(../img/banner/destination.png); 
+	 padding: 340px 0;
   background-size: cover;
-  background-position: center center;
-}
+  background-position: center center; 
+} 
 
 @media (max-width: 767px) {
   /* line 80, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_destination.scss */
@@ -3357,6 +3364,12 @@ h3 {
 /* line 1, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_video.scss */
 .video_bg {
   background-image: url(../img/banner/why.png);
+
+}
+
+.video_bg1 {
+  background-image: url(../upload/product/video1.png);
+
 }
 
 /* line 4, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_video.scss */
@@ -3622,6 +3635,7 @@ h3 {
   padding-left: 18px;
   font-size: 13px;
   background: transparent;
+
 }
 
 /* line 69, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_contact.scss */
@@ -5687,6 +5701,8 @@ h6 {
   background: #fbf9ff;
   padding: 30px;
   margin-bottom: 30px;
+  width:250px;
+  /*지선 width수정*/
 }
 
 /* line 664, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
@@ -5703,6 +5719,8 @@ h6 {
   padding-left: 20px;
   border-radius: 0;
   border-right: 0;
+  
+  
 }
 
 /* line 681, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
@@ -6216,6 +6234,7 @@ h6 {
   }
 }
 
+
 /* line 1314, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
 .comments-area {
   background: transparent;
@@ -6270,6 +6289,7 @@ h6 {
   /* line 1362, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
   .comments-area .comment-list .single-comment .comment {
     font-size: 10px;
+
   }
 }
 
@@ -6297,6 +6317,7 @@ h6 {
   margin-bottom: 10px;
   color: #777777;
   font-size: 15px;
+
 }
 
 /* line 1391, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
@@ -6307,6 +6328,7 @@ h6 {
   font-size: 14px;
   display: block;
   font-weight: 400;
+  
 }
 
 /* line 1408, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
@@ -6362,6 +6384,7 @@ h6 {
   padding-left: 18px;
   font-size: 13px;
   background: transparent;
+  
 }
 
 /* line 1453, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_blog.scss */
@@ -6719,10 +6742,47 @@ h6 {
     border-bottom-left-radius: 4px;
     /* padding: -20%; */
     float: left;
-
+    width: 200px;
+    height:70px;
+	text-align: center;
 }
 
 
+/* 수정삭제 */
+.genric-btn2.info {
+  color: #fff;
+  background: #38a4ff;
+  border: 1px solid transparent;
+}
 
+.genric-btn2.info:hover {
+  color: #38a4ff;
+  border: 1px solid #38a4ff;
+  background: #fff;
+  cursor: pointer;
+}
 
+.col-lg-44{
+	margin-top:6%;
+    float: right;
+    width:30%;
+    box-sizing: border-box;
+    position:absolute ; right:0;
+    
+    /*페이지 옆에 사이드*/
+}
 
+.personImg{
+	  position:absolute ; 
+	  left:25%;
+}
+
+.col-12{
+	/*리뷰쓰는창 날짜 띄우기*/
+	padding-bottom:20px;
+}
+
+.pImgPath{
+	/*제목위에pimgpath*/
+	padding-bottom:20px;
+}

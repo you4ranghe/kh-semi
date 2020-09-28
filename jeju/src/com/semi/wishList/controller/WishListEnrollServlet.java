@@ -38,25 +38,30 @@ public class WishListEnrollServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-
-		 WishList we=new WishList();
-		  
-		 we.setUserId(request.getParameter("userId"));
-		 we.setProductNum(Integer.parseInt(request.getParameter("productNum")));
-		 we.setPageAddress(request.getParameter("pageAddress"));
-		  
-		 int result=new WishListService().insertWish(we);
-
-		 response.setContentType("text/html; charset=UTF-8"); 
-		 PrintWriter writer = response.getWriter(); 
-		if(result>0) {
-		 writer.println("<script>alert('위시리스트 등록')</script>"); 
-		}else {
-		 writer.println("<script>alert('이미 등록된 상품입니다.')</script>"); 
-		}
-		
-		 writer.close();
-
+		System.out.println("나 나오냐?????");
+	      int result=0;
+	       WishList we=new WishList();
+	       String userId=request.getParameter("userId");
+	       we.setUserId(request.getParameter("userId"));
+	       we.setProductNum(Integer.parseInt(request.getParameter("productNum")));
+	       we.setPageAddress(request.getParameter("pageAddress"));
+	       response.setContentType("text/html; charset=UTF-8"); 
+	       PrintWriter writer = response.getWriter(); 
+	        
+	       int count=new WishListService().countWish(userId);
+	       
+	       if(count<4) {
+	        result=new WishListService().insertWish(we);
+	           if(result>0) {
+	              writer.println("<script>alert('위시리스트 등록')</script>"); 
+	           }else {
+	              writer.println("<script>alert('이미 등록된 상품입니다.')</script>"); 
+	           }
+	       }else {
+	          writer.println("<script>alert('위시리스트는 4개까지 담을수 있습니다.')</script>");
+	       }
+	      
+	       writer.close();
 
 		
 

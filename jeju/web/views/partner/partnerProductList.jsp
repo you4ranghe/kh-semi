@@ -6,7 +6,10 @@
 
 <%
 	List<Product> list=(List)request.getAttribute("list");
-	
+	int count=0;
+	for(Product p:list){
+	count++;
+}
 %>
 <style>
 	.thumbnail{
@@ -254,6 +257,7 @@
 
 	<h3 class="part-title">&nbsp&nbsp&nbsp&nbsp내 상품 보기</h3>
 	
+
 	 <div class="row">
 	<%-- <div id="sidebar"  class="col-lg-2">
 
@@ -303,6 +307,9 @@
 			float:left;
 			padding:5px;
 			}
+			.no-pr{
+				margin:50px;
+			}
 		</style>
 
 		<div class="container">
@@ -322,8 +329,12 @@
 		<div class="container">
 		<div class="row"> 
 		<!-- <div class="col-lg-10"> -->
-		<%for(Product p:list){ %>
+		<%if(count!=0){
+			for(Product p:list){ %>
+		
+
 		  <div class="col-sm-6 col-lg-3 prmar">
+
 
 		    <div class="thumbnail img-div">
 		    
@@ -341,7 +352,11 @@
 		       
 		      </div>
 		    </div>
-	<%} %>
+
+
+		<%} }else{%>
+			<h3 class="no-pr">등록된 상품이 없습니다 !</h3>
+			<% }%>
 
 		  </div>
 		</div> 
@@ -352,6 +367,7 @@
                 </ul>
             </nav>
 	<%-- <div id="pageBar" class="col-lg-12 text-center">
+
 
 		<%=request.getAttribute("pageBar") %>
 	

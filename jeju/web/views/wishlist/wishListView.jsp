@@ -67,25 +67,37 @@
 					<tr id="wishtr">
 
 						<td width="20%" height="300px">
-							
-							<img alt="" src="<%=request.getContextPath()%>/img/banner/<%=m.get("imag")%>" width="250px" height="250px" style=" border-radius: 50%;" >
+																																			
+							<img alt="" src="<%=request.getContextPath()%>/upload/product/<%=m.get("imag")%>" width="250px" height="250px" style=" border-radius: 50%;" >
 							<br>
 						</td>
 						<td width="55%">
 	
-							<a href="<%=m.get("pageAddress")%>">
+							 <a href="<%=m.get("pageAddress")%>">
+                        
+                           <h2 style="font-size:25px;font-weight:bolder"><%=m.get("pName") %></h2>
+                     
+                           <%if(((String)m.get("pInfo")).length()>200) {%>
+                              <%info=((String)m.get("pInfo")).substring(0,200)+"...."; %>
+                           <%}else{ %>
+                              <%info= (String)m.get("pInfo");%>
+                           <%} %>
+                           <p>
+                              <%=info%>
+                           </p>
+                     
+                        
+                     </a>
 								
-									<h2 style="font-size:25px;font-weight:bolder"><%=m.get("pName") %></h2>
-									<%info=((String)m.get("pInfo")).substring(0,200)+"..."; %>
-									<p>
-										<%=info%>
-									</p>
+								
 							
 								
-							</a>
+						
 						</td>
 						<td width="9%">
+
 							<p style="margin-left:20px; "> 
+
 								<%startDate=(String)m.get("pDateStart"); %>
 								<%endDate=(String)m.get("pDateFinish"); %>
 								 <%=startDate.substring(0, 10) %> ~ <%=endDate.substring(0, 10) %>
@@ -105,7 +117,9 @@
 
 
 			<%}else{ %>
+
 				<div style="positon:relative;left: 100px; margin-left:400px; margin-top:150px;" id="elseDiv">
+
 					<p style="font-size:20px;font-weight:bolder">위시리스트가 존재하지 않습니다. 마음에 드는 상품들을 위시리스트에 추가해보세요</p>
 
 					

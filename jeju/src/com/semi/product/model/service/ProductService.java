@@ -10,6 +10,7 @@ import com.semi.review.model.vo.Review;
 
 import static com.semi.common.JDBCTemplate.commit;
 import static com.semi.common.JDBCTemplate.rollback;
+
 import static com.semi.common.JDBCTemplate.close;
 import static com.semi.common.JDBCTemplate.getConnection;
 
@@ -25,6 +26,16 @@ public class ProductService {
 		
 		close(conn);
 		return p;
+	}
+
+	
+	public int deleteReview(String userId, int reviewNum) {
+		Connection conn=getConnection();
+		int result=dao.deleteReview(conn,userId,reviewNum);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
 	}
 	
 
@@ -147,5 +158,16 @@ public class ProductService {
 		return list;
 	}
 
-
+	
+	public int confirmReview(Review r) {
+		Connection conn = getConnection();
+		int result = dao.confirmReview(conn,r);
+		commit(conn);
+		close(conn);
+		
+		return result;
+	}
+	
+	
+	
 	}

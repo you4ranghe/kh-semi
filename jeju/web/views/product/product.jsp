@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page isELIgnored="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page isELIgnored="false"%>
 <%@page import="java.util.List"%>
 <%@page import="com.semi.product.model.vo.Product"%>
 <%@page import="com.semi.payment.model.vo.Payment"%>
@@ -13,7 +14,7 @@
 	
 	Payment pm = (Payment)request.getAttribute("payment");
 	
-	WishList wl = (WishList)request.getAttribute("wishlist");
+	WishList we = (WishList)request.getAttribute("we");
 	
 	Review r = (Review)request.getAttribute("review");
 	List<Review> rlist = (List)request.getAttribute("reviewList"); 
@@ -98,7 +99,7 @@
 <!-- </head> -->
 
 <!-- <body> -->
-	<!--[if lte IE 9]> <p class="browserupgrade">You are using an
+<!--[if lte IE 9]> <p class="browserupgrade">You are using an
         <strong>outdated</strong> browser. Please <a
         href="https://browsehappy.com/">upgrade your browser</a> to improve your
         experience and security.</p> <![endif]-->
@@ -107,13 +108,14 @@
 
 <%-- <c:forEach var="p" items="${productList}" > --%>
 
-	<div class="destination_banner_wrap overlay">
-		<div class="destination_text text-center">
-<%-- ${p.pBigNameEng} --%>
-			<h3>${p.pBigNameEng}</h3>
-			<p>${p.pBigNameKor}</p>
-		</div>
+
+<!--  <div class="destination_banner_wrap overlay" background-image: url(../img/banner/destination.png);>
+ --><div class="destination_banner_wrap overlay">
+	<div class="destination_text text-center">
+		<h3>${p.pBigNameEng}</h3>
+		<p>${p.pBigNameKor}</p>
 	</div>
+</div>
 
 <%-- .destination_banner_wrap2 {
 	background-image: url(${p.titleImgsPath});
@@ -124,60 +126,27 @@
 
 
 
+<!-- 써치필터 Section Begin -->
 
-	<!-- 데스티네이션 -->
-	<!-- <div class="destination_details_info"> <div class="container"> <div
-        class="row justify-content-center"> <div class="col-lg-8 col-md-9"> <div
-        class="destination_info"> <h3>Description</h3> <p>There are many variations of
-        passages of Lorem Ipsum available, but the majority have suffered alteration in
-        some form, by injected humour, or randomised words which don't look even
-        slightly believable. If you are going to use a passage of Lorem Ipsum, you need
-        to be sure there isn't anything embarrassing.</p> <p>Variations of passages of
-        lorem Ipsum available, but the majority have suffered alteration in some form,
-        by injected humour, or randomised words which don't look even slightly
-        believable. If you are going to use a passage of Lorem Ipsum, you need to be
-        sure there isn't anything embarrassing.</p> <div class="single_destination">
-        <h4>Day-01</h4> <p>There are many variations of passages of Lorem Ipsum
-        available, but the majority have suffered alteration in some form, by injected
-        humour, or randomised words.</p> </div> <div class="single_destination">
-        <h4>Day-02</h4> <p>There are many variations of passages of Lorem Ipsum
-        available, but the majority have suffered alteration in some form, by injected
-        humour, or randomised words.</p> </div> <div class="single_destination">
-        <h4>Day-03</h4> <p>There are many variations of passages of Lorem Ipsum
-        available, but the majority have suffered alteration in some form, by injected
-        humour, or randomised words.</p> </div> </div> <div class="bordered_1px"></div>
-        <div class="contact_join"> <h3>Contact for join</h3> <form action="#"> <div
-        class="row"> <div class="col-lg-6 col-md-6"> <div class="single_input"> <input
-        type="text" placeholder="Your Name"> </div> </div> <div class="col-lg-6
-        col-md-6"> <div class="single_input"> <input type="text" placeholder="Phone
-        no."> </div> </div> <div class="col-lg-12"> <div class="single_input"> <textarea
-        name="" id="" cols="30" rows="10"placeholder="Message" ></textarea> </div>
-        </div> <div class="col-lg-12"> <div class="submit_btn"> <button
-        class="boxed-btn4" type="submit">submit</button> </div> </div> </div> </form>
-        </div> </div> </div> </div> </div> -->
-	<!-- 데스티네이션 끝 -->
+<section class="search-filter">
+	<div class="container">
+		<div class="row">
+		
 
+			<div class="col-lg-12">
 
+				<form action="<%=request.getContextPath() %>/payList" method="post"
+					class="check-form" name="price_exec">
 
-	<!-- 써치필터 Section Begin -->
-
-	<section class="search-filter">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-
-					<form action="<%=request.getContextPath() %>/payList"
-						method="post" class="check-form" name="price_exec">
-
-						<h4>Check Option</h4>
-						<div class="datepicker">
-							<p>From</p>
-							<input type="date" name="pDateStart" min="${p.pDateStart}"
-								max="${p.pDateFinish}"> <input type="hidden"
-								name="poDate">
-							<!-- <img src="img/calendar.png" alt=""> -->
-						</div>
-						<%--                                 <div class="datepicker">
+					<h4>Check Option</h4>
+					<div class="datepicker">
+						<p>From</p>
+						<input type="date" name="pDateStart" min="${p.pDateStart}"
+							max="${p.pDateFinish}"> <input type="hidden"
+							name="poDate">
+						<!-- <img src="img/calendar.png" alt=""> -->
+					</div>
+					<%--                                 <div class="datepicker">
                                     <p>To</p>
                                 <input type="date" name="pDateFinish" min="2020-01-01" max="2020-12-31" value="${pm.pDateFinish}">
                                     <!-- <img src="img/calendar.png" alt=""> -->
@@ -185,40 +154,48 @@
 
 
 
-						<div class="room-quantity">
+					<div class="room-selector">
 
-							Total <span id='total_price' name='total_price'>0</span>원 
-							<input type=hidden name='total_price' value='${p.pPriceA}'> 
-							<input type=hidden name='total_price2' value='${p.pPriceC}'> 
-							<input type=hidden name='totalPrice' value='0'> Adult 
-							<select name='pCountA' onChange='change_price();'>
-								<option value='0'>0</option>
-								<option value='1'>1</option>
-								<option value='2'>2</option>
-								<option value='3'>3</option>
-								<option value='4'>4</option>
-								<option value='5'>5</option>
-								<option value='6'>6</option>
-								<option value='7'>7</option>
-								<option value='8'>8</option>
-								<option value='9'>9</option>
-								<option value='10'>10</option>
-								
-							</select> Child <select name='pCountC' onChange='change_price();'>
-								<option value='0'>0</option>
-								<option value='1'>1</option>
-								<option value='2'>2</option>
-								<option value='3'>3</option>
-								<option value='4'>4</option>
-								<option value='5'>5</option>
-								<option value='6'>6</option>
-								<option value='7'>7</option>
-								<option value='8'>8</option>
-								<option value='9'>9</option>
-								<option value='10'>10</option>
-							</select>
+						<!-- 							<p>Total</p>  
+							 <p><span id='total_price' name='total_price'>0</span>won</p>   -->
 
-							<script>
+						<input type=hidden name='total_price' value='${p.pPriceA}'>
+						<input type=hidden name='total_price2' value='${p.pPriceC}'>
+						<p>Adult</p>
+						<input type=hidden name='totalPrice' value='0'> <select
+							class="suit-select" name='pCountA' onChange='change_price();'>
+							<option value='0'>0</option>
+							<option value='1'>1</option>
+							<option value='2'>2</option>
+							<option value='3'>3</option>
+							<option value='4'>4</option>
+							<option value='5'>5</option>
+							<option value='6'>6</option>
+							<option value='7'>7</option>
+							<option value='8'>8</option>
+							<option value='9'>9</option>
+							<option value='10'>10</option>
+
+						</select>
+					</div>
+					<div class="room-selector">
+						<p>Child</p>
+						<select class="suit-select" name='pCountC'
+							onChange='change_price();'>
+							<option value='0'>0</option>
+							<option value='1'>1</option>
+							<option value='2'>2</option>
+							<option value='3'>3</option>
+							<option value='4'>4</option>
+							<option value='5'>5</option>
+							<option value='6'>6</option>
+							<option value='7'>7</option>
+							<option value='8'>8</option>
+							<option value='9'>9</option>
+							<option value='10'>10</option>
+						</select>
+					</div>
+					<script>
 										
 										function change_price(value){
 										    
@@ -262,7 +239,7 @@
 										
 										change_price();
 								</script>
-							<%-- <div class="single-quantity">
+					<%-- <div class="single-quantity">
                                         <p>Adults</p>
                                         <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountA}" name="getsu" onclick='change_price();'>
                                     </div>
@@ -273,36 +250,80 @@
                                          <input type="number" class="pro-qty" min="0" step="1" size="5" value="${p.pCountC}" name="getsu" onclick='change_price();'>
                                         
                                     </div> --%>
-							<!-- <div class="single-quantity last">
+					<!-- <div class="single-quantity last">
                                         <p>Rooms</p>
                                         <div class="pro-qty"><input type="text" value="0"></div>
                                     </div> -->
 
-						</div>
+					<!-- </div> -->
 
 
 
 
-						<div class="room-selector">
-							<p>Time</p>
-							<select class="suit-select" name="pTime">
-								<option>Check your Time</option>
-								<option value="09:00">09:00</option>
-								<option value="12:00">12:00</option>
-								<option value="15:00">15:00</option>
+					<div class="room-selector">
+						<p>Time</p>
 
-							</select>
-						</div>
+					<select class="suit-select" name="pTime">
+							<option>Check your Time</option>
+							<option value="09:00">09:00</option>
+							<option value="12:00">12:00</option>
+							<option value="15:00">15:00</option>
+							 
+						
 
 
-						<!-- 아이디넘기기 -->
-						<input type="hidden" name="userId" value="<%=logginedMember.getUserId()%>"> 
-						<input type="hidden" name="pNum" value='${p.pNum}'> 
-						<input type="hidden" name="pInfo" value='${p.pInfo}'>
-						<input type="hidden" name="pName" value='${p.pName}'>
-						<input type="hidden" name="titleImgPath" value='${p.titleImgPath}'>
-						<button type="submit" name="submit">buy</button>
+
+
+							<!-- 						<select id="vmMnDataSize" name="dataVolumn">
+						    <option id="selectDataSize" value="">선택</option> -->
+
+<%-- 								<select id="timeSelect" title="클릭하여 선택해주세요.">
+												
+											   <option value="${p.pTime}" <c:if test="${pTime}">selected</c:if>>시간선택</option>
+												
+								</select>  --%>
+
+
+							<%-- 				<c:forEach var="i" items="${p.pTime}">
+						for(var i=5; i<='<%=p.getpTime()%>'; i=i+5) {        
 						<script>
+						            var html;
+						            html += "<option value="+i+">"+i+"GB</option>"
+						        
+						        $("#vmMnDataSize").append(html);
+						        
+						</script>
+
+						        </c:forEach> --%>
+
+
+							<%-- 							<c:forEach var="a" items="${p.pTime}">
+							<option value="${a.pTime}"></option>
+							</c:forEach> --%>
+
+
+						</select>
+					</div>
+
+
+					<!-- 아이디넘기기 -->
+					<input type="hidden" name="userId"
+						value="<%=logginedMember.getUserId()%>"> <input
+						type="hidden" name="pNum" value='${p.pNum}'> <input
+						type="hidden" name="pInfo" value='${p.pInfo}'> <input
+						type="hidden" name="pName" value='${p.pName}'> <input
+						type="hidden" name="titleImgPath" value='${p.titleImgPath}'>
+
+					<div class="room-selector">
+						<p>Total</p>
+						<p>
+							<span id='total_price' name='total_price'>0</span>won
+						</p>
+					</div>
+
+					<button type="submit" name="submit">buy</button>
+
+					<script>
 						$(function(){
 			    		$("[name=submit]").focus(e => {
 			    			if(<%=logginedMember==null%>){
@@ -311,36 +332,116 @@
 			    				document.location.href="/views/product/product.jsp";
 			    			}
 			    		})
-						</script> 
-						
-					</form>
+						</script>
 
-				</div>
+				</form>
+
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
 
-	<!-- Search Filter Section End -->
+<!-- Search Filter Section End -->
 
 
 
-	<!--================Blog Area =================-->
-	<section class="blog_area single-post-area section-padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 posts-list">
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area section-padding">
 
-					<div class="single-post">
-						<div class="feature-img">
-							<img class="img-fluid"
-								src="<%=request.getContextPath() %>${p.titleImgPath}%>"
-								alt="" >
+				<div class="col-lg-44"
+					style="float: left; width: 33%; padding: 10px;">
+					<div class="blog_right_sidebar">
+						<aside class="single_sidebar_widget search_widget">
+							<!-- <form action="#">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder='Search Keyword'
+                                                onfocus="this.placeholder = ''"
+                                                onblur="this.placeholder = 'Search Keyword'">
+                                            <div class="input-group-append">
+                                                <button class="btn" type="button">
+                                                    <i class="ti-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Search</button>
+                                </form> -->
+						 	<div id="product-price-box">
+								<li><a href="#" class="d-flex">
+										<p>ADULT &nbsp;</p>
+										<p>${p.pPriceA}</p>
+								</a></li>
+								<li><a href="#" class="d-flex">
+										<p>CHILDREN &nbsp;</p>
+										<p>${p.pPriceC}</p>
+								</a></li>
+							</div> 
+
+
+							<!--  원래가격 : <span id='total_price'>0</span>원
+                                <form name='price_exec' method='get' onSubmit='submit_value();'> -->
+							<!--  금액 : <input type="text" name="sum" size="11" readonly> 원 -->
+						</aside>
+
+
+						
+							
+							
+							<div class="review-score">
+							<div class="review-badge">
+							
+							<c:set var="s" value="${p.pScore}" />
+
+							<c:choose>
+							    <c:when test="${s == '5'}">
+							        ★★★★★
+							    </c:when>
+							    <c:when test="${s == '4'}">
+							        ★★★★
+							    </c:when>
+							    <c:when test="${s == '3'}">
+							        ★★★
+							    </c:when>
+							    <c:when test="${s == '2'}">
+							        ★★
+							    </c:when>
+							    <c:otherwise>
+							        ★
+							    </c:otherwise>
+							</c:choose>
+							</div>
+							</div>						
+
+							</div>
+						
+							<!-- <div class="product-star text-sm">
+<								<p class="star_rating">
+									<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
+										href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
+								</p> 
+							</div> -->
 						</div>
+					</div>
+					</div>
+
+
+
+
+
 
 						<div class="blog_details">
 
-							<h2>${p.pBigNameKor}<button  id="wishbtn">위시리스트 추가</button>
+							
+							<img src="<%=request.getContextPath() %>/upload/product/${p.pImgPath}" width="640px" height="420px" class="pImgPath">
+							<h2>${p.pBigNameKor}<button  id="wishbtn">ADD WISHLIST</button>
+
 
 								<!-- 위시리스트 넘기기 -->
 								<%-- <a class="heart-button"
@@ -371,7 +472,7 @@
 
 
 							<!-----♥♥♥♥♥♥♥간단한 상품정보♥♥♥♥♥♥♥----->
-							<div class="product-benefit">
+<%-- 							<div class="product-benefit">
 								<hr>
 								<!---->
 								<div class="critical-info">
@@ -379,25 +480,38 @@
 									<span>
 										<p style="white-space: pre-line;">${p.pPointInfo}</p>
 									</span>
-								</div>
+								</div> --%>
 
-								<!--  <div class="critical-info">
-                                        <i class="fab fa-glide"></i>
-                                        <span>
-                                            한국어,영어 가이드</span>
-                                    </div>
 
-                                    <div class="critical-info">
-                                        <i class="fas fa-ticket-alt"></i>
-                                        <span>현장에서 전자바우처를 제시해주세요.</span>
-                                    </div> -->
+							<!-- 위시리스트 넘기기 -->
+<%-- 							<a class="heart-button"
+								href="<%=request.getContextPath()%>/wishListEnroll?userId=<%=logginedMember.getUserId()%>&productNum=${p.pNum}&pageAddress=<%=request.getRequestURI()%>">
+								<iframe src="#" width="0" height="0" name="pageAddress"></iframe>
+								♥
+							</a> --%>
 
-								<hr>
+
+							<!-- FORM으로 값 3개 보내고 경로를 IFRAME써서  -->
+						</h2>
+
+						<!-----♥♥♥♥♥♥♥간단한 상품정보♥♥♥♥♥♥♥----->
+						<div class="product-benefit">
+							<hr>
+							<!---->
+							<div class="critical-info">
+								<!-- <i class="far fa-clock"></i> -->
+								<span>
+									<p style="white-space: pre-line;">${p.pPointInfo}</p>
+								</span>
 							</div>
-							<!-----♥♥♥♥♥♥♥간단한 상품정보 끝♥♥♥♥♥♥♥----->
 
-							<p class="excert" style="white-space: pre-line;">${p.pInfo}</p>
-							<!-- <p style="white-space: pre-line;">
+
+							<hr>
+						</div>
+						<!-----♥♥♥♥♥♥♥간단한 상품정보 끝♥♥♥♥♥♥♥----->
+
+						<p class="excert" style="white-space: pre-line;">${p.pInfo}</p>
+						<!-- <p style="white-space: pre-line;">
                                     Did you know that you can enjoy a luxury yacht trip on a small travel budget?
                                     Let's go to the Grand Blue yacht experience with Jeju! From Seogwipo Daepo Port,
                                     you will board the Grand Blue Yacht and follow the dolphin spotting route,
@@ -406,21 +520,21 @@
                                     fishing directly at the fishing spot, You can relax with beer and wine on board.
                                     Enjoy a luxurious yacht experience at a reasonable price!
                                 </p> -->
-							<div class="quote-wrapper">
-								<div id="product-info-sec" class="info-section">
+						<div class="quote-wrapper">
+							<div id="product-info-sec" class="info-section">
 
-									<h3 class="info-title">PRODUCT DESCRIPTION</h3>
+								<h3 class="info-title">PRODUCT DESCRIPTION</h3>
 
-									<div>
-										<a href="#none" id="explain"
-											onclick="if(hide2.style.display=='none')
+								<div>
+									<a href="#none" id="explain"
+										onclick="if(hide2.style.display=='none')
                             {hide2.style.display='';explain.innerText='▲FOLD'}
                             else {hide2.style.display='none';explain.innerText='▶MORE'}">▶MORE</a>
-										<div id="hide2" style="display: none">
-											<div class="info-sec-collapsable expand">
-												<div>
-													<p style="white-space: pre-line;">${p.pIntd}</p>
-													<!-- <p>【POINTS】</p>
+									<div id="hide2" style="display: none">
+										<div class="info-sec-collapsable expand">
+											<div>
+												<p style="white-space: pre-line;">${p.pIntd}</p>
+												<!-- <p>【POINTS】</p>
                                                         <p>・ 8월 31일 13:00까지 저렴한 한정특가로 예약해보세요! 12월 31일까지 체험할 수 있습니다!</p>
                                                         <p>・ 제주도의 절경! 주상절리 대를 직접 감상해보세요.</p>
                                                         <p>・ 시원한 맥주를 마시고 낚시를 하며 최고의 여유로움을 만끽해보세요.</p>
@@ -435,41 +549,42 @@
                                                             <br><br>항해 노선 :
                                                             <br>대포항 - 주상절리 대 - 바다낚시, 돌고래 감상 - 선상 자유활동 - 대포항<br><br><br>【OPTION】<br>체험 포함 내용 :
                                                             <br>주상절리 대 감상 (개별 사진 촬영 가능)<br>바다 낚시 (15-20분)<br>돌고래 흔적 탐색 (돌고래 감상)<br><br><br>【NOTICE】<br>・ 본 체험에는 생선회 제공이 포함되어 있지 않습니다.<br>・ 요트 체험 시 맥주, 와인 그리고 과일을 제공하나, 바다 낚시 체험 시 알코올 음료를 제공하지 않습니다.<br>・ 만 3세 미만의 아동은 무료 참여가 가능하며, 만 3세 이상의 아동은 체험 티켓을 예매해야 합니다.<br>・ 날씨 혹은 선박 상태에 따라 체험 시간이 조정되거나 취소될 수 있습니다.<br><br><br>【HOW TO USE】<br>체험 시간 20분 전까지 매표소에서 신분증과 전자바우처 제시 후 승선신청표를 작성해 주시기 바랍니다.</p> -->
-												</div>
-
 											</div>
+
 										</div>
 									</div>
-
 								</div>
+
 							</div>
+						</div>
 
-							<!-----♥♥♥♥♥♥♥일정소개사진♥♥♥♥♥♥♥----->
-							<div id="schedule-sec" class="info-section">
-								<h3 class="info-title">SCHEDULE</h3>
+						<!-----♥♥♥♥♥♥♥일정소개사진♥♥♥♥♥♥♥----->
+						<div id="schedule-sec" class="info-section">
+							<h3 class="info-title">SCHEDULE</h3>
 
-								<div>
-									<a href="#none" id="schedule"
-										onclick="if(hide3.style.display=='none')
+							<div>
+								<a href="#none" id="schedule"
+									onclick="if(hide3.style.display=='none')
 											    {hide3.style.display='';schedule.innerText='▲FOLD'}
 											    else {hide3.style.display='none';schedule.innerText='▶MORE'}">▶MORE</a>
-									<div id="hide3" style="display: none">
-										<div class="info-sec-collapsable expand">
+								<div id="hide3" style="display: none">
+									<div class="info-sec-collapsable expand">
 
-											<i class="fas fa-clock"></i> <span>${p.runtime}</span>
-										</div>
+										<i class="fas fa-clock"></i> <span>${p.runtime}</span>
+									</div>
 
-										<div>
+									<div>
 
-											<ul class="time-info">
-												<li class="time-info-spot">
+										<ul class="time-info">
+											<li class="time-info-spot">
 
-													<div class="pd-info-img">
-														<img src="${p.scheduleImgPath}">
-														<%--  <img src="<%=request.getContextPath() %>/img/destination/jeju1.jpg" alt=""> --%>
-													</div>
-												</li>
-												<%--  <li>
+												<div class="pd-info-img">
+													<img
+														src="<%=request.getContextPath() %>/upload/product/${p.scheduleImgPath}">
+													<%--  <img src="<%=request.getContextPath() %>/img/destination/jeju1.jpg" alt=""> --%>
+												</div>
+											</li>
+											<%--  <li>
                                                         <div class="pd-info-img">
                                                             <img src="<%=request.getContextPath() %>/img/destination/jeju2.jpg" alt="">
                                                         </div>
@@ -484,42 +599,50 @@
                                                             <img src="<%=request.getContextPath() %>/img/destination/jeju4.jpg" alt="">
                                                         </div>
                                                     </li> --%>
-											</ul>
+										</ul>
 
-										</div>
 									</div>
 								</div>
-
 							</div>
-
-							<!-- 일정소개사진 끝 -->
 
 						</div>
 
 					</div>
 
-					<div class="navigation-top">
-						<div class="d-sm-flex justify-content-between text-center">
-							<p class="like-info">
-								<span class="align-middle"> <i class="fa fa-heart"></i>
-								</span> Lily and 4 people like this
-							</p>
-							<div class="col-sm-4 text-center my-2 my-sm-0">
-								<!-- <p class="comment-count"><span class="align-middle"><i class="fa
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<!-- 일정소개사진 끝 -->
+
+
+
+				<div class="navigation-top">
+					<div class="d-sm-flex justify-content-between text-center">
+						<p class="like-info">
+							<span class="align-middle"> <i class="fa fa-heart"></i>
+							</span> Lily and 4 people like this
+						</p>
+						<div class="col-sm-4 text-center my-2 my-sm-0">
+							<!-- <p class="comment-count"><span class="align-middle"><i class="fa
                                     fa-comment"></i></span> 06 Comments</p> -->
-							</div>
-							<ul class="social-icons">
-								<li><a href="#"> <i class="fa fa-facebook-f"></i>
-								</a></li>
-								<li><a href="#"> <i class="fa fa-twitter"></i>
-								</a></li>
-								<li><a href="#"> <i class="fa fa-dribbble"></i>
-								</a></li>
-								<li><a href="#"> <i class="fa fa-behance"></i>
-								</a></li>
-							</ul>
 						</div>
-						<!-- <div class="navigation-area"> <div class="row"> <div class="col-lg-6
+						<ul class="social-icons">
+							<li><a href="#"> <i class="fa fa-facebook-f"></i>
+							</a></li>
+							<li><a href="#"> <i class="fa fa-twitter"></i>
+							</a></li>
+							<li><a href="#"> <i class="fa fa-dribbble"></i>
+							</a></li>
+							<li><a href="#"> <i class="fa fa-behance"></i>
+							</a></li>
+						</ul>
+					</div>
+					<!-- <div class="navigation-area"> <div class="row"> <div class="col-lg-6
                             col-md-6 col-12 nav-left flex-row d-flex justify-content-start
                             align-items-center"> <div class="thumb"> <a href="#"> <img class="img-fluid"
                             src="img/post/preview.png" alt=""> </a> </div> <div class="arrow"> <a href="#">
@@ -531,25 +654,26 @@
                             href="#"> <span class="lnr text-white ti-arrow-right"></span> </a> </div> <div
                             class="thumb"> <a href="#"> <img class="img-fluid" src="img/post/next.png"
                             alt=""> </a> </div> </div> </div> </div> -->
-					</div>
+				</div>
 
 
 
 
 
-					<div class="blog-author">
-						<div class="media align-items-center">
-							<img src="img/destination/yoo.jpg" alt="">
-							<div class="media-body">
-								<div class="board bg-highlihgt mt-20" id="becareful">
-									<h4 class="info-subtitle mt-0">NOTICE</h4>
+				<div class="blog-author">
+					<div class="media align-items-center">
+						<img src="<%=request.getContextPath() %>/upload/product/yoo.jpg"
+							alt="">
+						<div class="media-body">
+							<div class="board bg-highlihgt mt-20" id="becareful">
+								<h4 class="info-subtitle mt-0">NOTICE</h4>
 
-									<div class="mt-10">
-										<ul>
-											<li>
-												<p>${p.precaution}</p>
-											</li>
-											<!--  <li>
+								<div class="mt-10">
+									<ul>
+										<li>
+											<p>${p.precaution}</p>
+										</li>
+										<!--  <li>
                                                     <p>승전 전, 반드시 승선신청표를 작성해 주셔야 합니다. 또한 현장 직원에게 신분증을 제시해 주시기 바랍니다.</p>
                                                 </li>
                                                 <li>
@@ -565,36 +689,36 @@
                                                 <li>
                                                     <p>날씨 혹은 선박 상태에 따라 체험 시간이 조정되거나 취소될 수 있습니다.</p>
                                                 </li> -->
-										</ul>
-									</div>
-
+									</ul>
 								</div>
+
 							</div>
 						</div>
 					</div>
+				</div>
 
 
 
 
 
-					<!-----♥♥♥♥♥♥♥집합장소 지도♥♥♥♥♥♥♥----->
-					<!-- <div id="meeting-sec" class="info-section2"> <h3 class="info-title">집합
+				<!-----♥♥♥♥♥♥♥집합장소 지도♥♥♥♥♥♥♥----->
+				<!-- <div id="meeting-sec" class="info-section2"> <h3 class="info-title">집합
                         장소</h3> -->
 
-					<!-- <div> -->
-					<div class="map-board">
+				<!-- <div> -->
+				<div class="map-board">
 
-						<div class="board-title">
-							<h3 class="info-title">MEETING PLACE</h3>
-							<h4>위치：GRANDEBLEU 탑승장소</h4>
-							<div class="text-grey">${p.pMapAddress}</div>
-						</div>
+					<div class="board-title">
+						<h3 class="info-title">MEETING PLACE</h3>
+						<h4>위치：GRANDEBLEU 탑승장소</h4>
+						<div class="text-grey">${p.pMapAddress}</div>
+					</div>
 
-						<hr>
+					<hr>
 
-						<div class="pd-info-img">
-							<div class="embed-responsive embed-responsive-16by9">
-								<!--  <iframe
+					<div class="pd-info-img">
+						<div class="embed-responsive embed-responsive-16by9">
+							<!--  <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d26624.14631548044!2d126.3802559!3d33.4748746!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1597559729830!5m2!1sko!2skr"
                                         width="600"
                                         height="450"
@@ -603,14 +727,14 @@
                                         allowfullscreen="allowfullscreen"
                                         aria-hidden="false"
                                         tabindex="0"></iframe> -->
-								<iframe src="${p.pMap}" width="600" height="450" frameborder="0"
-									style="border: 0px;" allowfullscreen="allowfullscreen"
-									aria-hidden="false" tabindex="0"></iframe>
-							</div>
+							<iframe src="${p.pMap}" width="600" height="450" frameborder="0"
+								style="border: 0px;" allowfullscreen="allowfullscreen"
+								aria-hidden="false" tabindex="0"></iframe>
 						</div>
-
 					</div>
-					<!-----♥♥♥♥♥♥♥집합장소 지도 끝♥♥♥♥♥♥♥----->
+
+				</div>
+				<!-----♥♥♥♥♥♥♥집합장소 지도 끝♥♥♥♥♥♥♥----->
 
 
 
@@ -618,85 +742,118 @@
 
 
 
-					<div class="comments-area">
-						<h4>REVIEW</h4>
-						
-						<%-- <%if(logginedMember!=null&&pm.getPoNum()!=null) {  --%>
-						<%--  <jsp:useBean id="elp" class="com.semi.review.model.vo.Review" scope="session" />--%>
-						
+				<div class="comments-area">
+					<h4>REVIEW</h4>
 
-						<div class="comment-list">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="<%=request.getContextPath() 
-										%>/img/comment/comment_1.png" alt="">
-									</div>
-									
-
-					
-<%-- 					<input type="hidden" value="${p.pNum}"> --%>		
-
-<%-- 
-<c:forEach var="movie" items="${movieList}" varStatus="status">
-${movie}<br>
-${status.index}
-</c:forEach>
- --%>
-
-    
+					<%-- <%if(logginedMember!=null&&pm.getPoNum()!=null) {  --%>
+					<%--  <jsp:useBean id="elp" class="com.semi.review.model.vo.Review" scope="session" />--%>
 
 
-					 <c:forEach var="e" items="${reviewList}" >
-					 						
-<%-- 					 						<p>${e.reviewNum}</p>
-					 						<p>${e.reviewScore}</p>
-					 						<p>${e.reviewTitle}</p>
-					 						<p>${e.reviewContents}</p>
-					 						<p>${e.reviewWriter}</p>
-					 						<p>${e.poNum}</p>
-					 						<p>${e.registerDate}</p>
-					 						<p>${e.reviewViews}</p>
-					 						<p>${e.pNum}  </p> --%>
-					 				
-							 		<div class="desc">
-										<p class="comment" id="reviewTitle"'>${e.reviewTitle}</p>
-										<p class="comment">${e.reviewContents }</p>
-										<div class="d-flex justify-content-between">
-											<div class="d-flex align-items-center">
-												<h5>
-													<a href="#">${e.reviewWriter }</a>
-												</h5>
-												<p class="date">${e.registerDate }</p>
-							
-<%-- 									<!-- 글작성자.관리자 수정삭제 -->
+					<div class="comment-list">
+						<div class="single-comment justify-content-between d-flex">
+							<div class="user justify-content-between d-flex">
+								<div class="thumb">
+									<%-- <img
+										src="<%=request.getContextPath() %>/upload/product/comment_1.png"
+										alt=""> --%>
+								</div>
+
+
+								<form>
+									<c:forEach var="e" items="${reviewList}">
+<%-- 							<div class="personImg">
+							<img
+								src="<%=request.getContextPath()%>/upload/product/person.png"
+								alt="">
+</div>	 --%>
+							<div class="desc">
+											<p class="comment" id="reviewTitle"'>${e.reviewTitle}</p>
+											<p class="comment">${e.reviewContents }</p>
+											<div class="d-flex justify-content-between">
+												<div class="d-flex align-items-center">
+													<h5>
+														<a href="#">${e.reviewWriter }</a>
+													</h5>
+													<p class="date">${e.registerDate }</p>
+													
+
+													<%-- 									<!-- 글작성자.관리자 수정삭제 -->
 									<%if(logginedMember!=null&&(logginedMember.getUserId().equals(r.getReviewWriter())
 											||logginedMember.getUserId().equals("admin"))){ %>
 											<button type="button" onclick="fn_uppdate()">수정</button>
 											<button type="button" onclick="fn_remove()">삭제</button>
 									<%} %> --%>
-									
-											</div>
-											<div class="reply-btn">
-												<a href="#" class="btn-reply text-uppercase">reply</a>
-												<input type="hidden" value="${e.reviewNum}">
-												<input type="hidden" value="${e.reviewScore}">
-												<input type="hidden" value="${e.poNum}">
-												<input type="hidden" value="${e.reviewViews}">
-												<input type="hidden" value="${e.pNum}">
+
+												</div>
+												<div class="reply-btn">
+
+											
+
+													<input type="hidden" value="${e.reviewNum}"> <input
+														type="hidden" value="${e.reviewScore}"> <input
+														type="hidden" value="${e.poNum}"> <input
+														type="hidden" value="${e.reviewViews}"> <input
+														type="hidden" value="${e.pNum}"> <input
+														type="hidden" value="${e.userId}">
+												
+
+													 <input type="button"
+														value="삭제" class="btn-sm genric-btn2 info radius"
+														onclick="location.href='<%=request.getContextPath()%>/ReviewDeleteServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}'">
+
+												
+													
+												</div>
 											</div>
 										</div>
-									</div> --%>
-								</c:forEach> 
-								
-								</div>
+										<hr>
+										
+										
+
+
+
+
+
+										<script language="javascript">
+								  	function showPopup() {
+								  		window.open("<%=request.getContextPath() %>/ReviewModifyViewServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}",
+								  				"a", 
+								  				"width=400, height=300, left=100, top=50"); 
+								  		}
+								  	
+								 		 </script>
+
+									</c:forEach>
+								</form>
+
+
+								<%-- function fn_delete_member(){
+						 			//id서버에 전송해서 그 id랑 일치하는 회원을 삭제
+						 		if(logginedMember=(logginedMember.getUserId())){
+						 			if(confirm("정말 삭제하시겠습니까?")){
+						 				location.replace('<%=request.getContextPath()%>/ReviewDeleteServlet?userId=<%=logginedMember.getUserId()%>&reviewNum=${e.reviewNum}');
+						 			}
+						 		}
+							} --%>
+								<%-- function fn_update_submit(){
+						 			const frm=$("#reviewFrm");
+						 			const url="<%=request.getContextPath()%>/review/reviewModify";
+						 			frm.attr({
+						 				"action":url,
+						 				"method":"post",
+						 			});
+						 			frm.submit();
+						 		} --%>
+
+
 							</div>
 						</div>
-						
-				
-						
-						
-<%-- 						<div class="comment-list">
+					</div>
+
+
+
+
+					<%-- 						<div class="comment-list">
 							<div class="single-comment justify-content-between d-flex">
 								<div class="user justify-content-between d-flex">
 									<div class="thumb">
@@ -757,78 +914,88 @@ ${status.index}
 						</div>
 					</div>
  --%>
+				</div>
 
+				<!-- 리뷰지움ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
 
+				<div class="comment-form">
+					<h4>LEAVE A REVIEW</h4>
 
+					<form class="form-contact comment_form"
+						action="<%=request.getContextPath()%>/review/reviewEndServlet"
+						id="commentForm" method="post">
 
-			<div class="comment-form">
-						<h4>LEAVE A REVIEW</h4>
-						
-						<form class="form-contact comment_form" action="<%=request.getContextPath()%>/review/reviewEndServlet" id="commentForm" method="post">
-						
-							<div class="row">
-							
+						<div class="row">
+
 							<!-- 리뷰번호 -->
 							<!-- <input type="hidden" name="reviewNum"> -->
-							 <input type="hidden" value="${p.pNum}" name="pNum" > 
-							<input type="hidden" value="${r.poNum}" name="poNum">
-							<input type="hidden" name="reviewLevel" value="1">
+							<input type="hidden" value="${p.pNum}" name="pNum">
+							<%-- 	<input type="hidden" value="${.poNum}" name="poNum"> --%>
+							<%-- 							<input type="hidden" name="reviewLevel" value="1">
 							<input type="hidden" name="productRef"  value="${p.pNum}">
-							<input type="hidden" name="reviewRef" value="0">
-							
+							<input type="hidden" name="reviewRef" value="0"> --%>
+
 							<!-- 리뷰제목 -->
 							<div class="col-sm-6">
-									<div class="form-group">
-										<input class="form-control" name="reviewTitle" id="reviewTitle" type="text" placeholder="Write title">
-									</div>
+								<div class="form-group">
+									<input class="form-control" name="reviewTitle" id="reviewTitle"
+										type="text" placeholder="Write title">
 								</div>
-								
-								
-								
-								
+							</div>
+
+
+
+
 							<!-- 작성자 -->
 							<div class="col-sm-6">
 								<div class="form-group">
-									<input class="form-control" name="reviewWriter" id="reviewWriter" type="text" value="<%=logginedMember.getUserId()%>" placeholder="Name" readonly>
+									<input class="form-control" name="reviewWriter"
+										id="reviewWriter" type="text"
+										value="<%=logginedMember.getUserId()%>" placeholder="Name"
+										readonly>
 								</div>
 							</div>
-							
-								
-								<!-- 리뷰내용 -->
-								<div class="col-12">
-									<div class="form-group">
-										<textarea class="form-control w-100" name="reviewContents"
-											id="reviewContents" cols="30" rows="9"
-											 placeholder="Write Comment"></textarea>
-									</div>
+
+							<input type="hidden" name="userId"
+								value="<%=logginedMember.getUserId()%>">
+
+
+							<!-- 리뷰내용 -->
+							<div class="col-12">
+								<div class="form-group">
+									<textarea class="form-control w-100" name="reviewContents"
+										id="reviewContents" cols="30" rows="9"
+										placeholder="Write Comment"></textarea>
 								</div>
-								
-								
-								<!-- 등록날짜 -->
-								<div class="col-sm-6">
-									<div class="form-group">
-<!-- 										<input class="form-control" name="registerDate" 
+							</div>
+
+
+							<!-- 등록날짜 -->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<!-- 										<input class="form-control" name="registerDate" 
 										id="registerDate" type="text"> -->
-										 <input type='date' id='currentDate' class="form-control">
-										 
-									</div>
+									<input type='date' id='currentDate' class="form-control"
+										readonly>
+
 								</div>
-								</div>
-						<script>
-						  document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
-						</script>
-																
-								<!-- 별점 -->
-								<div class="col-sm-6">
- 								 <select name="reviewScore" class="starRev">
+							</div>
+
+							<script>
+										  document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+										</script>
+
+							<!-- 별점 -->
+							<div class="col-sm-6">
+								<select name="reviewScore" class="suit-select">
 									<option value='1' class="starR on">★</option>
 									<option value='2' class="starR">★★</option>
 									<option value='3' class="starR">★★★</option>
 									<option value='4' class="starR">★★★★</option>
 									<option value='5' class="starR">★★★★★</option>
- 								</select> 
- 								 </div>
- 								<!--  <select class="starRev">
+								</select>
+							</div>
+							<!--  <select class="starRev">
 									<input type="radio" class="starR on">별1</span> 
 									<span class="starR">별2</span>
 									<span class="starR">별3</span> 
@@ -836,18 +1003,19 @@ ${status.index}
 									<span class="starR">별5</span> 
 								</div>
  -->
-							<input type="hidden" value="{pm.po_num}">
-							<div class="form-group">
-								<button type="submit" class="button button-contactForm btn_1 boxed-btn" 
-								onclick = "function validate();" >
-									Leave Review</button>
-							</div>
-							
-							
-						</form>
-				
-				
-				<script>
+						</div>
+						<div class="form-group">
+							<button type="submit"
+								class="button button-contactForm btn_1 boxed-btn"
+								onclick="function validate();">Leave Review</button>
+						</div>
+
+
+					</form>
+
+
+
+					<script>
 						function validate(){
 							const content=$("[reviewWriter=reviewContents]").val();
 							if(content.trim().length==0){
@@ -857,14 +1025,13 @@ ${status.index}
 							}
 						};
 					
-				</script> 
-				
-				
-						
-					</div>
+				</script>
+
+
 				</div>
-				
-				<div class="col-lg-4">
+
+		<%-- 		<div class="col-lg-4 jisun"
+					style="float: left; width: 33%; padding: 10px;">
 					<div class="blog_right_sidebar">
 						<aside class="single_sidebar_widget search_widget">
 							<!-- <form action="#">
@@ -887,7 +1054,7 @@ ${status.index}
                                         class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Search</button>
                                 </form> -->
-							<div id="product-price-box">
+						 	<div id="product-price-box">
 								<li><a href="#" class="d-flex">
 										<p>ADULT &nbsp;</p>
 										<p>${p.pPriceA}</p>
@@ -896,60 +1063,60 @@ ${status.index}
 										<p>CHILDREN &nbsp;</p>
 										<p>${p.pPriceC}</p>
 								</a></li>
-							</div>
-							
-							 
+							</div> 
+
+
 							<!--  원래가격 : <span id='total_price'>0</span>원
                                 <form name='price_exec' method='get' onSubmit='submit_value();'> -->
 							<!--  금액 : <input type="text" name="sum" size="11" readonly> 원 -->
 						</aside>
-							  <div class="review-score">
-                                    <div class="review-badge">${p.pScore }</div>
-                                    <div class="product-star text-sm">
-                                        <p class="star_rating">
-                                            <a href="#" class="on">★</a>
-                                            <a href="#" class="on">★</a>
-                                            <a href="#" class="on">★</a>
-                                            <a href="#">★</a>
-                                            <a href="#">★</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<!--================ Blog Area end =================-->
-	</div>
-	<!-- </div> </div> -->
-	<!-- newletter_area_start -->
-	<div class="newletter_area overlay">
-		<div class="container">
-			<div class="row justify-content-center align-items-center">
-				<div class="col-lg-10">
-					<div class="row align-items-center">
-						<div class="col-lg-5">
-							<div class="newsletter_text">
-								<h4>Subscribe Our Newsletter</h4>
-								<p>Subscribe newsletter to get offers and about new places
-									to discover.</p>
+
+						<div class="review-score">
+							<div class="review-badge">${p.pScore }</div>
+							<div class="product-star text-sm">
+								<p class="star_rating">
+									<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
+										href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
+								</p>
 							</div>
 						</div>
-						<div class="col-lg-7">
-							<div class="mail_form">
-								<div class="row no-gutters">
-									<div class="col-lg-9 col-md-8">
-										<div class="newsletter_field">
-											<input type="email" placeholder="Your mail">
-										</div>
+
+					</div>
+				</div> --%>
+</section>
+
+
+
+
+
+<!--================ Blog Area end =================-->
+
+<!-- </div> </div> -->
+<!-- newletter_area_start -->
+<div class="newletter_area overlay">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-10">
+				<div class="row align-items-center">
+					<div class="col-lg-5">
+						<div class="newsletter_text">
+							<h4>Subscribe Our Newsletter</h4>
+							<p>Subscribe newsletter to get offers and about new places to
+								discover.</p>
+						</div>
+					</div>
+					<div class="col-lg-7">
+						<div class="mail_form">
+							<div class="row no-gutters">
+								<div class="col-lg-9 col-md-8">
+									<div class="newsletter_field">
+										<input type="email" placeholder="Your mail">
 									</div>
-									<div class="col-lg-3 col-md-4">
-										<div class="newsletter_btn">
-											<button class="boxed-btn4 " type="submit">Subscribe</button>
-										</div>
+								</div>
+								<div class="col-lg-3 col-md-4">
+									<div class="newsletter_btn">
+										<button class="boxed-btn4 " type="submit">Subscribe</button>
 									</div>
 								</div>
 							</div>
@@ -959,149 +1126,156 @@ ${status.index}
 			</div>
 		</div>
 	</div>
-	<!-- newletter_area_end -->
-	<div class="popular_places_area">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6">
-					<div class="section_title text-center mb_70">
-						<h3>More Places</h3>
+</div>
+
+
+
+<!-- newletter_area_end -->
+<div class="popular_places_area">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6">
+				<div class="section_title text-center mb_70">
+					<h3>More Places</h3>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="row">
+			<div class="col-lg-4 col-md-6">
+				<div class="single_place">
+					<div class="thumb">
+						<img src="<%=request.getContextPath() %>/img/place/1.png" alt="">
+						<a href="#" class="prise">$500</a>
+					</div>
+					<div class="place_info">
+						<a href="#">
+							<h3>California</h3>
+						</a>
+						<p>United State of America</p>
+						<div class="rating_days d-flex justify-content-between">
+							<span class="d-flex justify-content-center align-items-center">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+								class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+								class="fa fa-star"></i> <a href="#">(20 Review)</a>
+							</span>
+							<div class="days">
+								<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			
-			
-			
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single_place">
-						<div class="thumb">
-							<img src="<%=request.getContextPath() %>/img/place/1.png" alt="">
-							<a href="#" class="prise">$500</a>
-						</div>
-						<div class="place_info">
-							<a href="#">
-								<h3>California</h3>
-							</a>
-							<p>United State of America</p>
-							<div class="rating_days d-flex justify-content-between">
-								<span class="d-flex justify-content-center align-items-center">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <a href="#">(20 Review)</a>
-								</span>
-								<div class="days">
-									<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
-								</div>
+
+
+
+
+			<div class="col-lg-4 col-md-6">
+				<div class="single_place">
+					<div class="thumb">
+						<img src="<%=request.getContextPath() %>/img/place/2.png" alt="">
+						<a href="#" class="prise">$500</a>
+					</div>
+					<div class="place_info">
+						<a href="#">
+							<h3>Korola Megna</h3>
+						</a>
+						<p>United State of America</p>
+						<div class="rating_days d-flex justify-content-between">
+							<span class="d-flex justify-content-center align-items-center">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+								class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+								class="fa fa-star"></i> <a href="#">(20 Review)</a>
+							</span>
+							<div class="days">
+								<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-				
-				
-				
-				<div class="col-lg-4 col-md-6">
-					<div class="single_place">
-						<div class="thumb">
-							<img src="<%=request.getContextPath() %>/img/place/2.png" alt="">
-							<a href="#" class="prise">$500</a>
-						</div>
-						<div class="place_info">
-							<a href="#">
-								<h3>Korola Megna</h3>
-							</a>
-							<p>United State of America</p>
-							<div class="rating_days d-flex justify-content-between">
-								<span class="d-flex justify-content-center align-items-center">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <a href="#">(20 Review)</a>
-								</span>
-								<div class="days">
-									<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
-								</div>
+			</div>
+
+
+			<div class="col-lg-4 col-md-6">
+				<div class="single_place">
+					<div class="thumb">
+						<img src="<%=request.getContextPath() %>/img/place/3.png" alt="">
+						<a href="#" class="prise">$500</a>
+					</div>
+					<div class="place_info">
+						<a href="#">
+							<h3>London</h3>
+						</a>
+						<p>United State of America</p>
+						<div class="rating_days d-flex justify-content-between">
+							<span class="d-flex justify-content-center align-items-center">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+								class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+								class="fa fa-star"></i> <a href="#">(20 Review)</a>
+							</span>
+							<div class="days">
+								<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-				
-				<div class="col-lg-4 col-md-6">
-					<div class="single_place">
-						<div class="thumb">
-							<img src="<%=request.getContextPath() %>/img/place/3.png" alt="">
-							<a href="#" class="prise">$500</a>
-						</div>
-						<div class="place_info">
-							<a href="#">
-								<h3>London</h3>
-							</a>
-							<p>United State of America</p>
-							<div class="rating_days d-flex justify-content-between">
-								<span class="d-flex justify-content-center align-items-center">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <a href="#">(20 Review)</a>
-								</span>
-								<div class="days">
-									<i class="fa fa-clock-o"></i> <a href="#">5 Days</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			</div>
+		</div>
+	</div>
 </div>
+<!-- Modal -->
+<div class="modal fade custom_search_pop" id="exampleModalCenter"
+	tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="serch_form">
+				<input type="text" placeholder="Search">
+				<button type="submit">search</button>
+			</div>
+		</div>
+	</div>
 </div>
-</div>
-				<!-- Modal -->
-				<div class="modal fade custom_search_pop" id="exampleModalCenter"
-					tabindex="-1" role="dialog"
-					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="serch_form">
-								<input type="text" placeholder="Search">
-								<button type="submit">search</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- link that opens popup -->
-				<!-- <script
+<!-- link that opens popup -->
+<!-- <script
                 src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script
                 src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
                 <script src="
                 https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
                 </script> -->
-				<!-- JS here -->
-				<script src="<%=request.getContextPath() %>/js/vendor/modernizr-3.5.0.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/vendor/jquery-1.12.4.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/isotope.pkgd.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/ajax-form.js"></script>
-				<script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/jquery.counterup.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/imagesloaded.pkgd.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/scrollIt.js"></script>
-				<script src="<%=request.getContextPath() %>/js/jquery.scrollUp.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/wow.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/nice-select.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/jquery.slicknav.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/jquery.magnific-popup.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/plugins.js"></script>
-				<script src="<%=request.getContextPath() %>/js/gijgo.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/slick.min.js"></script>
-				<!--contact js-->
-				<script src="<%=request.getContextPath() %>/js/contact.js"></script>
-				<script src="<%=request.getContextPath() %>/js/jquery.ajaxchimp.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/jquery.form.js"></script>
-				<script src="<%=request.getContextPath() %>/js/jquery.validate.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/mail-script.js"></script>
-				<script src="<%=request.getContextPath() %>/js/main.js"></script>
+<!-- JS here -->
+<script
+	src="<%=request.getContextPath() %>/js/vendor/modernizr-3.5.0.min.js"></script>
+<script
+	src="<%=request.getContextPath() %>/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/owl.carousel.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/isotope.pkgd.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/ajax-form.js"></script>
+<script src="<%=request.getContextPath() %>/js/waypoints.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery.counterup.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/imagesloaded.pkgd.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/scrollIt.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery.scrollUp.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/wow.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/nice-select.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery.slicknav.min.js"></script>
+<script
+	src="<%=request.getContextPath() %>/js/jquery.magnific-popup.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/plugins.js"></script>
+<script src="<%=request.getContextPath() %>/js/gijgo.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/slick.min.js"></script>
+<!--contact js-->
+<script src="<%=request.getContextPath() %>/js/contact.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery.ajaxchimp.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery.form.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery.validate.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/mail-script.js"></script>
+<script src="<%=request.getContextPath() %>/js/main.js"></script>
 <!-- 				<script>
                     $('#datepicker').datepicker({
                         iconsLibrary: 'fontawesome',
@@ -1111,17 +1285,22 @@ ${status.index}
                     });
                 </script> -->
 
-				<!-- 써치 필터 js -->
-				<script src="<%=request.getContextPath() %>/js/js_cal/jquery-3.3.1.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/js_cal/bootstrap.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/js_cal/jquery.magnific-popup.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/js_cal/jquery-ui.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/js_cal/jquery.nice-select.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/js_cal/jquery.slicknav.js"></script>
-				<script src="<%=request.getContextPath() %>/js/js_cal/owl.carousel.min.js"></script>
-				<script src="<%=request.getContextPath() %>/js/js_cal/main.js"></script>
-				
-			
+<!-- 써치 필터 js -->
+<script
+	src="<%=request.getContextPath() %>/js/js_cal/jquery-3.3.1.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/js_cal/bootstrap.min.js"></script>
+<script
+	src="<%=request.getContextPath() %>/js/js_cal/jquery.magnific-popup.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/js_cal/jquery-ui.min.js"></script>
+<script
+	src="<%=request.getContextPath() %>/js/js_cal/jquery.nice-select.min.js"></script>
+<script
+	src="<%=request.getContextPath() %>/js/js_cal/jquery.slicknav.js"></script>
+<script
+	src="<%=request.getContextPath() %>/js/js_cal/owl.carousel.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/js_cal/main.js"></script>
+
+
 <!-- </body> -->
 
 <!-- </html> -->

@@ -43,6 +43,7 @@ public class AddHitsServlet extends HttpServlet {
 			if(result>0) {
 				Board b = new BoardService().boardNo(boardNo);
 				int hits = b.getBoardHits()+1;
+				System.out.println(b.getBoardDate());
 				System.out.println("\n\nBoard 의  hit : "+b.getBoardHits());
 				b.setBoardHits(hits);
 				System.out.println("Board 의 수정된 hit : "+ b.getBoardHits());

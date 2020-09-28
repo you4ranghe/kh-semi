@@ -89,7 +89,7 @@
 	margin-right: 16px;
 	background: #ffffff;
 	padding-top: 18px;
-	padding-bottom: 18px;
+	padding-bottom: 30px;
 	padding-left: 19px;
 	padding-right: 18px;
 }
@@ -144,7 +144,8 @@
 }
 
 .check-form .room-selector {
-	width: calc(25% - 16px);
+	/* width: calc(25% - 16px); */
+	width: calc(18.5% - 20px);
 	float: left;
 	margin-right: 16px;
 	background: #ffffff;
@@ -152,6 +153,8 @@
 	padding-left: 24px;
 	padding-right: 24px;
 	padding-bottom: 18px;
+	
+	
 }
 
 .check-form .room-selector p {
@@ -160,6 +163,7 @@
 	letter-spacing: 0.4px;
 	margin-bottom: 10px;
 	font-weight: 600;
+
 }
 
 .check-form .room-selector .nice-select {
@@ -206,3 +210,7 @@
 	color: #fff !important;
 	border: 1px solid #FF4A52;
   }
+  
+  
+
+  

@@ -36,7 +36,7 @@
 			<tr>
 				<th>상품 이름</th>
 				<td><input type="hidden" name="partnerId" value="<%=p.getPartnerId()%>">
-				<input type="text" name="pNum" value="<%=p.getpNum()%>">
+				<input type="hidden" name="pNum" value="<%=p.getpNum()%>">
 				<input type="text" name="name" required class="long" value="<%=p.getpName() %>"></td>
 			
 			</tr>
@@ -79,7 +79,7 @@
 				<th>슬라이더 사진</th>
 				<td><input type="file" name="slider" id="slider" >
 				
-				<input type="text" name="sliderorigin" value="<%=p.getTitleImgPath()%>"></td>
+				<input type="hidden" name="sliderorigin" value="<%=p.getTitleImgPath()%>"></td>
 			</tr>
 			<tr>
 				<th>메인 사진</th>

@@ -35,9 +35,7 @@ input{
 		box-shadow: 30px 30px 70px rgba(0,0,0,0.2);
 		border-radius:10px;
 		padding:30px;
-		position :relative;
-		left:-300px;
-		
+
 		font-weight: bold; 
 		color:gray;
 		font-family: 돋움체;
@@ -118,10 +116,6 @@ input{
 	 	width:100px;
 	 	height:50px;
 	 	border-radius:10px;
-	}
-	strong{
-	position:relative;
-	left:-300px;
 	}
 </style>
 

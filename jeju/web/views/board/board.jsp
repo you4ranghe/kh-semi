@@ -2,18 +2,26 @@
 <%@ include file="/views/common/header.jsp" %>
 <%@ page import="com.semi.board.model.vo.Board" %>
 <%@ page import="java.util.List" %>
+
 <%
 	List<Board> boardList = (List<Board>)request.getAttribute("boardList");
-	String serch = (String)request.getAttribute("serch");
+	String searchs = (String)request.getParameter("search");
+	String searchType = (String)request.getParameter("searchType");
+	System.out.println("검색 내용 boardJsp : "+searchs);
+	System.out.println("검색 타입 boardJsp : "+searchType);
+	
 %>
 <section>
- <div class="container">
+
+<div class="container">
  		<div class="float-right">
- 		<!-- Single button -->
         <nav class="navbar navbar-light bg-withe">
-            <form action="<%=request.getContextPath() %>/board/serch" class="form-inline">
-              <input name="serch" class="form-control mr-sm-2" type="search" placeholder="제목" aria-label="Search">
-              <%if(!serch.equals("")){ %><input nage="hSerch" type="hidden" value="<%=serch %>"><%} %>
+            <form action="<%=request.getContextPath() %>/board/search" class="form-inline">
+ 			<select class="form-control" name="searchType">
+ 				<option value="BOARD_TITLE"<%if(searchType==null){ %>selected<%} %><%if(searchType!=null&&searchType.equals("BOARD_TITLE")){%> selected<%} %>>제목 </option>
+ 				<option value="USER_ID"<%if(searchType!=null&&searchType.equals("USER_ID")){ %>selected<%} %>>아이디</option>
+ 			</select>
+              <input name="search" class="form-control mr-sm-2" type="search" aria-label="Search" <%if(searchs!=null){ %>placeholder="<%=searchs %>"<%} %>>
               <button class="btn btn btn-outline-secondary my-2 my-sm-0" type="submit">검색</button>
             </form>
         </nav>
@@ -36,8 +44,8 @@
                 	<td class="col-sm-6 text-center"><%=b.getBoardTitle() %></td>
                 	<td class="col-sm-1 text-center"><%=b.getUserId() %></td>
                 	<td class="col-sm-2 text-center"><%=b.getBoardDate() %></td>
-                	<td class="col-sm-1 text-center"><%=b.getBoardHits() %></td>
                 	<td class="col-sm-1 text-center"><%=b.getBoardRecommend() %></td>
+                	<td class="col-sm-1 text-center"><%=b.getBoardHits() %></td>
                 </tr>
                 <%} %>
             </tbody>
