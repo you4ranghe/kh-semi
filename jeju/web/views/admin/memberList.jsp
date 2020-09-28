@@ -16,7 +16,7 @@
 	<h2 id="h2">회원관리</h2>
 	<ul>
 		<li class="box"><a href="<%=request.getContextPath()%>/admin/memberList">회원 관리&nbsp;&nbsp;</a></li>
-		<li class="box"><a href="<%=request.getContextPath()%>/partner/partnerList">파트너 관리&nbsp;&nbsp;</a></li>
+		<li class="box"><a href="<%=request.getContextPath()%>/admin/partnerList">파트너 관리&nbsp;&nbsp;</a></li>
 		<li class="box"><a href="<%=request.getContextPath()%>/admin/productList">상품 관리&nbsp;&nbsp;</a></li>
 		<li class="box"><a href="<%=request.getContextPath()%>/admin/paymentList">결제 관리</a></li>
 	</ul>

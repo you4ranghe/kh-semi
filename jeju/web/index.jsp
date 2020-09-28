@@ -196,9 +196,9 @@ button+div{
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>east-Jeju-si</h3>
+                                <h3> Aewol-eup</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=동제주시" class="boxed-btn3">Do right now</a>
+                               <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=애월읍" class="boxed-btn3">Do right now</a>
                             </div>
                         </div>
                     </div>
@@ -209,9 +209,9 @@ button+div{
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>west-Jeju-si</h3>
+                                <h3>Seongsan-eup</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서제주시" class="boxed-btn3">Together</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=성산읍" class="boxed-btn3">Together</a>
                             </div>
                         </div>
                     </div>

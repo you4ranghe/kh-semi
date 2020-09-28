@@ -7,11 +7,15 @@
 <%@page import="com.semi.payment.model.vo.Payment"%>
 <%@page import="com.semi.wishList.model.vo.WishList"%>
 <%@page import="com.semi.review.model.vo.Review"%>
-
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.DriverManager"%>
 <%
 	Product p = (Product)request.getAttribute("p");
 	//List<Product> plist = (List)request.getAttribute("productList");
-	
+
 	Payment pm = (Payment)request.getAttribute("payment");
 	
 	WishList we = (WishList)request.getAttribute("we");
@@ -262,57 +266,17 @@
 
 					<div class="room-selector">
 						<p>Time</p>
-
-					<!-- <select class="suit-select" name="pTime">
+						
+ 						<select class="suit-select" name="pTime" id="pTime0">
 							<option>Check your Time</option>
 							<option value="09:00">09:00</option>
 							<option value="12:00">12:00</option>
-							<option value="15:00">15:00</option>
+							<option value="15:00">15:00</option> 
+							 </select> 
 							 
-							 
-						<script>
-						$("select[name='pTime']").val();
-						
-						</script> -->
 
-<script>
-var selectOption = document.getElementByName("pTime");
-selectOption = selectOption.options[selectOption.selectedIndex].value;
-$("#pTime option:selected").val();
+														 
 
-</script>
-
-
-
-							<!-- 						<select id="vmMnDataSize" name="dataVolumn">
-						    <option id="selectDataSize" value="">선택</option> -->
-
-<%-- 								<select id="timeSelect" title="클릭하여 선택해주세요.">
-												
-											   <option value="${p.pTime}" <c:if test="${pTime}">selected</c:if>>시간선택</option>
-												
-								</select>  --%>
-
-
-							<%-- 				<c:forEach var="i" items="${p.pTime}">
-						for(var i=5; i<='<%=p.getpTime()%>'; i=i+5) {        
-						<script>
-						            var html;
-						            html += "<option value="+i+">"+i+"GB</option>"
-						        
-						        $("#vmMnDataSize").append(html);
-						        
-						</script>
-
-						        </c:forEach> --%>
-
-
-							<%-- 							<c:forEach var="a" items="${p.pTime}">
-							<option value="${a.pTime}"></option>
-							</c:forEach> --%>
-
-
-						</select>
 					</div>
 
 
@@ -411,19 +375,19 @@ $("#pTime option:selected").val();
 
 							<c:choose>
 							    <c:when test="${s == '5'}">
-							        ★★★★★
+							        ★★★★★ 5
 							    </c:when>
 							    <c:when test="${s == '4'}">
-							        ★★★★
+							        ★★★★ 4
 							    </c:when>
 							    <c:when test="${s == '3'}">
-							        ★★★
+							        ★★★ 3
 							    </c:when>
 							    <c:when test="${s == '2'}">
-							        ★★
+							        ★★ 2
 							    </c:when>
 							    <c:otherwise>
-							        ★
+							        ★ 1
 							    </c:otherwise>
 							</c:choose>
 							</div>
@@ -793,19 +757,19 @@ $("#pTime option:selected").val();
 
 													<c:choose>
 													    <c:when test="${a == '5'}">
-													        ★★★★★
+													        ★★★★★ 5
 													    </c:when>
 													    <c:when test="${a == '4'}">
-													        ★★★★
+													        ★★★★ 4
 													    </c:when>
 													    <c:when test="${a == '3'}">
-													        ★★★
+													        ★★★ 3
 													    </c:when>
 													    <c:when test="${a == '2'}">
-													        ★★
+													        ★★ 2
 													    </c:when>
 													    <c:otherwise>
-													        ★
+													        ★ 1
 													    </c:otherwise>
 													</c:choose></p> 
 

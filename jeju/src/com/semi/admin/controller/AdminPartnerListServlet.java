@@ -15,7 +15,7 @@ import com.semi.partner.model.vo.Partner;
 /**
  * Servlet implementation class AdminPartnerListServlet
  */
-@WebServlet("/partner/partnerList")
+@WebServlet("/admin/partnerList")
 public class AdminPartnerListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -62,7 +62,7 @@ public class AdminPartnerListServlet extends HttpServlet {
 			pageBar="<span>이전</span>";
 		}else {
 			pageBar="<a href='"+request.getContextPath()
-					+ "/partner/partnerList?cPage="+(pageNo-1)+"&numPerPage="+numPerPage+"'>[이전]</a>";
+					+ "/admin/partnerList?cPage="+(pageNo-1)+"&numPerPage="+numPerPage+"'>[이전]</a>";
 		}
 		
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
@@ -70,7 +70,7 @@ public class AdminPartnerListServlet extends HttpServlet {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
 				pageBar+="<a href='"+request.getContextPath()+
-						"/admin/memberList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
+						"/admin/partnerList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
@@ -80,7 +80,7 @@ public class AdminPartnerListServlet extends HttpServlet {
 			
 		}else {
 			pageBar+="<a href='"+request.getContextPath()+
-					"/admin/memberList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>[다음]</a>";
+					"/admin/partnerList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>[다음]</a>";
 		}
 		
 		request.setAttribute("partners", list);

@@ -17,7 +17,7 @@
 <h2>결제내역 보기</h2>
 <br>
 <h4><a href="<%=request.getContextPath()%>/admin/memberList">&nbsp;회원 관리</a></h4>
-<h4><a href="<%=request.getContextPath()%>/partner/partnerList">&nbsp;파트너 관리</a></h4>
+<h4><a href="<%=request.getContextPath()%>/admin/partnerList">&nbsp;파트너 관리</a></h4>
 <h4><a href="<%=request.getContextPath()%>/admin/productList">&nbsp;상품 관리</a></h4>
 <h4><a href="<%=request.getContextPath()%>/admin/paymentList">&nbsp;결제 관리</a></h4>
 <h4><a href="<%=request.getContextPath()%>/member/logout">&nbsp;로그아웃</a></h4>

@@ -52,8 +52,8 @@
 		      <div class="caption" >
 		      <br>
 		        <h3><%=p.getpName() %></h3>
-		        <p><%=p.getpNum() %></p>
-		        <input type="hidden" name=pNum value=<%=p.getpNum() %> >
+		        <p><%=p.getpPriceC()%></p>
+		        <input type="hidden" name=pNum value=<%=p.getpNum() %>>
 		      </div>
 		    </div>
 		  </div>

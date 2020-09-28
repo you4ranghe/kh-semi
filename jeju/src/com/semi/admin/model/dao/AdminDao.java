@@ -585,21 +585,40 @@ public class AdminDao {
 	}
 	
 	//파트너 탈퇴 dao
-	public int deletePartner(Connection conn, String partnerId) {
-		PreparedStatement pstmt=null;
-		int result=0;
-		
-		try {
-			pstmt=conn.prepareStatement(prop.getProperty("deletePartenr"));
-			pstmt.setString(1, partnerId);
-			
-			result=pstmt.executeUpdate();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}return result;
-	}
+//	public int deletePartner(Connection conn, String partnerId) {
+//		PreparedStatement pstmt=null;
+//		int result=0;
+//		
+//		try {
+//			pstmt=conn.prepareStatement(prop.getProperty("deletePartenr"));
+//			pstmt.setString(1, partnerId);
+//			
+//			result=pstmt.executeUpdate();
+//		}catch(SQLException e) {
+//			e.printStackTrace();
+//		}finally {
+//			close(pstmt);
+//		}return result;
+//	}
+	
+	//파트너 탈퇴 dao
+	   public int deletePartner(Connection conn, String partnerId) {
+	      PreparedStatement pstmt=null;
+	      int result=0;
+	      
+	      try {
+	         pstmt=conn.prepareStatement(prop.getProperty("deletePartenr"));
+	         pstmt.setString(1, "N");
+	         pstmt.setString(2, partnerId);
+	         
+	         result=pstmt.executeUpdate();
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close(pstmt);
+	      }return result;
+	   }
+	
 	
 	//파트너 승인 dao
 	public int acceptPartner(Connection conn,String partnerId) {

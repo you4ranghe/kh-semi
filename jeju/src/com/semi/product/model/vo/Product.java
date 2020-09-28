@@ -1,6 +1,7 @@
 package com.semi.product.model.vo;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 public class Product {
 
@@ -238,6 +239,9 @@ public class Product {
 				+ pMapAddress + ", pMap=" + pMap + ", pScore=" + pScore + ", partnerId=" + partnerId + "]";
 	}
 
+	
+	
+	
 	
 	
 

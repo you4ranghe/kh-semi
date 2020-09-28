@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.common.AESCrypto;
 import com.semi.member.model.service.MemberService;
 import com.semi.member.model.vo.Member;
 
@@ -34,6 +35,22 @@ public class AdminMemberViewServlet extends HttpServlet {
 		String userId=request.getParameter("userId");
 		Member m = new MemberService().selectMemberId(userId);
 		
+		String email=m.getEmail();
+	      String phone=m.getPhone();
+	      
+	      System.out.println(email+" : "+ phone);
+	      
+	      try {
+	         System.out.println(email);
+	         System.out.println(phone);
+	         m.setEmail(AESCrypto.decrypt(email));
+	         m.setPhone(AESCrypto.decrypt(phone));
+	         System.out.println(m.getEmail());
+	         System.out.println(m.getPhone());
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }
+	      
 		request.setAttribute("memberView", m);
 		request.getRequestDispatcher("/views/admin/adminMemberView.jsp").forward(request, response);
 		

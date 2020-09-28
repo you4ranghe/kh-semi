@@ -137,21 +137,18 @@ public class ProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+	
 		
 		
-		
-		  int pNum = Integer.parseInt(request.getParameter("pNum"));
-		  System.out.println(pNum);
-		 
+	  int pNum = Integer.parseInt(request.getParameter("pNum"));
+	  System.out.println(pNum);
 	
 		Product p = new ProductService().selectProductOne(pNum);
-		request.setAttribute("p", p);
-		//List<Product> productList = new ProductService().selectProductList(pNum);
-		//List<Review> reviewList = new ReviewService().selectReviewList(pNum);
-		//request.setAttribute("productList", productList);
-		//request.setAttribute("reviewList", reviewList);
 		
-		//System.out.println(p.toString());
+		request.setAttribute("p", p);
+		
+		
+		
 		
 
 		

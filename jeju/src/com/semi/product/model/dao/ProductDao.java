@@ -146,7 +146,7 @@ public class ProductDao {
 			pstmt.setInt(1, pNum);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				 p = new Product();
+				p = new Product();
 				p.setpNum(rs.getInt("p_num"));
 				p.setpBigNameEng(rs.getString("p_big_name_eng"));
 				p.setpBigNameKor(rs.getString("p_big_name_kor"));

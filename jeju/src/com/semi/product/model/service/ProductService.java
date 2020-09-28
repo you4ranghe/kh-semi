@@ -1,5 +1,10 @@
 package com.semi.product.model.service;
 
+import static com.semi.common.JDBCTemplate.close;
+import static com.semi.common.JDBCTemplate.commit;
+import static com.semi.common.JDBCTemplate.getConnection;
+import static com.semi.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.List;
 
@@ -7,12 +12,6 @@ import com.semi.product.model.dao.ProductDao;
 import com.semi.product.model.vo.Product;
 import com.semi.product.model.vo.Wish;
 import com.semi.review.model.vo.Review;
-
-import static com.semi.common.JDBCTemplate.commit;
-import static com.semi.common.JDBCTemplate.rollback;
-
-import static com.semi.common.JDBCTemplate.close;
-import static com.semi.common.JDBCTemplate.getConnection;
 
 public class ProductService {
 
@@ -130,7 +129,7 @@ public class ProductService {
 		if(result==1) commit(conn);
 		else rollback(conn);
 		close(conn);
-		
+
 		return result;
 	}
 

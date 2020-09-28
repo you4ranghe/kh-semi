@@ -14,7 +14,7 @@
 <h2>파트너 정보보기</h2>
 <br>
 <h5><a href="<%=request.getContextPath()%>/admin/memberList">&nbsp;회원 관리</a></h5>
-<h5><a href="<%=request.getContextPath()%>/partner/partnerList">&nbsp;파트너 관리</a></h5>
+<h5><a href="<%=request.getContextPath()%>/admin/partnerList">&nbsp;파트너 관리</a></h5>
 <h5><a href="<%=request.getContextPath()%>/admin/productList">&nbsp;상품 관리</a></h5>
 <h5><a href="<%=request.getContextPath()%>/admin/paymentList">&nbsp;결제 관리</a></h5>
 <h5><a href="<%=request.getContextPath()%>/member/logout">&nbsp;로그아웃</a></h5>
