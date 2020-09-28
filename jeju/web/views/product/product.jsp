@@ -263,15 +263,31 @@
 					<div class="room-selector">
 						<p>Time</p>
 
-					<select class="suit-select" name="pTime">
+					<!-- <select class="suit-select" name="pTime">
 							<option>Check your Time</option>
 							<option value="09:00">09:00</option>
 							<option value="12:00">12:00</option>
 							<option value="15:00">15:00</option>
 							 
+							 
+						<script>
+						$("select[name='pTime']").val();
 						
+						</script> -->
 
+	<select id="manageTp" class="suit-select" name="pTime">
 
+	<option value="">전체내역</option>
+
+	<option value="1">적립내역</option>
+
+	<option value="2">사용내역</option>
+
+</select>
+
+<script>
+$("#manageTp option:checked").text();
+</script>
 
 
 							<!-- 						<select id="vmMnDataSize" name="dataVolumn">
@@ -775,7 +791,29 @@
 														<a href="#">${e.reviewWriter }</a>
 													</h5>
 													<p class="date">${e.registerDate }</p>
+													&nbsp;&nbsp;&nbsp;
 													
+												<%-- 	 <p>score : ${e.reviewScore} 점</p>  --%>
+													 
+													<p> <c:set var="a" value="${e.reviewScore}" />
+
+													<c:choose>
+													    <c:when test="${a == '5'}">
+													        ★★★★★
+													    </c:when>
+													    <c:when test="${a == '4'}">
+													        ★★★★
+													    </c:when>
+													    <c:when test="${a == '3'}">
+													        ★★★
+													    </c:when>
+													    <c:when test="${a == '2'}">
+													        ★★
+													    </c:when>
+													    <c:otherwise>
+													        ★
+													    </c:otherwise>
+													</c:choose></p> 
 
 													<%-- 									<!-- 글작성자.관리자 수정삭제 -->
 									<%if(logginedMember!=null&&(logginedMember.getUserId().equals(r.getReviewWriter())
@@ -789,8 +827,7 @@
 
 											
 
-													<input type="hidden" value="${e.reviewNum}"> <input
-														type="hidden" value="${e.reviewScore}"> <input
+													<input type="hidden" value="${e.reviewNum}"><input
 														type="hidden" value="${e.poNum}"> <input
 														type="hidden" value="${e.reviewViews}"> <input
 														type="hidden" value="${e.pNum}"> <input
