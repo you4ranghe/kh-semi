@@ -13,7 +13,9 @@
 
 <div class="memberList_img"></div>
 <div class="box">
+
 	<h2 id="h2">결제 관리</h2>
+
 	<ul>
 		<li class="box"><a href="<%=request.getContextPath()%>/admin/memberList">회원 관리&nbsp;&nbsp;</a></li>
 		<li class="box"><a href="<%=request.getContextPath()%>/partner/partnerList">파트너 관리&nbsp;&nbsp;</a></li>
@@ -29,7 +31,7 @@
 		<option value="userName" <%=type!=null && type.equals("user_id")?"selected":"" %>>판매자</option>
 		<option value="gender" <%=type!=null && type.equals("pay_user_name")?"selected":"" %>>결제자</option>		
 					
-	</select>
+</select>
 	
 	<div id="numPerpage-container">
 		<form id="numperPageFrm" name="numPerPagetFrm" action="<%=request.getContextPath()%>/admin/paymentList">

@@ -167,7 +167,7 @@ input{
 		<table>
 			<tr>
 				<td rowspan="5">
-					<img alt="" src="<%=request.getContextPath() %>/img/banner/<%=imageFile%>" width="200px" height="200px" >
+					<img alt="" src="<%=request.getContextPath() %>/upload/product/<%=imageFile%>" width="200px" height="200px" >
 				</td>
 			</tr>
 			<tr>

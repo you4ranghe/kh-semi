@@ -43,16 +43,14 @@
 						<img  id="Loading" src="<%=request.getContextPath() %>/upload/partner/<%=p.getPartnerImgRename() %>">
 						</td>
 				</tr>
-				<tr><td></td>		
+				<tr>
+						<td></td>		
 						<td class="file_input">
 						<label>사진첨부
 						<pre class="brush.html"><input type="file" id="profile_original" name="profile_original" onchange="LoadImg(this);" ></pre>
 						</label>
 						
 						<input type="hidden" name="profile_older" value="<%=p.getPartnerImgRename() %>" > 	
-						
-						
-						
 					</td>
 				<tr>
 				<!-- 프로필 이미지가 존재하지 않을경우 -->

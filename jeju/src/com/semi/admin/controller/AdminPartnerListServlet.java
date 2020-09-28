@@ -70,7 +70,7 @@ public class AdminPartnerListServlet extends HttpServlet {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
 				pageBar+="<a href='"+request.getContextPath()+
-						"/admin/memberList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
+						"/partner/partnerList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
@@ -80,9 +80,8 @@ public class AdminPartnerListServlet extends HttpServlet {
 			
 		}else {
 			pageBar+="<a href='"+request.getContextPath()+
-					"/admin/memberList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>[다음]</a>";
+					"/partner/partnerList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>[다음]</a>";
 		}
-		
 		request.setAttribute("partners", list);
 		request.setAttribute("pageBar",pageBar);
 		request.getRequestDispatcher("/views/admin/partnerList.jsp")

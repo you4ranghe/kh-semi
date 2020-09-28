@@ -72,10 +72,12 @@
 							
 	}
 
+
 	#titleA, #titleB, #titleC{
 	font-size:25px;
 	}
 					
+
 	</style>
 							
 
@@ -102,7 +104,9 @@
                                     <nav>
                                         <ul id="navigation" class="header-fontsize">
                                             <li><a class="active" href="<%=request.getContextPath()%>">Home</a></li>
+
                                             <li><a href="#" id="titleA">About</a>
+
                                                 <ul class="submenu">
                                                         <li><a href="<%=request.getContextPath()%>/views/introduce/companyIntroduce.jsp">About Us</a></li>
                                                         <li><a href="<%=request.getContextPath()%>/views/introduce/jejuIntroduce.jsp">About Jeju</a></li>

@@ -13,7 +13,9 @@
 
 <div class="memberList_img"></div>
 <div class="box">
+
 	<h2 id="h2">상품 관리</h2>
+
 	<ul>
 		<li class="box"><a href="<%=request.getContextPath()%>/admin/memberList">회원 관리&nbsp;&nbsp;</a></li>
 		<li class="box"><a href="<%=request.getContextPath()%>/partner/partnerList">파트너 관리&nbsp;&nbsp;</a></li>

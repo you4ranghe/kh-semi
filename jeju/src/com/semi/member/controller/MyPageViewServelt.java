@@ -35,10 +35,10 @@ public class MyPageViewServelt extends HttpServlet {
 		String userId=request.getParameter("userId");
 		Member m = new MemberService().selectMemberId(userId);
 		
+		String address=m.getAddress();
+		
 		String email=m.getEmail();
 		String phone=m.getPhone();
-		String address=m.getAddress();
-		System.out.println("주소:"+address);
 		
 		System.out.println(email+" : "+ phone);
 		
