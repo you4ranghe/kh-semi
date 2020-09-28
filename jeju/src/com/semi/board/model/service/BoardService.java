@@ -49,16 +49,16 @@ public class BoardService {
 		return result;
 	}
 
-	public List<Board> getSerchBoard(String serch, int cPage, int numPerPage) {
+	public List<Board> getSearchBoard(String serch, String searchType, int cPage, int numPerPage) {
 		Connection conn = getConnection();
-		List<Board> boardList = dao.getSerchBoard(serch, cPage, numPerPage, conn);
+		List<Board> boardList = dao.getSearchBoard(serch, searchType, cPage, numPerPage, conn);
 		close(conn);
 		return boardList;
 	}
 
-	public int getSerchTotal(String serch) {
+	public int getSearchTotal(String serch, String searchType) {
 		Connection conn = getConnection();
-		int result = dao.getSerchTotal(serch, conn);
+		int result = dao.getSearchTotal(serch, searchType, conn);
 		close(conn);
 		return result;
 	}

@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Properties;
 
 import com.semi.board.model.vo.Board;
-
 public class BoardDao {
 
 	private Properties prop = new Properties();
@@ -158,14 +157,16 @@ public class BoardDao {
 		return result;
 	}
 
-	public List<Board> getSerchBoard(String serch, int cPage, int numPerPage, Connection conn) {
+	public List<Board> getSearchBoard(String search, String searchType, int cPage, int numPerPage, Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Board> boardList = new ArrayList();
 
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty("getSerchBoard"));
-			pstmt.setString(1, "%" + serch + "%");
+			String sql = prop.getProperty("getSearchBoard");
+			pstmt = conn.prepareStatement(sql.replace("$type", searchType));
+			
+			pstmt.setString(1, "%" + search + "%");
 			pstmt.setInt(2, (cPage - 1) * numPerPage + 1);
 			pstmt.setInt(3, cPage * numPerPage);
 
@@ -198,14 +199,15 @@ public class BoardDao {
 
 	}
 
-	public int getSerchTotal(String serch, Connection conn) {
+	public int getSearchTotal(String search, String searchType, Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
 
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty("getSerchTotal"));
-			pstmt.setString(1, "%" + serch + "%");
+			String sql = prop.getProperty("getSearchTotal");
+			pstmt = conn.prepareStatement(sql.replace("$type", searchType));
+			pstmt.setString(1, "%" + search + "%");
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = rs.getInt("COUNT(*)");
@@ -277,9 +279,10 @@ public class BoardDao {
 				pstmt.setString(2, b.getBoardTitle());
 				pstmt.setString(3, b.getBoardContent());
 				pstmt.setString(4, b.getUserId());
-				pstmt.setInt(5, b.getBoardRecommend());
-				pstmt.setInt(6, b.getBoardHits());
-				pstmt.setInt(7, b.getBoardNo());
+				pstmt.setDate(5, new java.sql.Date(b.getBoardDate().getTime()));
+				pstmt.setInt(6, b.getBoardRecommend());
+				pstmt.setInt(7, b.getBoardHits());
+				pstmt.setInt(8, b.getBoardNo());
 				
 				result = pstmt.executeUpdate();
 				
@@ -300,9 +303,10 @@ public class BoardDao {
 				pstmt.setString(4, b.getUserId());
 				pstmt.setString(5, b.getOriginalFN());
 				pstmt.setString(6, b.getRenameFN());
-				pstmt.setInt(7, b.getBoardRecommend());
-				pstmt.setInt(8, b.getBoardHits());
-				pstmt.setInt(9, b.getBoardNo());
+				pstmt.setDate(7, new java.sql.Date(b.getBoardDate().getTime()));
+				pstmt.setInt(8, b.getBoardRecommend());
+				pstmt.setInt(9, b.getBoardHits());
+				pstmt.setInt(10, b.getBoardNo());
 				
 				result = pstmt.executeUpdate();
 				

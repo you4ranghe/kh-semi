@@ -66,13 +66,16 @@
 		outline: none;
 		box-shadow: none;
 	}
+	
 	#searchKeyword{
 		margin-left:10px;
 							
 	}
-	.header-fontsize>li>a{
-	font-size:200px;
-	}				
+
+	#titleA, #titleB, #titleC{
+	font-size:25px;
+	}
+					
 	</style>
 							
 
@@ -99,7 +102,7 @@
                                     <nav>
                                         <ul id="navigation" class="header-fontsize">
                                             <li><a class="active" href="<%=request.getContextPath()%>">Home</a></li>
-                                            <li><a href="#">About</a>
+                                            <li><a href="#" id="titleA">About</a>
                                                 <ul class="submenu">
                                                         <li><a href="<%=request.getContextPath()%>/views/introduce/companyIntroduce.jsp">About Us</a></li>
                                                         <li><a href="<%=request.getContextPath()%>/views/introduce/jejuIntroduce.jsp">About Jeju</a></li>
@@ -109,11 +112,11 @@
 <!--                                             <li><a class="" href="travel_destination.html">Travel</a></li>
                                             <li><a href="#">Community <i class="ti-angle-down"></i></a> -->
 
-                                            <li><a class="" href="<%=request.getContextPath()%>/product/allProductList">Travel</a></li>
-                                            <li><a href="#">Community </a> <!-- <i class="ti-angle-down"></i> -->
+                                            <li><a class="" href="<%=request.getContextPath()%>/product/allProductList" id="titleC">Travel</a></li>
+                                            <li><a href="#" id="titleB">Community </a> <!-- <i class="ti-angle-down"></i> -->
                                                 <ul class="submenu">
-                                                        <li><a href="<%=request.getContextPath()%>/board">동행구하기</a></li>
-                                                        <li><a href="elements.html">Q&A</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/gowith" >동행구하기</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/board" >Q&A</a></li>
                                                 </ul>
                                             </li>
                                                                           

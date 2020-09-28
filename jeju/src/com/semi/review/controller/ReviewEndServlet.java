@@ -42,8 +42,6 @@ public class ReviewEndServlet extends HttpServlet {
 		String poNum = request.getParameter("poNum");
 		int pNum = Integer.parseInt(request.getParameter("pNum"));
 		String userId = request.getParameter("userId");
-
-
 		
 		Review r = new Review(0,reviewScore,reviewTitle,reviewContents,reviewWriter,poNum,null,0,pNum,userId);
 		//int result = new ProductService().insertReview(r);

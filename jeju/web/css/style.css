@@ -947,6 +947,7 @@ h3 {
 .header-area .main-header-area .main-menu {
   padding: 12px 0;
   position: relative;
+  left:50px;
 }
 
 /* line 75, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
@@ -1106,6 +1107,7 @@ h3 {
 /* line 204, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li:first-child a {
   padding-left: 0;
+  font-size:25px;
 }
 
 /* line 210, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_header.scss */
