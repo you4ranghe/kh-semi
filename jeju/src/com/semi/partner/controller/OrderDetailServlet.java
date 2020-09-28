@@ -53,7 +53,7 @@ public class OrderDetailServlet extends HttpServlet {
 		String phonep=pe.getPayPhone();
 		try {
 			m.setPhone(AESCrypto.decrypt(phone));
-			pe.setPayPhone(AESCrypto.decrypt(phonep));
+//			pe.setPayPhone(AESCrypto.decrypt(phonep));
 		} catch (InvalidKeyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,6 +71,10 @@ public class OrderDetailServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
+		
+		System.out.println(m.getPhone());
+		System.out.println(pe.getPayPhone());
 
 		request.setAttribute("m", m);
 		request.setAttribute("pe", pe);

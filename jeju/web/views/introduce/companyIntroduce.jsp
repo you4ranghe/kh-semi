@@ -112,7 +112,7 @@
 		</div>
 	</div>
 
-	<div class="video_area video_bg overlay">
+	<div class="video_area video_bg1 overlay">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">

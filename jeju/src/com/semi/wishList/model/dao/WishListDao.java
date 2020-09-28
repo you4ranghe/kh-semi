@@ -124,4 +124,55 @@ public class WishListDao {
 	}
 
 
+	public int countWish(Connection conn,String userId) {
+	      PreparedStatement pstmt=null;
+	      ResultSet rs=null;
+	      int count=0;
+
+	      ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+	      try {
+	         pstmt=conn.prepareStatement(prop.getProperty("selectWish"));
+	         pstmt.setString(1, userId);
+	         System.out.println(userId);
+	         rs=pstmt.executeQuery();
+	         
+
+	         
+	         while(rs.next()) {
+	            Map<String, Object> map = new HashMap<String, Object>();
+
+	            map.put("pName",rs.getString("P_NAME"));
+	            map.put("pDateStart",rs.getString("P_DATE_START"));
+	            map.put("pDateFinish",rs.getString("P_DATE_FINISH"));
+	            map.put("pInfo",rs.getString("P_INFO"));
+	            map.put("pImgPath",rs.getString("P_IMG_PATH"));
+	            map.put("runTime",rs.getString("RUNTIME"));
+	            map.put("pageAddress",rs.getString("PAGEADDRESS"));
+	            map.put("imag",rs.getString("TITLE_IMG_PATH"));
+	            
+	            list.add(map);
+	            count++;
+	            
+	         }
+	         
+	         for(Map<String, Object> map : list){
+	            for(Map.Entry<String, Object> entry:map.entrySet()){
+	                    String key = entry.getKey();
+	                    Object value = entry.getValue();
+	                 System.out.println("key: " + key + " | value: " + value);
+	                
+	            }
+	         }
+	            
+
+
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close(rs);
+	         close(pstmt);
+	      }
+	      return count;   
+	      
+	   }
 }

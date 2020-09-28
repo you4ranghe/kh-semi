@@ -336,8 +336,8 @@ input{
 </script>
 
 
-<button id="paybtn" type="button">결제하기</button> <button id="payreset"  onclick="location.href='<%=request.getContextPath()%>/' ">취소</button> 
-
+<%-- <button id="paybtn" type="button">결제하기</button> <button id="payreset"  onclick="location.href='<%=request.getContextPath()%>/' ">취소</button> 
+ --%>
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- <script>

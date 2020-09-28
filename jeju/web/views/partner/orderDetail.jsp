@@ -153,7 +153,7 @@
 <div class="container marginadd">
 	<div class="row">
 		<div class="col-lg-12 text-right">
-			<a href="<%=request.getContextPath()%>/partner/deleteOrder?peNum=<%=pe.getPayNum()%>"><button class="btn btn-danger btn-sm">예약취소하기</button></a>
+	<%-- 		<a href="<%=request.getContextPath()%>/partner/deleteOrder?peNum=<%=pe.getPayNum()%>"><button class="btn btn-danger btn-sm">예약취소하기</button></a> --%>
 			<a href="<%=request.getContextPath()%>/partner/partnerOrderList"><button class="btn btn-default btn-sm">목록으로</button></a>
 		
 		</div>

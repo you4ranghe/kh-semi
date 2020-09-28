@@ -1,4 +1,4 @@
-2<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"  import="com.semi.product.model.vo.Product"%>
 <%@ include file="/views/common/header.jsp" %>
 <script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>

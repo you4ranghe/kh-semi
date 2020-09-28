@@ -63,17 +63,17 @@ public class ReviewEndServlet extends HttpServlet {
 						msg="리뷰 등록 성공!";
 						loc="/product/productList?pNum="+pNum;
 						
-						response.setContentType("text/html; charset=UTF-8"); 
-						PrintWriter writer = response.getWriter();
-						writer.println("<script>alert('리뷰 등록 성공!'); location.href='product/productList?pNum='+pNum</script>");
-						writer.close();
+//						response.setContentType("text/html; charset=UTF-8"); 
+//						PrintWriter writer = response.getWriter();
+//						writer.println("<script>alert('리뷰 등록 성공!'); location.href='product/productList?pNum='+pNum</script>");
+//						writer.close();
 						
 
 
 					}else {
 						
 						
-						msg="리뷰 등록 실패!";
+						msg="리뷰를 이미 등록하셨습니다!";
 						loc="/product/productList?pNum="+pNum;
 						
 						
@@ -84,12 +84,12 @@ public class ReviewEndServlet extends HttpServlet {
 			msg="구매하신 회원만 리뷰 작성이 가능합니다";
 			loc="/product/productList?pNum="+pNum;
 			
-			request.setAttribute("msg",msg);
-			request.setAttribute("loc",loc);
-			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+
 		}
 		
-
+		request.setAttribute("msg",msg);
+		request.setAttribute("loc",loc);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	
 		
 		

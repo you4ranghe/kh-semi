@@ -45,5 +45,13 @@ public class WishListService {
 		  
 		 
 	  }
+	  
+	  public int countWish(String userId) {
+	        Connection conn=getConnection();
+	        int count =dao.countWish(conn,userId);
+	        close(conn);
+	        return count;
+	     }
+
 
 }
