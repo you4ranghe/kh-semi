@@ -39,14 +39,12 @@ public class ReviewListServlet extends HttpServlet {
 
 		List<Review> reviewList = new ProductService().selectReviewList(pNum);
 		request.setAttribute("reviewList", reviewList);
-
+		
 		
 		
 		request.getRequestDispatcher("/views/product/product.jsp").forward(request,response);
 		
-		for(Review r : reviewList) {
-			System.out.println(r);
-		}
+		System.out.println("리뷰리스트="+reviewList);
 	}
 
 	/**

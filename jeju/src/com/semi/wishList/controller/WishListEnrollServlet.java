@@ -44,7 +44,7 @@ public class WishListEnrollServlet extends HttpServlet {
 		 we.setUserId(request.getParameter("userId"));
 		 we.setProductNum(Integer.parseInt(request.getParameter("productNum")));
 		 we.setPageAddress(request.getParameter("pageAddress"));
-		  
+
 		 int result=new WishListService().insertWish(we);
 
 		 response.setContentType("text/html; charset=UTF-8"); 
@@ -56,6 +56,7 @@ public class WishListEnrollServlet extends HttpServlet {
 		}
 		
 		 writer.close();
+
 
 
 		

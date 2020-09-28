@@ -51,6 +51,7 @@
 			</div>
 		</div>
 	<div class="row">
+
 	<!-- <div class="col-md-2">
 사이드 바 메뉴
   패널 타이틀1
@@ -110,6 +111,7 @@
 			<th style="width: 49%">상품 정보</th>
 			<th style="width: 12%">인원</th>
 			<th style="width: 12%">결제 금액<br>[결제수단]</th>
+
 
 		</tr>
 		<%	if(count!=0){

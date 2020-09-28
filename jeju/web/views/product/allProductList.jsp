@@ -9,7 +9,6 @@
 	
 %>
 <style>
-
 	.addmargin{
 		margin:20px;
 	}
@@ -155,7 +154,6 @@
 		
 	<%-- $(function(){
 		});
-
 	 function clickheart(){
 		
 		$.ajax({
@@ -166,7 +164,5 @@
 		};
 	 --%>
 	 
-
 </script>
-
 <%@ include file="/views/common/footer.jsp"%>

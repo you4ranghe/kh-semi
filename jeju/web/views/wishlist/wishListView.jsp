@@ -85,7 +85,9 @@
 							</a>
 						</td>
 						<td width="9%">
+
 							<p style="margin-left:20px; "> 
+
 								<%startDate=(String)m.get("pDateStart"); %>
 								<%endDate=(String)m.get("pDateFinish"); %>
 								 <%=startDate.substring(0, 10) %> ~ <%=endDate.substring(0, 10) %>
@@ -105,7 +107,9 @@
 
 
 			<%}else{ %>
+
 				<div style="positon:relative;left: 100px; margin-left:400px; margin-top:150px;" id="elseDiv">
+
 					<p style="font-size:20px;font-weight:bolder">위시리스트가 존재하지 않습니다. 마음에 드는 상품들을 위시리스트에 추가해보세요</p>
 
 					

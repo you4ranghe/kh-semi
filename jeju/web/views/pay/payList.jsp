@@ -20,11 +20,13 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <style>
+
 #payFrm{
 position : relative;
 left:150px;
 top:-100px;
 }
+
 
 
 
@@ -332,6 +334,9 @@ input{
 
 
 </script>
+
+
+<button id="paybtn" type="button">결제하기</button> <button id="payreset"  onclick="location.href='<%=request.getContextPath()%>/' ">취소</button> 
 
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
