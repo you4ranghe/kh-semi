@@ -275,19 +275,13 @@
 						
 						</script> -->
 
-	<select id="manageTp" class="suit-select" name="pTime">
-
-	<option value="">전체내역</option>
-
-	<option value="1">적립내역</option>
-
-	<option value="2">사용내역</option>
-
-</select>
-
 <script>
-$("#manageTp option:checked").text();
+var selectOption = document.getElementByName("pTime");
+selectOption = selectOption.options[selectOption.selectedIndex].value;
+$("#pTime option:selected").val();
+
 </script>
+
 
 
 							<!-- 						<select id="vmMnDataSize" name="dataVolumn">
