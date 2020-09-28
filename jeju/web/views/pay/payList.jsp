@@ -167,7 +167,7 @@ input{
 		<table>
 			<tr>
 				<td rowspan="5">
-					<img alt="" src="<%=request.getContextPath() %>/img/banner/<%=imageFile%>" width="200px" height="200px" >
+					<img alt="" src="<%=request.getContextPath() %>/upload/product/<%=imageFile%>" width="200px" height="200px" >
 				</td>
 			</tr>
 			<tr>
@@ -430,7 +430,7 @@ https://docs.iamport.kr/implementation/payment
 나중에 포스팅 해볼게요.
 */
 
-name: '주문명:결제테스트',
+name: '<%=productName%>',
 //결제창에서 보여질 이름
 amount: <%=totalPrice%>,
 //가격

@@ -82,13 +82,17 @@
 					<tr id="reservetr">
 						<td width="20%" height="300px">
 							
-							<img alt="" src="<%=request.getContextPath()%>/img/banner/<%=m.get("imag")%>" width="225px" height="225px"  >
+							<img alt="" src="<%=request.getContextPath()%>/upload/product/<%=m.get("imag")%>" width="225px" height="225px"  >
 							<br>
 						</td>
 						<td width="50%" style="font-size:15px;font-weight: bolder;">
-							<a href="<%=request.getContextPath()%>/detailReserve?poNum=<%=m.get("poNum") %>&userId=<%=logginedMember2.getUserId() %>">
-								<%info=((String)m.get("pInfo")).substring(0,230)+"...."; %>
-								<%=info%>
+							 <a href="<%=request.getContextPath()%>/detailReserve?poNum=<%=m.get("poNum") %>&userId=<%=logginedMember2.getUserId() %>">
+                        <%if(((String)m.get("pInfo")).length()>230) {%>
+                              <%info=((String)m.get("pInfo")).substring(0,230)+"...."; %>
+                           <%}else{ %>
+                              <%info= (String)m.get("pInfo");%>
+                           <%} %>
+                        <%=info%></a>
 							
 						</td>
 						<td width="10%">

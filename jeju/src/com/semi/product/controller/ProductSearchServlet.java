@@ -53,30 +53,64 @@ public class ProductSearchServlet extends HttpServlet {
 		int pageEnd=pageNo+pageBarSize-1;
 		String pageBar="";
 		
-		if(pageNo==1) {
-			pageBar+="<span>[이전]</span>";
-		}else {
-			pageBar+="<a href='"+request.getContextPath()+"/product/selectSearchProductList?"
-					+"searchWord="+search+"&cPage="+(pageNo-1)+"'>[이전]</a>";
-		}
+//		if(pageNo==1) {
+//			pageBar+="<span>[이전]</span>";
+//		}else {
+//			pageBar+="<a href='"+request.getContextPath()+"/product/selectSearchProductList?"
+//					+"searchWord="+search+"&cPage="+(pageNo-1)+"'>[이전]</a>";
+//		}
+//		
+//		while(!(pageNo>pageEnd||pageNo>totalPage)) {
+//			if(cPage==pageNo) {
+//				pageBar+="<span>"+pageNo+"</span>";
+//			}else {
+//				pageBar+="<a href='"+request.getContextPath()+"/product/selectSearchProductList?"
+//						+ "searchWord="+search+"&cPage="+pageNo+"'>"+pageNo+"</a>";
+//			}
+//			pageNo++;
+//		}
+//			
+//		if(pageNo>totalPage) {
+//			pageBar+="<span>[다음]</span>";
+//		}else{
+//			pageBar+="<a href='"+request.getContextPath()+"/product/selectSearchProductList?"
+//					+"searchWord="+search+"&cPage="+(pageNo)+"'>[다음]</a>";
+//							
+//		}
 		
-		while(!(pageNo>pageEnd||pageNo>totalPage)) {
-			if(cPage==pageNo) {
-				pageBar+="<span>"+pageNo+"</span>";
-			}else {
-				pageBar+="<a href='"+request.getContextPath()+"/product/selectSearchProductList?"
-						+ "searchWord="+search+"&cPage="+pageNo+"'>"+pageNo+"</a>";
-			}
-			pageNo++;
-		}
-			
-		if(pageNo>totalPage) {
-			pageBar+="<span>[다음]</span>";
-		}else{
-			pageBar+="<a href='"+request.getContextPath()+"/product/selectSearchProductList?"
-					+"searchWord="+search+"&cPage="+(pageNo)+"'>[다음]</a>";
-							
-		}
+		if (pageNo == 1) {
+	         pageBar = "<li class='page-item'>" + "<a class='page-link text-dark'aria-label='Previous'>"
+	               + "<span aria-hidden='true'>&laquo;</span>" + "<span class='sr-only'>Previous</span>" + "</a>"
+	               + "</li>";
+	      } else {
+	         pageBar = "<li class='page-item'>" + "<a class='page-link text-dark' href='" + request.getContextPath()
+	               + "/product/selectSearchProductList?"
+	               +"searchWord="+search+"cPage=" + (pageNo - 1) + "' aria-label='Previous'>"
+	               + "<span aria-hidden='true'>&laquo;</span>" + "<span class='sr-only'>Previous</span>" + "</a>"
+	               + "</li>";
+	      }
+
+	      // 연결되는 페이지 번호 출력하기
+	      while (!(pageNo > pageEnd || pageNo > totalPage)) {
+	         if (cPage == pageNo) {
+	            pageBar += "<li class='page-item active'><a class='page-link text-dark'>" + pageNo + "</a></li>";
+	         } else {
+	            pageBar += "<li class='page-item'><a class='page-link text-dark' href='" + request.getContextPath()
+	                  + "/product/selectSearchProductList?"
+	               +"searchWord="+search+"cPage=" + pageNo + "'>" + pageNo + "</a></li>";
+	         }
+	         pageNo++;
+	      }
+	      if (pageNo > totalPage) {
+	         pageBar += "<li class='page-item'>" + "<a class='page-link text-dark' aria-label='Next'>"
+	               + "<span aria-hidden='true'>&raquo;</span>" + "<span class='sr-only'>Next</span>" + "</a>"
+	               + "</li>";
+	      } else {
+	         pageBar += "<li class='page-item'>" + "<a class='page-link text-dark' href='" + request.getContextPath()
+	               + "/product/selectSearchProductList?"
+	               +"searchWord="+search+"cPage=" + pageNo + "' aria-label='Next'>" + "<span aria-hidden='true'>&raquo;</span>"
+	               + "<span class='sr-only'>Next</span>" + "</a>" + "</li>";
+	      }
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageBar", pageBar);

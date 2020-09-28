@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,16 +22,16 @@ import com.semi.goWithBoard.model.vo.GFile;
 import com.semi.goWithBoard.model.vo.Gowith;
 
 /**
- * Servlet implementation class GowithWriteEndServlet
+ * Servlet implementation class GowithModifyEndServlet
  */
-@WebServlet("/gowith/writeEnd")
-public class GowithWriteEndServlet extends HttpServlet {
+@WebServlet("/modifyEnd")
+public class GowithModifyEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public GowithWriteEndServlet() {
+	public GowithModifyEndServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -44,18 +42,19 @@ public class GowithWriteEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(1);
 		int result = 0;
 		boolean[] file = new boolean[5];
-		System.out.println(0);
+
 		if (!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "[encytpe] 관리 자에게 문의");
 			request.setAttribute("loc", "/board");
 			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 			return;
 		}
-		System.out.println(1);
-		String path = getServletContext().getRealPath("/upload/gowith");
 		System.out.println(2);
+		String path = getServletContext().getRealPath("/upload/gowith");
+		System.out.println(3);
 		int maxSize = 1024 * 1024 * 100;// 100MB
 		MultipartRequest mr = new MultipartRequest(request, path, maxSize, "UTF-8", new GowithFileRename());
 		System.out.println("========================= GowithWriteEndServlet ===========================");
@@ -79,8 +78,8 @@ public class GowithWriteEndServlet extends HttpServlet {
 		LocalDateTime end = null;
 		Date dstart = null;
 		Date dend = null;
-		System.out.println(3);
-
+		int gowithNo = Integer.parseInt(mr.getParameter("gowithNo"));
+		System.out.println(4);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			recruitmentEnd = (Date) sdf.parse(mr.getParameter("recruitmentEnd"));
@@ -88,6 +87,7 @@ public class GowithWriteEndServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(5);
 		try {
 			start = LocalDateTime.parse(mr.getParameter("start"));
 			end = LocalDateTime.parse(mr.getParameter("end"));
@@ -96,7 +96,8 @@ public class GowithWriteEndServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(4);
+		System.out.println(6);
+
 		for (int i = 0; i < 5; i++) {
 			if (mr.getOriginalFileName("upfile" + i) != null) {
 				System.out.println("oFN" + i + " : " + mr.getOriginalFileName("upfile" + i));
@@ -105,8 +106,11 @@ public class GowithWriteEndServlet extends HttpServlet {
 			}
 		}
 		System.out.println("===========================================================================");
-		System.out.println(5);
+		System.out.println(7);
+		Gowith gN = new GowithService().getGowithForNo(gowithNo);
 		Gowith g = new Gowith();
+		g.setWriteDate(gN.getWriteDate());
+		g.setGowhitNo(gowithNo);
 		g.setUserId(mr.getParameter("userId"));
 		g.setGowithTitle(mr.getParameter("title"));
 		g.setTravelStart(dstart);
@@ -122,8 +126,10 @@ public class GowithWriteEndServlet extends HttpServlet {
 		g.setSchedule(mr.getParameter("schedule"));
 		g.setComment(mr.getParameter("comment"));
 		g.setDestination(mr.getParameter("destination"));
+		g.setgRecommend(gN.getgRecommend());
+		g.setgHits(gN.getgHits());
 		System.out.println("Gowith : " + g);
-		System.out.println(6);
+		System.out.println(8);
 		for (int i = 0; i < 5; i++) {
 			if (mr.getOriginalFileName("upfile" + i) != null) {
 				String oriName = mr.getOriginalFileName("upfile" + i);
@@ -157,7 +163,7 @@ public class GowithWriteEndServlet extends HttpServlet {
 						}
 					}
 					request.setAttribute("msg", "이미지 일만 첨부하실수 있습니다!");
-					request.setAttribute("loc", "/gowith/write");
+					request.setAttribute("loc", "/gowith/modify?gowithNo=" + gowithNo);
 					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 					return;
 				} else {
@@ -166,16 +172,15 @@ public class GowithWriteEndServlet extends HttpServlet {
 				}
 			}
 		}
-		System.out.println(6);
 		// 게시판 DB에 추가하는 로직
-
-		result = new GowithService().insertGowith(g);// 인서트 시킴
-		System.out.println(7);
-		int gowithNo = 0;
-		if (result > 0) {
-			gowithNo = new GowithService().getGowithNoLast(mr.getParameter("userId"));
-		}
-		if (result > 0) {
+		System.out.println(10);
+		
+		new GowithService().updateGowith(g);
+		
+		System.out.println(11);
+		new GowithService().deleteGFile(gowithNo);
+		System.out.println(12);
+		if (gowithNo > 0) {
 			for (int i = 0; i < 5; i++) {// 파일 추가 로직
 				if (file[i] == true) {
 					GFile gf = new GFile();
@@ -183,17 +188,16 @@ public class GowithWriteEndServlet extends HttpServlet {
 					gf.setFileName(mr.getOriginalFileName("upfile" + i));
 					gf.setFileRename(mr.getFilesystemName("upfile" + i));
 					int gfresult = new GowithService().insertGF(gf);
-					if (gfresult > 0) {
+					if(gfresult>0) {
 						System.out.println("파일 등록 성공");
 					}
 				}
 			}
 		}
-		System.out.println(8);
-		request.setAttribute("msg", "게시글 등록 성공!");
+		System.out.println(13);
+		request.setAttribute("msg", "게시글 수정 성공!");
 		request.setAttribute("loc", "/gowith");
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
-
 	}
 
 	/**

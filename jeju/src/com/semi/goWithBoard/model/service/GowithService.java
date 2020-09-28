@@ -125,4 +125,56 @@ public class GowithService {
 		return result;
 	}
 	
+	public int delete(int gowithNo) {
+		Connection conn = getConnection();
+		int result = dao.delete(gowithNo, conn);
+		System.out.println("서비스  rsult = "+result);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public int deleteGFile(int gowithNo) {
+		Connection conn = getConnection();
+		int result = dao.deleteGFile(gowithNo, conn);
+		System.out.println("서비스  rsult = "+result);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public int deleteGhits(int gowithNo) {
+		Connection conn = getConnection();
+		int result = dao.deleteGhits(gowithNo, conn);
+		System.out.println("서비스  rsult = "+result);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public int deleteGowith(int gowithNo) {
+		Connection conn = getConnection();
+		int result = dao.deleteGowith(gowithNo, conn);
+		System.out.println("서비스  rsult = "+result);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
 }

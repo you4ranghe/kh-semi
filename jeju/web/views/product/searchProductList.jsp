@@ -52,7 +52,7 @@
 		      <div class="caption" >
 		      <br>
 		        <h3><%=p.getpName() %></h3>
-		        <p><%=p.getpPriceC()%></p>
+		       <p><%=p.getpPriceC() %>₩~</p>
 		        <input type="hidden" name=pNum value=<%=p.getpNum() %>>
 		      </div>
 		    </div>
@@ -62,8 +62,14 @@
 	<%} %>
 			</div>
 			
-	<div id="pageBar" class="col-lg-12 text-center">
-		<%=request.getAttribute("pageBar") %>
+<%-- 	<div id="pageBar" class="col-lg-12 text-center">
+		<%=request.getAttribute("pageBar") %> --%>
+		
+		<nav aria-label="Page navigation example text-center" style="margin-bottom: 20px;">
+                <ul id="pageNavUl" class="pagination justify-content-center text-center">
+                    <%=request.getAttribute("pageBar") %>
+                </ul>
+            </nav>
 	
 	</div>
 </section>

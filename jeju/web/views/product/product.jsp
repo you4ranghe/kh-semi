@@ -1089,7 +1089,7 @@
 
 <!-- </div> </div> -->
 <!-- newletter_area_start -->
-<div class="newletter_area overlay">
+<%-- <div class="newletter_area overlay">
 	<div class="container">
 		<div class="row justify-content-center align-items-center">
 			<div class="col-lg-10">
@@ -1219,7 +1219,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> --%>
 <!-- Modal -->
 <div class="modal fade custom_search_pop" id="exampleModalCenter"
 	tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

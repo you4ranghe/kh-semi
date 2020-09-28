@@ -253,3 +253,9 @@ th{
     font-size:30px;
 
 }
+
+.file_input{
+       position:relative;
+   left:100px;
+   top:-50px;
+}

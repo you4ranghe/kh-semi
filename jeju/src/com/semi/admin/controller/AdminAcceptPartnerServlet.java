@@ -42,7 +42,7 @@ public class AdminAcceptPartnerServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="정상적으로 파트너를 승인하였습니다";
-			loc="/partner/partnerList";
+			loc="/admin/partnerList";
 		}else {
 			msg="파트너 승인이 실패하였습니다";
 			loc="/admin/partnerView";

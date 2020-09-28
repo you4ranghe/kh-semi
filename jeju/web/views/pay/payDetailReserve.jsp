@@ -128,7 +128,7 @@ input{
 		<table>
 			<tr>
 				<td rowspan="5">
-					<img alt="" src="<%=request.getContextPath() %>/img/banner/<%=m.get("imag")%>" width="200px" height="200px" >
+					<img alt="" src="<%=request.getContextPath() %>/upload/product/<%=m.get("imag")%>" width="200px" height="200px" >
 				</td>
 			</tr>
 			<tr>
@@ -231,9 +231,10 @@ input{
 		<strong>결제 방법</strong>
 	<div id="paytype" style="width:800px;">
 		<%=m.get("poType") %>
-	</div>
+	
 
 	<%} %>
-
+	</div>
+	
 	</section>
 	<%@ include file="/views/common/footer.jsp" %>

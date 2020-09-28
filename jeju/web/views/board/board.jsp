@@ -7,7 +7,7 @@
 	List<Board> boardList = (List<Board>)request.getAttribute("boardList");
 	String searchs = (String)request.getParameter("search");
 	String searchType = (String)request.getParameter("searchType");
-	System.out.println("검색 내용 boardJsp : "+searchs);
+	System.out.println("검색 내용 boardJsp : "+search);
 	System.out.println("검색 타입 boardJsp : "+searchType);
 	
 %>

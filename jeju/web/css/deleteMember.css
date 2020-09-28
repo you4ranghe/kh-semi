@@ -28,7 +28,7 @@ body ::before{
     margin-bottom: 60px;
 } */
 
-.updatepassword_img{
+.deleteMember_img{
     background : url(../img/delete_member.jpg) no-repeat center;
     justify-content : center;
     background-size : cover;

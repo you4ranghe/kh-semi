@@ -37,6 +37,7 @@
 </style>
 <section>
 <h3 class="part-title">&nbsp&nbsp상품 등록하기</h3>
+<button  class="btn btn-info" id="addGuide" onclick="addGuide();">상품등록 가이드 보기</button>
 <div class="container">
 		<div class="row">
 		<div class="col-lg-12 text-center">
@@ -46,6 +47,7 @@
 					<li><a href="<%=request.getContextPath()%>/partner/partnerProductList">  ♥ 내 상품 보기</a><li>
 					<li><a href="<%=request.getContextPath()%>/partner/partnerOrderList">  ♥ 판매 내역 조회하기</a></li>
 					<li><a href="<%=request.getContextPath()%>/partner/addProduct">  ♥ 상품 등록하기</a></li>
+					
 				</ul>
 			</div>
 			</div>
@@ -157,7 +159,9 @@
 				<td colspan="2">
 				
 				<input type="submit" value="등록하기" class="btn btn-primary">
+				
 				<input type="reset" value="취소하기" class="btn btn-danger">
+				
 				</td>
 			</tr>
 		
@@ -258,6 +262,12 @@
 	            }
 	        }).open();
 	    }
+	
+	function addGuide(){
+		   const url="<%=request.getContextPath()%>/views/partner/productGuide.jsp";
+		   const status="left=500px,top=100px,width=1086px,height=2244px";
+		   open(url,status)
+		}s
 
 </script>
 

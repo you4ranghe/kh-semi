@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,13 +41,40 @@ public class GowithViewServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();// 세션가져옴
 		Member logginedMember = (Member) session.getAttribute("logginedMember");// 세션에 로그인된 아이디가 있는지 확인
+		// 조회수 로직!
 
 		if (logginedMember == null) {
 			request.setAttribute("msg", "회원만 접근 가능합니다. 로그인 해주세요!");
 			request.setAttribute("loc", "/member/login");
 			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			return;
 		} else {
+
 			int gowithNo = Integer.parseInt(request.getParameter("gowithNo"));
+
+			boolean check = false;
+			Cookie[] cookies = request.getCookies();
+
+			for (Cookie c : cookies) {
+				if (c.getName().equals("gr" + gowithNo)) {
+					if (c.getValue().equals("" + gowithNo))
+						;
+					check = true;
+				}
+			}
+
+			// 조회수 증가
+			if (check == false) {
+				Cookie c = new Cookie("gr" + gowithNo, "" + gowithNo);
+				c.setPath("/");
+				c.setMaxAge(60 * 60 * 24 * 30);// 한달
+				response.addCookie(c);
+				Gowith g = new GowithService().getGowithForNo(gowithNo);
+				int recommend = g.getgRecommend() + 1;
+				g.setgRecommend(recommend);
+				int result = new GowithService().updateGowith(g);
+			}
+
 			Gowith g = new GowithService().getGowithForNo(gowithNo);
 			List<GFile> gfl = new GowithService().getGFile(gowithNo);
 			List<GComment> gc = new GCommentService().getComment(gowithNo);
@@ -58,8 +86,9 @@ public class GowithViewServlet extends HttpServlet {
 			request.setAttribute("comment", gc);
 			request.setAttribute("list", gfl);
 			request.setAttribute("Gowith", g);
-			request.getRequestDispatcher("/views/gowith/view.jsp").forward(request, response);
+
 		}
+		request.getRequestDispatcher("/views/gowith/view.jsp").forward(request, response);
 	}
 
 	/**
