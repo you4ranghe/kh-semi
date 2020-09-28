@@ -28,8 +28,27 @@ body ::before{
     margin-bottom: 60px;
 } */
 
+.file_input{
+	position:relative;
+	left:100px;
+	top:-50px;
+}
+ .file_input label input {
+    position:relative;
+    left:100px;
+    width:0;
+    height:0;
+    overflow:hidden;
+} 
+
+
+
+
+
+
 .file_input label {
     position:relative;
+    
     cursor:pointer;
     display:inline-block;
     vertical-align:middle;
@@ -43,7 +62,8 @@ body ::before{
     border-radius:10px;
 }
  .file_input label input {
-    position:absolute;
+    position:relative;
+    left:100px;
     width:0;
     height:0;
     overflow:hidden;
