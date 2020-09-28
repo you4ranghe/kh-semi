@@ -11,7 +11,7 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/popper.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script> --%>
-
+<!-- 추가한거 -->
 <!-- Include the plugin's CSS and JS: -->
 <%-- <script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-multiselect.css" type="text/css"/>
@@ -75,7 +75,6 @@
 .catediv:hover .cate-content {
     display: block;
     clear:both;
-   
    
   }
 #categorybtn>div{
@@ -166,6 +165,10 @@ button+div{
       
       }
 
+.part-title{
+		margin:20px;
+	
+	}
 </style>
 
 
@@ -180,9 +183,9 @@ button+div{
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>서귀포시</h3>
+                                <h3>Seogwipo-si</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서귀포시" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서귀포시" class="boxed-btn3">explore Jeju</a>
                             </div>
                         </div>
                     </div>
@@ -193,9 +196,9 @@ button+div{
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>동제주시</h3>
+                                <h3>east-Jeju-si</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=동제주시" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=동제주시" class="boxed-btn3">Do right now</a>
                             </div>
                         </div>
                     </div>
@@ -206,22 +209,22 @@ button+div{
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>서제주시</h3>
+                                <h3>west-Jeju-si</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서제주시" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=서제주시" class="boxed-btn3">Together</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_3 overlay">
+            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>제주시</h3>
+                                <h3>Jesu-si</h3>
                                 <p></p>
-                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=제주시" class="boxed-btn3">상품 보기</a>
+                                <a href="<%=request.getContextPath()%>/product/selectSearchProductList?searchWord=제주시" class="boxed-btn3">Enjoy Jeju</a>
                             </div>
                         </div>
                     </div>
@@ -316,7 +319,7 @@ button+div{
 </div>
  --%>
  	<br>
- 	<h3>최근 등록된 상품<a href="<%=request.getContextPath()%>/product/allProductList" class="more">더보기</a></h3>
+ 	<h3 class="part-title">최근 등록된 상품<a href="<%=request.getContextPath()%>/product/allProductList" class="more">더보기</a></h3>
 	
  	  <%-- <div class="row">
 		<%for(Product p:list){ %>
@@ -346,12 +349,8 @@ button+div{
 	</div>
 			
 
-	<a href="<%=request.getContextPath()%>/partner/partnerOrderList"><button>테스트</button></a>
-
 
 </section>
-
-
 
 	<script> 
 	

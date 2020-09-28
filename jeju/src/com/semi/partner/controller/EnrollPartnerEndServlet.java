@@ -73,7 +73,7 @@ public class EnrollPartnerEndServlet extends HttpServlet {
 		
 		}
 		else {
-			msg="파트너 신청에 실패하였습니다";
+			msg="파트너 승인 대기중입니다.";
 		
 		}
 		request.setAttribute("msg", msg);

@@ -437,9 +437,11 @@
 
 
 						<div class="blog_details">
+
 							
 							<img src="<%=request.getContextPath() %>/upload/product/${p.pImgPath}" width="640px" height="420px" class="pImgPath">
 							<h2>${p.pBigNameKor}<button  id="wishbtn">ADD WISHLIST</button>
+
 
 								<!-- 위시리스트 넘기기 -->
 								<%-- <a class="heart-button"

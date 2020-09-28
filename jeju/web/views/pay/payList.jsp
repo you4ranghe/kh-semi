@@ -20,6 +20,16 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <style>
+
+#payFrm{
+position : relative;
+left:150px;
+top:-100px;
+}
+
+
+
+
 input{
 		margin:10px;
 
@@ -92,7 +102,7 @@ input{
 	
 	
 	#payContent{
-		margin-left:600px;
+		margin-left:200px;
 		
 		margin-top:100px;
 	}
@@ -116,7 +126,7 @@ input{
 		font-size:20px;
 	}
 	#paybtn{
-		margin-left:200px; 
+		margin-left:200px;
 		margin-top:20px; 
 		margin-bottom:50px;
 		width:100px;
@@ -124,7 +134,7 @@ input{
 		border-radius:10px;
 	}
 	#payreset{
-		margin-left:200px;
+		margin-left:50px;
 	 	width:100px;
 	 	height:50px;
 	 	border-radius:10px;
@@ -300,7 +310,8 @@ input{
 	<div id="paytype">
 		<label><input type="radio" name="payType"checked value="card" style="margin-top:50px;">신용카드</label> <label><input type="radio" onclick="return(false);">나머지 결제방식은 수리중에 있습니다</label>
 	</div>
-	<input type="submit" value="결제하기"> 
+	<input type="submit" value="결제하기"> <br>
+<button id="paybtn" type="button">결제하기</button> <button id="payreset"  onclick="location.href='<%=request.getContextPath()%>/' ">취소</button> 
 </form>
 <script>
 
@@ -324,7 +335,9 @@ input{
 
 </script>
 
+
 <button id="paybtn" type="button">결제하기</button> <button id="payreset"  onclick="location.href='<%=request.getContextPath()%>/' ">취소</button> 
+
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- <script>

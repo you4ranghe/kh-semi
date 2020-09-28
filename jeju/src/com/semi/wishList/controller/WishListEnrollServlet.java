@@ -44,9 +44,7 @@ public class WishListEnrollServlet extends HttpServlet {
 		 we.setUserId(request.getParameter("userId"));
 		 we.setProductNum(Integer.parseInt(request.getParameter("productNum")));
 		 we.setPageAddress(request.getParameter("pageAddress"));
-		 
-		 System.out.println(request.getParameter("pageAddress"));
-		 
+
 		 int result=new WishListService().insertWish(we);
 
 		 response.setContentType("text/html; charset=UTF-8"); 

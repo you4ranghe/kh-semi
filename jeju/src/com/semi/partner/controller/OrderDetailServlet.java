@@ -2,11 +2,20 @@ package com.semi.partner.controller;
 
 import java.io.IOException;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.semi.common.AESCrypto;
 
 import com.semi.member.model.service.MemberService;
 import com.semi.member.model.vo.Member;
@@ -39,6 +48,30 @@ public class OrderDetailServlet extends HttpServlet {
 		 */
 		payEnd pe=new PartnerService().selectOrder(payNum);
 		Member m=new MemberService().selectMemberId(pe.getUserId());
+
+		String phone=m.getPhone();
+		String phonep=pe.getPayPhone();
+		try {
+			m.setPhone(AESCrypto.decrypt(phone));
+			pe.setPayPhone(AESCrypto.decrypt(phonep));
+		} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 		request.setAttribute("m", m);
 		request.setAttribute("pe", pe);
 		request.getRequestDispatcher("/views/partner/orderDetail.jsp").forward(request, response);

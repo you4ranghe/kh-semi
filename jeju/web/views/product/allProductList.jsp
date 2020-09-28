@@ -70,8 +70,9 @@
 		      <a href="<%=request.getContextPath()%>/product/productList?pNum=<%=p.getpNum()%>"><img src="<%=request.getContextPath() %>/upload/product/<%=p.getTitleImgPath() %>"  alt="..." width="400px" height="200px" class="img-rounded"></a>
 		      <%-- <a href="" onclick="clickheart();"><img src="<%=request.getContextPath()%>/img/product/transheart.png" class="wish"></a> --%>
 
-		      <span class="heartspan"><i class="fas fa-heart wish" onclick="javascript:clickheart();"></i></span>
+		      <!-- <span class="heartspan"><i class="fas fa-heart wish" onclick="javascript:clickheart();"></i></span> -->
 		      <div class="caption" >
+		      <br>
 		        <div class="pname"><h3><%=p.getpName() %></h3></div>
 		        <p><%=p.getpPriceC() %>₩~</p>
 		        <input type="hidden" name=pNum value=<%=p.getpNum() %> >
@@ -83,10 +84,17 @@
 	<%} %>
 			</div>
 			
-	<div id="pageBar" class="col-lg-12 text-center">
+	<%-- <div id="pageBar" class="col-lg-12 text-center">
 		<%=request.getAttribute("pageBar") %>
 	
-	</div>
+	</div> --%>
+	
+	<nav aria-label="Page navigation example text-center" style="margin-bottom: 20px;">
+                <ul id="pageNavUl" class="pagination justify-content-center text-center">
+                    <%=request.getAttribute("pageBar") %>
+                </ul>
+            </nav>
+	
 </section>
 <script>
 <%-- $("#memberList").click(e=>{

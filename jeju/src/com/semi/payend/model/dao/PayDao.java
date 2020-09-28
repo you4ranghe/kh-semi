@@ -111,19 +111,21 @@ public class PayDao {
 		ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		try {
 
+
 			pstmt=conn.prepareStatement(prop.getProperty("selectPay"));
+
 
 			pstmt.setString(1, userId);
 			pstmt.setInt(2, (cPage-1)*numPerPage+1);
 			pstmt.setInt(3, cPage*numPerPage);
 			System.out.println(userId);
+			System.out.println("22222222222222222222222222222222222");
 			rs=pstmt.executeQuery();
 			
 			System.out.println(rs);
 
-		
+
 			while(rs.next()) {
-			
 				Map<String, Object> map = new HashMap<String, Object>();
 
 				map.put("payOrderDate",rs.getString("PO_DATE"));

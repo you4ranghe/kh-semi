@@ -127,7 +127,22 @@ function enroll_partner(){
         return false;
  		}
 	
-	
+var profile = document.getElementById('profile').value;
+ 	
+ 	if (profile == null || profile == "") {
+ 		alert("프로필 첨부 파일은 필수 입니다.");
+        return false;
+ 		}
+ 	
+ 	
+ 	
+ 	var idcard = document.getElementById('idcard').value;
+ 	
+ 	if (idcard == null || idcard == "") {
+ 		alert("주민등록 첨부 파일은 필수 입니다.");
+        return false;
+ 		}
+ 	
 	
 }
 

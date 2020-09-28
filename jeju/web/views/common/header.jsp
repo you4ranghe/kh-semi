@@ -70,7 +70,9 @@
 		margin-left:10px;
 							
 	}
-							
+	.header-fontsize>li>a{
+	font-size:200px;
+	}				
 	</style>
 							
 
@@ -91,15 +93,16 @@
                                     </a>
                                 </div>
                             </div>
+                            
                             <div class="col-xl-4 col-lg-4">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
-                                        <ul id="navigation">
+                                        <ul id="navigation" class="header-fontsize">
                                             <li><a class="active" href="<%=request.getContextPath()%>">Home</a></li>
                                             <li><a href="#">About</a>
                                                 <ul class="submenu">
                                                         <li><a href="<%=request.getContextPath()%>/views/introduce/companyIntroduce.jsp">About Us</a></li>
-                                                        <li><a href="elements.html">About Jeju</a></li>
+                                                        <li><a href="<%=request.getContextPath()%>/views/introduce/jejuIntroduce.jsp">About Jeju</a></li>
                                                 </ul>
                                             </li>
  
@@ -175,9 +178,13 @@
                                                <%if(logginedMember!=null){%>
                              
                                                      <li><%=logginedMember.getUserName()%>님, 안녕하세요</li>
+                                                     <%if(!logginedMember.getUserId().equals("admin")){ %>
                                                      <li><a href="<%=request.getContextPath()%>/wishList?userId=<%=logginedMember.getUserId() %>" id="wishSubmit">위시리스트</a></li>
-                                                     <li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
                                                      <li><a href="<%=request.getContextPath()%>/payReservation?userId=<%=logginedMember.getUserId() %>">예약 조회</a></li>
+                                                     <%} %>
+                                                     <li><a href="<%=request.getContextPath()%>/member/mypage?userId=<%=logginedMember.getUserId()%>">마이페이지</a></li>
+                                                
+                                                     
                                                      <li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
                                                
                                                 <!-- 로그인후 회원 아이디가 admin일 경우 -->
