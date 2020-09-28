@@ -67,22 +67,32 @@
 					<tr id="wishtr">
 
 						<td width="20%" height="300px">
-							
-							<img alt="" src="<%=request.getContextPath()%>/img/banner/<%=m.get("imag")%>" width="250px" height="250px" style=" border-radius: 50%;" >
+																																			
+							<img alt="" src="<%=request.getContextPath()%>/upload/product/<%=m.get("imag")%>" width="250px" height="250px" style=" border-radius: 50%;" >
 							<br>
 						</td>
 						<td width="55%">
 	
-							<a href="<%=m.get("pageAddress")%>">
+							 <a href="<%=m.get("pageAddress")%>">
+                        
+                           <h2 style="font-size:25px;font-weight:bolder"><%=m.get("pName") %></h2>
+                     
+                           <%if(((String)m.get("pInfo")).length()>200) {%>
+                              <%info=((String)m.get("pInfo")).substring(0,200)+"...."; %>
+                           <%}else{ %>
+                              <%info= (String)m.get("pInfo");%>
+                           <%} %>
+                           <p>
+                              <%=info%>
+                           </p>
+                     
+                        
+                     </a>
 								
-									<h2 style="font-size:25px;font-weight:bolder"><%=m.get("pName") %></h2>
-									<%info=((String)m.get("pInfo")).substring(0,200)+"..."; %>
-									<p>
-										<%=info%>
-									</p>
+								
 							
 								
-							</a>
+						
 						</td>
 						<td width="9%">
 

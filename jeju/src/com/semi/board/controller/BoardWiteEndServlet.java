@@ -1,5 +1,6 @@
 package com.semi.board.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -67,7 +68,16 @@ public class BoardWiteEndServlet extends HttpServlet {
 			if (!(ext.equals(".jpg") || ext.equals(".png") || ext.equals(".PNG") || ext.equals(".JPG"))) {
 				request.setAttribute("msg", "이미지 일만 첨부하실수 있습니다!");
 				request.setAttribute("loc", "/board/write");
-
+				File files = new File(path+"/"+mr.getFilesystemName("upfile"));
+				if (files.exists()) {
+					if (files.delete()) {
+						System.out.println("파일삭제 성공");
+					} else {
+						System.out.println("파일삭제 실패");
+					}
+				} else {
+					System.out.println("파일이 존재하지 않습니다.");
+				}
 				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 				return;
 			}

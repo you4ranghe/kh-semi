@@ -14,24 +14,12 @@ int replyPosition = 0;
 
 <section>
 	<div class="container">
-		<table style="margin-top: 10px;" class="table">
-			<tbody>
-				<tr>
-					<th class="text-center"><%=b.getBoardTitle()%></th>
-				</tr>
-				<tr style="border: 1px lightgray solid; border-radius: 10px;">
-					<td>
-						<div style="margin: 10px;">
-							<br>
-							<p>
-								<%=b.getBoardContent()%>
-							</p>
-							<br>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<p style="font-size: 30px;" class="text-center"><%=b.getBoardTitle() %></p>
+		<br>	
+		<textarea id="text-il" name="schedule"
+					style="resize: none; width:100%;background-color: white;" rows="25" disabled readonly><%=b.getBoardContent()%></textarea>
+
+		<br>
 		<div class="row" style="height: 25px; margin-bottom: 20px;">
 			<label style="margin-top: 5px;" class="col-sm-11 text-right"
 				for="jh-recommendation"><%=b.getBoardHits()%></label>
@@ -142,7 +130,7 @@ int replyPosition = 0;
 		</div>
 	</div>
 	<script>
-		let el = null;
+		var el = 0;
     	function boardList(){
     		let url = "<%=request.getContextPath()%>/board";
 			location.href = url;
@@ -156,25 +144,44 @@ int replyPosition = 0;
 			<%-- let url = "<%=request.getContextPath()%>" --%>
 			location.href = url;
 		}
-		
-		$("form.hiddened").on("mouseenter",function(){
-			let hiddened = "<div style='height: 30px;'><button id='clicke' type='button' onclick='replywrite(event);' class='btn btn-outline-secondary float-right'>답글 작성</button></div>"
-				$(this).children("#hiddened").html(hiddened);
-			el=$(this);
+		$(function (){
+			$("form.hiddened").on("mouseenter",function(){
+				let hiddened = "<div style='height: 30px;'><button id='clicke' type='button' onclick='replywrite(event);' class='btn btn-outline-secondary float-right'>답글 작성</button></div>"
+					$(this).children("#hiddened").html(hiddened);
+				el = this;
+				console.log(el);
+				
+				
+			});
+			$("form.hiddened").on("mouseleave",function(){
+				let hiddeneds = "";
+				$(this).children("#hiddened").html(hiddeneds);
+			});
 		});
-		$("form.hiddened").on("mouseleave",function(){
-			let hiddeneds = "";
-			$(this).children("#hiddened").html(hiddeneds);
-			el=null;
-		});
-		
 		function replywrite(e){
-			$("#clicke").parent().parent().parent().append("<textarea class='form-control' style='width: 100%; resize: none;'  name='replyComment' cols='30' rows='4'></textarea><div style='width: 100%; height:25px;'><button onclick='addReplySend();' class='qjxms btn btn-outline-secondary float-right' type='button'>작성</button><div>");
+			let el=e.target;
+			$("#clicke").parent().parent().parent().append("<textarea class='form-control' style='width: 100%; resize: none;'  name='replyComment' cols='30' rows='4'></textarea><div style='width: 100%; height:25px;'><button onclick='addReply(this);' class='qjxms btn btn-outline-secondary float-left' type='button'>취소</button><button onclick='addReplySend();' class='qjxms btn btn-outline-secondary float-right' type='button'>작성</button><div>");
 			console.log($("form.hiddened"));
+			$("form.hiddened").off("mouseenter");
 			$("form.hiddened").off("mouseleave");
-			$("form.hiddened").off("mouseleave");
-						
+			$("form.hiddened").children("#hiddened").html("");
 		}
+		function addReply(s){
+			console.log($(el).children().eq(3));
+			$(el).children().eq(3).remove();
+			$(el).children().eq(2).remove();
+			$("form.hiddened").on("mouseenter",function(){
+				let hiddened = "<div style='height: 30px;'><button id='clicke' type='button' onclick='replywrite(event);' class='btn btn-outline-secondary float-right'>답글 작성</button></div>"
+					$(this).children("#hiddened").html(hiddened);
+				el=$(this);
+			});
+			$("form.hiddened").on("mouseleave",function(){
+				let hiddeneds = "";
+				$(this).children("#hiddened").html(hiddeneds);
+				el=null;
+			});
+		}
+		
 		
 		function addReplySend(){
 			let replyPo = $(".qjxms").parent().parent().parent().children().last().children().last().val();
